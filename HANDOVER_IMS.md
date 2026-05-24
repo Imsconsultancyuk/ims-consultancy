@@ -60,15 +60,17 @@ Full palette and asset inventory: `C:\Users\Admin\AI\refs\ims\brand-system\BRAND
 Tick each off as you complete it. After each step, copy the credential into `VAULT_IMS.md` (your local copy) and your password manager.
 
 - [x] **1. Gmail** — `imsconsultancy2026@gmail.com` created
-- [ ] **2. GitHub** — new user under master email, enable 2FA, generate Read PAT, create empty repo `ims-consultancy`, push existing local project as initial commit. Per-repo `git config user.email imsconsultancy2026@gmail.com` and `git config user.name "IMS Consultancy"` before first commit.
-- [ ] **3. Vercel** — sign up with master email, connect GitHub, import `ims-consultancy` repo, deploy preview, verify `npx vercel whoami` returns this account (not Portix scope).
-- [ ] **4. Cloudflare** — sign up with master email, add `intelmadesimple.com`, copy nameservers, update at domain registrar.
-- [ ] **5. Domain registrar** — confirm `intelmadesimple.com` is under this email, point nameservers to Cloudflare.
-- [ ] **6. Supabase** — new org "IMS Consultancy", new project `ims-consultancy`, capture anon key + service role key + DB password. Generate Personal Access Token for CLI.
-- [ ] **7. Resend** — sign up, add `intelmadesimple.com` as sending domain, get DKIM + SPF records into Cloudflare DNS, verify, capture API key.
-- [ ] **8. Calendly** — sign up, claim username, set 30-min discovery call as default event.
-- [ ] **9. PostHog** — sign up, create project, capture public key for the site.
-- [ ] **10. AI provider keys (Anthropic, OpenAI, fal.ai)** — sign up under master email, capture keys, set spending caps.
+- [x] **2. GitHub** — account `Imsconsultancyuk` created, empty repo `ims-consultancy` provisioned, first commit pushed under IMS identity 2026-05-24.
+- [ ] **3. Vercel** — deferred. Blocked on phone-number cross-pollination with Portix. Replaced with Netlify for tonight's deploy. Revisit Vercel later for redundancy if needed.
+- [x] **4. Cloudflare** — signed up under master email.
+- [x] **5. Domain registrar** — `intelmadesimple.com` confirmed under new email, ready for nameserver swap.
+- [x] **6. Supabase** — new project created. Keys ready to drop into `.env.local` when first API route needs them.
+- [x] **7. Resend** — signed up, sending domain pending DKIM verification in Cloudflare DNS.
+- [x] **8. Calendly** — signed up.
+- [x] **9. PostHog** — signed up.
+- [x] **10. AI provider keys** — Anthropic, OpenAI, fal.ai keys captured.
+- [ ] **11. Netlify** — import IMS GitHub repo. Pending tonight.
+- [ ] **12. DNS cutover** — `intelmadesimple.com` → Netlify after first successful deploy.
 
 After all ticks, run the pre-deploy verification:
 ```
@@ -85,6 +87,15 @@ git config user.name        # must be "IMS Consultancy"
 |---|---|---|---|
 | 2026-05-22 | (existing files preserved from earlier IMS work) | Brand deploy stage 1 | Brand assets, fonts, page layout in place |
 | 2026-05-22 | Created `VAULT_IMS.md`, `HANDOVER_IMS.md`, updated `.gitignore` to cover VAULT, started identity reset | Initiate new project protocol | Done |
+| 2026-05-24 | Deleted `app/api/check/route.ts` containing hardcoded Supabase service-role JWT for project `sdudphgibkkxllcfxyuw` | Critical security finding during pre-deploy audit. The leaked token was in a Portix-attributed commit in old git history. | Done. User notified to rotate / delete the old Supabase project. |
+| 2026-05-24 | Installed `lenis`, wrote `SmoothScroll.tsx`, `Reveal.tsx`, `Header.tsx` client components | Direction C scrollytelling foundation | Done |
+| 2026-05-24 | Rewrote `app/globals.css` with Direction C palette tokens and gradient transition band; switched `@theme inline` to `@theme` so CSS vars resolve at `:root` | Tailwind 4 plus custom CSS could not see the tokens with `inline` modifier | Done |
+| 2026-05-24 | Rewrote `app/page.tsx` with hero (light) → transition band → three story sections (dark) → CTA → footer; copy passes em-dash and buzzword audits | Direction C v1 site build | Done |
+| 2026-05-24 | Removed stale `.git` directory (Portix identity, leaked secret in history). Fresh `git init -b main` with per-repo identity `imsconsultancy2026@gmail.com` / `IMS Consultancy`. Switched remote from `Portix-Global/ims-consultancy` to `Imsconsultancyuk/ims-consultancy`. | Per-client / per-business isolation. Saved memory `feedback_per_client_deployment_isolation.md` flagged this exact trap. | Done |
+| 2026-05-24 | First commit `c6180a8` and `netlify.toml` commit `ad2b5f9` pushed to GitHub | Repo on the new identity, ready for Netlify import | Done |
+| 2026-05-24 | Added `netlify.toml`: Node 20, `npm run build`, publish `.next`, immutable cache headers for `/logos/*` and `/_next/static/*`, baseline security headers | Deterministic Netlify deploys | Done |
+| 2026-05-24 | Netlify dashboard import (user-driven step) | First production deploy | Done. Site: `eclectic-madeleine-e44846.netlify.app`. Verified live via Playwright (desktop and mobile, 0 console errors, 0 warnings, identical to local). |
+| 2026-05-24 | Netlify site rename + custom domain `intelmadesimple.com` + Cloudflare DNS cutover | Final piece for tonight | **Pending** |
 
 ## Issue and fix log
 
