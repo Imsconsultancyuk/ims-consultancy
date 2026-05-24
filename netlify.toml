@@ -1,0 +1,34 @@
+# Netlify build configuration for ims-consultancy (Next.js 16, App Router)
+# The Next.js runtime plugin is auto-injected by Netlify when it detects Next,
+# so no [[plugins]] block is required here.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # Pin Node to an LTS that supports Next 16 cleanly
+  NODE_VERSION = "20"
+  # Suppress Next telemetry on CI
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# Long-lived caching for static brand assets
+[[headers]]
+  for = "/logos/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, immutable"
+
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Baseline security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
