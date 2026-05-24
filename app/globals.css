@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@theme {
+  /* IMS brand palette (Direction C: Light to Dark Journey)
+     Locked 2026-05-22. Mauve is the carrying chromatic across both bands. */
+  --color-paper: #f5eff3;       /* warm mauve paper (replaces pure white) */
+  --color-paper-soft: #ebe2e8;  /* paper one step deeper for cards on light */
+  --color-paper-pure: #fdfbfc;  /* near-white only for tightest contrast */
+
+  --color-deep: #1a1620;        /* jewellery-box dark */
+  --color-deep-soft: #221c28;   /* card surface on dark */
+  --color-deep-veil: #2a2230;   /* transition stop */
+
+  --color-mauve-50:  #f5eff3;
+  --color-mauve-100: #ebd9e3;
+  --color-mauve-200: #d4b0d4;   /* highlight, hover */
+  --color-mauve-300: #b4a0b4;   /* light accent (dark band) */
+  --color-mauve-500: #786478;   /* brand primary mauve */
+  --color-mauve-700: #4e3f4e;
+  --color-mauve-900: #2a1f2a;
+
+  --color-ink:       #1a1620;
+  --color-ink-soft:  #5a4c5a;
+  --color-paper-ink: #f5eff3;   /* text on dark */
+  --color-paper-ink-soft: #b4a0b4;
+
+  /* Backwards compatibility aliases */
+  --color-brand-mauve: #786478;
+  --color-brand-light: #b4a0b4;
+  --color-brand-mist:  #d4d1d6;
+  --color-ink-900: #0f0f12;
+  --color-ink-800: #282429;
+  --color-ink-700: #3c3c3c;
+  --color-ink-500: #8c8c8c;
+
+  /* Type */
+  --font-display: var(--font-display);
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+
+  /* Radius (slightly larger for premium feel) */
+  --radius-sm: 0.25rem;
+  --radius:    0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+:root {
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
+}
+
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+::selection {
+  background: var(--color-mauve-500);
+  color: var(--color-paper);
+}
+
+@media (pointer: fine) {
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-mauve-300);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-mauve-500); }
+}
+
+/* Smooth scroll baseline (Lenis enhances this, this is the fallback) */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }
+
+/* Reveal — progressive enhancement.
+   Default state is fully visible so SSR + no-JS visitors see everything.
+   The Reveal component sets `data-reveal-animating="true"` on mount which
+   hides the element, then the IntersectionObserver flips `is-ready` to
+   transition it back in. */
+[data-reveal][data-reveal-animating="true"] {
+  opacity: 0;
+  transform: translateY(28px);
+  will-change: opacity, transform;
+}
+[data-reveal][data-reveal-animating="true"].is-ready {
+  opacity: 1;
+  transform: none;
+  transition: opacity 800ms var(--ease-out-expo),
+              transform 800ms var(--ease-out-expo);
+}
+
+/* The gradient transition band between light and dark */
+.band-transition {
+  background: linear-gradient(
+    to bottom,
+    var(--color-paper) 0%,
+    var(--color-mauve-300) 35%,
+    var(--color-deep-veil) 75%,
+    var(--color-deep) 100%
+  );
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .scroll-marker { animation: none !important; }
+}
