@@ -95,7 +95,12 @@ git config user.name        # must be "IMS Consultancy"
 | 2026-05-24 | First commit `c6180a8` and `netlify.toml` commit `ad2b5f9` pushed to GitHub | Repo on the new identity, ready for Netlify import | Done |
 | 2026-05-24 | Added `netlify.toml`: Node 20, `npm run build`, publish `.next`, immutable cache headers for `/logos/*` and `/_next/static/*`, baseline security headers | Deterministic Netlify deploys | Done |
 | 2026-05-24 | Netlify dashboard import (user-driven step) | First production deploy | Done. Site: `eclectic-madeleine-e44846.netlify.app`. Verified live via Playwright (desktop and mobile, 0 console errors, 0 warnings, identical to local). |
-| 2026-05-24 | Netlify site rename + custom domain `intelmadesimple.com` + Cloudflare DNS cutover | Final piece for tonight | **Pending** |
+| 2026-05-24 | Netlify site rename to `ims-consultancy` + custom domain `intelmadesimple.com` + Cloudflare DNS cutover | Final piece for tonight | Done. Cloudflare CNAMEs: `@` → `apex-loadbalancer.netlify.com` (DNS only), `www` → `ims-consultancy.netlify.app` (DNS only). Vercel CNAMEs and `_vercel.*` TXT records removed. Resend MX, SPF, DKIM preserved. SSL provisioned by Netlify via Let's Encrypt. |
+| 2026-05-24 | First live load on production domain | Verification | Done. `https://intelmadesimple.com` returns HTTP 200 with Direction C rendering identical to local. Verified desktop via Playwright. Zero console errors, zero warnings. |
+| **OPEN ITEMS** | | | |
+| Switch primary domain in Netlify from apex to `www` | CDN coverage for the apex | Five-second click in Netlify Domain management. Defer until next session if convenient. |
+| Remove `intelmadesimple.com` claim from any old Vercel project (likely Portix scope) | Cleanup of orphaned domain claim | Done once we sign into whichever Vercel account still has the claim. |
+| Old Supabase project `sdudphgibkkxllcfxyuw` | Rotate or delete | Critical security follow-through. Leaked service-role key from the deleted route should be rotated or the project deleted entirely. |
 
 ## Issue and fix log
 
