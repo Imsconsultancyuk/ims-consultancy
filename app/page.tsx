@@ -1,13 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Header } from "./_components/Header";
+import { TrophyHeader } from "./_components/TrophyHeader";
+import { TrophyFooter } from "./_components/TrophyFooter";
+import { Testimonials } from "./_components/Testimonials";
 import { Reveal } from "./_components/Reveal";
+import { SplitReveal } from "./_components/SplitReveal";
 import { PointerVideo } from "./_components/PointerVideo";
 
 export default function Home() {
   return (
     <>
-      <Header />
+      <TrophyHeader />
 
       <main className="flex flex-1 flex-col">
         {/* ============ HERO (cinematic video, pointer-reactive) ============ */}
@@ -168,6 +171,8 @@ export default function Home() {
           </div>
         </section>
 
+        <Testimonials />
+
         {/* ============ CTA BAND (dark, slight contrast) ============ */}
         <section className="relative bg-deep-soft px-6 py-28 text-paper-ink sm:py-36">
           <div className="mx-auto w-full max-w-3xl text-center">
@@ -194,24 +199,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ============ FOOTER ============ */}
-        <footer className="bg-deep px-6 py-12 text-paper-ink-soft">
-          <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-6 sm:flex-row">
-            <Image
-              src="/logos/ims-vertical-dark.png"
-              alt="IMS"
-              width={160}
-              height={200}
-              sizes="80px"
-              style={{ height: "auto" }}
-              className="w-[80px] opacity-80"
-            />
-            <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em]">
-              © {new Date().getFullYear()} IMS Consultancy
-            </p>
-          </div>
-        </footer>
       </main>
+
+      <TrophyFooter />
 
       {/* Inline keyframes for scroll cue */}
       <style>{`
