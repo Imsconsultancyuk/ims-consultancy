@@ -28,22 +28,24 @@ export default function Home() {
             }}
           />
 
-          <div className="relative mx-auto w-full max-w-3xl text-center text-paper-ink">
+          <div className="relative mx-auto w-full max-w-4xl text-center text-paper-ink">
             <Reveal>
               <Image
-                src="/logos/ims-vertical-transparent.png"
+                src="/logos/ims-horizontal-transparent.png"
                 alt="IMS Consultancy. Intelligence Made Simple."
-                width={260}
-                height={320}
+                width={520}
+                height={170}
                 priority
-                sizes="(min-width: 1024px) 220px, (min-width: 640px) 180px, 140px"
+                sizes="(min-width: 1024px) 460px, (min-width: 640px) 380px, 300px"
                 style={{ height: "auto" }}
-                className="mx-auto w-[140px] sm:w-[180px] lg:w-[220px]"
+                className="mx-auto w-[300px] sm:w-[380px] lg:w-[460px]"
               />
             </Reveal>
 
             <Reveal delay={120}>
-              <h1 className="mt-12 font-serif text-[clamp(2.75rem,5.5vw,4.25rem)] font-medium leading-[1.05] tracking-[-0.015em] text-paper-ink">
+              <h1
+                className="ims-glass-text mt-14 font-serif text-[clamp(3rem,6.2vw,4.75rem)] font-medium leading-[1.05] tracking-[-0.018em]"
+              >
                 Considered work
                 <br />
                 for ambitious operators.

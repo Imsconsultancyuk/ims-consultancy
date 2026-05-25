@@ -11,25 +11,29 @@ interface PointerVideoProps {
   filter?: string;
   /** Show the soft mauve radial that follows the pointer inside the video bounds. */
   glow?: boolean;
-  /** Maximum tilt in degrees applied to the container as the pointer moves. 0 disables tilt. */
+  /** Maximum tilt in degrees applied to the inner layer as the pointer moves. 0 disables tilt. */
   tilt?: number;
 }
 
 /**
- * Background video that subtly tilts toward the pointer and carries a soft
- * mauve radial glow that drifts behind the cursor. Auto-disables on touch
- * devices and when the user prefers reduced motion. Pattern adapted from
- * the Drift and Forge motion primitives (CursorGlow + Magnetic).
+ * Cinematic background video with pointer reactivity:
+ *  - Inner layer tilts toward the cursor (real CSS 3D perspective applied
+ *    on the OUTER container so the child's rotateX/Y has depth).
+ *  - Mauve radial glow drifts behind the cursor inside the video bounds.
+ *
+ * Auto-disables on touch devices and when prefers-reduced-motion is set.
+ * Pattern adapted from Drift and Forge's CursorGlow + Magnetic primitives.
  */
 export function PointerVideo({
   src,
   poster,
   className = "",
-  filter = "hue-rotate(285deg) saturate(0.9) brightness(0.78)",
+  filter = "hue-rotate(160deg) saturate(1.05) brightness(0.85) contrast(1.05)",
   glow = true,
-  tilt = 3.5,
+  tilt = 6,
 }: PointerVideoProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const outerRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
 
@@ -39,16 +43,19 @@ export function PointerVideo({
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!hasHover || reduced) return;
 
-    const container = containerRef.current;
+    const outer = outerRef.current;
+    const inner = innerRef.current;
     const glowEl = glowRef.current;
-    if (!container) return;
+    if (!outer || !inner) return;
 
-    const tiltXTo = gsap.quickTo(container, "rotationX", {
-      duration: 0.8,
+    // The INNER element receives the rotation. Perspective is on the OUTER so
+    // the rotation has actual depth.
+    const tiltXTo = gsap.quickTo(inner, "rotationX", {
+      duration: 0.9,
       ease: "power3.out",
     });
-    const tiltYTo = gsap.quickTo(container, "rotationY", {
-      duration: 0.8,
+    const tiltYTo = gsap.quickTo(inner, "rotationY", {
+      duration: 0.9,
       ease: "power3.out",
     });
 
@@ -57,20 +64,25 @@ export function PointerVideo({
     if (glow && glowEl) {
       glowXTo = gsap.quickTo(glowEl, "x", { duration: 1.0, ease: "power3.out" });
       glowYTo = gsap.quickTo(glowEl, "y", { duration: 1.0, ease: "power3.out" });
+      // Seed glow position to centre so it appears immediately on first move.
+      const r = outer.getBoundingClientRect();
+      gsap.set(glowEl, { x: r.width / 2, y: r.height / 2 });
     }
 
     const onMove = (e: MouseEvent) => {
-      const rect = container.getBoundingClientRect();
-      if (
-        e.clientX < rect.left ||
-        e.clientX > rect.right ||
-        e.clientY < rect.top ||
-        e.clientY > rect.bottom
-      ) {
+      const rect = outer.getBoundingClientRect();
+      const inside =
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom;
+
+      if (!inside) {
         tiltXTo(0);
         tiltYTo(0);
         return;
       }
+
       const cx = rect.left + rect.width / 2;
       const cy = rect.top + rect.height / 2;
       const dx = (e.clientX - cx) / (rect.width / 2);
@@ -89,54 +101,66 @@ export function PointerVideo({
       tiltYTo(0);
     };
 
-    window.addEventListener("mousemove", onMove);
-    container.addEventListener("mouseleave", onLeave);
+    window.addEventListener("mousemove", onMove, { passive: true });
+    outer.addEventListener("mouseleave", onLeave);
     return () => {
       window.removeEventListener("mousemove", onMove);
-      container.removeEventListener("mouseleave", onLeave);
+      outer.removeEventListener("mouseleave", onLeave);
     };
   }, [glow, tilt]);
 
   return (
     <div
-      ref={containerRef}
+      ref={outerRef}
       className={`overflow-hidden ${className}`}
       style={{
         perspective: "1400px",
-        transformStyle: "preserve-3d",
-        willChange: "transform",
+        perspectiveOrigin: "center center",
       }}
     >
-      <video
-        ref={videoRef}
-        src={src}
-        poster={poster}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        className="absolute inset-0 h-full w-full object-cover"
-        style={{ filter, willChange: "filter" }}
-      />
-      {glow && (
-        <div
-          ref={glowRef}
-          aria-hidden="true"
-          className="pointer-events-none absolute top-0 left-0 hidden lg:block"
+      <div
+        ref={innerRef}
+        className="relative h-full w-full"
+        style={{
+          transformStyle: "preserve-3d",
+          willChange: "transform",
+        }}
+      >
+        <video
+          ref={videoRef}
+          src={src}
+          poster={poster}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="absolute inset-0 h-full w-full object-cover"
           style={{
-            width: 480,
-            height: 480,
-            marginLeft: -240,
-            marginTop: -240,
-            borderRadius: "50%",
-            background:
-              "radial-gradient(circle, rgba(212, 176, 212, 0.35), rgba(180, 160, 180, 0.12) 40%, transparent 72%)",
-            mixBlendMode: "overlay",
-            willChange: "transform",
+            filter,
+            transform: "scale(1.06)",
+            willChange: "filter, transform",
           }}
         />
-      )}
+        {glow && (
+          <div
+            ref={glowRef}
+            aria-hidden="true"
+            className="pointer-events-none absolute top-0 left-0 hidden lg:block"
+            style={{
+              width: 520,
+              height: 520,
+              marginLeft: -260,
+              marginTop: -260,
+              borderRadius: "50%",
+              background:
+                "radial-gradient(circle, rgba(212, 176, 212, 0.55), rgba(180, 160, 180, 0.20) 35%, transparent 70%)",
+              mixBlendMode: "screen",
+              willChange: "transform",
+            }}
+          />
+        )}
+      </div>
     </div>
   );
 }
