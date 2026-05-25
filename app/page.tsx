@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Header } from "./_components/Header";
 import { Reveal } from "./_components/Reveal";
+import { PointerVideo } from "./_components/PointerVideo";
 
 export default function Home() {
   return (
@@ -9,24 +10,40 @@ export default function Home() {
       <Header />
 
       <main className="flex flex-1 flex-col">
-        {/* ============ HERO (light band) ============ */}
-        <section className="relative bg-paper px-6 pt-28 pb-28 sm:pt-40 sm:pb-36 lg:pt-48 lg:pb-44">
-          <div className="mx-auto w-full max-w-3xl text-center">
+        {/* ============ HERO (cinematic video, pointer-reactive) ============ */}
+        <section className="relative isolate overflow-hidden bg-deep px-6 pt-32 pb-32 sm:pt-44 sm:pb-40 lg:pt-52 lg:pb-48">
+          {/* Background video that tilts toward the pointer and carries a mauve cursor glow */}
+          <PointerVideo
+            src="/videos/ims-hero-particle-wave.mp4"
+            className="absolute inset-0 -z-20 h-full w-full"
+            filter="hue-rotate(160deg) saturate(1.05) brightness(0.85) contrast(1.05)"
+          />
+          {/* Soft vignette so the headline reads cleanly without flattening the video */}
+          <div
+            aria-hidden
+            className="absolute inset-0 -z-10"
+            style={{
+              background:
+                "radial-gradient(ellipse at center, rgba(26,22,32,0.20) 0%, rgba(26,22,32,0.55) 55%, rgba(26,22,32,0.85) 100%)",
+            }}
+          />
+
+          <div className="relative mx-auto w-full max-w-3xl text-center text-paper-ink">
             <Reveal>
               <Image
-                src="/logos/ims-horizontal-light.png"
+                src="/logos/ims-vertical-transparent.png"
                 alt="IMS Consultancy. Intelligence Made Simple."
-                width={480}
-                height={160}
+                width={260}
+                height={320}
                 priority
-                sizes="(min-width: 1024px) 420px, (min-width: 640px) 340px, 280px"
+                sizes="(min-width: 1024px) 220px, (min-width: 640px) 180px, 140px"
                 style={{ height: "auto" }}
-                className="mx-auto w-[280px] sm:w-[340px] lg:w-[420px]"
+                className="mx-auto w-[140px] sm:w-[180px] lg:w-[220px]"
               />
             </Reveal>
 
             <Reveal delay={120}>
-              <h1 className="mt-14 font-serif text-[clamp(2.75rem,5.5vw,4.25rem)] font-medium leading-[1.05] tracking-[-0.015em] text-ink">
+              <h1 className="mt-12 font-serif text-[clamp(2.75rem,5.5vw,4.25rem)] font-medium leading-[1.05] tracking-[-0.015em] text-paper-ink">
                 Considered work
                 <br />
                 for ambitious operators.
@@ -34,7 +51,7 @@ export default function Home() {
             </Reveal>
 
             <Reveal delay={240}>
-              <p className="mx-auto mt-8 max-w-xl text-[1.0625rem] leading-[1.7] text-ink-soft">
+              <p className="mx-auto mt-8 max-w-xl text-[1.0625rem] leading-[1.7] text-mauve-300">
                 A strategic consultancy for business decisions,
                 development, and AI workflows. Honest answers and results
                 that hold up over time.
@@ -45,43 +62,37 @@ export default function Home() {
               <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <a
                   href="mailto:hello@intelmadesimple.com"
-                  className="inline-flex h-12 items-center justify-center rounded-md bg-mauve-500 px-8 text-sm font-medium tracking-[0.02em] text-paper transition-all duration-300 hover:bg-mauve-700 hover:shadow-[0_6px_24px_-8px_rgba(120,100,120,0.4)]"
+                  className="inline-flex h-12 items-center justify-center rounded-md bg-mauve-300 px-8 text-sm font-medium tracking-[0.02em] text-deep transition-all duration-300 hover:bg-mauve-200 hover:shadow-[0_8px_32px_-8px_rgba(212,176,212,0.55)]"
                 >
                   Start a conversation
                 </a>
                 <Link
                   href="#approach"
-                  className="inline-flex h-12 items-center justify-center px-3 text-[11px] font-medium uppercase tracking-[0.18em] text-ink transition-colors hover:text-mauve-500"
+                  className="inline-flex h-12 items-center justify-center px-3 text-[11px] font-medium uppercase tracking-[0.18em] text-paper-ink transition-colors hover:text-mauve-200"
                 >
                   How we work
                 </Link>
               </div>
             </Reveal>
+
+            {/* Scroll cue */}
+            <Reveal delay={520}>
+              <div className="mt-20 flex flex-col items-center text-mauve-200">
+                <span className="text-[10px] font-medium uppercase tracking-[0.22em]">
+                  Scroll on
+                </span>
+                <span
+                  aria-hidden
+                  className="mt-2 inline-block h-8 w-px animate-[scrollHint_2.4s_ease-in-out_infinite]"
+                  style={{
+                    background:
+                      "linear-gradient(to bottom, rgba(212,176,212,0.7), rgba(212,176,212,0))",
+                  }}
+                />
+              </div>
+            </Reveal>
           </div>
-
-          {/* Scroll cue */}
-          <Reveal delay={520}>
-            <div className="mt-24 flex flex-col items-center text-mauve-500">
-              <span className="text-[10px] font-medium uppercase tracking-[0.22em]">
-                Scroll on
-              </span>
-              <span
-                aria-hidden
-                className="mt-2 inline-block h-8 w-px animate-[scrollHint_2.4s_ease-in-out_infinite] bg-mauve-500/60"
-                style={{
-                  background:
-                    "linear-gradient(to bottom, rgba(120,100,120,0.6), rgba(120,100,120,0))",
-                }}
-              />
-            </div>
-          </Reveal>
         </section>
-
-        {/* ============ TRANSITION BAND (light to dark) ============ */}
-        <div
-          aria-hidden
-          className="band-transition h-[40vh] min-h-[280px] w-full"
-        />
 
         {/* ============ APPROACH (dark band) ============ */}
         <section

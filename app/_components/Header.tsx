@@ -16,40 +16,40 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-colors duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 ${
         scrolled
-          ? "border-b border-mauve-300/30 bg-paper/85 backdrop-blur-md"
-          : "bg-transparent"
+          ? "border-b border-mauve-300/15 bg-deep/75 backdrop-blur-xl"
+          : "bg-deep/25 backdrop-blur-md"
       }`}
     >
       <nav className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6">
         <Link href="/" aria-label="IMS Consultancy home" className="flex items-center">
           <Image
-            src="/logos/ims-horizontal-light.png"
+            src="/logos/ims-vertical-transparent.png"
             alt="IMS"
             width={120}
-            height={40}
+            height={150}
             priority
-            sizes="120px"
+            sizes="44px"
             style={{ height: "auto" }}
-            className="w-[88px] sm:w-[108px]"
+            className="w-[40px] sm:w-[44px]"
           />
         </Link>
-        <ul className="flex items-center gap-7 text-[11px] font-medium uppercase tracking-[0.18em] text-ink">
+        <ul className="flex items-center gap-7 text-[11px] font-medium uppercase tracking-[0.18em] text-paper-ink">
           <li>
-            <Link href="#approach" className="transition-colors hover:text-mauve-500">
+            <Link href="#approach" className="transition-colors hover:text-mauve-200">
               Approach
             </Link>
           </li>
           <li className="hidden sm:list-item">
-            <Link href="#work" className="transition-colors hover:text-mauve-500">
+            <Link href="#work" className="transition-colors hover:text-mauve-200">
               Work
             </Link>
           </li>
           <li>
             <Link
               href="mailto:hello@intelmadesimple.com"
-              className="text-mauve-500 transition-colors hover:text-ink"
+              className="text-mauve-200 transition-colors hover:text-paper-ink"
             >
               Contact
             </Link>
