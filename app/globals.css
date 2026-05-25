@@ -82,6 +82,16 @@ body {
   ::-webkit-scrollbar-thumb:hover { background: var(--color-mauve-500); }
 }
 
+/* Hide native cursor when the custom site cursor is active (desktop only).
+   Applied via a class set by SiteCursor on mount. Auto-cleaned on unmount
+   or when prefers-reduced-motion / touch-only devices are detected. */
+@media (hover: hover) and (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
 /* Smooth scroll baseline (Lenis enhances this, this is the fallback) */
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }

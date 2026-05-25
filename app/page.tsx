@@ -4,6 +4,9 @@ import { Testimonials } from "./_components/Testimonials";
 import { Reveal } from "./_components/Reveal";
 import { HeroSection } from "./_components/HeroSection";
 import { PointerTilt } from "./_components/PointerTilt";
+import { CinematicBand } from "./_components/CinematicBand";
+import { MagneticButton } from "./_components/MagneticButton";
+import { CharSplit } from "./_components/CharSplit";
 
 const APPROACH_TILES = [
   {
@@ -44,9 +47,11 @@ export default function Home() {
               <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
                 How we work
               </p>
-              <h2 className="mt-5 max-w-3xl font-serif text-[clamp(2rem,4vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.012em]">
-                Three doors into one engagement.
-              </h2>
+              <CharSplit
+                text={"Three doors into\none engagement."}
+                className="mt-5 max-w-3xl font-serif text-[clamp(2rem,4vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.012em]"
+                stagger={0.018}
+              />
               <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-300">
                 Most clients arrive through one door and stay for all three.
                 Each one stands on its own and each one makes the next two
@@ -57,10 +62,7 @@ export default function Home() {
             <div className="mt-20 grid gap-6 sm:grid-cols-3 sm:gap-6 lg:gap-8">
               {APPROACH_TILES.map((tile, i) => (
                 <Reveal key={tile.kicker} delay={120 + i * 100}>
-                  <PointerTilt
-                    className="h-full"
-                    tilt={5}
-                  >
+                  <PointerTilt className="h-full" tilt={5}>
                     <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-mauve-300/12 bg-deep-soft/55 p-7 backdrop-blur transition-all duration-500 hover:border-mauve-300/30 hover:bg-deep-soft/75 sm:p-8">
                       <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
                         {tile.kicker}
@@ -82,15 +84,19 @@ export default function Home() {
           </div>
         </section>
 
+        <CinematicBand />
+
         <Testimonials />
 
         {/* CTA BAND */}
         <section className="relative bg-deep-soft px-6 py-28 text-paper-ink sm:py-36">
           <div className="mx-auto w-full max-w-3xl text-center">
             <Reveal>
-              <h2 className="font-serif text-[clamp(2rem,4vw,3rem)] font-medium leading-[1.1] tracking-[-0.012em]">
-                Ready to make a clearer move?
-              </h2>
+              <CharSplit
+                text="Ready to make a clearer move?"
+                className="font-serif text-[clamp(2rem,4vw,3rem)] font-medium leading-[1.1] tracking-[-0.012em]"
+                stagger={0.02}
+              />
             </Reveal>
             <Reveal delay={120}>
               <p className="mx-auto mt-6 max-w-xl text-[1.0625rem] leading-[1.7] text-mauve-300">
@@ -100,13 +106,17 @@ export default function Home() {
               </p>
             </Reveal>
             <Reveal delay={240}>
-              <a
-                href="mailto:hello@intelmadesimple.com"
-                data-cursor="cta"
-                className="mt-12 inline-flex h-12 items-center justify-center rounded-md bg-mauve-300 px-8 text-sm font-medium tracking-[0.02em] text-deep transition-all duration-300 hover:bg-mauve-200 hover:shadow-[0_8px_32px_-8px_rgba(212,176,212,0.5)]"
-              >
-                Start a conversation
-              </a>
+              <div className="mt-12 inline-block">
+                <MagneticButton strength={0.45} radius={120}>
+                  <a
+                    href="mailto:hello@intelmadesimple.com"
+                    data-cursor="cta"
+                    className="inline-flex h-12 items-center justify-center rounded-md bg-mauve-300 px-8 text-sm font-medium tracking-[0.02em] text-deep transition-all duration-300 hover:bg-mauve-200 hover:shadow-[0_8px_32px_-8px_rgba(212,176,212,0.55)]"
+                  >
+                    Start a conversation
+                  </a>
+                </MagneticButton>
+              </div>
             </Reveal>
           </div>
         </section>
@@ -114,7 +124,6 @@ export default function Home() {
 
       <TrophyFooter />
 
-      {/* Inline keyframes for scroll cue */}
       <style>{`
         @keyframes scrollHint {
           0%, 100% { transform: translateY(0); opacity: 0.4; }

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PointerVideo } from "./PointerVideo";
+import { MagneticButton } from "./MagneticButton";
 
 /**
  * Cinematic hero section with full scroll choreography.
@@ -150,20 +151,24 @@ export function HeroSection() {
           ref={ctasRef}
           className="mt-12 flex flex-col items-center justify-center gap-4 will-change-transform sm:flex-row"
         >
-          <a
-            href="mailto:hello@intelmadesimple.com"
-            data-cursor="cta"
-            className="inline-flex h-12 items-center justify-center rounded-md bg-mauve-300 px-8 text-sm font-medium tracking-[0.02em] text-deep transition-all duration-300 hover:bg-mauve-200 hover:shadow-[0_8px_32px_-8px_rgba(212,176,212,0.55)]"
-          >
-            Start a conversation
-          </a>
-          <Link
-            href="#approach"
-            data-cursor="link"
-            className="inline-flex h-12 items-center justify-center px-3 text-[11px] font-medium uppercase tracking-[0.18em] text-paper-ink transition-colors hover:text-mauve-200"
-          >
-            How we work
-          </Link>
+          <MagneticButton strength={0.4} radius={110}>
+            <a
+              href="mailto:hello@intelmadesimple.com"
+              data-cursor="cta"
+              className="inline-flex h-12 items-center justify-center rounded-md bg-mauve-300 px-8 text-sm font-medium tracking-[0.02em] text-deep transition-all duration-300 hover:bg-mauve-200 hover:shadow-[0_8px_32px_-8px_rgba(212,176,212,0.55)]"
+            >
+              Start a conversation
+            </a>
+          </MagneticButton>
+          <MagneticButton strength={0.25} radius={80}>
+            <Link
+              href="#approach"
+              data-cursor="link"
+              className="inline-flex h-12 items-center justify-center px-3 text-[11px] font-medium uppercase tracking-[0.18em] text-paper-ink transition-colors hover:text-mauve-200"
+            >
+              How we work
+            </Link>
+          </MagneticButton>
         </div>
 
         <div
