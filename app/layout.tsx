@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cinzel, Cormorant_Garamond, Inter } from "next/font/google";
 import { SmoothScroll } from "./_components/SmoothScroll";
+import { SiteCursor } from "./_components/SiteCursor";
 import "./globals.css";
 
 const cinzel = Cinzel({
@@ -76,6 +77,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <SmoothScroll />
+        <SiteCursor />
         {children}
       </body>
     </html>

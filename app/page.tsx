@@ -1,11 +1,30 @@
-import Image from "next/image";
-import Link from "next/link";
 import { TrophyHeader } from "./_components/TrophyHeader";
 import { TrophyFooter } from "./_components/TrophyFooter";
 import { Testimonials } from "./_components/Testimonials";
 import { Reveal } from "./_components/Reveal";
-import { SplitReveal } from "./_components/SplitReveal";
-import { PointerVideo } from "./_components/PointerVideo";
+import { HeroSection } from "./_components/HeroSection";
+import { PointerTilt } from "./_components/PointerTilt";
+
+const APPROACH_TILES = [
+  {
+    kicker: "01 Decide",
+    heading: "The right call, said plainly.",
+    body:
+      "Strategy that holds at three in the morning. Positioning that matches where the business actually sits today. The quiet judgement that separates good moves from busy ones.",
+  },
+  {
+    kicker: "02 Build",
+    heading: "Code that ships and stays shipped.",
+    body:
+      "Development work built on real architecture, not vibes. Decisions you can defend in review, debug at eleven at night, and hand over without a knot in your stomach.",
+  },
+  {
+    kicker: "03 Compound",
+    heading: "Quiet automation, loud results.",
+    body:
+      "AI workflows that turn a single engagement into recurring advantage. Small systems, well chosen, that keep returning value long after the invoice clears.",
+  },
+];
 
 export default function Home() {
   return (
@@ -13,93 +32,9 @@ export default function Home() {
       <TrophyHeader />
 
       <main className="flex flex-1 flex-col">
-        {/* ============ HERO (cinematic video, pointer-reactive) ============ */}
-        <section className="relative isolate overflow-hidden bg-deep px-6 pt-32 pb-32 sm:pt-44 sm:pb-40 lg:pt-52 lg:pb-48">
-          {/* Background video that tilts toward the pointer and carries a mauve cursor glow */}
-          <PointerVideo
-            src="/videos/ims-hero-particle-wave.mp4"
-            className="absolute inset-0 -z-20 h-full w-full"
-            filter="hue-rotate(160deg) saturate(1.05) brightness(0.85) contrast(1.05)"
-          />
-          {/* Soft vignette so the headline reads cleanly without flattening the video */}
-          <div
-            aria-hidden
-            className="absolute inset-0 -z-10"
-            style={{
-              background:
-                "radial-gradient(ellipse at center, rgba(26,22,32,0.20) 0%, rgba(26,22,32,0.55) 55%, rgba(26,22,32,0.85) 100%)",
-            }}
-          />
+        <HeroSection />
 
-          <div className="relative mx-auto w-full max-w-4xl text-center text-paper-ink">
-            <Reveal>
-              <Image
-                src="/logos/ims-horizontal-transparent.png"
-                alt="IMS Consultancy. Intelligence Made Simple."
-                width={520}
-                height={170}
-                priority
-                sizes="(min-width: 1024px) 460px, (min-width: 640px) 380px, 300px"
-                style={{ height: "auto" }}
-                className="mx-auto w-[300px] sm:w-[380px] lg:w-[460px]"
-              />
-            </Reveal>
-
-            <Reveal delay={120}>
-              <h1
-                className="ims-glass-text mt-14 font-serif text-[clamp(3rem,6.2vw,4.75rem)] font-medium leading-[1.05] tracking-[-0.018em]"
-              >
-                Considered work
-                <br />
-                for ambitious operators.
-              </h1>
-            </Reveal>
-
-            <Reveal delay={240}>
-              <p className="mx-auto mt-8 max-w-xl text-[1.0625rem] leading-[1.7] text-mauve-300">
-                A strategic consultancy for business decisions,
-                development, and AI workflows. Honest answers and results
-                that hold up over time.
-              </p>
-            </Reveal>
-
-            <Reveal delay={360}>
-              <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <a
-                  href="mailto:hello@intelmadesimple.com"
-                  className="inline-flex h-12 items-center justify-center rounded-md bg-mauve-300 px-8 text-sm font-medium tracking-[0.02em] text-deep transition-all duration-300 hover:bg-mauve-200 hover:shadow-[0_8px_32px_-8px_rgba(212,176,212,0.55)]"
-                >
-                  Start a conversation
-                </a>
-                <Link
-                  href="#approach"
-                  className="inline-flex h-12 items-center justify-center px-3 text-[11px] font-medium uppercase tracking-[0.18em] text-paper-ink transition-colors hover:text-mauve-200"
-                >
-                  How we work
-                </Link>
-              </div>
-            </Reveal>
-
-            {/* Scroll cue */}
-            <Reveal delay={520}>
-              <div className="mt-20 flex flex-col items-center text-mauve-200">
-                <span className="text-[10px] font-medium uppercase tracking-[0.22em]">
-                  Scroll on
-                </span>
-                <span
-                  aria-hidden
-                  className="mt-2 inline-block h-8 w-px animate-[scrollHint_2.4s_ease-in-out_infinite]"
-                  style={{
-                    background:
-                      "linear-gradient(to bottom, rgba(212,176,212,0.7), rgba(212,176,212,0))",
-                  }}
-                />
-              </div>
-            </Reveal>
-          </div>
-        </section>
-
-        {/* ============ APPROACH (dark band) ============ */}
+        {/* APPROACH (dark band) */}
         <section
           id="approach"
           className="relative bg-deep px-6 pt-28 pb-32 text-paper-ink sm:pt-36 sm:pb-40 lg:pt-44 lg:pb-48"
@@ -119,61 +54,37 @@ export default function Home() {
               </p>
             </Reveal>
 
-            <div className="mt-20 grid gap-14 sm:grid-cols-3 sm:gap-10 lg:gap-14">
-              <Reveal delay={120}>
-                <article className="flex flex-col">
-                  <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
-                    01 Decide
-                  </p>
-                  <h3 className="mt-5 font-serif text-2xl font-medium leading-snug text-paper-ink">
-                    The right call, said plainly.
-                  </h3>
-                  <p className="mt-4 text-[0.9375rem] leading-[1.75] text-mauve-300">
-                    Strategy that holds at three in the morning. Positioning
-                    that matches where the business actually sits today. The
-                    quiet judgement that separates good moves from busy ones.
-                  </p>
-                </article>
-              </Reveal>
-
-              <Reveal delay={220}>
-                <article className="flex flex-col">
-                  <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
-                    02 Build
-                  </p>
-                  <h3 className="mt-5 font-serif text-2xl font-medium leading-snug text-paper-ink">
-                    Code that ships and stays shipped.
-                  </h3>
-                  <p className="mt-4 text-[0.9375rem] leading-[1.75] text-mauve-300">
-                    Development work built on real architecture, not vibes.
-                    Decisions you can defend in review, debug at eleven at
-                    night, and hand over without a knot in your stomach.
-                  </p>
-                </article>
-              </Reveal>
-
-              <Reveal delay={320}>
-                <article className="flex flex-col">
-                  <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
-                    03 Compound
-                  </p>
-                  <h3 className="mt-5 font-serif text-2xl font-medium leading-snug text-paper-ink">
-                    Quiet automation, loud results.
-                  </h3>
-                  <p className="mt-4 text-[0.9375rem] leading-[1.75] text-mauve-300">
-                    AI workflows that turn a single engagement into recurring
-                    advantage. Small systems, well chosen, that keep
-                    returning value long after the invoice clears.
-                  </p>
-                </article>
-              </Reveal>
+            <div className="mt-20 grid gap-6 sm:grid-cols-3 sm:gap-6 lg:gap-8">
+              {APPROACH_TILES.map((tile, i) => (
+                <Reveal key={tile.kicker} delay={120 + i * 100}>
+                  <PointerTilt
+                    className="h-full"
+                    tilt={5}
+                  >
+                    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-mauve-300/12 bg-deep-soft/55 p-7 backdrop-blur transition-all duration-500 hover:border-mauve-300/30 hover:bg-deep-soft/75 sm:p-8">
+                      <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
+                        {tile.kicker}
+                      </p>
+                      <h3 className="mt-5 font-serif text-2xl font-medium leading-snug text-paper-ink">
+                        {tile.heading}
+                      </h3>
+                      <p className="mt-4 text-[0.9375rem] leading-[1.75] text-mauve-300">
+                        {tile.body}
+                      </p>
+                      <div className="mt-auto pt-7">
+                        <div className="h-px w-12 bg-mauve-300/40 transition-all duration-500 group-hover:w-24 group-hover:bg-mauve-200/70" />
+                      </div>
+                    </article>
+                  </PointerTilt>
+                </Reveal>
+              ))}
             </div>
           </div>
         </section>
 
         <Testimonials />
 
-        {/* ============ CTA BAND (dark, slight contrast) ============ */}
+        {/* CTA BAND */}
         <section className="relative bg-deep-soft px-6 py-28 text-paper-ink sm:py-36">
           <div className="mx-auto w-full max-w-3xl text-center">
             <Reveal>
@@ -191,6 +102,7 @@ export default function Home() {
             <Reveal delay={240}>
               <a
                 href="mailto:hello@intelmadesimple.com"
+                data-cursor="cta"
                 className="mt-12 inline-flex h-12 items-center justify-center rounded-md bg-mauve-300 px-8 text-sm font-medium tracking-[0.02em] text-deep transition-all duration-300 hover:bg-mauve-200 hover:shadow-[0_8px_32px_-8px_rgba(212,176,212,0.5)]"
               >
                 Start a conversation
@@ -198,7 +110,6 @@ export default function Home() {
             </Reveal>
           </div>
         </section>
-
       </main>
 
       <TrophyFooter />

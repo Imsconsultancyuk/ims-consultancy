@@ -1,4 +1,5 @@
 import { Reveal } from "./Reveal";
+import { PointerTilt } from "./PointerTilt";
 
 type Tier = "quiet" | "revamp" | "partnership";
 
@@ -66,6 +67,7 @@ function tierAccent(tier: Tier): string {
 
 function CaseCard({ c, large = false }: { c: CaseStudy; large?: boolean }) {
   return (
+    <PointerTilt className="h-full" tilt={4}>
     <article
       className={`group relative flex flex-col overflow-hidden rounded-2xl border border-mauve-300/12 bg-deep-soft/55 p-7 backdrop-blur transition-all duration-500 hover:border-mauve-300/30 hover:bg-deep-soft/75 sm:p-8 ${
         large ? "lg:p-12" : ""
@@ -122,6 +124,7 @@ function CaseCard({ c, large = false }: { c: CaseStudy; large?: boolean }) {
         </p>
       </div>
     </article>
+    </PointerTilt>
   );
 }
 
