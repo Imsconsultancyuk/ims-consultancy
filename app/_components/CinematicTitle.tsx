@@ -18,11 +18,13 @@ interface CinematicTitleProps {
 }
 
 /**
- * Editorial cinematic chapter anchor. The video plays full-bleed as a
- * cinematic backdrop. A heavy mauve vignette sits over it. Type is laid
- * out like a magazine cover — kicker top-left, huge serif headline
- * bottom-left, body and CTA tucked beneath. Video amplifies the type
- * rather than competing with it.
+ * Editorial cinematic chapter anchor. Video plays full-bleed as a backdrop,
+ * type sits over it in a magazine cover composition.
+ *
+ * The title is ALWAYS visible on first render (no JS gatekeeping). GSAP
+ * only layers in parallax drift and a continuous Ken Burns. The entrance
+ * polish is driven by a CSS class toggled via IntersectionObserver so the
+ * scroll layer never blocks the text from appearing.
  */
 export function CinematicTitle({
   videoSrc,
@@ -37,13 +39,39 @@ export function CinematicTitle({
 }: CinematicTitleProps) {
   const lines = title.split("\n");
   const sectionRef = useRef<HTMLElement>(null);
-  const figureRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const kickerRef = useRef<HTMLParagraphElement>(null);
-  const captionRef = useRef<HTMLDivElement>(null);
-  const ruleRef = useRef<HTMLSpanElement>(null);
 
+  // Add an entrance class when the section enters the viewport. Done with
+  // IntersectionObserver (not GSAP) so the text is not at the mercy of
+  // ScrollTrigger / Lenis timing. If JS fails entirely the text is still
+  // visible — CSS treats the absence of the class as the final state.
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const io = new IntersectionObserver(
+      (entries, obs) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            section.classList.add("ims-cinema-in");
+            obs.unobserve(e.target);
+          }
+        }
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.1 }
+    );
+    io.observe(section);
+    // Safety: if observer hasn't fired within 1200ms, force-show anyway.
+    const safety = window.setTimeout(() => {
+      section.classList.add("ims-cinema-in");
+    }, 1200);
+    return () => {
+      io.disconnect();
+      window.clearTimeout(safety);
+    };
+  }, []);
+
+  // GSAP: parallax + Ken Burns only. Skip under reduced motion.
   useEffect(() => {
     if (typeof window === "undefined") return;
     gsap.registerPlugin(ScrollTrigger);
@@ -51,19 +79,14 @@ export function CinematicTitle({
     if (reduced) return;
 
     const section = sectionRef.current;
-    const fig = figureRef.current;
     const video = videoRef.current;
     const title = titleRef.current;
-    const kickerEl = kickerRef.current;
-    const caption = captionRef.current;
-    const rule = ruleRef.current;
-    if (!section || !fig || !video || !title || !kickerEl || !caption || !rule) return;
+    if (!section || !video || !title) return;
 
     const ctx = gsap.context(() => {
-      // Scroll-driven Ken Burns intensification + title parallax
       gsap.to(video, {
-        yPercent: 10,
-        scale: 1.12,
+        yPercent: 8,
+        scale: 1.1,
         ease: "none",
         scrollTrigger: {
           trigger: section,
@@ -73,80 +96,13 @@ export function CinematicTitle({
         },
       });
       gsap.to(title, {
-        yPercent: -8,
+        yPercent: -6,
         ease: "none",
         scrollTrigger: {
           trigger: section,
           start: "top bottom",
           end: "bottom top",
           scrub: 1.0,
-        },
-      });
-
-      // Editorial reveal sequence — kicker fades in, rule grows, title
-      // rises line by line, then body settles
-      const lineEls = title.querySelectorAll<HTMLElement>("[data-line] > span");
-      gsap.set(kickerEl, { y: -16, opacity: 0 });
-      gsap.set(rule, { scaleX: 0, transformOrigin: "left center" });
-      gsap.set(lineEls, { yPercent: 130, opacity: 0 });
-      gsap.set(caption, { y: 20, opacity: 0 });
-
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top 78%",
-        onEnter: () => {
-          const tl = gsap.timeline();
-          tl.to(kickerEl, {
-            y: 0,
-            opacity: 1,
-            duration: 0.7,
-            ease: "power3.out",
-          })
-            .to(
-              rule,
-              {
-                scaleX: 1,
-                duration: 1.0,
-                ease: "expo.out",
-              },
-              "-=0.4"
-            )
-            .to(
-              lineEls,
-              {
-                yPercent: 0,
-                opacity: 1,
-                duration: 1.2,
-                stagger: 0.14,
-                ease: "expo.out",
-              },
-              "-=0.55"
-            )
-            .to(
-              caption,
-              {
-                y: 0,
-                opacity: 1,
-                duration: 0.9,
-                ease: "power3.out",
-              },
-              "-=0.6"
-            );
-        },
-        onLeaveBack: () => {
-          gsap.to([kickerEl, caption], {
-            y: 20,
-            opacity: 0,
-            duration: 0.35,
-            ease: "power2.in",
-          });
-          gsap.to(rule, { scaleX: 0, duration: 0.3 });
-          gsap.to(lineEls, {
-            yPercent: 130,
-            opacity: 0,
-            duration: 0.35,
-            ease: "power2.in",
-          });
         },
       });
     }, section);
@@ -159,10 +115,9 @@ export function CinematicTitle({
       ref={sectionRef}
       id={id}
       aria-labelledby={id ? `${id}-heading` : undefined}
-      className="relative isolate overflow-hidden bg-deep text-paper-ink"
+      className="ims-cinema-section relative isolate overflow-hidden bg-deep text-paper-ink"
     >
       <figure
-        ref={figureRef}
         className="relative w-full overflow-hidden ims-cinema-stage"
         style={{ minHeight: "min(100svh, 820px)" }}
       >
@@ -182,7 +137,7 @@ export function CinematicTitle({
           }}
         />
 
-        {/* Heavy editorial vignette — strongest at the corners, lightest centre */}
+        {/* Editorial vignette */}
         <div
           aria-hidden
           className="absolute inset-0"
@@ -200,16 +155,16 @@ export function CinematicTitle({
           }}
         />
 
-        {/* Drifting mauve spotlight that pans across the frame on a loop */}
+        {/* Drifting mauve spotlight */}
         <div aria-hidden className="ims-cinema-spotlight absolute inset-0" />
 
-        {/* Grain overlay for cinema texture */}
+        {/* Grain */}
         <div
           aria-hidden
           className="ims-cinema-grain pointer-events-none absolute inset-0 opacity-[0.10]"
         />
 
-        {/* Editorial chapter index, top-right */}
+        {/* Chapter index, top-right */}
         {id && (
           <div className="absolute top-6 right-6 z-10 flex items-baseline gap-2 sm:top-8 sm:right-10">
             <span className="font-serif text-[10px] font-medium uppercase tracking-[0.32em] text-mauve-200">
@@ -224,19 +179,12 @@ export function CinematicTitle({
           </div>
         )}
 
-        {/* Kicker, top-left */}
+        {/* Kicker top-left */}
         {kicker && (
-          <div className="absolute top-6 left-6 z-10 max-w-md sm:top-8 sm:left-10 lg:left-16">
+          <div className="ims-cinema-kicker absolute top-6 left-6 z-10 max-w-md sm:top-8 sm:left-10 lg:left-16">
             <div className="flex items-center gap-4">
-              <span
-                ref={ruleRef}
-                aria-hidden
-                className="block h-px w-16 bg-mauve-200"
-              />
-              <p
-                ref={kickerRef}
-                className="font-sans text-[11px] font-medium uppercase tracking-[0.34em] text-mauve-200"
-              >
+              <span aria-hidden className="ims-cinema-rule block h-px w-16 bg-mauve-200" />
+              <p className="font-sans text-[11px] font-medium uppercase tracking-[0.34em] text-mauve-200">
                 {kicker}
               </p>
             </div>
@@ -249,7 +197,7 @@ export function CinematicTitle({
             <h2
               ref={titleRef}
               id={id ? `${id}-heading` : undefined}
-              className="ims-glass-cinema font-serif font-medium leading-[0.92] tracking-[-0.025em]"
+              className="ims-glass-cinema ims-cinema-title font-serif font-medium leading-[0.92] tracking-[-0.025em]"
               style={{
                 fontSize: "clamp(3.5rem, 13vw, 11rem)",
               }}
@@ -258,7 +206,8 @@ export function CinematicTitle({
                 <span
                   key={i}
                   data-line
-                  className="block overflow-hidden"
+                  data-line-index={i}
+                  className="ims-cinema-line block overflow-hidden"
                   style={{ paddingBottom: "0.04em" }}
                 >
                   <span className="inline-block">{line}</span>
@@ -267,10 +216,7 @@ export function CinematicTitle({
             </h2>
 
             {(body || meta || (ctaLabel && ctaHref)) && (
-              <div
-                ref={captionRef}
-                className="mt-8 flex flex-col gap-6 sm:mt-10 sm:flex-row sm:items-end sm:justify-between sm:gap-10"
-              >
+              <div className="ims-cinema-caption mt-8 flex flex-col gap-6 sm:mt-10 sm:flex-row sm:items-end sm:justify-between sm:gap-10">
                 <div className="max-w-xl">
                   {body && (
                     <p className="font-serif text-[clamp(1.0625rem,1.6vw,1.375rem)] leading-[1.5] text-paper-ink/95">
@@ -314,7 +260,6 @@ export function CinematicTitle({
           </div>
         </figcaption>
 
-        {/* Bottom hairline — anchors the editorial composition */}
         <span
           aria-hidden
           className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mauve-200/45 to-transparent"

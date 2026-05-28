@@ -17,6 +17,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 export function SmoothScroll() {
   useEffect(() => {
     if (typeof window === "undefined") return;
+    // Mark JS as alive so progressive-enhancement CSS can engage
+    document.documentElement.classList.add("js");
     gsap.registerPlugin(ScrollTrigger);
 
     const lenis = new Lenis({

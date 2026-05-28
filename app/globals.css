@@ -191,6 +191,52 @@ html.lenis, html.lenis body { height: auto; }
   mix-blend-mode: overlay;
 }
 
+/* Cinematic entrance — title and chrome are visible by default. The
+   .ims-cinema-in class is added when the section enters the viewport;
+   absence of JS still leaves all text visible (final-state CSS). */
+.ims-cinema-kicker,
+.ims-cinema-line > span,
+.ims-cinema-caption {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ims-cinema-rule {
+  transform: scaleX(1);
+  transform-origin: left center;
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Pre-enter state: hidden, slid down. Only applies when JS has marked the
+   section as "pending enter" via the absence of .ims-cinema-in AND the
+   presence of an init guard. We use a single rule with a body-class hook
+   so SSR + no-JS visitors see the text immediately. */
+html.js .ims-cinema-section:not(.ims-cinema-in) .ims-cinema-kicker {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+html.js .ims-cinema-section:not(.ims-cinema-in) .ims-cinema-rule {
+  transform: scaleX(0);
+}
+html.js .ims-cinema-section:not(.ims-cinema-in) .ims-cinema-line > span {
+  opacity: 0;
+  transform: translateY(48px);
+}
+html.js .ims-cinema-section:not(.ims-cinema-in) .ims-cinema-caption {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Entrance stagger per line */
+.ims-cinema-section.ims-cinema-in .ims-cinema-line:nth-child(1) > span { transition-delay: 0.15s; }
+.ims-cinema-section.ims-cinema-in .ims-cinema-line:nth-child(2) > span { transition-delay: 0.30s; }
+.ims-cinema-section.ims-cinema-in .ims-cinema-line:nth-child(3) > span { transition-delay: 0.45s; }
+.ims-cinema-section.ims-cinema-in .ims-cinema-line:nth-child(4) > span { transition-delay: 0.60s; }
+.ims-cinema-section.ims-cinema-in .ims-cinema-caption { transition-delay: 0.70s; }
+.ims-cinema-section.ims-cinema-in .ims-cinema-rule { transition-delay: 0.05s; }
+
 /* Artistic SVG charts — draw-on-reveal animation.
    Each path/line in a chart sets its own stroke-dasharray equal to its
    length, with dashoffset matching, so the stroke is invisible at start.
@@ -311,6 +357,26 @@ html.lenis, html.lenis body { height: auto; }
   transform-origin: center;
   transform-box: fill-box;
   animation: ims-chart-pulse 3.4s ease-in-out infinite;
+}
+
+/* Stronger pulse used on endpoint dots — bigger scale, more visible */
+@keyframes ims-chart-pulse-strong {
+  0%, 100% { transform: scale(1);    opacity: 1;    }
+  50%      { transform: scale(2.2);  opacity: 0.35; }
+}
+.ims-chart.is-drawn .ims-chart-pulse-strong {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: ims-chart-pulse-strong 2.4s ease-in-out infinite;
+}
+
+/* Jagged path subtle wobble — emphasises "messy / manual" */
+@keyframes ims-chart-jagged-wobble {
+  0%, 100% { opacity: 0.85; }
+  50%      { opacity: 0.55; }
+}
+.ims-chart.is-drawn .ims-chart-jagged {
+  animation: ims-chart-jagged-wobble 3.5s ease-in-out infinite;
 }
 
 @keyframes ims-chart-tick-shimmer {
@@ -451,6 +517,60 @@ html.lenis, html.lenis body { height: auto; }
 }
 .ims-chapter-pulse {
   animation: ims-chapter-pulse 3s ease-in-out infinite;
+}
+
+/* Card sheen — drifts gently on hovered card */
+@keyframes ims-card-sheen-drift {
+  0%, 100% { transform: translate3d(0, 0, 0)    scale(1); }
+  50%      { transform: translate3d(15px, 10px, 0) scale(1.15); }
+}
+.ims-card-sheen {
+  animation: ims-card-sheen-drift 8s ease-in-out infinite;
+  filter: blur(8px);
+}
+
+/* Card rim — soft glow ring that travels around the card on hover */
+@keyframes ims-card-rim-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 176, 212, 0.0); }
+  50%      { box-shadow: 0 0 30px 4px rgba(212, 176, 212, 0.18); }
+}
+.ims-card-rim {
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+.group:hover > .ims-card-rim {
+  opacity: 1;
+  animation: ims-card-rim-pulse 3s ease-in-out infinite;
+}
+
+/* Metric pop — headline numbers gently pulse so the eye lands on them */
+@keyframes ims-metric-pop {
+  0%, 100% { transform: scale(1);    text-shadow: 0 0 0 rgba(212,176,212,0); }
+  50%      { transform: scale(1.015); text-shadow: 0 0 24px rgba(212,176,212,0.40); }
+}
+.ims-metric-pop {
+  animation: ims-metric-pop 4s ease-in-out infinite;
+  transform-origin: left center;
+}
+
+/* CTA — continuous pulse halo + sheen sweep across the button */
+@keyframes ims-cta-pulse-halo {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212,176,212,0.0); }
+  50%      { box-shadow: 0 0 36px 6px rgba(212,176,212,0.35); }
+}
+.ims-cta-pulse {
+  animation: ims-cta-pulse-halo 3.5s ease-in-out infinite;
+}
+
+@keyframes ims-cta-sweep {
+  0%   { transform: translateX(-110%) skewX(-15deg); }
+  100% { transform: translateX(220%)  skewX(-15deg); }
+}
+.ims-cta-sweep {
+  animation: ims-cta-sweep 4s ease-in-out infinite;
+  animation-delay: 1.5s;
+  opacity: 0.6;
 }
 
 /* Reduced motion respect */

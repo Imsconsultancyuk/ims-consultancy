@@ -145,24 +145,55 @@ export default function Home() {
 
         <Testimonials />
 
-        {/* CTA BAND */}
+        {/* CTA BAND with animated background */}
         <section
           aria-labelledby="cta-heading"
-          className="relative bg-deep-soft px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
+          className="relative isolate overflow-hidden bg-deep-soft px-6 py-24 text-paper-ink sm:py-32 lg:py-40"
         >
-          <div className="mx-auto w-full max-w-3xl text-center">
+          {/* Drifting mauve orb backdrop */}
+          <div
+            aria-hidden
+            className="ims-footer-orb pointer-events-none absolute -top-32 left-1/3 h-[520px] w-[520px] -translate-x-1/2 rounded-full"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(212,176,212,0.30), rgba(120,100,120,0.10) 40%, transparent 70%)",
+              filter: "blur(30px)",
+            }}
+          />
+          <div
+            aria-hidden
+            className="ims-footer-orb ims-footer-orb--alt pointer-events-none absolute -bottom-32 right-1/4 h-[420px] w-[420px] rounded-full"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(120,100,120,0.32), rgba(212,176,212,0.08) 45%, transparent 70%)",
+              filter: "blur(34px)",
+            }}
+          />
+          <div
+            aria-hidden
+            className="ims-footer-grid pointer-events-none absolute inset-0 opacity-[0.04]"
+          />
+
+          <div className="relative mx-auto w-full max-w-3xl text-center">
             <Reveal>
+              <div className="mx-auto inline-flex items-center gap-3">
+                <span aria-hidden className="ims-divider-anim h-px w-12" />
+                <p className="font-sans text-[11px] font-medium uppercase tracking-[0.32em] text-mauve-200">
+                  A clearer move
+                </p>
+                <span aria-hidden className="ims-divider-anim h-px w-12" />
+              </div>
               <h2 id="cta-heading" className="sr-only">
                 Ready to make a clearer move
               </h2>
               <CharSplit
                 text="Ready to make a clearer move?"
-                className="font-serif text-[clamp(2rem,4vw,3rem)] font-medium leading-[1.1] tracking-[-0.012em]"
+                className="mt-7 font-serif text-[clamp(2rem,4.4vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.012em]"
                 stagger={0.02}
               />
             </Reveal>
             <Reveal delay={120}>
-              <p className="mx-auto mt-6 max-w-xl text-[1.0625rem] leading-[1.7] text-mauve-300">
+              <p className="mx-auto mt-7 max-w-xl text-[1.0625rem] leading-[1.7] text-mauve-300">
                 One reply from us, often within the same day. We work with a
                 small number of clients at a time and we tell you honestly
                 whether we are the right partner.
@@ -174,9 +205,13 @@ export default function Home() {
                   <Link
                     href="/contact"
                     data-cursor="cta"
-                    className="inline-flex h-12 items-center justify-center rounded-md bg-mauve-300 px-8 text-sm font-medium tracking-[0.02em] text-deep transition-all duration-300 hover:bg-mauve-200 hover:shadow-[0_8px_32px_-8px_rgba(212,176,212,0.5)]"
+                    className="ims-cta-pulse group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-mauve-300 px-8 text-sm font-medium tracking-[0.02em] text-deep transition-all duration-300 hover:bg-mauve-200 hover:shadow-[0_12px_40px_-10px_rgba(212,176,212,0.65)]"
                   >
-                    Start a conversation
+                    <span className="relative z-10">Start a conversation</span>
+                    <span
+                      aria-hidden
+                      className="ims-cta-sweep absolute inset-0 bg-gradient-to-r from-transparent via-paper/40 to-transparent"
+                    />
                   </Link>
                 </MagneticButton>
               </div>

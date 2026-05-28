@@ -29,8 +29,14 @@ const FIRM = [
   { label: "Case Studies", href: "/case-studies" },
   { label: "Reviews", href: "/reviews" },
   { label: "Pricing", href: "/pricing" },
+];
+
+const RESOURCES = [
   { label: "Insights", href: "/insights" },
   { label: "FAQ", href: "/faq" },
+  { label: "AI Policy", href: "/ai-policy" },
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms and Conditions", href: "/terms" },
 ];
 
 const STANDARDS = [
@@ -232,7 +238,7 @@ export function TrophyFooter() {
           <h3 id="footer-directory-heading" className="sr-only">
             Site directory
           </h3>
-          <div className="grid gap-12 lg:grid-cols-[1fr_1fr_1.2fr] lg:gap-16">
+          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1.1fr] lg:gap-12">
             {/* Practice */}
             <nav aria-label="Practice areas">
               <p className="font-sans text-[10px] font-medium uppercase tracking-[0.32em] text-mauve-200">
@@ -265,6 +271,31 @@ export function TrophyFooter() {
               </p>
               <ul className="mt-6 space-y-3.5" role="list">
                 {FIRM.map((l) => (
+                  <li key={l.label}>
+                    <Link
+                      href={l.href}
+                      className="group inline-flex items-center text-[0.9375rem] text-paper-ink/85 transition-colors hover:text-paper-ink"
+                    >
+                      <span className="relative font-serif text-[1.0625rem] leading-[1.4]">
+                        {l.label}
+                        <span
+                          aria-hidden="true"
+                          className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-mauve-200 transition-transform duration-500 ease-out group-hover:scale-x-100"
+                        />
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* Resources + legal */}
+            <nav aria-label="Resources">
+              <p className="font-sans text-[10px] font-medium uppercase tracking-[0.32em] text-mauve-200">
+                Resources
+              </p>
+              <ul className="mt-6 space-y-3.5" role="list">
+                {RESOURCES.map((l) => (
                   <li key={l.label}>
                     <Link
                       href={l.href}
@@ -387,38 +418,13 @@ export function TrophyFooter() {
         {/* ───────── Band 5 — Legal strip ───────── */}
         <section className="flex flex-col items-start justify-between gap-4 border-t border-mauve-300/12 py-8 sm:flex-row sm:items-center">
           <p className="font-sans text-[10px] font-medium uppercase tracking-[0.24em] text-mauve-300">
-            © {new Date().getFullYear()} IMS Consultancy. Registered in
-            England and Wales.
+            © {new Date().getFullYear()} IMS Consultancy.
+            Registered in England and Wales.
+            All rights reserved.
           </p>
-          <ul
-            className="flex flex-wrap gap-x-6 gap-y-2 font-sans text-[10px] uppercase tracking-[0.24em] text-mauve-300"
-            role="list"
-          >
-            <li>
-              <Link
-                href="/privacy"
-                className="transition-colors hover:text-paper-ink"
-              >
-                Privacy
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/terms"
-                className="transition-colors hover:text-paper-ink"
-              >
-                Terms
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/ai-policy"
-                className="transition-colors hover:text-paper-ink"
-              >
-                AI Policy
-              </Link>
-            </li>
-          </ul>
+          <p className="font-sans text-[10px] uppercase tracking-[0.24em] text-mauve-300/80">
+            Intelligence made simple.
+          </p>
         </section>
 
         {/* Crawler discovery surface — present in DOM for SEO and AI

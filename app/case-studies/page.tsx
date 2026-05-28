@@ -179,70 +179,89 @@ export default function CaseStudiesPage() {
             Engagements
           </h2>
           <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 sm:gap-16">
-            {CASES.map((c, i) => (
-              <Reveal key={c.id} delay={i * 80}>
-                <article
-                  id={c.id}
-                  className="relative overflow-hidden rounded-2xl border border-mauve-300/12 bg-deep-soft/55 p-8 backdrop-blur sm:p-10 lg:p-12"
-                >
-                  <header className="border-b border-mauve-300/10 pb-6">
-                    <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
-                      {c.tier}
-                    </p>
-                    <h3 className="mt-3 font-serif text-[clamp(1.5rem,2.6vw,2rem)] font-medium leading-[1.15] tracking-[-0.012em]">
-                      {c.subject}
-                    </h3>
-                    <p className="mt-3 text-[0.9375rem] uppercase tracking-[0.16em] text-mauve-300">
-                      {c.brief}
-                    </p>
-                  </header>
+            {CASES.map((c, i) => {
+              const cells = [
+                { label: "Situation", body: c.situation },
+                { label: "Decision", body: c.decision },
+                { label: "Build", body: c.build },
+                { label: "Outcome", body: c.outcome },
+              ];
+              return (
+                <Reveal key={c.id} delay={i * 80}>
+                  <article
+                    id={c.id}
+                    className="group relative overflow-hidden rounded-2xl border border-mauve-300/12 bg-deep-soft/55 p-8 backdrop-blur transition-all duration-500 hover:border-mauve-300/35 hover:bg-deep-soft/75 hover:shadow-[0_24px_60px_-28px_rgba(212,176,212,0.45)] sm:p-10 lg:p-12"
+                  >
+                    {/* Floating mauve sheen that drifts on hover */}
+                    <span
+                      aria-hidden
+                      className="ims-card-sheen pointer-events-none absolute -top-32 -right-16 h-72 w-72 rounded-full opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+                      style={{
+                        background:
+                          "radial-gradient(circle, rgba(212,176,212,0.35), transparent 70%)",
+                      }}
+                    />
+                    {/* Subtle continuous border-glow drift */}
+                    <span
+                      aria-hidden
+                      className="ims-card-rim pointer-events-none absolute inset-0 rounded-2xl"
+                    />
 
-                  <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:gap-12">
-                    <div>
-                      <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-200">
-                        Situation
+                    <header className="relative border-b border-mauve-300/10 pb-6">
+                      <div className="flex items-center gap-3">
+                        <span
+                          aria-hidden
+                          className="ims-divider-anim h-px w-10 transition-all duration-500 group-hover:w-20"
+                        />
+                        <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
+                          {c.tier}
+                        </p>
+                      </div>
+                      <h3 className="mt-4 font-serif text-[clamp(1.5rem,2.6vw,2rem)] font-medium leading-[1.15] tracking-[-0.012em]">
+                        {c.subject}
+                      </h3>
+                      <p className="mt-3 text-[0.9375rem] uppercase tracking-[0.16em] text-mauve-300">
+                        {c.brief}
                       </p>
-                      <p className="mt-3 text-[0.9375rem] leading-[1.7] text-paper-ink/95">
-                        {c.situation}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-200">
-                        Decision
-                      </p>
-                      <p className="mt-3 text-[0.9375rem] leading-[1.7] text-paper-ink/95">
-                        {c.decision}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-200">
-                        Build
-                      </p>
-                      <p className="mt-3 text-[0.9375rem] leading-[1.7] text-paper-ink/95">
-                        {c.build}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-200">
-                        Outcome
-                      </p>
-                      <p className="mt-3 text-[0.9375rem] leading-[1.7] text-paper-ink/95">
-                        {c.outcome}
-                      </p>
-                    </div>
-                  </div>
+                    </header>
 
-                  <footer className="mt-8 border-t border-mauve-300/10 pt-6">
-                    <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-200">
-                      Headline number
-                    </p>
-                    <p className="mt-3 font-serif text-[1.25rem] leading-[1.4] text-mauve-200">
-                      {c.metric}
-                    </p>
-                  </footer>
-                </article>
-              </Reveal>
-            ))}
+                    <div className="relative mt-8 grid gap-8 lg:grid-cols-2 lg:gap-12">
+                      {cells.map((cell) => (
+                        <div key={cell.label} className="group/cell relative">
+                          <div className="flex items-center gap-2">
+                            <span
+                              aria-hidden
+                              className="inline-block h-1.5 w-1.5 rounded-full bg-mauve-200 transition-all duration-500 group-hover/cell:scale-[1.6] group-hover/cell:bg-mauve-100"
+                            />
+                            <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-200">
+                              {cell.label}
+                            </p>
+                          </div>
+                          <p className="mt-3 text-[0.9375rem] leading-[1.7] text-paper-ink/95">
+                            {cell.body}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+
+                    <footer className="relative mt-8 border-t border-mauve-300/10 pt-6">
+                      <div className="flex items-center gap-3">
+                        <span
+                          aria-hidden
+                          className="ims-divider-anim h-px w-10 transition-all duration-500 group-hover:w-24"
+                        />
+                        <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-200">
+                          Headline number
+                        </p>
+                      </div>
+                      <p className="ims-metric-pop mt-3 font-serif text-[1.375rem] leading-[1.4] text-mauve-100">
+                        {c.metric}
+                      </p>
+                    </footer>
+                  </article>
+                </Reveal>
+              );
+            })}
           </div>
         </section>
 

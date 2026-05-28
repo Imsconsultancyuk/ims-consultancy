@@ -5,16 +5,15 @@ import { Reveal } from "./Reveal";
 
 /**
  * Three artistic SVG visualisations describing what IMS does in shapes a
- * business owner reads at a glance:
+ * business owner reads at a glance. Each one runs a draw-on-reveal first,
+ * then continues with a CONTINUOUS idle loop so the charts are never still.
  *
- *   1. Many manual tasks → one quiet pipeline (consolidation)
- *   2. Jagged handoffs   → continuous flow      (smoothing)
- *   3. One engagement    → recurring returns   (compounding)
+ *   1. Consolidation — six tasks march into one pipeline
+ *   2. Smoothing    — jagged path resolves into a flowing line
+ *   3. Compounding  — centre pulses, ripples expand on a loop
  *
- * Each runs a draw-on-reveal animation when scrolled into view, then
- * continues with a subtle idle loop so the charts are never fully still.
- * That loop is driven by CSS keyframes (see globals.css `chart-*` and
- * `compound-ripple` rules) so the animation continues without a JS tick.
+ * All idle motion is CSS-driven so it survives JS pauses, hot reloads, and
+ * tab-backgrounding.
  */
 
 function useDrawOnReveal<T extends HTMLElement>() {
@@ -34,16 +33,22 @@ function useDrawOnReveal<T extends HTMLElement>() {
       { rootMargin: "0px 0px -8% 0px", threshold: 0.1 }
     );
     io.observe(node);
-    return () => io.disconnect();
+    // Safety: force-show after 1500ms if observer somehow misses
+    const safety = window.setTimeout(() => node.classList.add("is-drawn"), 1500);
+    return () => {
+      io.disconnect();
+      window.clearTimeout(safety);
+    };
   }, []);
   return ref;
 }
 
 /* ============================================================
    Pattern 01 — Consolidation
-   Six manual task lines on the left converge into one solid
-   pipeline on the right. After draw-in, the centre output dot
-   pulses and the converging curves shimmer continuously.
+   - Six tick-marks on the left, each glides into a packet that
+     travels along its curve to the central pipeline
+   - Output bar opacity-pulses
+   - Pipeline endpoint dot has a strong outward pulse
 ============================================================ */
 function ConsolidationChart() {
   const ref = useDrawOnReveal<HTMLDivElement>();
@@ -72,35 +77,31 @@ function ConsolidationChart() {
           </filter>
         </defs>
 
-        {/* Six manual tick-marks on the left */}
-        {tasks.map((t, i) => {
-          const length = t.w;
-          return (
-            <line
-              key={`t-${i}`}
-              x1={20}
-              y1={t.y}
-              x2={20 + t.w}
-              y2={t.y}
-              stroke="url(#grad-consol)"
-              strokeWidth="2"
-              strokeLinecap="round"
-              opacity="0.9"
-              className="ims-chart-tick"
-              data-draw
-              style={
-                {
-                  strokeDasharray: length,
-                  strokeDashoffset: length,
-                  transitionDelay: `${i * 90}ms`,
-                  animationDelay: `${1.2 + i * 0.18}s`,
-                } as React.CSSProperties
-              }
-            />
-          );
-        })}
+        {/* Tick-marks left */}
+        {tasks.map((t, i) => (
+          <line
+            key={`t-${i}`}
+            x1={20}
+            y1={t.y}
+            x2={20 + t.w}
+            y2={t.y}
+            stroke="url(#grad-consol)"
+            strokeWidth="2"
+            strokeLinecap="round"
+            className="ims-chart-tick"
+            data-draw
+            style={
+              {
+                strokeDasharray: t.w,
+                strokeDashoffset: t.w,
+                transitionDelay: `${i * 90}ms`,
+                animationDelay: `${i * 0.2}s`,
+              } as React.CSSProperties
+            }
+          />
+        ))}
 
-        {/* Curves converging to a single endpoint */}
+        {/* Curves converging — static reference paths */}
         {tasks.map((t, i) => {
           const startX = 20 + t.w;
           const endX = 150;
@@ -114,7 +115,7 @@ function ConsolidationChart() {
               fill="none"
               stroke="url(#grad-consol)"
               strokeWidth="1"
-              strokeOpacity="0.5"
+              strokeOpacity="0.45"
               strokeLinecap="round"
               className="ims-chart-flow"
               data-draw
@@ -123,14 +124,46 @@ function ConsolidationChart() {
                   strokeDasharray: length,
                   strokeDashoffset: length,
                   transitionDelay: `${500 + i * 70}ms`,
-                  animationDelay: `${1.5 + i * 0.12}s`,
                 } as React.CSSProperties
               }
             />
           );
         })}
 
-        {/* Single consolidated pipeline (output) */}
+        {/* Travelling packets — each rides along its converging curve on a
+            staggered loop. Built with motion-path keyframes via SMIL-style
+            <animateMotion> for broad browser support, falling through to
+            static dots where unsupported. */}
+        {tasks.map((t, i) => {
+          const startX = 20 + t.w;
+          const endX = 150;
+          const endY = 95;
+          const cpX = (startX + endX) / 2;
+          const pathD = `M ${startX} ${t.y} C ${cpX} ${t.y}, ${cpX} ${endY}, ${endX} ${endY}`;
+          return (
+            <g key={`packet-${i}`} data-fade style={{ transitionDelay: `${1400 + i * 80}ms` }}>
+              <circle r="1.8" fill="#d4b0d4" filter="url(#glow-consol)">
+                <animateMotion
+                  dur="3.6s"
+                  repeatCount="indefinite"
+                  begin={`${i * 0.4}s`}
+                  path={pathD}
+                  rotate="auto"
+                />
+                <animate
+                  attributeName="opacity"
+                  values="0;1;1;0"
+                  keyTimes="0;0.15;0.85;1"
+                  dur="3.6s"
+                  begin={`${i * 0.4}s`}
+                  repeatCount="indefinite"
+                />
+              </circle>
+            </g>
+          );
+        })}
+
+        {/* Output pipeline */}
         <rect
           x="150"
           y="90"
@@ -143,13 +176,15 @@ function ConsolidationChart() {
           data-fade
           style={{ transitionDelay: "1100ms" }}
         />
+
+        {/* Endpoint pulse — strong pulse so motion is visible */}
         <circle
           cx="186"
           cy="95"
           r="3"
           fill="#d4b0d4"
           filter="url(#glow-consol)"
-          className="ims-chart-pulse"
+          className="ims-chart-pulse-strong"
           data-fade
           style={{ transitionDelay: "1300ms" }}
         />
@@ -160,10 +195,9 @@ function ConsolidationChart() {
 
 /* ============================================================
    Pattern 02 — Smoothing
-   Top: jagged manual handoff path.
-   Bottom: continuous automation flow.
-   After draw-in, a marching-dash gradient travels along the
-   smooth path and the connector arrow gently breathes.
+   - Jagged manual path on top, smooth automation on bottom
+   - Three packets march along the smooth path on a loop
+   - Endpoint dot pulses
 ============================================================ */
 function SmoothingChart() {
   const ref = useDrawOnReveal<HTMLDivElement>();
@@ -177,12 +211,6 @@ function SmoothingChart() {
           <linearGradient id="grad-smooth" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stopColor="#786478" stopOpacity="0.75" />
             <stop offset="100%" stopColor="#d4b0d4" stopOpacity="0.95" />
-          </linearGradient>
-          <linearGradient id="grad-flow" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#d4b0d4" stopOpacity="0" />
-            <stop offset="45%" stopColor="#d4b0d4" stopOpacity="1" />
-            <stop offset="55%" stopColor="#f5eff3" stopOpacity="1" />
-            <stop offset="100%" stopColor="#786478" stopOpacity="0" />
           </linearGradient>
           <filter id="glow-smooth" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="1.6" result="blur" />
@@ -203,6 +231,7 @@ function SmoothingChart() {
           strokeLinejoin="round"
           opacity="0.85"
           filter="url(#glow-smooth)"
+          className="ims-chart-jagged"
           data-draw
           style={
             {
@@ -260,27 +289,36 @@ function SmoothingChart() {
           }
         />
 
-        {/* Marching gradient that travels along the smooth path on a loop */}
-        <path
-          d={smooth}
-          fill="none"
-          stroke="url(#grad-flow)"
-          strokeWidth="2.6"
-          strokeLinecap="round"
-          className="ims-chart-march"
-          opacity="0"
-          data-fade
-          style={{ transitionDelay: "1800ms" }}
-        />
+        {/* Three packets riding the smooth path on a loop */}
+        {[0, 1, 2].map((i) => (
+          <g key={`s-pkt-${i}`} data-fade style={{ transitionDelay: `${1900 + i * 80}ms` }}>
+            <circle r="2.2" fill="#d4b0d4" filter="url(#glow-smooth)">
+              <animateMotion
+                dur="3s"
+                repeatCount="indefinite"
+                begin={`${i * 1.0}s`}
+                path={smooth}
+              />
+              <animate
+                attributeName="opacity"
+                values="0;1;1;0"
+                keyTimes="0;0.1;0.9;1"
+                dur="3s"
+                begin={`${i * 1.0}s`}
+                repeatCount="indefinite"
+              />
+            </circle>
+          </g>
+        ))}
 
-        {/* End cap on smooth path */}
+        {/* End cap */}
         <circle
           cx="180"
           cy="140"
           r="3"
           fill="#d4b0d4"
           filter="url(#glow-smooth)"
-          className="ims-chart-pulse"
+          className="ims-chart-pulse-strong"
           data-fade
           style={{ transitionDelay: "1900ms" }}
         />
@@ -291,8 +329,9 @@ function SmoothingChart() {
 
 /* ============================================================
    Pattern 03 — Compounding
-   One solid centre point. Four expanding arcs ripple outward
-   on a continuous loop after the first reveal completes.
+   - Static reference arcs
+   - Multiple looped ripples emerging from centre (strong motion)
+   - Core dot pulses
 ============================================================ */
 function CompoundingChart() {
   const ref = useDrawOnReveal<HTMLDivElement>();
@@ -317,7 +356,7 @@ function CompoundingChart() {
           </filter>
         </defs>
 
-        {/* Initial draw-in arcs */}
+        {/* Reference arcs (draw on reveal) */}
         {[35, 55, 78, 100].map((r, i) => (
           <circle
             key={r}
@@ -341,35 +380,50 @@ function CompoundingChart() {
           />
         ))}
 
-        {/* Continuous loop ripples that emerge from the centre */}
-        {[0, 1, 2].map((i) => (
+        {/* Looped ripples using SMIL — broadly supported and continuous */}
+        {[0, 1, 2, 3].map((i) => (
           <circle
-            key={`r-${i}`}
+            key={`ripple-${i}`}
             cx="100"
             cy="100"
-            r="35"
             fill="none"
             stroke="#d4b0d4"
-            strokeWidth="1"
-            className="ims-chart-ripple"
+            strokeWidth="1.2"
             data-fade
-            style={
-              {
-                animationDelay: `${1.2 + i * 1.0}s`,
-                transitionDelay: "1500ms",
-              } as React.CSSProperties
-            }
-          />
+            style={{ transitionDelay: `${1500 + i * 60}ms` }}
+          >
+            <animate
+              attributeName="r"
+              values="8;100"
+              dur="3s"
+              begin={`${i * 0.75}s`}
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="0.9;0"
+              dur="3s"
+              begin={`${i * 0.75}s`}
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="stroke-width"
+              values="1.4;0.3"
+              dur="3s"
+              begin={`${i * 0.75}s`}
+              repeatCount="indefinite"
+            />
+          </circle>
         ))}
 
-        {/* Core engagement dot */}
+        {/* Core */}
         <circle
           cx="100"
           cy="100"
           r="6"
           fill="url(#grad-compound-core)"
           filter="url(#glow-compound)"
-          className="ims-chart-pulse"
+          className="ims-chart-pulse-strong"
           data-fade
           style={{ transitionDelay: "0ms" }}
         />
@@ -387,7 +441,7 @@ interface MiniChartProps {
 function MiniChart({ title, caption, children }: MiniChartProps) {
   return (
     <figure className="group relative flex flex-col items-center text-center">
-      <div className="relative h-[140px] w-[140px] transition-transform duration-500 group-hover:scale-[1.06] sm:h-[160px] sm:w-[160px]">
+      <div className="relative h-[150px] w-[150px] transition-transform duration-500 group-hover:scale-[1.06] sm:h-[170px] sm:w-[170px]">
         {children}
       </div>
       <figcaption className="mt-5">
@@ -409,7 +463,6 @@ export function ArtisticCharts() {
       aria-labelledby="patterns-heading"
       className="relative bg-paper px-6 py-20 text-ink sm:py-24 lg:py-28"
     >
-      {/* Soft mauve drift behind the charts to keep the section alive */}
       <div
         aria-hidden
         className="ims-paper-aura pointer-events-none absolute inset-0 -z-10"
