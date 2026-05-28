@@ -117,7 +117,7 @@ export default function Home() {
                         {tile.body}
                       </p>
                       <footer className="relative mt-auto pt-7">
-                        <div className="h-px w-12 bg-mauve-500/40 transition-all duration-500 group-hover:w-24 group-hover:bg-mauve-500/80" />
+                        <div className="ims-divider-anim h-px w-12 transition-all duration-500 group-hover:w-32" />
                       </footer>
                     </article>
                   </PointerTilt>
@@ -129,13 +129,16 @@ export default function Home() {
 
         <MethodologyCarousel />
 
-        {/* Cinematic chapter anchor — glass type sits on top of the video */}
+        {/* Editorial cinematic chapter — full-bleed video, magazine type */}
         <CinematicTitle
           id="momentum"
           videoSrc="/videos/ims-decide-figure-walking.mp4"
-          kicker="Engagement arc"
-          title={"Walk\nthrough it."}
+          kicker="The engagement arc"
+          title={"Walk\nthrough\nit."}
           body="A single engagement carries you from the first honest audit through to a clean exit. Quiet, steady forward motion the whole way."
+          meta="Audit · Decide · Blueprint · Build · Hand-off"
+          ctaLabel="See the seven steps"
+          ctaHref="/process"
         />
 
         <ArtisticCharts />

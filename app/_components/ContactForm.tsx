@@ -63,7 +63,7 @@ export function ContactForm() {
       .filter(Boolean)
       .join("\n");
 
-    const href = `mailto:hello@intelmadesimple.com?subject=${encodeURIComponent(
+    const href = `mailto:info@intelmadesimple.com?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`;
     window.location.href = href;
@@ -198,7 +198,7 @@ export function ContactForm() {
             ? "Opening your email client to send."
             : status === "err"
               ? errorMsg
-              : "Response within four hours during UK business days."}
+              : "Every note is read personally."}
         </p>
       </div>
     </form>

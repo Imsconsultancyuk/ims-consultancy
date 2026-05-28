@@ -39,7 +39,7 @@ export const orgJsonLd = {
   image: `${SITE}/opengraph-image.png`,
   description:
     "A strategic consultancy for business decisions, development, and AI workflows. Honest answers and results that hold up over time.",
-  email: "hello@intelmadesimple.com",
+  email: "info@intelmadesimple.com",
   areaServed: "Worldwide",
   serviceType: [
     "Business strategy consulting",

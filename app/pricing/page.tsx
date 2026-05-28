@@ -280,9 +280,8 @@ export default function PricingPage() {
                 Get a real quote.
               </h2>
               <p className="mx-auto mt-6 max-w-xl text-[1.0625rem] leading-[1.7] text-mauve-300">
-                A short conversation about scope, then a fixed-price proposal
-                in writing inside two working days. Response within four
-                hours.
+                A short conversation about scope, then a fixed-price
+                proposal in writing inside two working days.
               </p>
             </Reveal>
             <Reveal delay={120}>

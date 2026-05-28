@@ -52,7 +52,7 @@ const FAQS: Faq[] = [
   },
   {
     q: "How quickly do you reply?",
-    a: "Within four hours during UK business days, every time. Within twenty-four hours outside business days.",
+    a: "Promptly and personally. Every enquiry is read by a senior member of the firm. We write back during UK business hours, and within a working day either side.",
   },
   {
     q: "Are you UK-based? Do you travel?",
@@ -195,7 +195,7 @@ export default function FaqPage() {
                 Question that is not here?
               </h2>
               <p className="mx-auto mt-6 max-w-xl text-[1.0625rem] leading-[1.7] text-mauve-300">
-                Send it directly. Within four hours, you will have a written
+                Send it directly. You will have a thoughtful, written
                 answer.
               </p>
             </Reveal>

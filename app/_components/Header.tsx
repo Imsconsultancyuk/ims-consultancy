@@ -48,7 +48,7 @@ export function Header() {
           </li>
           <li>
             <Link
-              href="mailto:hello@intelmadesimple.com"
+              href="mailto:info@intelmadesimple.com"
               className="text-mauve-200 transition-colors hover:text-paper-ink"
             >
               Contact

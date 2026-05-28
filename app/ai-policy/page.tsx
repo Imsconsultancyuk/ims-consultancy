@@ -298,8 +298,8 @@ export default function AiPolicyPage() {
               </h2>
               <p className="mx-auto mt-6 max-w-xl text-[1.0625rem] leading-[1.7] text-mauve-300">
                 We have answered most variants of it before. Send the
-                question and you will have a plain-English answer in writing
-                within four hours.
+                question and you will have a plain-English answer in
+                writing.
               </p>
             </Reveal>
             <Reveal delay={120}>

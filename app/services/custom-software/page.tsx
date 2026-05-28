@@ -217,8 +217,7 @@ export default function CustomSoftwarePage() {
               </h2>
               <p className="mx-auto mt-6 max-w-xl text-[1.0625rem] leading-[1.7] text-mauve-300">
                 A short conversation about what you need built, what is in
-                the way, and whether we are the right partner for it. Within
-                four hours of you sending the note.
+                the way, and whether we are the right partner for it.
               </p>
             </Reveal>
             <Reveal delay={120}>

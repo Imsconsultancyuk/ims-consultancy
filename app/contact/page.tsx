@@ -17,12 +17,12 @@ const SITE = "https://intelmadesimple.com";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Start a conversation with IMS Consultancy. Response within four hours during UK business days, guaranteed. London, United Kingdom.",
+    "Start a conversation with IMS Consultancy. London-based strategic consultancy working with senior operators across the UK, Europe, and North America.",
   alternates: { canonical: `${SITE}/contact` },
   openGraph: {
     title: "Contact · IMS Consultancy",
     description:
-      "Response within four hours, guaranteed.",
+      "Start a conversation with IMS Consultancy.",
     url: `${SITE}/contact`,
     type: "website",
   },
@@ -33,7 +33,7 @@ export default function ContactPage() {
     path: "/contact",
     name: "Contact · IMS Consultancy",
     description:
-      "Contact IMS Consultancy. Response within four hours during UK business days.",
+      "Contact IMS Consultancy. London-based strategic consultancy.",
     breadcrumbs: [
       { name: "Home", path: "/" },
       { name: "Contact", path: "/contact" },
@@ -50,7 +50,7 @@ export default function ContactPage() {
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "Customer service",
-        email: "hello@intelmadesimple.com",
+        email: "info@intelmadesimple.com",
         areaServed: "Worldwide",
         availableLanguage: ["English"],
       },
@@ -84,7 +84,7 @@ export default function ContactPage() {
           <div className="relative mx-auto w-full max-w-4xl">
             <Reveal>
               <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
-                Contact · One reply, within four hours
+                Contact · Thoughtful, considered, prompt
               </p>
               <CharSplit
                 text={"Start a conversation."}
@@ -92,9 +92,9 @@ export default function ContactPage() {
                 stagger={0.018}
               />
               <p className="mt-7 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-300">
-                Tell us what is on your plate. We will reply within four
-                hours during UK business days, and tell you honestly whether
-                we are the right partner.
+                Tell us what is on your plate. We read every note carefully
+                and write back personally with an honest read on whether we
+                are the right partner.
               </p>
             </Reveal>
           </div>
@@ -119,11 +119,11 @@ export default function ContactPage() {
                     Direct email
                   </p>
                   <a
-                    href="mailto:hello@intelmadesimple.com"
+                    href="mailto:info@intelmadesimple.com"
                     data-cursor="link"
                     className="mt-3 inline-block font-serif text-[1.25rem] leading-tight text-paper-ink underline-offset-4 hover:underline"
                   >
-                    hello@intelmadesimple.com
+                    info@intelmadesimple.com
                   </a>
                   <p className="mt-4 text-[0.9375rem] leading-[1.7] text-mauve-300">
                     Use this if you would rather skip the form.
@@ -139,7 +139,7 @@ export default function ContactPage() {
                   </p>
                   <p className="mt-4 text-[0.9375rem] leading-[1.7] text-mauve-300">
                     Send a note with two or three time windows that work for
-                    you. We will confirm one inside the four-hour reply.
+                    you. We will confirm one in our reply.
                   </p>
                 </div>
 
@@ -157,16 +157,17 @@ export default function ContactPage() {
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-mauve-200/30 bg-mauve-200/5 p-7 backdrop-blur sm:p-8">
+                <div className="rounded-2xl border border-mauve-200/25 bg-mauve-200/[0.03] p-7 backdrop-blur sm:p-8">
                   <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
-                    Response promise
+                    How we work
                   </p>
-                  <p className="mt-3 font-serif text-[1.375rem] leading-tight text-paper-ink">
-                    Response within four hours, guaranteed.
+                  <p className="mt-3 font-serif text-[1.25rem] leading-snug text-paper-ink">
+                    Considered, written replies — never form letters.
                   </p>
                   <p className="mt-4 text-[0.9375rem] leading-[1.7] text-mauve-300">
-                    During UK business days. Outside business days, within
-                    twenty-four hours.
+                    Every note is read by a senior member of the firm. We
+                    write back personally with an honest read of the work,
+                    even when we suggest you look elsewhere.
                   </p>
                 </div>
               </aside>

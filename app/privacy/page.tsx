@@ -85,10 +85,10 @@ export default function PrivacyPage() {
               <p>
                 For any privacy question, contact{" "}
                 <a
-                  href="mailto:hello@intelmadesimple.com"
+                  href="mailto:info@intelmadesimple.com"
                   className="text-mauve-200 underline-offset-4 hover:underline"
                 >
-                  hello@intelmadesimple.com
+                  info@intelmadesimple.com
                 </a>
                 .
               </p>
@@ -231,10 +231,10 @@ export default function PrivacyPage() {
               <p>
                 Email{" "}
                 <a
-                  href="mailto:hello@intelmadesimple.com"
+                  href="mailto:info@intelmadesimple.com"
                   className="text-mauve-200 underline-offset-4 hover:underline"
                 >
-                  hello@intelmadesimple.com
+                  info@intelmadesimple.com
                 </a>{" "}
                 and we will respond within thirty days, usually within four
                 hours.

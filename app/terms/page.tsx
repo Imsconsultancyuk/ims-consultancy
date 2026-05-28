@@ -184,12 +184,12 @@ export default function TermsPage() {
               <p>
                 For any question about these terms email{" "}
                 <a
-                  href="mailto:hello@intelmadesimple.com"
+                  href="mailto:info@intelmadesimple.com"
                   className="text-mauve-200 underline-offset-4 hover:underline"
                 >
-                  hello@intelmadesimple.com
+                  info@intelmadesimple.com
                 </a>
-                . We will reply within four hours during UK business days.
+                . We reply personally to every note we receive.
               </p>
             </Section>
           </article>
