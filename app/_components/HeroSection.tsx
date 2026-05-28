@@ -150,7 +150,7 @@ export function HeroSection() {
               data-cursor="link"
               className="inline-flex h-12 items-center justify-center gap-2 rounded-md border border-mauve-300/40 bg-deep/40 px-7 text-sm font-medium tracking-[0.02em] text-paper-ink backdrop-blur transition-all duration-300 hover:border-mauve-200 hover:bg-deep/70"
             >
-              <span>Explore what we can do for you</span>
+              <span>Explore Services</span>
               <svg
                 width="14"
                 height="14"

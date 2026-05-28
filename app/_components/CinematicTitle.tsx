@@ -15,6 +15,8 @@ interface CinematicTitleProps {
   id?: string;
   /** Optional second line under the body when the chapter calls for one. */
   meta?: string;
+  /** Optional React node rendered on top of the video — used for the tool feed overlay. */
+  overlay?: React.ReactNode;
 }
 
 /**
@@ -34,6 +36,7 @@ export function CinematicTitle({
   ctaLabel,
   ctaHref,
   meta,
+  overlay,
   videoFilter = "saturate(1.08) contrast(1.08) brightness(0.80)",
   id,
 }: CinematicTitleProps) {
@@ -163,6 +166,9 @@ export function CinematicTitle({
           aria-hidden
           className="ims-cinema-grain pointer-events-none absolute inset-0 opacity-[0.10]"
         />
+
+        {/* Optional overlay (tool-feed icons etc) */}
+        {overlay}
 
         {/* Chapter index, top-right */}
         {id && (

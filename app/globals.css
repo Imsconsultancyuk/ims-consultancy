@@ -554,6 +554,57 @@ html.js .ims-cinema-section:not(.ims-cinema-in) .ims-cinema-caption {
   transform-origin: left center;
 }
 
+/* Method rows — fade and slide as they leave/enter active focus */
+.ims-method-row {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ims-method-row[data-active="false"] {
+  opacity: 0.55;
+  filter: blur(0.5px);
+}
+
+/* Tool feed discs — gentle float on a loop so the icons feel alive */
+@keyframes ims-tool-float {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50%      { transform: translate(-50%, -50%) translateY(-6px); }
+}
+.ims-tool-disc {
+  animation: ims-tool-float 5s ease-in-out infinite;
+}
+
+/* Mauve flip card — diagonal sweep when transitioning to mauve */
+@keyframes ims-flip-sweep-anim {
+  0%   { transform: translateX(-110%) skewX(-12deg); opacity: 0; }
+  30%  { opacity: 0.45; }
+  100% { transform: translateX(110%)  skewX(-12deg); opacity: 0; }
+}
+.ims-flip-sweep {
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    rgba(245, 239, 243, 0.30) 50%,
+    transparent 100%
+  );
+}
+.ims-flip-card:hover .ims-flip-sweep {
+  animation: ims-flip-sweep-anim 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* When a flip-card is hovered (mauve fill), shift charts inside to paper
+   so the SVG strokes stay visible against the mauve background. */
+.ims-flip-card .ims-chart {
+  transition: filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ims-flip-card:hover .ims-chart {
+  filter: brightness(0) invert(1) opacity(0.92);
+}
+
 /* CTA — continuous pulse halo + sheen sweep across the button */
 @keyframes ims-cta-pulse-halo {
   0%, 100% { box-shadow: 0 0 0 0 rgba(212,176,212,0.0); }

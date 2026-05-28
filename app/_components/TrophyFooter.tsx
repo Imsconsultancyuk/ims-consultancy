@@ -1,19 +1,28 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type FormEvent } from "react";
+import { motion } from "motion/react";
+import {
+  IsoSecurityIcon,
+  IsoAiIcon,
+  NistIcon,
+  CyberEssentialsIcon,
+  OwaspIcon,
+  GdprIcon,
+} from "./StandardIcons";
 
 /**
- * IMS Consultancy footer — editorial corporate composition.
+ * IMS Consultancy footer — editorial corporate composition with a Framer
+ * Motion ambient background.
  *
- *  Band 1 — Brand statement centred (the consultancy mark)
- *  Band 2 — Quiet newsletter strip
- *  Band 3 — Professional standards centrepiece (the trust signal)
- *  Band 4 — Editorial directory (Practice / Firm / Get in touch)
- *  Band 5 — Legal strip
+ *  Band 1 — Brand statement
+ *  Band 2 — Professional standards centrepiece (with real-style icons)
+ *  Band 3 — Editorial directory (Practice / Firm / Resources / Get in touch)
+ *  Band 4 — Legal strip
  *
- * Intentionally distinct from agency/Drift-style 4-column footers. Reads
- * more like a private-bank or boutique-firm footer.
+ * Background layers driven by motion: three drifting mauve blobs running on
+ * independent loops + a subtle motion-driven horizontal sheen across the
+ * top edge. CSS-driven grid overlay sits behind the blobs for depth.
  */
 
 const PRACTICE = [
@@ -40,12 +49,12 @@ const RESOURCES = [
 ];
 
 const STANDARDS = [
-  { name: "ISO/IEC 27001", note: "Information security" },
-  { name: "ISO/IEC 42001", note: "AI management" },
-  { name: "NIST AI RMF", note: "AI risk framework" },
-  { name: "Cyber Essentials", note: "UK baseline controls" },
-  { name: "OWASP LLM Top 10", note: "Reviewed each release" },
-  { name: "UK GDPR · DPA 2018", note: "Data protection" },
+  { name: "ISO/IEC 27001", note: "Information security", Icon: IsoSecurityIcon },
+  { name: "ISO/IEC 42001", note: "AI management", Icon: IsoAiIcon },
+  { name: "NIST AI RMF", note: "AI risk framework", Icon: NistIcon },
+  { name: "Cyber Essentials", note: "UK baseline controls", Icon: CyberEssentialsIcon },
+  { name: "OWASP LLM Top 10", note: "Reviewed each release", Icon: OwaspIcon },
+  { name: "UK GDPR · DPA 2018", note: "Data protection", Icon: GdprIcon },
 ];
 
 const SOCIALS = [
@@ -61,46 +70,93 @@ const CRAWLER_LINKS = [
 ];
 
 export function TrophyFooter() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "ok" | "err">("idle");
-
-  function onSubmit(e: FormEvent) {
-    e.preventDefault();
-    if (!/^\S+@\S+\.\S+$/.test(email)) {
-      setStatus("err");
-      return;
-    }
-    setStatus("ok");
-    setEmail("");
-  }
-
   return (
     <footer
       id="contact"
       className="relative isolate overflow-hidden bg-deep text-paper-ink"
     >
-      {/* Animated background — drifting mauve orbs + faint grid */}
-      <div
-        aria-hidden="true"
-        className="ims-footer-orb pointer-events-none absolute -top-40 left-1/2 h-[640px] w-[640px] -translate-x-1/2 rounded-full"
+      {/* ───────── MOTION BACKGROUND ─────────
+          Three large drifting blobs running on independent loops, all
+          handled by Framer Motion so they share the same RAF pipeline. */}
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute -top-32 left-1/2 h-[640px] w-[640px] -translate-x-1/2 rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(120,100,120,0.40), rgba(120,100,120,0.10) 40%, transparent 70%)",
-          filter: "blur(28px)",
+            "radial-gradient(circle, rgba(120,100,120,0.42), rgba(120,100,120,0.10) 40%, transparent 70%)",
+          filter: "blur(34px)",
+        }}
+        animate={{
+          x: [0, 80, -40, 0],
+          y: [0, -40, 40, 0],
+          scale: [1, 1.15, 0.95, 1],
+        }}
+        transition={{
+          duration: 22,
+          repeat: Infinity,
+          ease: "easeInOut",
         }}
       />
-      <div
-        aria-hidden="true"
-        className="ims-footer-orb ims-footer-orb--alt pointer-events-none absolute -bottom-40 -right-32 h-[460px] w-[460px] rounded-full"
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-40 -right-32 h-[480px] w-[480px] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(212,176,212,0.32), rgba(120,100,120,0.08) 45%, transparent 70%)",
-          filter: "blur(32px)",
+            "radial-gradient(circle, rgba(212,176,212,0.36), rgba(120,100,120,0.08) 45%, transparent 70%)",
+          filter: "blur(38px)",
+        }}
+        animate={{
+          x: [0, -60, 30, 0],
+          y: [0, 40, -20, 0],
+          scale: [1, 0.9, 1.1, 1],
+        }}
+        transition={{
+          duration: 28,
+          repeat: Infinity,
+          ease: "easeInOut",
         }}
       />
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute top-1/3 -left-32 h-[400px] w-[400px] rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(212,176,212,0.22), rgba(120,100,120,0.06) 50%, transparent 70%)",
+          filter: "blur(40px)",
+        }}
+        animate={{
+          x: [0, 50, 20, 0],
+          y: [0, -30, 50, 0],
+          scale: [1, 1.08, 0.92, 1],
+        }}
+        transition={{
+          duration: 32,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* Soft horizontal sheen on the top edge — sweeps right to left */}
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute top-0 left-0 h-[1px] w-[40%]"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(212,176,212,0.6), transparent)",
+        }}
+        animate={{ x: ["-30%", "270%"] }}
+        transition={{
+          duration: 9,
+          repeat: Infinity,
+          ease: "easeInOut",
+          repeatDelay: 1.5,
+        }}
+      />
+
+      {/* Persistent grid overlay */}
       <div
-        aria-hidden="true"
-        className="ims-footer-grid pointer-events-none absolute inset-0 opacity-[0.035]"
+        aria-hidden
+        className="ims-footer-grid pointer-events-none absolute inset-0 opacity-[0.04]"
       />
 
       <div className="relative mx-auto w-full max-w-6xl px-6">
@@ -123,74 +179,10 @@ export function TrophyFooter() {
           </div>
         </section>
 
-        {/* ───────── Band 2 — Newsletter strip ───────── */}
-        <section
-          id="newsletter"
-          aria-labelledby="footer-newsletter-heading"
-          className="border-y border-mauve-300/12 py-12 sm:py-14"
-        >
-          <div className="mx-auto grid w-full max-w-4xl items-center gap-8 sm:grid-cols-[1fr_auto] sm:gap-12">
-            <div>
-              <p
-                id="footer-newsletter-heading"
-                className="font-sans text-[10px] font-medium uppercase tracking-[0.32em] text-mauve-200"
-              >
-                The IMS letter
-              </p>
-              <p className="mt-3 font-serif text-[1.125rem] leading-[1.5] text-paper-ink/95">
-                One short field report from inside live engagements. Once a
-                month. No filler.
-              </p>
-            </div>
-            <form
-              onSubmit={onSubmit}
-              className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row"
-            >
-              <label htmlFor="ims-newsletter-email" className="sr-only">
-                Email address
-              </label>
-              <input
-                id="ims-newsletter-email"
-                type="email"
-                required
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                  setStatus("idle");
-                }}
-                placeholder="you@yourbusiness.com"
-                className="w-full rounded-md border border-mauve-300/20 bg-deep-soft/60 px-4 py-3 text-[0.9375rem] text-paper-ink placeholder:text-mauve-300/60 backdrop-blur transition-colors focus:border-mauve-200/50 focus:outline-none sm:w-72"
-              />
-              <button
-                type="submit"
-                className="inline-flex h-11 items-center justify-center rounded-md bg-mauve-300 px-7 text-[11px] font-medium uppercase tracking-[0.22em] text-deep transition-all duration-300 hover:bg-mauve-200 hover:shadow-[0_6px_24px_-8px_rgba(212,176,212,0.6)]"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
-          <p
-            aria-live="polite"
-            className={`mt-3 text-center text-[12px] tracking-[0.05em] sm:text-right ${
-              status === "ok"
-                ? "text-mauve-200"
-                : status === "err"
-                  ? "text-[color:#d4998c]"
-                  : "text-transparent"
-            }`}
-          >
-            {status === "ok"
-              ? "Confirmed. The next letter will land in your inbox."
-              : status === "err"
-                ? "That does not look like a valid email."
-                : "placeholder"}
-          </p>
-        </section>
-
-        {/* ───────── Band 3 — Professional standards centrepiece ───────── */}
+        {/* ───────── Band 2 — Professional standards centrepiece ───────── */}
         <section
           aria-labelledby="footer-standards-heading"
-          className="py-16 sm:py-20"
+          className="border-t border-mauve-300/12 py-16 sm:py-20"
         >
           <div className="text-center">
             <p className="font-sans text-[10px] font-medium uppercase tracking-[0.34em] text-mauve-200">
@@ -210,27 +202,32 @@ export function TrophyFooter() {
           </div>
 
           <ul
-            className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4"
+            className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3"
             role="list"
             aria-label="Standards and frameworks we align with"
           >
-            {STANDARDS.map((s) => (
+            {STANDARDS.map(({ name, note, Icon }) => (
               <li
-                key={s.name}
-                className="group flex flex-col items-start rounded-md border border-mauve-300/15 bg-deep-soft/35 px-4 py-3.5 backdrop-blur transition-all duration-500 hover:border-mauve-300/40 hover:bg-deep-soft/65 hover:shadow-[0_10px_28px_-16px_rgba(212,176,212,0.45)]"
+                key={name}
+                className="group flex items-start gap-3 rounded-md border border-mauve-300/15 bg-deep-soft/35 px-4 py-4 backdrop-blur transition-all duration-500 hover:border-mauve-300/40 hover:bg-deep-soft/65 hover:shadow-[0_10px_28px_-16px_rgba(212,176,212,0.45)]"
               >
-                <span className="font-sans text-[11px] font-medium uppercase tracking-[0.20em] text-paper-ink">
-                  {s.name}
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-mauve-300/15 bg-deep/60 text-mauve-200 transition-colors duration-500 group-hover:border-mauve-200/40 group-hover:text-mauve-100">
+                  <Icon className="h-7 w-7" />
                 </span>
-                <span className="mt-1 text-[11px] tracking-[0.04em] text-mauve-300">
-                  {s.note}
+                <span className="flex flex-col">
+                  <span className="font-sans text-[11px] font-medium uppercase tracking-[0.20em] text-paper-ink">
+                    {name}
+                  </span>
+                  <span className="mt-1 text-[11px] tracking-[0.04em] text-mauve-300">
+                    {note}
+                  </span>
                 </span>
               </li>
             ))}
           </ul>
         </section>
 
-        {/* ───────── Band 4 — Editorial directory ───────── */}
+        {/* ───────── Band 3 — Editorial directory ───────── */}
         <section
           aria-labelledby="footer-directory-heading"
           className="border-t border-mauve-300/12 pt-14 pb-14 sm:pt-16 sm:pb-16"
@@ -239,7 +236,6 @@ export function TrophyFooter() {
             Site directory
           </h3>
           <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1.1fr] lg:gap-12">
-            {/* Practice */}
             <nav aria-label="Practice areas">
               <p className="font-sans text-[10px] font-medium uppercase tracking-[0.32em] text-mauve-200">
                 Practice
@@ -264,7 +260,6 @@ export function TrophyFooter() {
               </ul>
             </nav>
 
-            {/* Firm */}
             <nav aria-label="About the firm">
               <p className="font-sans text-[10px] font-medium uppercase tracking-[0.32em] text-mauve-200">
                 Firm
@@ -289,7 +284,6 @@ export function TrophyFooter() {
               </ul>
             </nav>
 
-            {/* Resources + legal */}
             <nav aria-label="Resources">
               <p className="font-sans text-[10px] font-medium uppercase tracking-[0.32em] text-mauve-200">
                 Resources
@@ -314,7 +308,6 @@ export function TrophyFooter() {
               </ul>
             </nav>
 
-            {/* Get in touch */}
             <div>
               <p className="font-sans text-[10px] font-medium uppercase tracking-[0.32em] text-mauve-200">
                 Get in touch
@@ -415,7 +408,7 @@ export function TrophyFooter() {
           </div>
         </section>
 
-        {/* ───────── Band 5 — Legal strip ───────── */}
+        {/* ───────── Band 4 — Legal strip ───────── */}
         <section className="flex flex-col items-start justify-between gap-4 border-t border-mauve-300/12 py-8 sm:flex-row sm:items-center">
           <p className="font-sans text-[10px] font-medium uppercase tracking-[0.24em] text-mauve-300">
             © {new Date().getFullYear()} IMS Consultancy.
@@ -427,8 +420,7 @@ export function TrophyFooter() {
           </p>
         </section>
 
-        {/* Crawler discovery surface — present in DOM for SEO and AI
-            crawlers, visually hidden from sighted users. */}
+        {/* Crawler discovery surface */}
         <nav aria-label="Discovery for search and AI crawlers" className="sr-only">
           <ul>
             {CRAWLER_LINKS.map((l) => (

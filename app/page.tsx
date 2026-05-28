@@ -10,6 +10,7 @@ import { MagneticButton } from "./_components/MagneticButton";
 import { CharSplit } from "./_components/CharSplit";
 import { MethodologyCarousel } from "./_components/MethodologyCarousel";
 import { ArtisticCharts } from "./_components/ArtisticCharts";
+import { ToolFeedOverlay } from "./_components/ToolFeedOverlay";
 import {
   JsonLd,
   orgJsonLd,
@@ -94,30 +95,26 @@ export default function Home() {
                   <PointerTilt className="h-full" tilt={5}>
                     <article
                       id={tile.kicker.split(" ")[1]?.toLowerCase()}
-                      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-mauve-500/15 bg-paper-soft/70 p-7 backdrop-blur transition-all duration-500 hover:border-mauve-500/40 hover:bg-paper-soft/95 hover:shadow-[0_18px_44px_-22px_rgba(120,100,120,0.45)] sm:p-8"
+                      className="ims-flip-card group relative flex h-full flex-col overflow-hidden rounded-2xl border border-mauve-500/15 bg-paper-soft/70 p-7 backdrop-blur transition-all duration-500 hover:border-mauve-500/0 hover:bg-mauve-500 hover:shadow-[0_24px_60px_-22px_rgba(120,100,120,0.65)] sm:p-8"
                     >
-                      {/* Hover-only mauve sheen */}
+                      {/* Animated diagonal sweep on hover */}
                       <span
                         aria-hidden="true"
-                        className="pointer-events-none absolute -top-24 -right-16 h-64 w-64 rounded-full opacity-0 transition-opacity duration-700 group-hover:opacity-100"
-                        style={{
-                          background:
-                            "radial-gradient(circle, rgba(120,100,120,0.22), transparent 70%)",
-                        }}
+                        className="ims-flip-sweep pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                       />
                       <header className="relative">
-                        <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-500">
+                        <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-500 transition-colors duration-500 group-hover:text-paper">
                           {tile.kicker}
                         </p>
-                        <h3 className="mt-5 font-serif text-2xl font-medium leading-snug text-ink">
+                        <h3 className="mt-5 font-serif text-2xl font-medium leading-snug text-ink transition-colors duration-500 group-hover:text-paper">
                           {tile.heading}
                         </h3>
                       </header>
-                      <p className="relative mt-4 text-[0.9375rem] leading-[1.75] text-ink-soft">
+                      <p className="relative mt-4 text-[0.9375rem] leading-[1.75] text-ink-soft transition-colors duration-500 group-hover:text-paper/95">
                         {tile.body}
                       </p>
                       <footer className="relative mt-auto pt-7">
-                        <div className="ims-divider-anim h-px w-12 transition-all duration-500 group-hover:w-32" />
+                        <div className="h-px w-12 bg-mauve-500/40 transition-all duration-500 group-hover:w-32 group-hover:bg-paper/80" />
                       </footer>
                     </article>
                   </PointerTilt>
@@ -129,46 +126,53 @@ export default function Home() {
 
         <MethodologyCarousel />
 
-        {/* Editorial cinematic chapter — full-bleed video, magazine type */}
+        {/* Editorial cinematic chapter — AI fitting into the business */}
         <CinematicTitle
           id="momentum"
           videoSrc="/videos/ims-decide-figure-walking.mp4"
-          kicker="The engagement arc"
-          title={"Walk\nthrough\nit."}
-          body="A single engagement carries you from the first honest audit through to a clean exit. Quiet, steady forward motion the whole way."
-          meta="Audit · Decide · Blueprint · Build · Hand-off"
-          ctaLabel="See the seven steps"
-          ctaHref="/process"
+          kicker="AI in the business"
+          title={"Where AI\nactually\nfits."}
+          body="Your tools already hold the work. Email, sheets, CRM, chat. We connect them quietly so AI runs in the background, not in the way."
+          meta="Gmail · Outlook · Sheets · Slack · HubSpot · Notion"
+          ctaLabel="See AI Automation"
+          ctaHref="/services/ai-automation"
+          overlay={<ToolFeedOverlay />}
         />
 
         <ArtisticCharts />
 
         <Testimonials />
 
-        {/* CTA BAND with animated background */}
+        {/* CTA BAND with particle-wave video background */}
         <section
           aria-labelledby="cta-heading"
-          className="relative isolate overflow-hidden bg-deep-soft px-6 py-24 text-paper-ink sm:py-32 lg:py-40"
+          className="relative isolate overflow-hidden bg-deep px-6 py-28 text-paper-ink sm:py-36 lg:py-44"
         >
-          {/* Drifting mauve orb backdrop */}
-          <div
-            aria-hidden
-            className="ims-footer-orb pointer-events-none absolute -top-32 left-1/3 h-[520px] w-[520px] -translate-x-1/2 rounded-full"
+          {/* Particle wave video as backdrop */}
+          <video
+            src="/videos/ims-hero-particle-wave.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+            className="ims-cinema-kenburns absolute inset-0 -z-20 h-full w-full object-cover"
             style={{
-              background:
-                "radial-gradient(circle, rgba(212,176,212,0.30), rgba(120,100,120,0.10) 40%, transparent 70%)",
-              filter: "blur(30px)",
+              filter:
+                "hue-rotate(160deg) saturate(1.05) brightness(0.55) contrast(1.06)",
             }}
           />
+          {/* Dark overlay for legibility */}
           <div
             aria-hidden
-            className="ims-footer-orb ims-footer-orb--alt pointer-events-none absolute -bottom-32 right-1/4 h-[420px] w-[420px] rounded-full"
+            className="pointer-events-none absolute inset-0 -z-10"
             style={{
               background:
-                "radial-gradient(circle, rgba(120,100,120,0.32), rgba(212,176,212,0.08) 45%, transparent 70%)",
-              filter: "blur(34px)",
+                "radial-gradient(ellipse at center, rgba(26,22,32,0.45) 0%, rgba(26,22,32,0.70) 55%, rgba(26,22,32,0.90) 100%)",
             }}
           />
+          {/* Faint grid texture */}
           <div
             aria-hidden
             className="ims-footer-grid pointer-events-none absolute inset-0 opacity-[0.04]"
@@ -188,12 +192,12 @@ export default function Home() {
               </h2>
               <CharSplit
                 text="Ready to make a clearer move?"
-                className="mt-7 font-serif text-[clamp(2rem,4.4vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.012em]"
+                className="ims-glass-cinema mt-7 font-serif text-[clamp(2rem,4.4vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.012em]"
                 stagger={0.02}
               />
             </Reveal>
             <Reveal delay={120}>
-              <p className="mx-auto mt-7 max-w-xl text-[1.0625rem] leading-[1.7] text-mauve-300">
+              <p className="mx-auto mt-7 max-w-xl text-[1.0625rem] leading-[1.7] text-mauve-200/95">
                 One reply from us, often within the same day. We work with a
                 small number of clients at a time and we tell you honestly
                 whether we are the right partner.

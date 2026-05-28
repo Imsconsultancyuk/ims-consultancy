@@ -440,19 +440,23 @@ interface MiniChartProps {
 
 function MiniChart({ title, caption, children }: MiniChartProps) {
   return (
-    <figure className="group relative flex flex-col items-center text-center">
-      <div className="relative h-[150px] w-[150px] transition-transform duration-500 group-hover:scale-[1.06] sm:h-[170px] sm:w-[170px]">
+    <article className="ims-flip-card group relative flex h-full flex-col items-center overflow-hidden rounded-2xl border border-mauve-500/15 bg-paper-soft/80 p-8 text-center backdrop-blur transition-all duration-500 hover:border-mauve-500/0 hover:bg-mauve-500 hover:shadow-[0_24px_60px_-22px_rgba(120,100,120,0.65)]">
+      <span
+        aria-hidden="true"
+        className="ims-flip-sweep pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      />
+      <div className="relative h-[140px] w-[140px] transition-transform duration-500 group-hover:scale-[1.06] sm:h-[160px] sm:w-[160px]">
         {children}
       </div>
-      <figcaption className="mt-5">
-        <p className="font-serif text-[1.05rem] font-medium leading-snug">
+      <div className="relative mt-6">
+        <p className="font-serif text-[1.125rem] font-medium leading-snug text-ink transition-colors duration-500 group-hover:text-paper">
           {title}
         </p>
-        <p className="mt-2 max-w-[240px] text-[0.8125rem] leading-[1.55] text-mauve-500/85">
+        <p className="mt-2 max-w-[240px] text-[0.875rem] leading-[1.55] text-ink-soft transition-colors duration-500 group-hover:text-paper/90">
           {caption}
         </p>
-      </figcaption>
-    </figure>
+      </div>
+    </article>
   );
 }
 
@@ -477,27 +481,27 @@ export function ArtisticCharts() {
             id="patterns-heading"
             className="mt-4 text-center font-serif text-[clamp(1.5rem,2.6vw,2rem)] font-medium leading-[1.2] tracking-[-0.01em] text-ink"
           >
-            What removing manual work actually looks like.
+            What removing manual work looks like.
           </h2>
         </Reveal>
 
         <Reveal delay={120}>
-          <div className="mt-14 grid grid-cols-1 gap-12 sm:grid-cols-3 sm:gap-8">
+          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-6">
             <MiniChart
-              title="Many tasks become one pipeline"
-              caption="Six manual jobs done daily become a single quiet system that runs by itself."
+              title="Many tasks, one system"
+              caption="Six daily jobs become one quiet pipeline."
             >
               <ConsolidationChart />
             </MiniChart>
             <MiniChart
-              title="Jagged handoffs become flow"
-              caption="The bumps between people, tools, and inboxes smooth into a continuous line."
+              title="Bumpy handoffs, smooth flow"
+              caption="Your tools and inboxes finally talk to each other."
             >
               <SmoothingChart />
             </MiniChart>
             <MiniChart
-              title="One engagement keeps returning"
-              caption="The work we ship together compounds for months after we have left the room."
+              title="One engagement, lasting returns"
+              caption="What we build keeps paying back after we leave."
             >
               <CompoundingChart />
             </MiniChart>
