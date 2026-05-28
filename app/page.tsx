@@ -7,6 +7,8 @@ import { PointerTilt } from "./_components/PointerTilt";
 import { CinematicBand } from "./_components/CinematicBand";
 import { MagneticButton } from "./_components/MagneticButton";
 import { CharSplit } from "./_components/CharSplit";
+import { MethodologyCarousel } from "./_components/MethodologyCarousel";
+import { ArtisticCharts } from "./_components/ArtisticCharts";
 
 const APPROACH_TILES = [
   {
@@ -84,7 +86,11 @@ export default function Home() {
           </div>
         </section>
 
+        <MethodologyCarousel />
+
         <CinematicBand />
+
+        <ArtisticCharts />
 
         <Testimonials />
 

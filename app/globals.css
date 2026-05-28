@@ -142,6 +142,25 @@ html.lenis, html.lenis body { height: auto; }
   }
 }
 
+/* Artistic SVG charts — draw-on-reveal animation.
+   Each path/line in a chart sets its own stroke-dasharray equal to its
+   length, with dashoffset matching, so the stroke is invisible at start.
+   When the parent .ims-chart receives .is-drawn (via IntersectionObserver
+   in ArtisticCharts.tsx), the dashoffset tweens to 0 and the line draws. */
+.ims-chart [data-draw] {
+  transition: stroke-dashoffset 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ims-chart.is-drawn [data-draw] {
+  stroke-dashoffset: 0 !important;
+}
+.ims-chart [data-fade] {
+  opacity: 0;
+  transition: opacity 0.9s ease-out;
+}
+.ims-chart.is-drawn [data-fade] {
+  opacity: 1;
+}
+
 /* The gradient transition band between light and dark */
 .band-transition {
   background: linear-gradient(
