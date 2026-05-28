@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -118,21 +117,14 @@ export function HeroSection() {
 
       <div className="relative mx-auto w-full max-w-4xl text-center text-paper-ink">
         <div ref={logoRef} className="will-change-transform">
-          <Image
-            src="/logos/ims-horizontal-transparent.png"
-            alt="IMS Consultancy. Intelligence Made Simple."
-            width={520}
-            height={170}
-            priority
-            sizes="(min-width: 1024px) 460px, (min-width: 640px) 380px, 300px"
-            style={{ height: "auto" }}
-            className="mx-auto w-[300px] sm:w-[380px] lg:w-[460px]"
-          />
+          <p className="font-sans text-[11px] font-medium uppercase tracking-[0.28em] text-mauve-200">
+            Intelligence made simple.
+          </p>
         </div>
 
         <div ref={headlineRef} className="will-change-transform">
           <h1
-            className="ims-glass-text mt-14 font-serif text-[clamp(3rem,6.2vw,4.75rem)] font-medium leading-[1.05] tracking-[-0.018em]"
+            className="ims-glass-text mt-10 font-serif text-[clamp(3rem,6.2vw,4.75rem)] font-medium leading-[1.05] tracking-[-0.018em]"
           >
             Considered work
             <br />
