@@ -5,6 +5,7 @@ import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
 import { MagneticButton } from "../_components/MagneticButton";
+import { PointerTilt } from "../_components/PointerTilt";
 import {
   JsonLd,
   orgJsonLd,
@@ -130,23 +131,33 @@ export default function ReviewsPage() {
           <div className="mx-auto grid w-full max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {REVIEWS.map((r, i) => (
               <Reveal key={r.attribution + r.role} delay={i * 70}>
-                <figure className="relative flex h-full flex-col rounded-2xl border border-mauve-300/12 bg-deep-soft/55 p-7 backdrop-blur sm:p-8">
-                  <p className="font-serif text-[1.25rem] leading-[1.45] text-mauve-200">
-                    {r.highlight}
-                  </p>
-                  <blockquote className="mt-5 text-[0.9375rem] leading-[1.7] text-paper-ink/95">
-                    {r.body}
-                  </blockquote>
-                  <figcaption className="mt-auto pt-6">
-                    <div className="h-px w-10 bg-mauve-300/40" />
-                    <p className="mt-3 font-sans text-[12px] font-medium uppercase tracking-[0.18em] text-mauve-200">
-                      {r.attribution}
+                <PointerTilt className="h-full" tilt={4}>
+                  <figure className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-mauve-300/12 bg-deep-soft/55 p-7 backdrop-blur transition-all duration-500 hover:border-mauve-300/30 hover:bg-deep-soft/75 sm:p-8">
+                    <span
+                      aria-hidden="true"
+                      className="pointer-events-none absolute -top-20 -right-12 h-48 w-48 rounded-full opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+                      style={{
+                        background:
+                          "radial-gradient(circle, rgba(212,176,212,0.28), transparent 70%)",
+                      }}
+                    />
+                    <p className="relative font-serif text-[1.25rem] leading-[1.45] text-mauve-200">
+                      {r.highlight}
                     </p>
-                    <p className="mt-1 text-[12px] text-mauve-300">
-                      {r.role}
-                    </p>
-                  </figcaption>
-                </figure>
+                    <blockquote className="relative mt-5 text-[0.9375rem] leading-[1.7] text-paper-ink/95">
+                      {r.body}
+                    </blockquote>
+                    <figcaption className="relative mt-auto pt-6">
+                      <div className="h-px w-10 bg-mauve-300/40 transition-all duration-500 group-hover:w-20 group-hover:bg-mauve-200/70" />
+                      <p className="mt-3 font-sans text-[12px] font-medium uppercase tracking-[0.18em] text-mauve-200">
+                        {r.attribution}
+                      </p>
+                      <p className="mt-1 text-[12px] text-mauve-300">
+                        {r.role}
+                      </p>
+                    </figcaption>
+                  </figure>
+                </PointerTilt>
               </Reveal>
             ))}
           </div>

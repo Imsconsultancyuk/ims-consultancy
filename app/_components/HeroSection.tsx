@@ -37,13 +37,15 @@ export function HeroSection() {
     const cue = cueRef.current;
     if (!section || !kicker || !headline || !body || !ctas || !cue) return;
 
+    const els = [kicker, headline, body, ctas, cue];
+
     const entrance = gsap.timeline({
       defaults: { ease: "power3.out", duration: 1.0 },
     });
     if (reduced) {
-      gsap.set([kicker, headline, body, ctas, cue], { opacity: 1, y: 0 });
+      gsap.set(els, { opacity: 1, y: 0 });
     } else {
-      gsap.set([kicker, headline, body, ctas, cue], { opacity: 0, y: 28 });
+      gsap.set(els, { opacity: 0, y: 28 });
       entrance
         .to(kicker, { opacity: 1, y: 0 }, 0.05)
         .to(headline, { opacity: 1, y: 0 }, 0.22)
@@ -52,28 +54,34 @@ export function HeroSection() {
         .to(cue, { opacity: 1, y: 0 }, 0.82);
     }
 
+    // Cinematic parallax only — opacity stays at 1 the whole way so content
+    // is always visible when the visitor scrolls back to the top. The next
+    // section's solid background naturally covers the hero as it scrolls up.
     let trigger: ScrollTrigger | null = null;
     if (!reduced) {
-      const out = gsap.timeline({
+      const drift = gsap.timeline({
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: "bottom 30%",
+          end: "bottom top",
           scrub: 1.1,
+          invalidateOnRefresh: true,
         },
       });
-      out
-        .to(kicker, { y: -80, opacity: 0, ease: "power2.in" }, 0)
-        .to(headline, { y: -160, opacity: 0, ease: "power2.in" }, 0.04)
-        .to(body, { y: -220, opacity: 0, ease: "power2.in" }, 0.08)
-        .to(ctas, { y: -280, opacity: 0, ease: "power2.in" }, 0.12)
-        .to(cue, { y: -60, opacity: 0, ease: "power2.in" }, 0);
-      trigger = out.scrollTrigger ?? null;
+      drift
+        .to(kicker, { y: -40, ease: "none" }, 0)
+        .to(headline, { y: -90, ease: "none" }, 0)
+        .to(body, { y: -130, ease: "none" }, 0)
+        .to(ctas, { y: -170, ease: "none" }, 0)
+        .to(cue, { y: 60, opacity: 0, ease: "none" }, 0);
+      trigger = drift.scrollTrigger ?? null;
     }
 
     return () => {
       entrance.kill();
       trigger?.kill();
+      // Restore final visible state in case the trigger was killed mid-scroll
+      gsap.set(els, { clearProps: "opacity" });
     };
   }, []);
 

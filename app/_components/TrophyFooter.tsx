@@ -29,10 +29,19 @@ const NAV_COLS = [
     links: [
       { label: "Insights", href: "/insights" },
       { label: "FAQ", href: "/faq" },
-      { label: "llms.txt", href: "/llms.txt" },
       { label: "Contact", href: "/contact" },
     ],
   },
+];
+
+// Discovery surface — present in the DOM so search and AI crawlers can
+// follow these URLs, but visually hidden so the human-facing footer stays
+// quiet. Crawlers parse the DOM, not the rendered viewport, so the links
+// remain fully indexable.
+const CRAWLER_LINKS = [
+  { label: "llms.txt", href: "/llms.txt" },
+  { label: "Sitemap", href: "/sitemap.xml" },
+  { label: "Robots", href: "/robots.txt" },
 ];
 
 const SOCIALS = [
@@ -69,15 +78,28 @@ export function TrophyFooter() {
       id="contact"
       className="relative isolate overflow-hidden bg-deep px-6 pt-20 pb-10 text-paper-ink sm:pt-24 sm:pb-12 lg:pt-28"
     >
-      {/* Subtle mauve glow blob top-left of footer for depth */}
+      {/* Animated mauve blobs drifting behind the footer for depth */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-32 -left-32 h-[480px] w-[480px] rounded-full"
+        className="ims-footer-orb pointer-events-none absolute -top-32 -left-32 h-[480px] w-[480px] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(120,100,120,0.35), rgba(120,100,120,0.10) 40%, transparent 70%)",
+            "radial-gradient(circle, rgba(120,100,120,0.42), rgba(120,100,120,0.10) 40%, transparent 70%)",
           filter: "blur(20px)",
         }}
+      />
+      <div
+        aria-hidden="true"
+        className="ims-footer-orb ims-footer-orb--alt pointer-events-none absolute -bottom-32 -right-24 h-[420px] w-[420px] rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(212,176,212,0.32), rgba(120,100,120,0.08) 45%, transparent 70%)",
+          filter: "blur(28px)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="ims-footer-grid pointer-events-none absolute inset-0 opacity-[0.04]"
       />
 
       <div className="relative mx-auto w-full max-w-6xl">
@@ -354,16 +376,22 @@ export function TrophyFooter() {
                 AI Policy
               </Link>
             </li>
-            <li>
-              <Link
-                href="/sitemap.xml"
-                className="transition-colors hover:text-paper-ink"
-              >
-                Sitemap
-              </Link>
-            </li>
           </ul>
         </div>
+
+        {/* Crawler discovery surface — present in the DOM for SEO and AI
+            crawlers, visually hidden from sighted users so the footer
+            stays calm. sr-only keeps the links focusable for assistive
+            tech and indexable by search and LLM bots. */}
+        <nav aria-label="Discovery for search and AI crawlers" className="sr-only">
+          <ul>
+            {CRAWLER_LINKS.map((l) => (
+              <li key={l.label}>
+                <a href={l.href}>{l.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </footer>
   );

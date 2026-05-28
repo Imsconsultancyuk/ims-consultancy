@@ -55,15 +55,19 @@ export default function Home() {
       <main className="flex flex-1 flex-col" id="main">
         <HeroSection />
 
-        {/* APPROACH (three tiles, dark band) */}
+        {/* APPROACH (three tiles, paper-LIGHT band for visual breath) */}
         <section
           id="approach"
           aria-labelledby="approach-heading"
-          className="relative bg-deep px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
+          className="relative isolate overflow-hidden bg-paper px-6 py-20 text-ink sm:py-24 lg:py-28"
         >
-          <div className="mx-auto w-full max-w-5xl">
+          <div
+            aria-hidden
+            className="ims-paper-aura pointer-events-none absolute inset-0 -z-10"
+          />
+          <div className="relative mx-auto w-full max-w-5xl">
             <Reveal>
-              <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
+              <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-500">
                 How we work
               </p>
               <h2 id="approach-heading" className="sr-only">
@@ -71,10 +75,10 @@ export default function Home() {
               </h2>
               <CharSplit
                 text={"Three doors into\none engagement."}
-                className="mt-5 max-w-3xl font-serif text-[clamp(2rem,4vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.012em]"
+                className="mt-5 max-w-3xl font-serif text-[clamp(2rem,4vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.012em] text-ink"
                 stagger={0.018}
               />
-              <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-300">
+              <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-ink-soft">
                 Most clients arrive through one door and stay for all three.
                 Each one stands on its own and each one makes the next two
                 sharper.
@@ -90,21 +94,30 @@ export default function Home() {
                   <PointerTilt className="h-full" tilt={5}>
                     <article
                       id={tile.kicker.split(" ")[1]?.toLowerCase()}
-                      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-mauve-300/12 bg-deep-soft/55 p-7 backdrop-blur transition-all duration-500 hover:border-mauve-300/30 hover:bg-deep-soft/75 sm:p-8"
+                      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-mauve-500/15 bg-paper-soft/70 p-7 backdrop-blur transition-all duration-500 hover:border-mauve-500/40 hover:bg-paper-soft/95 hover:shadow-[0_18px_44px_-22px_rgba(120,100,120,0.45)] sm:p-8"
                     >
-                      <header>
-                        <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
+                      {/* Hover-only mauve sheen */}
+                      <span
+                        aria-hidden="true"
+                        className="pointer-events-none absolute -top-24 -right-16 h-64 w-64 rounded-full opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+                        style={{
+                          background:
+                            "radial-gradient(circle, rgba(120,100,120,0.22), transparent 70%)",
+                        }}
+                      />
+                      <header className="relative">
+                        <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-500">
                           {tile.kicker}
                         </p>
-                        <h3 className="mt-5 font-serif text-2xl font-medium leading-snug text-paper-ink">
+                        <h3 className="mt-5 font-serif text-2xl font-medium leading-snug text-ink">
                           {tile.heading}
                         </h3>
                       </header>
-                      <p className="mt-4 text-[0.9375rem] leading-[1.75] text-mauve-300">
+                      <p className="relative mt-4 text-[0.9375rem] leading-[1.75] text-ink-soft">
                         {tile.body}
                       </p>
-                      <footer className="mt-auto pt-7">
-                        <div className="h-px w-12 bg-mauve-300/40 transition-all duration-500 group-hover:w-24 group-hover:bg-mauve-200/70" />
+                      <footer className="relative mt-auto pt-7">
+                        <div className="h-px w-12 bg-mauve-500/40 transition-all duration-500 group-hover:w-24 group-hover:bg-mauve-500/80" />
                       </footer>
                     </article>
                   </PointerTilt>

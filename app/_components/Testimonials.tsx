@@ -1,5 +1,6 @@
 import { Reveal } from "./Reveal";
 import { PointerTilt } from "./PointerTilt";
+import { CharSplit } from "./CharSplit";
 
 type Tier = "quiet" | "revamp" | "partnership";
 
@@ -153,9 +154,14 @@ export function Testimonials() {
           <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
             Voices · Five engagements
           </p>
-          <h2 className="mt-5 max-w-3xl font-serif text-[clamp(2rem,4vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.012em]">
-            Five real engagements, no names attached.
+          <h2 id="voices-heading" className="sr-only">
+            Five real engagements, no names attached
           </h2>
+          <CharSplit
+            text={"Five real engagements,\nno names attached."}
+            className="mt-5 max-w-3xl font-serif text-[clamp(2rem,4vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.012em]"
+            stagger={0.018}
+          />
           <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-300">
             Two quiet workflows that returned a team's afternoon. Two
             professional revamps that changed how a department runs. One

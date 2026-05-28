@@ -143,17 +143,9 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* Cinematic title — etched-glass typography that sits ON the video.
-   Brighter paper-white fill, stronger mauve halo, deeper drop shadow so the
-   type reads as a single luminous slab against any video underneath.
-   Pairs with the dark vignette in CinematicTitle so contrast holds at every
-   point on the frame. */
+   The continuous shimmer is defined below in the cinematic block; this
+   rule handles clipping, halo, and the no-clip fallback. */
 .ims-glass-cinema {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 250, 254, 1.00) 0%,
-    rgba(245, 235, 245, 0.97) 40%,
-    rgba(212, 176, 212, 0.92) 100%
-  );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -163,7 +155,6 @@ html.lenis, html.lenis body { height: auto; }
     0 2px 18px rgba(26, 22, 32, 0.65),
     0 6px 32px rgba(26, 22, 32, 0.45);
   filter: drop-shadow(0 8px 38px rgba(212, 176, 212, 0.28));
-  letter-spacing: -0.02em;
 }
 @supports not (-webkit-background-clip: text) {
   .ims-glass-cinema {
@@ -212,8 +203,223 @@ html.lenis, html.lenis body { height: auto; }
   );
 }
 
+/* =========================================================================
+   Cinematic title — Ken Burns drift on the video, drifting mauve spotlight,
+   gentle corner-bracket pulse, and a continuous glass shimmer over the type.
+========================================================================= */
+@keyframes ims-ken-burns {
+  0%   { transform: scale(1.04) translate3d(-1%, -1%, 0); }
+  50%  { transform: scale(1.12) translate3d(1.5%, 1%, 0); }
+  100% { transform: scale(1.04) translate3d(-1%, -1%, 0); }
+}
+.ims-cinema-kenburns {
+  animation: ims-ken-burns 28s ease-in-out infinite;
+}
+
+@keyframes ims-spotlight-drift {
+  0%   { transform: translate3d(-30%, -10%, 0) scale(1.2); opacity: 0.35; }
+  50%  { transform: translate3d(40%, 20%, 0) scale(1.4); opacity: 0.55; }
+  100% { transform: translate3d(-30%, -10%, 0) scale(1.2); opacity: 0.35; }
+}
+.ims-cinema-spotlight {
+  background:
+    radial-gradient(
+      ellipse 40% 60% at 50% 50%,
+      rgba(212, 176, 212, 0.45) 0%,
+      rgba(212, 176, 212, 0.18) 40%,
+      transparent 70%
+    );
+  mix-blend-mode: screen;
+  animation: ims-spotlight-drift 18s ease-in-out infinite;
+}
+
+@keyframes ims-corner-pulse {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 1; }
+}
+.ims-cinema-corner {
+  animation: ims-corner-pulse 4s ease-in-out infinite;
+}
+.ims-cinema-corner:nth-of-type(2) { animation-delay: 0.4s; }
+.ims-cinema-corner:nth-of-type(3) { animation-delay: 0.8s; }
+.ims-cinema-corner:nth-of-type(4) { animation-delay: 1.2s; }
+
+/* Outer aura behind the cinematic frame */
+@keyframes ims-cinema-aura {
+  0%, 100% {
+    background:
+      radial-gradient(circle at 20% 30%, rgba(120, 100, 120, 0.22), transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(212, 176, 212, 0.16), transparent 55%);
+  }
+  50% {
+    background:
+      radial-gradient(circle at 70% 25%, rgba(120, 100, 120, 0.28), transparent 50%),
+      radial-gradient(circle at 25% 75%, rgba(212, 176, 212, 0.22), transparent 55%);
+  }
+}
+.ims-cinematic-aura {
+  animation: ims-cinema-aura 20s ease-in-out infinite;
+  filter: blur(30px);
+}
+
+/* Continuous shimmer across the etched-glass title type */
+@keyframes ims-glass-shimmer {
+  0%   { background-position: -200% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.ims-glass-cinema {
+  background-image:
+    linear-gradient(
+      110deg,
+      rgba(255, 250, 254, 1) 0%,
+      rgba(245, 235, 245, 0.97) 35%,
+      rgba(255, 250, 254, 1) 50%,
+      rgba(245, 235, 245, 0.97) 65%,
+      rgba(212, 176, 212, 0.92) 100%
+    );
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  animation: ims-glass-shimmer 9s linear infinite;
+}
+
+/* =========================================================================
+   Charts — continuous idle motion after first reveal.
+========================================================================= */
+@keyframes ims-chart-pulse {
+  0%, 100% { transform: scale(1);   opacity: 1;   }
+  50%      { transform: scale(1.6); opacity: 0.55; }
+}
+.ims-chart.is-drawn .ims-chart-pulse {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: ims-chart-pulse 3.4s ease-in-out infinite;
+}
+
+@keyframes ims-chart-tick-shimmer {
+  0%, 100% { opacity: 0.65; }
+  50%      { opacity: 1; }
+}
+.ims-chart.is-drawn .ims-chart-tick {
+  animation: ims-chart-tick-shimmer 4s ease-in-out infinite;
+}
+
+@keyframes ims-chart-flow-shimmer {
+  0%, 100% { stroke-opacity: 0.45; }
+  50%      { stroke-opacity: 0.85; }
+}
+.ims-chart.is-drawn .ims-chart-flow {
+  animation: ims-chart-flow-shimmer 5s ease-in-out infinite;
+}
+
+@keyframes ims-chart-bar-glow {
+  0%, 100% { opacity: 0.85; }
+  50%      { opacity: 1; }
+}
+.ims-chart.is-drawn .ims-chart-bar {
+  animation: ims-chart-bar-glow 4s ease-in-out infinite;
+}
+
+@keyframes ims-chart-arrow-breathe {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50%      { transform: translateY(2px); opacity: 1; }
+}
+.ims-chart.is-drawn .ims-chart-arrow {
+  animation: ims-chart-arrow-breathe 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes ims-chart-march {
+  0%   { stroke-dasharray: 0 220; stroke-dashoffset: 0; opacity: 0; }
+  20%  { opacity: 1; }
+  100% { stroke-dasharray: 60 220; stroke-dashoffset: -260; opacity: 0; }
+}
+.ims-chart.is-drawn .ims-chart-march {
+  animation: ims-chart-march 4.2s ease-in-out infinite;
+}
+
+@keyframes ims-chart-ripple {
+  0%   { r: 8;   opacity: 0.85; stroke-width: 1.4; }
+  100% { r: 100; opacity: 0;    stroke-width: 0.4; }
+}
+.ims-chart.is-drawn .ims-chart-ripple {
+  animation: ims-chart-ripple 3.5s ease-out infinite;
+  transform-origin: center;
+}
+
+/* =========================================================================
+   Paper-light sections — soft mauve aura so the white band still feels alive.
+========================================================================= */
+@keyframes ims-paper-aura {
+  0%, 100% {
+    background:
+      radial-gradient(circle at 18% 20%, rgba(212, 176, 212, 0.30), transparent 50%),
+      radial-gradient(circle at 82% 80%, rgba(120, 100, 120, 0.16), transparent 55%);
+  }
+  50% {
+    background:
+      radial-gradient(circle at 70% 30%, rgba(212, 176, 212, 0.34), transparent 50%),
+      radial-gradient(circle at 25% 78%, rgba(120, 100, 120, 0.20), transparent 55%);
+  }
+}
+.ims-paper-aura {
+  animation: ims-paper-aura 22s ease-in-out infinite;
+  filter: blur(40px);
+}
+
+/* =========================================================================
+   Footer — drifting orbs + subtle grid overlay for depth.
+========================================================================= */
+@keyframes ims-footer-orb-drift {
+  0%, 100% { transform: translate3d(0, 0, 0)    scale(1); opacity: 0.85; }
+  33%      { transform: translate3d(40px, 20px, 0)  scale(1.1); opacity: 1; }
+  66%      { transform: translate3d(-30px, 40px, 0) scale(0.95); opacity: 0.7; }
+}
+.ims-footer-orb {
+  animation: ims-footer-orb-drift 24s ease-in-out infinite;
+}
+.ims-footer-orb--alt {
+  animation-duration: 30s;
+  animation-direction: reverse;
+}
+
+@keyframes ims-footer-grid-drift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 80px 80px; }
+}
+.ims-footer-grid {
+  background-image:
+    linear-gradient(rgba(212, 176, 212, 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 176, 212, 0.4) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: ims-footer-grid-drift 50s linear infinite;
+}
+
+/* Standards badges shimmer-in once revealed */
+@keyframes ims-standards-shimmer {
+  0%   { box-shadow: 0 0 0 0 rgba(212, 176, 212, 0); }
+  50%  { box-shadow: 0 0 16px 0 rgba(212, 176, 212, 0.18); }
+  100% { box-shadow: 0 0 0 0 rgba(212, 176, 212, 0); }
+}
+
 /* Reduced motion respect */
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
   .scroll-marker { animation: none !important; }
+  .ims-cinema-kenburns,
+  .ims-cinema-spotlight,
+  .ims-cinema-corner,
+  .ims-cinematic-aura,
+  .ims-glass-cinema,
+  .ims-chart.is-drawn .ims-chart-pulse,
+  .ims-chart.is-drawn .ims-chart-tick,
+  .ims-chart.is-drawn .ims-chart-flow,
+  .ims-chart.is-drawn .ims-chart-bar,
+  .ims-chart.is-drawn .ims-chart-arrow,
+  .ims-chart.is-drawn .ims-chart-march,
+  .ims-chart.is-drawn .ims-chart-ripple,
+  .ims-paper-aura,
+  .ims-footer-orb,
+  .ims-footer-grid {
+    animation: none !important;
+  }
 }

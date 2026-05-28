@@ -4,14 +4,17 @@ import { useEffect, useRef } from "react";
 import { Reveal } from "./Reveal";
 
 /**
- * Three small artistic SVG visualisations describing what IMS does in
- * shapes a business owner reads at a glance:
+ * Three artistic SVG visualisations describing what IMS does in shapes a
+ * business owner reads at a glance:
  *
  *   1. Many manual tasks → one quiet pipeline (consolidation)
  *   2. Jagged handoffs   → continuous flow      (smoothing)
  *   3. One engagement    → recurring returns   (compounding)
  *
- * Each runs a draw-on-reveal animation when scrolled into view.
+ * Each runs a draw-on-reveal animation when scrolled into view, then
+ * continues with a subtle idle loop so the charts are never fully still.
+ * That loop is driven by CSS keyframes (see globals.css `chart-*` and
+ * `compound-ripple` rules) so the animation continues without a JS tick.
  */
 
 function useDrawOnReveal<T extends HTMLElement>() {
@@ -39,8 +42,8 @@ function useDrawOnReveal<T extends HTMLElement>() {
 /* ============================================================
    Pattern 01 — Consolidation
    Six manual task lines on the left converge into one solid
-   pipeline on the right. Business reading: "stop doing the
-   same thing many times."
+   pipeline on the right. After draw-in, the centre output dot
+   pulses and the converging curves shimmer continuously.
 ============================================================ */
 function ConsolidationChart() {
   const ref = useDrawOnReveal<HTMLDivElement>();
@@ -83,12 +86,14 @@ function ConsolidationChart() {
               strokeWidth="2"
               strokeLinecap="round"
               opacity="0.9"
+              className="ims-chart-tick"
               data-draw
               style={
                 {
                   strokeDasharray: length,
                   strokeDashoffset: length,
                   transitionDelay: `${i * 90}ms`,
+                  animationDelay: `${1.2 + i * 0.18}s`,
                 } as React.CSSProperties
               }
             />
@@ -111,12 +116,14 @@ function ConsolidationChart() {
               strokeWidth="1"
               strokeOpacity="0.5"
               strokeLinecap="round"
+              className="ims-chart-flow"
               data-draw
               style={
                 {
                   strokeDasharray: length,
                   strokeDashoffset: length,
                   transitionDelay: `${500 + i * 70}ms`,
+                  animationDelay: `${1.5 + i * 0.12}s`,
                 } as React.CSSProperties
               }
             />
@@ -132,6 +139,7 @@ function ConsolidationChart() {
           rx="3"
           fill="url(#grad-consol)"
           filter="url(#glow-consol)"
+          className="ims-chart-bar"
           data-fade
           style={{ transitionDelay: "1100ms" }}
         />
@@ -141,6 +149,7 @@ function ConsolidationChart() {
           r="3"
           fill="#d4b0d4"
           filter="url(#glow-consol)"
+          className="ims-chart-pulse"
           data-fade
           style={{ transitionDelay: "1300ms" }}
         />
@@ -153,14 +162,14 @@ function ConsolidationChart() {
    Pattern 02 — Smoothing
    Top: jagged manual handoff path.
    Bottom: continuous automation flow.
-   Connector implies "one becomes the other."
+   After draw-in, a marching-dash gradient travels along the
+   smooth path and the connector arrow gently breathes.
 ============================================================ */
 function SmoothingChart() {
   const ref = useDrawOnReveal<HTMLDivElement>();
   const jagged =
     "M 20 60 L 35 48 L 50 72 L 65 50 L 80 76 L 95 54 L 110 70 L 125 50 L 140 66 L 155 56 L 180 62";
-  const smooth =
-    "M 20 140 C 60 140, 100 140, 180 140";
+  const smooth = "M 20 140 C 60 140, 100 140, 180 140";
   return (
     <div ref={ref} className="ims-chart">
       <svg viewBox="0 0 200 200" className="h-full w-full" aria-hidden>
@@ -168,6 +177,12 @@ function SmoothingChart() {
           <linearGradient id="grad-smooth" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stopColor="#786478" stopOpacity="0.75" />
             <stop offset="100%" stopColor="#d4b0d4" stopOpacity="0.95" />
+          </linearGradient>
+          <linearGradient id="grad-flow" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#d4b0d4" stopOpacity="0" />
+            <stop offset="45%" stopColor="#d4b0d4" stopOpacity="1" />
+            <stop offset="55%" stopColor="#f5eff3" stopOpacity="1" />
+            <stop offset="100%" stopColor="#786478" stopOpacity="0" />
           </linearGradient>
           <filter id="glow-smooth" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="1.6" result="blur" />
@@ -198,7 +213,7 @@ function SmoothingChart() {
           }
         />
 
-        {/* Connector arrow down */}
+        {/* Connector arrow */}
         <line
           x1="100"
           y1="90"
@@ -207,7 +222,6 @@ function SmoothingChart() {
           stroke="#786478"
           strokeWidth="1"
           strokeOpacity="0.4"
-          strokeDasharray="3 4"
           data-draw
           style={
             {
@@ -223,6 +237,7 @@ function SmoothingChart() {
           stroke="#786478"
           strokeWidth="1"
           strokeOpacity="0.5"
+          className="ims-chart-arrow"
           data-fade
           style={{ transitionDelay: "1000ms" }}
         />
@@ -245,6 +260,19 @@ function SmoothingChart() {
           }
         />
 
+        {/* Marching gradient that travels along the smooth path on a loop */}
+        <path
+          d={smooth}
+          fill="none"
+          stroke="url(#grad-flow)"
+          strokeWidth="2.6"
+          strokeLinecap="round"
+          className="ims-chart-march"
+          opacity="0"
+          data-fade
+          style={{ transitionDelay: "1800ms" }}
+        />
+
         {/* End cap on smooth path */}
         <circle
           cx="180"
@@ -252,6 +280,7 @@ function SmoothingChart() {
           r="3"
           fill="#d4b0d4"
           filter="url(#glow-smooth)"
+          className="ims-chart-pulse"
           data-fade
           style={{ transitionDelay: "1900ms" }}
         />
@@ -263,7 +292,7 @@ function SmoothingChart() {
 /* ============================================================
    Pattern 03 — Compounding
    One solid centre point. Four expanding arcs ripple outward
-   representing recurring returns over time.
+   on a continuous loop after the first reveal completes.
 ============================================================ */
 function CompoundingChart() {
   const ref = useDrawOnReveal<HTMLDivElement>();
@@ -288,7 +317,7 @@ function CompoundingChart() {
           </filter>
         </defs>
 
-        {/* Ripple arcs growing outward (each arc covers about 280deg) */}
+        {/* Initial draw-in arcs */}
         {[35, 55, 78, 100].map((r, i) => (
           <circle
             key={r}
@@ -312,6 +341,27 @@ function CompoundingChart() {
           />
         ))}
 
+        {/* Continuous loop ripples that emerge from the centre */}
+        {[0, 1, 2].map((i) => (
+          <circle
+            key={`r-${i}`}
+            cx="100"
+            cy="100"
+            r="35"
+            fill="none"
+            stroke="#d4b0d4"
+            strokeWidth="1"
+            className="ims-chart-ripple"
+            data-fade
+            style={
+              {
+                animationDelay: `${1.2 + i * 1.0}s`,
+                transitionDelay: "1500ms",
+              } as React.CSSProperties
+            }
+          />
+        ))}
+
         {/* Core engagement dot */}
         <circle
           cx="100"
@@ -319,6 +369,7 @@ function CompoundingChart() {
           r="6"
           fill="url(#grad-compound-core)"
           filter="url(#glow-compound)"
+          className="ims-chart-pulse"
           data-fade
           style={{ transitionDelay: "0ms" }}
         />
@@ -336,12 +387,14 @@ interface MiniChartProps {
 function MiniChart({ title, caption, children }: MiniChartProps) {
   return (
     <figure className="group relative flex flex-col items-center text-center">
-      <div className="relative h-[120px] w-[120px] transition-transform duration-500 group-hover:scale-[1.04] sm:h-[140px] sm:w-[140px]">
+      <div className="relative h-[140px] w-[140px] transition-transform duration-500 group-hover:scale-[1.06] sm:h-[160px] sm:w-[160px]">
         {children}
       </div>
-      <figcaption className="mt-4">
-        <p className="font-serif text-[1rem] font-medium text-paper-ink">{title}</p>
-        <p className="mt-1 max-w-[220px] text-[0.8125rem] leading-[1.55] text-mauve-300">
+      <figcaption className="mt-5">
+        <p className="font-serif text-[1.05rem] font-medium leading-snug">
+          {title}
+        </p>
+        <p className="mt-2 max-w-[240px] text-[0.8125rem] leading-[1.55] text-mauve-500/85">
           {caption}
         </p>
       </figcaption>
@@ -354,23 +407,29 @@ export function ArtisticCharts() {
     <section
       id="patterns"
       aria-labelledby="patterns-heading"
-      className="relative bg-deep px-6 py-16 text-paper-ink sm:py-20"
+      className="relative bg-paper px-6 py-20 text-ink sm:py-24 lg:py-28"
     >
-      <div className="mx-auto w-full max-w-5xl">
+      {/* Soft mauve drift behind the charts to keep the section alive */}
+      <div
+        aria-hidden
+        className="ims-paper-aura pointer-events-none absolute inset-0 -z-10"
+      />
+
+      <div className="relative mx-auto w-full max-w-5xl">
         <Reveal>
-          <p className="text-center font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
+          <p className="text-center font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-500">
             Quiet patterns
           </p>
           <h2
             id="patterns-heading"
-            className="mt-4 text-center font-serif text-[clamp(1.375rem,2.4vw,1.75rem)] font-medium leading-[1.25] tracking-[-0.01em] text-paper-ink"
+            className="mt-4 text-center font-serif text-[clamp(1.5rem,2.6vw,2rem)] font-medium leading-[1.2] tracking-[-0.01em] text-ink"
           >
             What removing manual work actually looks like.
           </h2>
         </Reveal>
 
         <Reveal delay={120}>
-          <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6">
+          <div className="mt-14 grid grid-cols-1 gap-12 sm:grid-cols-3 sm:gap-8">
             <MiniChart
               title="Many tasks become one pipeline"
               caption="Six manual jobs done daily become a single quiet system that runs by itself."
