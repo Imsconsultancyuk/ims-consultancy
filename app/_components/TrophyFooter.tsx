@@ -6,30 +6,30 @@ import { useState, type FormEvent } from "react";
 
 const NAV_COLS = [
   {
-    title: "Approach",
+    title: "Services",
     links: [
-      { label: "How we work", href: "#approach" },
-      { label: "Decide", href: "#decide" },
-      { label: "Build", href: "#build" },
-      { label: "Compound", href: "#compound" },
+      { label: "All services", href: "/services" },
+      { label: "Decide", href: "/services#decide" },
+      { label: "Build", href: "/services#build" },
+      { label: "Compound", href: "/services#compound" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About", href: "#about" },
-      { label: "Voices", href: "#voices" },
-      { label: "Work", href: "#work" },
+      { label: "About", href: "/about" },
+      { label: "Method", href: "/#method" },
+      { label: "Voices", href: "/#voices" },
       { label: "Contact", href: "mailto:hello@intelmadesimple.com" },
     ],
   },
   {
     title: "Resources",
     links: [
-      { label: "Notes", href: "#notes" },
-      { label: "Frameworks", href: "#frameworks" },
       { label: "Newsletter", href: "#newsletter" },
-      { label: "Privacy", href: "/privacy" },
+      { label: "Sitemap", href: "/sitemap.xml" },
+      { label: "AI overview (llms.txt)", href: "/llms.txt" },
+      { label: "Robots", href: "/robots.txt" },
     ],
   },
 ];
@@ -59,7 +59,7 @@ export function TrophyFooter() {
   return (
     <footer
       id="contact"
-      className="relative isolate overflow-hidden bg-deep px-6 pt-24 pb-10 text-paper-ink sm:pt-32 sm:pb-12"
+      className="relative isolate overflow-hidden bg-deep px-6 pt-20 pb-10 text-paper-ink sm:pt-24 sm:pb-12 lg:pt-28"
     >
       {/* Subtle mauve glow blob top-left of footer for depth */}
       <div
@@ -231,7 +231,7 @@ export function TrophyFooter() {
             © {new Date().getFullYear()} IMS Consultancy. All rights reserved.
           </p>
           <p className="font-sans text-[10px] uppercase tracking-[0.22em] text-mauve-300/70">
-            Crafted in considered minutes, not generic days.
+            Built in minutes, not days.
           </p>
         </div>
       </div>

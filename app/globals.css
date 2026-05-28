@@ -142,6 +142,46 @@ html.lenis, html.lenis body { height: auto; }
   }
 }
 
+/* Cinematic title — etched-glass typography that sits ON the video.
+   Brighter paper-white fill, stronger mauve halo, deeper drop shadow so the
+   type reads as a single luminous slab against any video underneath.
+   Pairs with the dark vignette in CinematicTitle so contrast holds at every
+   point on the frame. */
+.ims-glass-cinema {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 250, 254, 1.00) 0%,
+    rgba(245, 235, 245, 0.97) 40%,
+    rgba(212, 176, 212, 0.92) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow:
+    0 0 48px rgba(212, 176, 212, 0.55),
+    0 2px 18px rgba(26, 22, 32, 0.65),
+    0 6px 32px rgba(26, 22, 32, 0.45);
+  filter: drop-shadow(0 8px 38px rgba(212, 176, 212, 0.28));
+  letter-spacing: -0.02em;
+}
+@supports not (-webkit-background-clip: text) {
+  .ims-glass-cinema {
+    color: var(--color-paper-ink);
+    text-shadow:
+      0 0 48px rgba(212, 176, 212, 0.55),
+      0 2px 18px rgba(26, 22, 32, 0.65);
+  }
+}
+
+/* Cinematic frame — soft inner highlight so the rounded video panel feels
+   like real glass laid into the page. */
+.ims-cinema-frame {
+  box-shadow:
+    0 30px 80px -30px rgba(26, 22, 32, 0.75),
+    0 0 0 1px rgba(212, 176, 212, 0.08);
+}
+
 /* Artistic SVG charts — draw-on-reveal animation.
    Each path/line in a chart sets its own stroke-dasharray equal to its
    length, with dashoffset matching, so the stroke is invisible at start.

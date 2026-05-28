@@ -58,7 +58,7 @@ export default function Home() {
         <section
           id="approach"
           aria-labelledby="approach-heading"
-          className="relative bg-deep px-6 pt-28 pb-32 text-paper-ink sm:pt-36 sm:pb-40 lg:pt-44 lg:pb-48"
+          className="relative bg-deep px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
         >
           <div className="mx-auto w-full max-w-5xl">
             <Reveal>
@@ -81,7 +81,7 @@ export default function Home() {
             </Reveal>
 
             <ol
-              className="mt-20 grid gap-6 sm:grid-cols-3 sm:gap-6 lg:gap-8"
+              className="mt-12 grid gap-6 sm:grid-cols-3 sm:gap-6 lg:gap-8"
               role="list"
             >
               {APPROACH_TILES.map((tile, i) => (
@@ -115,15 +115,13 @@ export default function Home() {
 
         <MethodologyCarousel />
 
-        {/* Reusable cinematic title using the figure-walking video as a window */}
+        {/* Cinematic chapter anchor — glass type sits on top of the video */}
         <CinematicTitle
           id="momentum"
           videoSrc="/videos/ims-decide-figure-walking.mp4"
           kicker="Engagement arc"
           title={"Walk\nthrough it."}
-          body="A single engagement carries you from the first honest audit through to a clean exit. The figure on the right is doing it."
-          textSize={300}
-          textLetterSpacing={-18}
+          body="A single engagement carries you from the first honest audit through to a clean exit. Quiet, steady forward motion the whole way."
         />
 
         <ArtisticCharts />
@@ -133,7 +131,7 @@ export default function Home() {
         {/* CTA BAND */}
         <section
           aria-labelledby="cta-heading"
-          className="relative bg-deep-soft px-6 py-28 text-paper-ink sm:py-36"
+          className="relative bg-deep-soft px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
         >
           <div className="mx-auto w-full max-w-3xl text-center">
             <Reveal>

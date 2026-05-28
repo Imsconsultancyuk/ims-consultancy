@@ -134,7 +134,7 @@ export function Testimonials() {
   return (
     <section
       id="voices"
-      className="relative isolate overflow-hidden bg-deep px-6 py-32 text-paper-ink sm:py-40"
+      className="relative isolate overflow-hidden bg-deep px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
     >
       {/* Atmospheric mauve glow centre-top */}
       <div
@@ -164,7 +164,7 @@ export function Testimonials() {
         </Reveal>
 
         {/* Tier 1: quiet workflows (2 cards) */}
-        <div className="mt-16">
+        <div className="mt-12">
           <Reveal>
             <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-300">
               01 · Quiet workflows
@@ -181,7 +181,7 @@ export function Testimonials() {
         </div>
 
         {/* Tier 2: professional revamps (2 cards) */}
-        <div className="mt-16">
+        <div className="mt-12">
           <Reveal>
             <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-300">
               02 · Professional revamps
@@ -198,7 +198,7 @@ export function Testimonials() {
         </div>
 
         {/* Tier 3: embedded partnership (1 large card) */}
-        <div className="mt-16">
+        <div className="mt-12">
           <Reveal>
             <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-200">
               03 · Embedded partnership

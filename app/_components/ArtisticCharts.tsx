@@ -4,12 +4,14 @@ import { useEffect, useRef } from "react";
 import { Reveal } from "./Reveal";
 
 /**
- * Three small artistic SVG visualisations carrying the mauve brand.
- * Pure visual flourish, no specific data. Each runs a draw-on-reveal
- * animation when scrolled into view.
+ * Three small artistic SVG visualisations describing what IMS does in
+ * shapes a business owner reads at a glance:
  *
- * Condensed layout: three small inline SVGs in a single row, no card
- * chrome, just a one-line caption per chart.
+ *   1. Many manual tasks → one quiet pipeline (consolidation)
+ *   2. Jagged handoffs   → continuous flow      (smoothing)
+ *   3. One engagement    → recurring returns   (compounding)
+ *
+ * Each runs a draw-on-reveal animation when scrolled into view.
  */
 
 function useDrawOnReveal<T extends HTMLElement>() {
@@ -34,18 +36,31 @@ function useDrawOnReveal<T extends HTMLElement>() {
   return ref;
 }
 
-function CompoundChart() {
+/* ============================================================
+   Pattern 01 — Consolidation
+   Six manual task lines on the left converge into one solid
+   pipeline on the right. Business reading: "stop doing the
+   same thing many times."
+============================================================ */
+function ConsolidationChart() {
   const ref = useDrawOnReveal<HTMLDivElement>();
+  const tasks = [
+    { y: 40, w: 38 },
+    { y: 60, w: 34 },
+    { y: 80, w: 42 },
+    { y: 100, w: 36 },
+    { y: 120, w: 40 },
+    { y: 140, w: 32 },
+  ];
   return (
     <div ref={ref} className="ims-chart">
       <svg viewBox="0 0 200 200" className="h-full w-full" aria-hidden>
         <defs>
-          <linearGradient id="grad-compound-sm" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#d4b0d4" stopOpacity="0.95" />
-            <stop offset="60%" stopColor="#786478" stopOpacity="0.85" />
-            <stop offset="100%" stopColor="#4e3f4e" stopOpacity="0.55" />
+          <linearGradient id="grad-consol" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#786478" stopOpacity="0.85" />
+            <stop offset="100%" stopColor="#d4b0d4" stopOpacity="0.95" />
           </linearGradient>
-          <filter id="glow-compound-sm" x="-50%" y="-50%" width="200%" height="200%">
+          <filter id="glow-consol" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="1.6" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
@@ -53,53 +68,218 @@ function CompoundChart() {
             </feMerge>
           </filter>
         </defs>
-        {[88, 70, 52, 34, 18].map((r, i) => (
-          <circle
-            key={r}
-            cx="100"
-            cy="100"
-            r={r}
-            fill="none"
-            stroke="url(#grad-compound-sm)"
-            strokeWidth={i === 0 ? 1.3 : 1.0}
-            strokeLinecap="round"
-            opacity={1 - i * 0.12}
-            filter="url(#glow-compound-sm)"
-            data-draw
-            style={
-              {
-                strokeDasharray: 2 * Math.PI * r,
-                strokeDashoffset: 2 * Math.PI * r,
-                transitionDelay: `${i * 140}ms`,
-              } as React.CSSProperties
-            }
-          />
-        ))}
-        <circle cx="100" cy="100" r="2.5" fill="#d4b0d4" filter="url(#glow-compound-sm)" />
+
+        {/* Six manual tick-marks on the left */}
+        {tasks.map((t, i) => {
+          const length = t.w;
+          return (
+            <line
+              key={`t-${i}`}
+              x1={20}
+              y1={t.y}
+              x2={20 + t.w}
+              y2={t.y}
+              stroke="url(#grad-consol)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              opacity="0.9"
+              data-draw
+              style={
+                {
+                  strokeDasharray: length,
+                  strokeDashoffset: length,
+                  transitionDelay: `${i * 90}ms`,
+                } as React.CSSProperties
+              }
+            />
+          );
+        })}
+
+        {/* Curves converging to a single endpoint */}
+        {tasks.map((t, i) => {
+          const startX = 20 + t.w;
+          const endX = 150;
+          const endY = 95;
+          const cpX = (startX + endX) / 2;
+          const length = 130;
+          return (
+            <path
+              key={`p-${i}`}
+              d={`M ${startX} ${t.y} C ${cpX} ${t.y}, ${cpX} ${endY}, ${endX} ${endY}`}
+              fill="none"
+              stroke="url(#grad-consol)"
+              strokeWidth="1"
+              strokeOpacity="0.5"
+              strokeLinecap="round"
+              data-draw
+              style={
+                {
+                  strokeDasharray: length,
+                  strokeDashoffset: length,
+                  transitionDelay: `${500 + i * 70}ms`,
+                } as React.CSSProperties
+              }
+            />
+          );
+        })}
+
+        {/* Single consolidated pipeline (output) */}
+        <rect
+          x="150"
+          y="90"
+          width="36"
+          height="10"
+          rx="3"
+          fill="url(#grad-consol)"
+          filter="url(#glow-consol)"
+          data-fade
+          style={{ transitionDelay: "1100ms" }}
+        />
+        <circle
+          cx="186"
+          cy="95"
+          r="3"
+          fill="#d4b0d4"
+          filter="url(#glow-consol)"
+          data-fade
+          style={{ transitionDelay: "1300ms" }}
+        />
       </svg>
     </div>
   );
 }
 
-function ConvergeChart() {
+/* ============================================================
+   Pattern 02 — Smoothing
+   Top: jagged manual handoff path.
+   Bottom: continuous automation flow.
+   Connector implies "one becomes the other."
+============================================================ */
+function SmoothingChart() {
   const ref = useDrawOnReveal<HTMLDivElement>();
-  const PATHS = [
-    "M 10 30 C 80 30, 120 90, 180 100",
-    "M 10 70 C 70 70, 130 95, 180 100",
-    "M 10 110 C 80 110, 130 100, 180 100",
-    "M 10 150 C 70 150, 130 110, 180 100",
-    "M 10 190 C 80 190, 130 130, 180 100",
-  ];
+  const jagged =
+    "M 20 60 L 35 48 L 50 72 L 65 50 L 80 76 L 95 54 L 110 70 L 125 50 L 140 66 L 155 56 L 180 62";
+  const smooth =
+    "M 20 140 C 60 140, 100 140, 180 140";
   return (
     <div ref={ref} className="ims-chart">
       <svg viewBox="0 0 200 200" className="h-full w-full" aria-hidden>
         <defs>
-          <linearGradient id="grad-converge-sm" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#4e3f4e" stopOpacity="0.35" />
-            <stop offset="60%" stopColor="#786478" stopOpacity="0.85" />
+          <linearGradient id="grad-smooth" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#786478" stopOpacity="0.75" />
             <stop offset="100%" stopColor="#d4b0d4" stopOpacity="0.95" />
           </linearGradient>
-          <filter id="glow-converge-sm" x="-50%" y="-50%" width="200%" height="200%">
+          <filter id="glow-smooth" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="1.6" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        {/* Manual jagged path */}
+        <path
+          d={jagged}
+          fill="none"
+          stroke="url(#grad-smooth)"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          opacity="0.85"
+          filter="url(#glow-smooth)"
+          data-draw
+          style={
+            {
+              strokeDasharray: 320,
+              strokeDashoffset: 320,
+              transitionDelay: "0ms",
+            } as React.CSSProperties
+          }
+        />
+
+        {/* Connector arrow down */}
+        <line
+          x1="100"
+          y1="90"
+          x2="100"
+          y2="125"
+          stroke="#786478"
+          strokeWidth="1"
+          strokeOpacity="0.4"
+          strokeDasharray="3 4"
+          data-draw
+          style={
+            {
+              strokeDasharray: 40,
+              strokeDashoffset: 40,
+              transitionDelay: "600ms",
+            } as React.CSSProperties
+          }
+        />
+        <path
+          d="M 96 121 L 100 127 L 104 121"
+          fill="none"
+          stroke="#786478"
+          strokeWidth="1"
+          strokeOpacity="0.5"
+          data-fade
+          style={{ transitionDelay: "1000ms" }}
+        />
+
+        {/* Smooth automated path */}
+        <path
+          d={smooth}
+          fill="none"
+          stroke="url(#grad-smooth)"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+          filter="url(#glow-smooth)"
+          data-draw
+          style={
+            {
+              strokeDasharray: 200,
+              strokeDashoffset: 200,
+              transitionDelay: "1100ms",
+            } as React.CSSProperties
+          }
+        />
+
+        {/* End cap on smooth path */}
+        <circle
+          cx="180"
+          cy="140"
+          r="3"
+          fill="#d4b0d4"
+          filter="url(#glow-smooth)"
+          data-fade
+          style={{ transitionDelay: "1900ms" }}
+        />
+      </svg>
+    </div>
+  );
+}
+
+/* ============================================================
+   Pattern 03 — Compounding
+   One solid centre point. Four expanding arcs ripple outward
+   representing recurring returns over time.
+============================================================ */
+function CompoundingChart() {
+  const ref = useDrawOnReveal<HTMLDivElement>();
+  return (
+    <div ref={ref} className="ims-chart">
+      <svg viewBox="0 0 200 200" className="h-full w-full" aria-hidden>
+        <defs>
+          <radialGradient id="grad-compound-core" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#d4b0d4" stopOpacity="1" />
+            <stop offset="100%" stopColor="#786478" stopOpacity="0.75" />
+          </radialGradient>
+          <linearGradient id="grad-compound-arc" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#d4b0d4" stopOpacity="0.95" />
+            <stop offset="100%" stopColor="#786478" stopOpacity="0.45" />
+          </linearGradient>
+          <filter id="glow-compound" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="1.8" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
@@ -107,103 +287,41 @@ function ConvergeChart() {
             </feMerge>
           </filter>
         </defs>
-        {PATHS.map((d, i) => (
-          <path
-            key={i}
-            d={d}
+
+        {/* Ripple arcs growing outward (each arc covers about 280deg) */}
+        {[35, 55, 78, 100].map((r, i) => (
+          <circle
+            key={r}
+            cx="100"
+            cy="100"
+            r={r}
             fill="none"
-            stroke="url(#grad-converge-sm)"
-            strokeWidth="1.4"
+            stroke="url(#grad-compound-arc)"
+            strokeWidth={i === 0 ? 1.4 : 1.1}
             strokeLinecap="round"
-            opacity={0.95 - i * 0.05}
-            filter="url(#glow-converge-sm)"
+            opacity={1 - i * 0.18}
+            filter="url(#glow-compound)"
             data-draw
             style={
               {
-                strokeDasharray: 320,
-                strokeDashoffset: 320,
-                transitionDelay: `${i * 110}ms`,
+                strokeDasharray: 2 * Math.PI * r,
+                strokeDashoffset: 2 * Math.PI * r,
+                transitionDelay: `${i * 220}ms`,
               } as React.CSSProperties
             }
           />
         ))}
-        <circle cx="180" cy="100" r="3.5" fill="#d4b0d4" filter="url(#glow-converge-sm)" />
-        <circle cx="180" cy="100" r="9" fill="none" stroke="#d4b0d4" strokeOpacity="0.4" strokeWidth="0.7" />
-      </svg>
-    </div>
-  );
-}
 
-function NetworkChart() {
-  const ref = useDrawOnReveal<HTMLDivElement>();
-  const NODES: Array<[number, number, number]> = [
-    [40, 60, 3.5],
-    [100, 30, 4.5],
-    [160, 70, 3],
-    [50, 130, 2.5],
-    [110, 110, 5],
-    [170, 150, 3.5],
-    [85, 170, 2.5],
-    [140, 40, 2.2],
-  ];
-  const EDGES: Array<[number, number]> = [
-    [0, 1], [1, 2], [0, 3], [1, 4], [2, 4],
-    [3, 4], [4, 5], [3, 6], [4, 6], [5, 6],
-    [1, 7], [2, 7],
-  ];
-  return (
-    <div ref={ref} className="ims-chart">
-      <svg viewBox="0 0 200 200" className="h-full w-full" aria-hidden>
-        <defs>
-          <radialGradient id="dot-grad-sm" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#d4b0d4" stopOpacity="1" />
-            <stop offset="100%" stopColor="#786478" stopOpacity="0.7" />
-          </radialGradient>
-          <filter id="glow-network-sm" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="1.4" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-        {EDGES.map(([a, b], i) => {
-          const [x1, y1] = NODES[a];
-          const [x2, y2] = NODES[b];
-          const length = Math.hypot(x2 - x1, y2 - y1);
-          return (
-            <line
-              key={i}
-              x1={x1}
-              y1={y1}
-              x2={x2}
-              y2={y2}
-              stroke="#786478"
-              strokeWidth="0.8"
-              strokeOpacity="0.6"
-              data-draw
-              style={
-                {
-                  strokeDasharray: length,
-                  strokeDashoffset: length,
-                  transitionDelay: `${i * 70}ms`,
-                } as React.CSSProperties
-              }
-            />
-          );
-        })}
-        {NODES.map(([cx, cy, r], i) => (
-          <circle
-            key={i}
-            cx={cx}
-            cy={cy}
-            r={r}
-            fill="url(#dot-grad-sm)"
-            filter="url(#glow-network-sm)"
-            data-fade
-            style={{ transitionDelay: `${700 + i * 55}ms` }}
-          />
-        ))}
+        {/* Core engagement dot */}
+        <circle
+          cx="100"
+          cy="100"
+          r="6"
+          fill="url(#grad-compound-core)"
+          filter="url(#glow-compound)"
+          data-fade
+          style={{ transitionDelay: "0ms" }}
+        />
       </svg>
     </div>
   );
@@ -222,8 +340,8 @@ function MiniChart({ title, caption, children }: MiniChartProps) {
         {children}
       </div>
       <figcaption className="mt-4">
-        <p className="font-serif text-[0.9375rem] font-medium text-paper-ink">{title}</p>
-        <p className="mt-1 max-w-[200px] text-[0.75rem] leading-[1.55] text-mauve-300">
+        <p className="font-serif text-[1rem] font-medium text-paper-ink">{title}</p>
+        <p className="mt-1 max-w-[220px] text-[0.8125rem] leading-[1.55] text-mauve-300">
           {caption}
         </p>
       </figcaption>
@@ -245,31 +363,31 @@ export function ArtisticCharts() {
           </p>
           <h2
             id="patterns-heading"
-            className="mt-4 text-center font-serif text-[clamp(1.25rem,2.2vw,1.625rem)] font-medium leading-[1.3] tracking-[-0.01em] text-paper-ink"
+            className="mt-4 text-center font-serif text-[clamp(1.375rem,2.4vw,1.75rem)] font-medium leading-[1.25] tracking-[-0.01em] text-paper-ink"
           >
-            Three shapes that describe how we work.
+            What removing manual work actually looks like.
           </h2>
         </Reveal>
 
         <Reveal delay={120}>
-          <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6">
+          <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6">
             <MiniChart
-              title="Compounding"
-              caption="A single right call ripples outward."
+              title="Many tasks become one pipeline"
+              caption="Six manual jobs done daily become a single quiet system that runs by itself."
             >
-              <CompoundChart />
+              <ConsolidationChart />
             </MiniChart>
             <MiniChart
-              title="Convergence"
-              caption="Many open questions narrow into one move."
+              title="Jagged handoffs become flow"
+              caption="The bumps between people, tools, and inboxes smooth into a continuous line."
             >
-              <ConvergeChart />
+              <SmoothingChart />
             </MiniChart>
             <MiniChart
-              title="Network"
-              caption="Small, well-chosen systems that talk."
+              title="One engagement keeps returning"
+              caption="The work we ship together compounds for months after we have left the room."
             >
-              <NetworkChart />
+              <CompoundingChart />
             </MiniChart>
           </div>
         </Reveal>

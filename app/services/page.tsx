@@ -106,7 +106,7 @@ export default function ServicesPage() {
 
       <main className="flex flex-1 flex-col">
         <header
-          className="relative isolate overflow-hidden bg-deep px-6 pt-44 pb-20 text-paper-ink sm:pt-52 sm:pb-28"
+          className="relative isolate overflow-hidden bg-deep px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="services-heading"
         >
           <div className="relative mx-auto w-full max-w-3xl">
@@ -130,7 +130,7 @@ export default function ServicesPage() {
 
         <section
           aria-labelledby="catalog-heading"
-          className="relative bg-deep px-6 pb-28 text-paper-ink sm:pb-36"
+          className="relative bg-deep px-6 pb-20 text-paper-ink sm:pb-24 lg:pb-28"
         >
           <h2 id="catalog-heading" className="sr-only">
             Service catalog
@@ -191,7 +191,7 @@ export default function ServicesPage() {
 
         <section
           aria-labelledby="contact-cta-heading"
-          className="relative bg-deep-soft px-6 py-24 text-paper-ink sm:py-32"
+          className="relative bg-deep-soft px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
         >
           <div className="mx-auto w-full max-w-3xl text-center">
             <Reveal>
