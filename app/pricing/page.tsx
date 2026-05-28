@@ -163,56 +163,64 @@ export default function PricingPage() {
 
         <section
           aria-labelledby="tiers-heading"
-          className="relative bg-deep px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
+          className="relative bg-paper px-6 py-20 text-ink sm:py-24 lg:py-28"
         >
+          <div
+            aria-hidden
+            className="ims-paper-aura pointer-events-none absolute inset-0 -z-10"
+          />
           <h2 id="tiers-heading" className="sr-only">
             Engagement tiers
           </h2>
-          <div className="mx-auto grid w-full max-w-6xl gap-6 lg:grid-cols-3 lg:gap-8">
+          <div className="relative mx-auto grid w-full max-w-6xl gap-6 lg:grid-cols-3 lg:gap-8">
             {TIERS.map((t, i) => (
               <Reveal key={t.slug} delay={i * 100}>
                 <article
                   id={t.slug}
-                  className={`relative flex h-full flex-col rounded-2xl border bg-deep-soft/55 p-8 backdrop-blur sm:p-9 ${
+                  className={`ims-flip-card group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-paper-soft/80 p-8 backdrop-blur transition-all duration-500 hover:border-mauve-500/0 hover:bg-mauve-500 hover:shadow-[0_24px_60px_-22px_rgba(120,100,120,0.65)] sm:p-9 ${
                     i === 1
-                      ? "border-mauve-300/35 shadow-[0_18px_48px_-22px_rgba(212,176,212,0.32)]"
-                      : "border-mauve-300/12"
+                      ? "border-mauve-500/35 shadow-[0_18px_48px_-22px_rgba(120,100,120,0.32)]"
+                      : "border-mauve-500/15"
                   }`}
                 >
-                  <header>
-                    <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
+                  <span
+                    aria-hidden="true"
+                    className="ims-flip-sweep pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  />
+                  <header className="relative">
+                    <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-500 transition-colors duration-500 group-hover:text-paper">
                       {t.name}
                     </p>
-                    <h3 className="mt-3 font-serif text-[1.5rem] font-medium leading-tight text-paper-ink">
+                    <h3 className="mt-3 font-serif text-[1.5rem] font-medium leading-tight text-ink transition-colors duration-500 group-hover:text-paper">
                       {t.positioning}
                     </h3>
-                    <p className="mt-5 font-serif text-[2rem] leading-none text-mauve-200">
+                    <p className="mt-5 font-serif text-[2rem] leading-none text-mauve-500 transition-colors duration-500 group-hover:text-paper">
                       {t.price}
                     </p>
-                    <p className="mt-2 font-sans text-[12px] uppercase tracking-[0.18em] text-mauve-300">
+                    <p className="mt-2 font-sans text-[12px] uppercase tracking-[0.18em] text-ink-soft transition-colors duration-500 group-hover:text-paper/85">
                       {t.cadence}
                     </p>
                   </header>
 
-                  <div className="mt-7 border-t border-mauve-300/12 pt-6">
-                    <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-200">
+                  <div className="relative mt-7 border-t border-mauve-500/15 pt-6 transition-colors duration-500 group-hover:border-paper/30">
+                    <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-500 transition-colors duration-500 group-hover:text-paper">
                       Best for
                     </p>
-                    <p className="mt-2 text-[0.9375rem] leading-[1.7] text-mauve-300">
+                    <p className="mt-2 text-[0.9375rem] leading-[1.7] text-ink-soft transition-colors duration-500 group-hover:text-paper/90">
                       {t.bestFor}
                     </p>
                   </div>
 
-                  <div className="mt-6 border-t border-mauve-300/12 pt-6">
-                    <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-200">
+                  <div className="relative mt-6 border-t border-mauve-500/15 pt-6 transition-colors duration-500 group-hover:border-paper/30">
+                    <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-500 transition-colors duration-500 group-hover:text-paper">
                       What you get
                     </p>
-                    <ul className="mt-4 space-y-3 text-[0.9375rem] leading-[1.65] text-paper-ink/95" role="list">
+                    <ul className="mt-4 space-y-3 text-[0.9375rem] leading-[1.65] text-ink/90 transition-colors duration-500 group-hover:text-paper/95" role="list">
                       {t.whatYouGet.map((w) => (
                         <li key={w} className="flex items-start gap-3">
                           <span
                             aria-hidden
-                            className="mt-2.5 inline-block h-[3px] w-3 shrink-0 bg-mauve-200"
+                            className="mt-2.5 inline-block h-[3px] w-3 shrink-0 bg-mauve-500 transition-colors duration-500 group-hover:bg-paper"
                           />
                           <span>{w}</span>
                         </li>
@@ -220,11 +228,11 @@ export default function PricingPage() {
                     </ul>
                   </div>
 
-                  <footer className="mt-auto pt-8">
+                  <footer className="relative mt-auto pt-8">
                     <Link
                       href="/contact"
                       data-cursor="cta"
-                      className="inline-flex h-11 w-full items-center justify-center rounded-md bg-mauve-300 px-6 text-[12px] font-medium uppercase tracking-[0.18em] text-deep transition-all duration-300 hover:bg-mauve-200"
+                      className="inline-flex h-11 w-full items-center justify-center rounded-md bg-mauve-500 px-6 text-[12px] font-medium uppercase tracking-[0.18em] text-paper transition-all duration-300 hover:bg-mauve-700 group-hover:bg-paper group-hover:text-mauve-500"
                     >
                       {t.cta}
                     </Link>

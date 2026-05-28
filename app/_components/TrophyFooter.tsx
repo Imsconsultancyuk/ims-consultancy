@@ -75,40 +75,63 @@ export function TrophyFooter() {
       id="contact"
       className="relative isolate overflow-hidden bg-deep text-paper-ink"
     >
-      {/* ───────── MOTION BACKGROUND ─────────
-          Three large drifting blobs running on independent loops, all
-          handled by Framer Motion so they share the same RAF pipeline. */}
+      {/* ───────── FRAMER MOTION BACKGROUND ─────────
+          Three large drifting blobs (high opacity so they're obviously
+          alive), an animated radial pulse behind the brand statement, and
+          two horizontal sheen bars sweeping across at different rates. */}
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -top-32 left-1/2 h-[640px] w-[640px] -translate-x-1/2 rounded-full"
+        className="pointer-events-none absolute -top-32 left-1/2 h-[720px] w-[720px] -translate-x-1/2 rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(120,100,120,0.42), rgba(120,100,120,0.10) 40%, transparent 70%)",
-          filter: "blur(34px)",
+            "radial-gradient(circle, rgba(120,100,120,0.95), rgba(120,100,120,0.22) 40%, transparent 70%)",
+          filter: "blur(40px)",
         }}
         animate={{
-          x: [0, 80, -40, 0],
-          y: [0, -40, 40, 0],
-          scale: [1, 1.15, 0.95, 1],
+          x: [0, 140, -80, 0],
+          y: [0, -60, 70, 0],
+          scale: [1, 1.25, 0.85, 1],
+          opacity: [0.55, 0.85, 0.5, 0.55],
         }}
         transition={{
-          duration: 22,
+          duration: 18,
           repeat: Infinity,
           ease: "easeInOut",
         }}
       />
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -bottom-40 -right-32 h-[480px] w-[480px] rounded-full"
+        className="pointer-events-none absolute -bottom-40 -right-32 h-[560px] w-[560px] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(212,176,212,0.36), rgba(120,100,120,0.08) 45%, transparent 70%)",
-          filter: "blur(38px)",
+            "radial-gradient(circle, rgba(212,176,212,0.85), rgba(120,100,120,0.18) 45%, transparent 70%)",
+          filter: "blur(44px)",
         }}
         animate={{
-          x: [0, -60, 30, 0],
-          y: [0, 40, -20, 0],
-          scale: [1, 0.9, 1.1, 1],
+          x: [0, -100, 60, 0],
+          y: [0, 70, -40, 0],
+          scale: [1, 0.85, 1.20, 1],
+          opacity: [0.6, 0.9, 0.55, 0.6],
+        }}
+        transition={{
+          duration: 24,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute top-1/3 -left-32 h-[520px] w-[520px] rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(212,176,212,0.55), rgba(120,100,120,0.14) 50%, transparent 70%)",
+          filter: "blur(46px)",
+        }}
+        animate={{
+          x: [0, 90, 30, 0],
+          y: [0, -50, 80, 0],
+          scale: [1, 1.15, 0.85, 1],
+          opacity: [0.5, 0.8, 0.45, 0.5],
         }}
         transition={{
           duration: 28,
@@ -116,68 +139,105 @@ export function TrophyFooter() {
           ease: "easeInOut",
         }}
       />
+      {/* Fourth ambient blob — runs much slower, big and soft */}
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute top-1/3 -left-32 h-[400px] w-[400px] rounded-full"
+        className="pointer-events-none absolute top-1/2 right-1/4 h-[420px] w-[420px] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(212,176,212,0.22), rgba(120,100,120,0.06) 50%, transparent 70%)",
-          filter: "blur(40px)",
+            "radial-gradient(circle, rgba(180,160,180,0.55), rgba(120,100,120,0.10) 50%, transparent 70%)",
+          filter: "blur(50px)",
         }}
         animate={{
-          x: [0, 50, 20, 0],
-          y: [0, -30, 50, 0],
-          scale: [1, 1.08, 0.92, 1],
+          x: [0, -120, 40, 0],
+          y: [0, 60, -90, 0],
+          scale: [1, 1.10, 0.92, 1],
         }}
         transition={{
-          duration: 32,
+          duration: 36,
           repeat: Infinity,
           ease: "easeInOut",
         }}
       />
 
-      {/* Soft horizontal sheen on the top edge — sweeps right to left */}
+      {/* Two horizontal sheen bars sweeping across at different rates */}
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute top-0 left-0 h-[1px] w-[40%]"
+        className="pointer-events-none absolute top-0 left-0 h-[1px] w-[50%]"
         style={{
           background:
-            "linear-gradient(90deg, transparent, rgba(212,176,212,0.6), transparent)",
+            "linear-gradient(90deg, transparent, rgba(212,176,212,0.95), transparent)",
         }}
-        animate={{ x: ["-30%", "270%"] }}
+        animate={{ x: ["-40%", "260%"] }}
         transition={{
-          duration: 9,
+          duration: 7,
           repeat: Infinity,
           ease: "easeInOut",
-          repeatDelay: 1.5,
+          repeatDelay: 0.8,
+        }}
+      />
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute bottom-12 left-0 h-[1px] w-[35%]"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(212,176,212,0.7), transparent)",
+        }}
+        animate={{ x: ["260%", "-40%"] }}
+        transition={{
+          duration: 11,
+          repeat: Infinity,
+          ease: "easeInOut",
+          repeatDelay: 1.2,
         }}
       />
 
       {/* Persistent grid overlay */}
       <div
         aria-hidden
-        className="ims-footer-grid pointer-events-none absolute inset-0 opacity-[0.04]"
+        className="ims-footer-grid pointer-events-none absolute inset-0 opacity-[0.06]"
       />
 
       <div className="relative mx-auto w-full max-w-6xl px-6">
-        {/* ───────── Band 1 — Brand statement ───────── */}
-        <section className="pt-24 pb-16 text-center sm:pt-32 sm:pb-20">
-          <p className="font-sans text-[11px] font-medium uppercase tracking-[0.34em] text-mauve-200">
+        {/* ───────── Band 1 — Brand statement (promoted to top, bigger) ───────── */}
+        <motion.section
+          className="pt-16 pb-14 text-center sm:pt-20 sm:pb-16"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <motion.p
+            className="font-sans text-[11px] font-medium uppercase tracking-[0.36em] text-mauve-200"
+            initial={{ opacity: 0, letterSpacing: "0.20em" }}
+            whileInView={{ opacity: 1, letterSpacing: "0.36em" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+          >
             IMS Consultancy
+          </motion.p>
+
+          <h2 className="mx-auto mt-7 max-w-4xl font-serif text-[clamp(2.25rem,4vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.02em] text-paper-ink">
+            Intelligence
+            <span className="mx-3 inline-block align-middle">
+              <span aria-hidden className="inline-block h-[2px] w-12 bg-mauve-200 align-middle sm:w-20" />
+            </span>
+            made simple.
+          </h2>
+
+          <p className="mx-auto mt-7 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-200/95">
+            A small private consultancy from London. We help senior operators
+            decide, build, and compound — quietly and with discipline.
           </p>
-          <p className="mx-auto mt-7 max-w-3xl font-serif text-[clamp(1.5rem,2.6vw,2.125rem)] font-medium leading-[1.25] tracking-[-0.012em] text-paper-ink">
-            A small private consultancy from London.
-            <br className="hidden sm:block" />
-            We help senior operators decide, build, and compound.
-          </p>
-          <div className="mt-10 inline-flex items-center gap-4">
-            <span aria-hidden className="h-px w-12 bg-mauve-200/40" />
-            <span className="font-sans text-[10px] font-medium uppercase tracking-[0.32em] text-mauve-300">
+
+          <div className="mt-9 inline-flex items-center gap-4">
+            <span aria-hidden className="h-px w-12 bg-mauve-200/50" />
+            <span className="font-sans text-[10px] font-medium uppercase tracking-[0.32em] text-mauve-200">
               Est. London · Working worldwide
             </span>
-            <span aria-hidden className="h-px w-12 bg-mauve-200/40" />
+            <span aria-hidden className="h-px w-12 bg-mauve-200/50" />
           </div>
-        </section>
+        </motion.section>
 
         {/* ───────── Band 2 — Professional standards centrepiece ───────── */}
         <section

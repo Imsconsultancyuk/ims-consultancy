@@ -1,28 +1,31 @@
 "use client";
 
+import {
+  GmailIcon,
+  OutlookIcon,
+  GoogleSheetsIcon,
+  SlackIcon,
+  NotionIcon,
+  HubspotIcon,
+} from "./BrandIcons";
+
 /**
  * Floating business-tool icons that orbit the cinematic frame and feed
- * signal lines into the centre. Each icon is a stylised inline SVG —
- * recognisable but generic enough to imply category, not brand impersonation.
+ * signal lines into the centre. Each icon uses the authentic Simple Icons
+ * SVG path with the brand's signature colour.
  *
  * Tools represented:
- *   Gmail · Outlook · Google Sheets · Slack · HubSpot CRM · Notion
- *
- * Each icon sits in a glass-frosted disc. A thin animated dashed line
- * connects it to the implied centre. The lines pulse on a loop so the
- * composition reads as "these tools constantly feed the engagement".
+ *   Gmail · Outlook · Google Sheets · Slack · HubSpot · Notion
  */
 
 interface Tool {
   id: string;
   label: string;
-  /** Position as percentage of overlay box */
   x: number;
   y: number;
-  /** Animation delay seconds */
   delay: number;
   icon: React.ReactNode;
-  /** Tint colour for the disc accent ring */
+  /** Authentic brand colour used for the icon fill */
   tint: string;
 }
 
@@ -34,54 +37,16 @@ const TOOLS: Tool[] = [
     y: 28,
     delay: 0.0,
     tint: "#ea4335",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden>
-        <rect x="2" y="5" width="20" height="14" rx="2" fill="currentColor" opacity="0.12" />
-        <path
-          d="M3 7l9 6 9-6"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <rect
-          x="2.4"
-          y="5.4"
-          width="19.2"
-          height="13.2"
-          rx="1.8"
-          stroke="currentColor"
-          strokeWidth="1.4"
-        />
-      </svg>
-    ),
+    icon: <GmailIcon className="h-full w-full" />,
   },
   {
     id: "sheets",
     label: "Google Sheets",
     x: 18,
-    y: 70,
+    y: 72,
     delay: 0.4,
     tint: "#0f9d58",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden>
-        <rect
-          x="4"
-          y="3"
-          width="16"
-          height="18"
-          rx="2"
-          stroke="currentColor"
-          strokeWidth="1.4"
-        />
-        <path
-          d="M8 9h8M8 13h8M8 17h8M11 6v15"
-          stroke="currentColor"
-          strokeWidth="1.4"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
+    icon: <GoogleSheetsIcon className="h-full w-full" />,
   },
   {
     id: "outlook",
@@ -90,26 +55,7 @@ const TOOLS: Tool[] = [
     y: 22,
     delay: 0.8,
     tint: "#0078d4",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden>
-        <rect
-          x="3"
-          y="5"
-          width="18"
-          height="14"
-          rx="2"
-          stroke="currentColor"
-          strokeWidth="1.4"
-        />
-        <circle cx="9" cy="12" r="3" stroke="currentColor" strokeWidth="1.4" />
-        <path
-          d="M15 9h3M15 12h3M15 15h2"
-          stroke="currentColor"
-          strokeWidth="1.4"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
+    icon: <OutlookIcon className="h-full w-full" />,
   },
   {
     id: "slack",
@@ -118,14 +64,7 @@ const TOOLS: Tool[] = [
     y: 74,
     delay: 1.2,
     tint: "#ecb22e",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden>
-        <rect x="6" y="3" width="3" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.4" />
-        <rect x="15" y="11" width="3" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.4" />
-        <rect x="3" y="15" width="10" height="3" rx="1.5" stroke="currentColor" strokeWidth="1.4" />
-        <rect x="11" y="6" width="10" height="3" rx="1.5" stroke="currentColor" strokeWidth="1.4" />
-      </svg>
-    ),
+    icon: <SlackIcon className="h-full w-full" />,
   },
   {
     id: "hubspot",
@@ -134,14 +73,7 @@ const TOOLS: Tool[] = [
     y: 50,
     delay: 0.2,
     tint: "#ff7a59",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden>
-        <circle cx="17" cy="7" r="2.4" stroke="currentColor" strokeWidth="1.4" />
-        <circle cx="6" cy="18" r="3.6" stroke="currentColor" strokeWidth="1.4" />
-        <circle cx="17" cy="17" r="3" stroke="currentColor" strokeWidth="1.4" />
-        <path d="M17 9.5v4.5M8.6 16l5.5-1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-      </svg>
-    ),
+    icon: <HubspotIcon className="h-full w-full" />,
   },
   {
     id: "notion",
@@ -150,26 +82,7 @@ const TOOLS: Tool[] = [
     y: 50,
     delay: 1.6,
     tint: "#f5eff3",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden>
-        <rect
-          x="3"
-          y="3"
-          width="18"
-          height="18"
-          rx="2"
-          stroke="currentColor"
-          strokeWidth="1.4"
-        />
-        <path
-          d="M8 7v10l8-10v10"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
+    icon: <NotionIcon className="h-full w-full" />,
   },
 ];
 

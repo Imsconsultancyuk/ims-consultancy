@@ -4,7 +4,6 @@ import { TrophyFooter } from "./_components/TrophyFooter";
 import { Testimonials } from "./_components/Testimonials";
 import { Reveal } from "./_components/Reveal";
 import { HeroSection } from "./_components/HeroSection";
-import { PointerTilt } from "./_components/PointerTilt";
 import { CinematicTitle } from "./_components/CinematicTitle";
 import { MagneticButton } from "./_components/MagneticButton";
 import { CharSplit } from "./_components/CharSplit";
@@ -92,32 +91,30 @@ export default function Home() {
             >
               {APPROACH_TILES.map((tile, i) => (
                 <Reveal key={tile.kicker} delay={120 + i * 100}>
-                  <PointerTilt className="h-full" tilt={5}>
-                    <article
-                      id={tile.kicker.split(" ")[1]?.toLowerCase()}
-                      className="ims-flip-card group relative flex h-full flex-col overflow-hidden rounded-2xl border border-mauve-500/15 bg-paper-soft/70 p-7 backdrop-blur transition-all duration-500 hover:border-mauve-500/0 hover:bg-mauve-500 hover:shadow-[0_24px_60px_-22px_rgba(120,100,120,0.65)] sm:p-8"
-                    >
-                      {/* Animated diagonal sweep on hover */}
-                      <span
-                        aria-hidden="true"
-                        className="ims-flip-sweep pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                      />
-                      <header className="relative">
-                        <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-500 transition-colors duration-500 group-hover:text-paper">
-                          {tile.kicker}
-                        </p>
-                        <h3 className="mt-5 font-serif text-2xl font-medium leading-snug text-ink transition-colors duration-500 group-hover:text-paper">
-                          {tile.heading}
-                        </h3>
-                      </header>
-                      <p className="relative mt-4 text-[0.9375rem] leading-[1.75] text-ink-soft transition-colors duration-500 group-hover:text-paper/95">
-                        {tile.body}
+                  <article
+                    id={tile.kicker.split(" ")[1]?.toLowerCase()}
+                    className="ims-flip-card group relative flex h-full flex-col overflow-hidden rounded-2xl border border-mauve-500/15 bg-paper-soft/80 p-7 backdrop-blur transition-all duration-500 hover:border-mauve-500/0 hover:bg-mauve-500 hover:shadow-[0_24px_60px_-22px_rgba(120,100,120,0.65)] sm:p-8"
+                  >
+                    {/* Diagonal sweep on hover */}
+                    <span
+                      aria-hidden="true"
+                      className="ims-flip-sweep pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                    />
+                    <header className="relative">
+                      <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-500 transition-colors duration-500 group-hover:text-paper">
+                        {tile.kicker}
                       </p>
-                      <footer className="relative mt-auto pt-7">
-                        <div className="h-px w-12 bg-mauve-500/40 transition-all duration-500 group-hover:w-32 group-hover:bg-paper/80" />
-                      </footer>
-                    </article>
-                  </PointerTilt>
+                      <h3 className="mt-5 font-serif text-2xl font-medium leading-snug text-ink transition-colors duration-500 group-hover:text-paper">
+                        {tile.heading}
+                      </h3>
+                    </header>
+                    <p className="relative mt-4 text-[0.9375rem] leading-[1.75] text-ink-soft transition-colors duration-500 group-hover:text-paper/95">
+                      {tile.body}
+                    </p>
+                    <footer className="relative mt-auto pt-7">
+                      <div className="h-px w-12 bg-mauve-500/40 transition-all duration-500 group-hover:w-32 group-hover:bg-paper/80" />
+                    </footer>
+                  </article>
                 </Reveal>
               ))}
             </ol>
@@ -192,7 +189,7 @@ export default function Home() {
               </h2>
               <CharSplit
                 text="Ready to make a clearer move?"
-                className="ims-glass-cinema mt-7 font-serif text-[clamp(2rem,4.4vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.012em]"
+                className="mt-7 font-serif text-[clamp(2rem,4.4vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.012em] text-paper-ink"
                 stagger={0.02}
               />
             </Reveal>
