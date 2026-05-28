@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { TrophyHeader } from "./_components/TrophyHeader";
 import { TrophyFooter } from "./_components/TrophyFooter";
 import { Testimonials } from "./_components/Testimonials";
@@ -154,13 +155,13 @@ export default function Home() {
             <Reveal delay={240}>
               <div className="mt-12 inline-block">
                 <MagneticButton strength={0.45} radius={120}>
-                  <a
-                    href="mailto:hello@intelmadesimple.com"
+                  <Link
+                    href="/contact"
                     data-cursor="cta"
                     className="inline-flex h-12 items-center justify-center rounded-md bg-mauve-300 px-8 text-sm font-medium tracking-[0.02em] text-deep transition-all duration-300 hover:bg-mauve-200 hover:shadow-[0_8px_32px_-8px_rgba(212,176,212,0.5)]"
                   >
                     Start a conversation
-                  </a>
+                  </Link>
                 </MagneticButton>
               </div>
             </Reveal>

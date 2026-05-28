@@ -6,9 +6,9 @@ import Link from "next/link";
 
 const NAV_ITEMS = [
   { href: "/services", label: "Services" },
+  { href: "/case-studies", label: "Work" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/about", label: "About" },
-  { href: "/#voices", label: "Voices" },
-  { href: "#contact", label: "Contact" },
 ];
 
 /**
@@ -104,7 +104,7 @@ export function TrophyHeader() {
           </ul>
 
           <Link
-            href="mailto:hello@intelmadesimple.com"
+            href="/contact"
             className="group inline-flex h-9 items-center gap-2 rounded-full bg-mauve-300 px-4 text-[11px] font-medium uppercase tracking-[0.16em] text-deep transition-all duration-400 hover:bg-mauve-200 hover:shadow-[0_6px_24px_-6px_rgba(212,176,212,0.55)]"
             data-cursor="cta"
           >

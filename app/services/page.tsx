@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { TrophyHeader } from "../_components/TrophyHeader";
 import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
@@ -128,6 +129,73 @@ export default function ServicesPage() {
           </div>
         </header>
 
+        {/* Direct service category links */}
+        <section
+          aria-labelledby="categories-heading"
+          className="relative bg-deep px-6 pb-16 text-paper-ink sm:pb-20"
+        >
+          <div className="mx-auto w-full max-w-5xl">
+            <Reveal>
+              <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-300">
+                Specific service areas
+              </p>
+              <h2
+                id="categories-heading"
+                className="mt-4 max-w-2xl font-serif text-[clamp(1.375rem,2.4vw,1.75rem)] font-medium leading-[1.2] tracking-[-0.01em]"
+              >
+                Where the engagement shows up in the work.
+              </h2>
+            </Reveal>
+            <ul
+              className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
+              role="list"
+            >
+              {[
+                { href: "/services/ai-automation", label: "AI Automation" },
+                { href: "/services/seo", label: "SEO and Organic Growth" },
+                {
+                  href: "/services/custom-software",
+                  label: "Custom Software",
+                },
+                {
+                  href: "/services/strategic-advisory",
+                  label: "Strategic Advisory",
+                },
+              ].map((c, i) => (
+                <Reveal key={c.href} delay={i * 60}>
+                  <li>
+                    <Link
+                      href={c.href}
+                      data-cursor="link"
+                      className="group flex h-full items-center justify-between gap-3 rounded-xl border border-mauve-300/12 bg-deep-soft/55 px-5 py-4 backdrop-blur transition-all duration-300 hover:border-mauve-300/30 hover:bg-deep-soft/80"
+                    >
+                      <span className="font-sans text-[0.9375rem] font-medium tracking-[0.01em] text-paper-ink">
+                        {c.label}
+                      </span>
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        aria-hidden
+                        className="text-mauve-200 transition-transform duration-300 group-hover:translate-x-0.5"
+                      >
+                        <path
+                          d="M2 6h8M7 3l3 3-3 3"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </Link>
+                  </li>
+                </Reveal>
+              ))}
+            </ul>
+          </div>
+        </section>
+
         <section
           aria-labelledby="catalog-heading"
           className="relative bg-deep px-6 pb-20 text-paper-ink sm:pb-24 lg:pb-28"
@@ -213,13 +281,13 @@ export default function ServicesPage() {
             <Reveal delay={240}>
               <div className="mt-10 inline-block">
                 <MagneticButton strength={0.45} radius={120}>
-                  <a
-                    href="mailto:hello@intelmadesimple.com"
+                  <Link
+                    href="/contact"
                     data-cursor="cta"
                     className="inline-flex h-12 items-center justify-center rounded-md bg-mauve-300 px-8 text-sm font-medium tracking-[0.02em] text-deep transition-all duration-300 hover:bg-mauve-200 hover:shadow-[0_8px_32px_-8px_rgba(212,176,212,0.55)]"
                   >
                     Start a conversation
-                  </a>
+                  </Link>
                 </MagneticButton>
               </div>
             </Reveal>

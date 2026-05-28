@@ -128,13 +128,13 @@ export function HeroSection() {
           className="mt-10 flex flex-col items-center justify-center gap-4 will-change-transform sm:flex-row"
         >
           <MagneticButton strength={0.4} radius={110}>
-            <a
-              href="mailto:hello@intelmadesimple.com"
+            <Link
+              href="/contact"
               data-cursor="cta"
               className="inline-flex h-12 items-center justify-center rounded-md bg-mauve-300 px-7 text-sm font-medium tracking-[0.02em] text-deep transition-all duration-300 hover:bg-mauve-200 hover:shadow-[0_8px_32px_-8px_rgba(212,176,212,0.55)]"
             >
               Start a conversation
-            </a>
+            </Link>
           </MagneticButton>
           <MagneticButton strength={0.28} radius={90}>
             <Link

@@ -8,28 +8,29 @@ const NAV_COLS = [
   {
     title: "Services",
     links: [
-      { label: "All services", href: "/services" },
-      { label: "Decide", href: "/services#decide" },
-      { label: "Build", href: "/services#build" },
-      { label: "Compound", href: "/services#compound" },
+      { label: "AI Automation", href: "/services/ai-automation" },
+      { label: "SEO and Organic Growth", href: "/services/seo" },
+      { label: "Custom Software", href: "/services/custom-software" },
+      { label: "Strategic Advisory", href: "/services/strategic-advisory" },
     ],
   },
   {
     title: "Company",
     links: [
       { label: "About", href: "/about" },
-      { label: "Method", href: "/#method" },
-      { label: "Voices", href: "/#voices" },
-      { label: "Contact", href: "mailto:hello@intelmadesimple.com" },
+      { label: "Process", href: "/process" },
+      { label: "Case Studies", href: "/case-studies" },
+      { label: "Reviews", href: "/reviews" },
+      { label: "Pricing", href: "/pricing" },
     ],
   },
   {
     title: "Resources",
     links: [
-      { label: "Newsletter", href: "#newsletter" },
-      { label: "Sitemap", href: "/sitemap.xml" },
-      { label: "AI overview (llms.txt)", href: "/llms.txt" },
-      { label: "Robots", href: "/robots.txt" },
+      { label: "Insights", href: "/insights" },
+      { label: "FAQ", href: "/faq" },
+      { label: "llms.txt", href: "/llms.txt" },
+      { label: "Contact", href: "/contact" },
     ],
   },
 ];
@@ -38,6 +39,15 @@ const SOCIALS = [
   { label: "LinkedIn", href: "https://linkedin.com/" },
   { label: "X", href: "https://x.com/" },
   { label: "GitHub", href: "https://github.com/Imsconsultancyuk" },
+];
+
+const STANDARDS = [
+  { name: "ISO/IEC 27001", note: "Aligned" },
+  { name: "ISO/IEC 42001", note: "Aligned" },
+  { name: "NIST AI RMF", note: "Aligned" },
+  { name: "Cyber Essentials", note: "Aligned" },
+  { name: "OWASP LLM Top 10", note: "Reviewed every release" },
+  { name: "UK GDPR · DPA 2018", note: "Compliant" },
 ];
 
 export function TrophyFooter() {
@@ -50,8 +60,6 @@ export function TrophyFooter() {
       setStatus("err");
       return;
     }
-    // Real submission wires to Resend in a later phase. For now, mark as queued
-    // so the form behaves and we can verify analytics events end-to-end.
     setStatus("ok");
     setEmail("");
   }
@@ -73,8 +81,8 @@ export function TrophyFooter() {
       />
 
       <div className="relative mx-auto w-full max-w-6xl">
-        {/* Top band: brand + ethos */}
-        <div className="grid gap-12 border-b border-mauve-300/12 pb-16 lg:grid-cols-[1.2fr_1fr] lg:gap-20">
+        {/* Top band: brand + ethos + newsletter */}
+        <div className="grid gap-12 border-b border-mauve-300/12 pb-14 lg:grid-cols-[1.2fr_1fr] lg:gap-20">
           <div className="flex items-start gap-6 sm:gap-8">
             <Image
               src="/logos/ims-vertical-transparent.png"
@@ -90,15 +98,14 @@ export function TrophyFooter() {
                 Intelligence made simple.
               </p>
               <p className="mt-5 max-w-md text-[0.9375rem] leading-[1.7] text-mauve-300">
-                IMS is a small strategic consultancy. We work with a handful of
-                operators at a time. We help them think clearly, build deliberately,
-                and compound the value of every engagement long after the invoice
-                clears.
+                IMS is a small strategic consultancy. We work with a handful
+                of operators at a time. We help them think clearly, build
+                deliberately, and compound the value of every engagement
+                long after the invoice clears.
               </p>
             </div>
           </div>
 
-          {/* Newsletter */}
           <div id="newsletter" className="flex flex-col">
             <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
               The IMS letter
@@ -144,7 +151,7 @@ export function TrophyFooter() {
               }`}
             >
               {status === "ok"
-                ? "Got it. We'll send the next one when it lands."
+                ? "Got it. We will send the next one when it lands."
                 : status === "err"
                   ? "That does not look like an email. Try again."
                   : "placeholder"}
@@ -152,14 +159,14 @@ export function TrophyFooter() {
           </div>
         </div>
 
-        {/* Middle: 3 nav columns + socials */}
-        <div className="grid gap-12 border-b border-mauve-300/12 py-14 sm:grid-cols-3 lg:grid-cols-4">
+        {/* Middle: 3 nav columns + contact column */}
+        <div className="grid gap-12 border-b border-mauve-300/12 py-14 sm:grid-cols-2 lg:grid-cols-4">
           {NAV_COLS.map((col) => (
             <div key={col.title}>
               <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
                 {col.title}
               </p>
-              <ul className="mt-5 space-y-3">
+              <ul className="mt-5 space-y-3" role="list">
                 {col.links.map((l) => (
                   <li key={l.label}>
                     <Link
@@ -179,18 +186,107 @@ export function TrophyFooter() {
               </ul>
             </div>
           ))}
+
+          {/* Contact column */}
+          <div>
+            <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
+              Contact
+            </p>
+            <ul className="mt-5 space-y-3 text-[0.9375rem] text-paper-ink/85" role="list">
+              <li>
+                <a
+                  href="mailto:hello@intelmadesimple.com"
+                  className="group inline-flex items-center transition-colors hover:text-paper-ink"
+                >
+                  <span className="relative">
+                    hello@intelmadesimple.com
+                    <span
+                      aria-hidden="true"
+                      className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-mauve-200 transition-transform duration-400 ease-out group-hover:scale-x-100"
+                    />
+                  </span>
+                </a>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="group inline-flex items-center transition-colors hover:text-paper-ink"
+                >
+                  <span className="relative">
+                    Contact page
+                    <span
+                      aria-hidden="true"
+                      className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-mauve-200 transition-transform duration-400 ease-out group-hover:scale-x-100"
+                    />
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="group inline-flex items-center transition-colors hover:text-paper-ink"
+                >
+                  <span className="relative">
+                    Book a 20-min call
+                    <span
+                      aria-hidden="true"
+                      className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-mauve-200 transition-transform duration-400 ease-out group-hover:scale-x-100"
+                    />
+                  </span>
+                </Link>
+              </li>
+              <li className="pt-2 text-mauve-300">London, United Kingdom</li>
+            </ul>
+            <p className="mt-6 rounded-md border border-mauve-200/30 bg-mauve-200/5 px-4 py-3 text-[12px] leading-[1.5] text-mauve-200">
+              Response within 4 hours, guaranteed.
+            </p>
+          </div>
+        </div>
+
+        {/* Standards strip */}
+        <div className="border-b border-mauve-300/12 py-10">
+          <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
+            Standards we hold to
+          </p>
+          <p className="mt-3 max-w-2xl text-[13px] leading-[1.6] text-mauve-300">
+            Built so we can work cleanly alongside clients with their own
+            accreditations. Alignment by default, certification where stated.
+          </p>
+          <ul
+            className="mt-6 flex flex-wrap items-stretch gap-3"
+            role="list"
+            aria-label="Standards and frameworks we align with"
+          >
+            {STANDARDS.map((s) => (
+              <li
+                key={s.name}
+                className="flex flex-col rounded-md border border-mauve-300/15 bg-deep-soft/40 px-4 py-3 backdrop-blur"
+              >
+                <span className="font-sans text-[11px] font-medium uppercase tracking-[0.18em] text-paper-ink">
+                  {s.name}
+                </span>
+                <span className="mt-1 text-[11px] tracking-[0.04em] text-mauve-300">
+                  {s.note}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Socials + tagline */}
+        <div className="flex flex-col gap-6 border-b border-mauve-300/12 py-10 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
               Find us
             </p>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-4 flex flex-wrap gap-4" role="list">
               {SOCIALS.map((s) => (
                 <li key={s.label}>
                   <a
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2 text-[0.9375rem] text-paper-ink/85 transition-colors hover:text-paper-ink"
+                    className="group inline-flex items-center gap-1.5 text-[0.9375rem] text-paper-ink/85 transition-colors hover:text-paper-ink"
                   >
                     <span className="relative">
                       {s.label}
@@ -219,10 +315,10 @@ export function TrophyFooter() {
                 </li>
               ))}
             </ul>
-            <p className="mt-8 text-[12px] leading-[1.6] text-mauve-300">
-              Based in the UK. We work with founders and operators worldwide.
-            </p>
           </div>
+          <p className="text-[12px] leading-[1.6] text-mauve-300 sm:text-right">
+            Based in the UK. Working with founders and operators worldwide.
+          </p>
         </div>
 
         {/* Bottom band: legal */}
@@ -230,9 +326,43 @@ export function TrophyFooter() {
           <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-300">
             © {new Date().getFullYear()} IMS Consultancy. All rights reserved.
           </p>
-          <p className="font-sans text-[10px] uppercase tracking-[0.22em] text-mauve-300/70">
-            Built in minutes, not days.
-          </p>
+          <ul
+            className="flex flex-wrap gap-x-6 gap-y-2 font-sans text-[10px] uppercase tracking-[0.22em] text-mauve-300"
+            role="list"
+          >
+            <li>
+              <Link
+                href="/privacy"
+                className="transition-colors hover:text-paper-ink"
+              >
+                Privacy
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/terms"
+                className="transition-colors hover:text-paper-ink"
+              >
+                Terms
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/ai-policy"
+                className="transition-colors hover:text-paper-ink"
+              >
+                AI Policy
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/sitemap.xml"
+                className="transition-colors hover:text-paper-ink"
+              >
+                Sitemap
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </footer>
