@@ -68,7 +68,7 @@ function tierAccent(tier: Tier): string {
 function CaseCard({ c, large = false }: { c: CaseStudy; large?: boolean }) {
   return (
     <PointerTilt className="h-full" tilt={4}>
-    <article
+    <figure
       className={`group relative flex flex-col overflow-hidden rounded-2xl border border-mauve-300/12 bg-deep-soft/55 p-7 backdrop-blur transition-all duration-500 hover:border-mauve-300/30 hover:bg-deep-soft/75 sm:p-8 ${
         large ? "lg:p-12" : ""
       }`}
@@ -99,11 +99,11 @@ function CaseCard({ c, large = false }: { c: CaseStudy; large?: boolean }) {
         </p>
       </div>
 
-      <p className="relative mt-5 font-sans text-[11px] uppercase tracking-[0.18em] text-mauve-300">
+      <figcaption className="relative mt-5 font-sans text-[11px] uppercase tracking-[0.18em] text-mauve-300">
         {c.attribution}
-      </p>
+      </figcaption>
 
-      <p
+      <blockquote
         className={`relative mt-5 font-serif leading-[1.45] text-paper-ink ${
           large
             ? "text-[clamp(1.5rem,2.4vw,1.9rem)]"
@@ -111,7 +111,7 @@ function CaseCard({ c, large = false }: { c: CaseStudy; large?: boolean }) {
         }`}
       >
         {c.body}
-      </p>
+      </blockquote>
 
       <div className="relative mt-auto pt-7">
         <div className="h-px w-12 bg-mauve-300/40 transition-all duration-500 group-hover:w-24 group-hover:bg-mauve-200/70" />
@@ -123,7 +123,7 @@ function CaseCard({ c, large = false }: { c: CaseStudy; large?: boolean }) {
           {c.metric}
         </p>
       </div>
-    </article>
+    </figure>
     </PointerTilt>
   );
 }

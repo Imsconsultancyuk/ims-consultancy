@@ -18,7 +18,6 @@ import { gsap } from "gsap";
  */
 export function SiteCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -28,33 +27,25 @@ export function SiteCursor() {
     if (!hasHover || reduced) return;
 
     const dot = dotRef.current;
-    const ring = ringRef.current;
     const glow = glowRef.current;
-    if (!dot || !ring || !glow) return;
+    if (!dot || !glow) return;
 
-    // Hide the native cursor on the page itself (interactive elements
-    // still inherit `none` via the html-level rule in globals.css).
     document.documentElement.classList.add("has-custom-cursor");
 
     let state: "default" | "link" | "cta" | "tilt" = "default";
 
     const dotX = gsap.quickTo(dot, "x", { duration: 0.10, ease: "power3" });
     const dotY = gsap.quickTo(dot, "y", { duration: 0.10, ease: "power3" });
-    const ringX = gsap.quickTo(ring, "x", { duration: 0.45, ease: "power3" });
-    const ringY = gsap.quickTo(ring, "y", { duration: 0.45, ease: "power3" });
     const glowX = gsap.quickTo(glow, "x", { duration: 1.4, ease: "power3.out" });
     const glowY = gsap.quickTo(glow, "y", { duration: 1.4, ease: "power3.out" });
 
-    // Seed at viewport centre so the cursor is visible immediately
     const cx0 = window.innerWidth / 2;
     const cy0 = window.innerHeight / 2;
-    gsap.set([dot, ring, glow], { x: cx0, y: cy0, opacity: 1 });
+    gsap.set([dot, glow], { x: cx0, y: cy0, opacity: 1 });
 
     const onMove = (e: MouseEvent) => {
       dotX(e.clientX);
       dotY(e.clientY);
-      ringX(e.clientX);
-      ringY(e.clientY);
       glowX(e.clientX);
       glowY(e.clientY);
     };
@@ -64,48 +55,44 @@ export function SiteCursor() {
       state = next;
       switch (next) {
         case "default":
-          gsap.to(ring, {
+          gsap.to(dot, {
             scale: 1,
             opacity: 1,
-            borderColor: "rgba(212,176,212,0.7)",
-            boxShadow: "0 0 0 rgba(212,176,212,0)",
-            duration: 0.3,
+            backgroundColor: "rgba(212,176,212,1)",
+            boxShadow: "0 0 10px rgba(212,176,212,0.55)",
+            duration: 0.25,
             ease: "power3.out",
           });
-          gsap.to(dot, { scale: 1, opacity: 1, duration: 0.2 });
           break;
         case "link":
-          gsap.to(ring, {
-            scale: 1.85,
+          gsap.to(dot, {
+            scale: 1.6,
             opacity: 1,
-            borderColor: "rgba(212,176,212,0.95)",
-            boxShadow: "0 0 16px rgba(212,176,212,0.35)",
-            duration: 0.3,
+            backgroundColor: "rgba(212,176,212,1)",
+            boxShadow: "0 0 18px rgba(212,176,212,0.75)",
+            duration: 0.25,
             ease: "power3.out",
           });
-          gsap.to(dot, { scale: 0.35, opacity: 0.55, duration: 0.2 });
           break;
         case "cta":
-          gsap.to(ring, {
-            scale: 2.6,
+          gsap.to(dot, {
+            scale: 2.2,
             opacity: 1,
-            borderColor: "rgba(212,176,212,1)",
-            boxShadow: "0 0 28px rgba(212,176,212,0.65)",
-            duration: 0.3,
+            backgroundColor: "rgba(212,176,212,1)",
+            boxShadow: "0 0 32px rgba(212,176,212,0.95)",
+            duration: 0.25,
             ease: "power3.out",
           });
-          gsap.to(dot, { scale: 0, opacity: 0, duration: 0.2 });
           break;
         case "tilt":
-          gsap.to(ring, {
-            scale: 3.4,
-            opacity: 0.75,
-            borderColor: "rgba(212,176,212,0.55)",
-            boxShadow: "0 0 22px rgba(212,176,212,0.30)",
-            duration: 0.3,
+          gsap.to(dot, {
+            scale: 1.3,
+            opacity: 0.9,
+            backgroundColor: "rgba(212,176,212,1)",
+            boxShadow: "0 0 22px rgba(212,176,212,0.55)",
+            duration: 0.25,
             ease: "power3.out",
           });
-          gsap.to(dot, { scale: 0.6, opacity: 1, duration: 0.2 });
           break;
       }
     };
@@ -122,10 +109,8 @@ export function SiteCursor() {
       else setState("default");
     };
 
-    const onLeave = () => gsap.to([dot, ring, glow], { opacity: 0, duration: 0.25 });
-    const onEnter = () => {
-      gsap.to([dot, ring, glow], { opacity: 1, duration: 0.3 });
-    };
+    const onLeave = () => gsap.to([dot, glow], { opacity: 0, duration: 0.25 });
+    const onEnter = () => gsap.to([dot, glow], { opacity: 1, duration: 0.3 });
 
     window.addEventListener("mousemove", onMove, { passive: true });
     document.addEventListener("mouseover", onOver);
@@ -161,21 +146,6 @@ export function SiteCursor() {
         }}
       />
       <div
-        ref={ringRef}
-        aria-hidden="true"
-        className="pointer-events-none fixed top-0 left-0 z-[200] hidden md:block"
-        style={{
-          width: 28,
-          height: 28,
-          marginLeft: -14,
-          marginTop: -14,
-          borderRadius: "50%",
-          border: "1.5px solid rgba(212,176,212,0.7)",
-          opacity: 1,
-          willChange: "transform, opacity, scale",
-        }}
-      />
-      <div
         ref={dotRef}
         aria-hidden="true"
         className="pointer-events-none fixed top-0 left-0 z-[200] hidden md:block"
@@ -186,7 +156,7 @@ export function SiteCursor() {
           marginTop: -4,
           borderRadius: "50%",
           background: "rgba(212,176,212,1)",
-          boxShadow: "0 0 8px rgba(212,176,212,0.55)",
+          boxShadow: "0 0 10px rgba(212,176,212,0.55)",
           opacity: 1,
           willChange: "transform, opacity",
         }}

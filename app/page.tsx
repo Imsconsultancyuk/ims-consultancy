@@ -4,11 +4,17 @@ import { Testimonials } from "./_components/Testimonials";
 import { Reveal } from "./_components/Reveal";
 import { HeroSection } from "./_components/HeroSection";
 import { PointerTilt } from "./_components/PointerTilt";
-import { CinematicBand } from "./_components/CinematicBand";
+import { CinematicTitle } from "./_components/CinematicTitle";
 import { MagneticButton } from "./_components/MagneticButton";
 import { CharSplit } from "./_components/CharSplit";
 import { MethodologyCarousel } from "./_components/MethodologyCarousel";
 import { ArtisticCharts } from "./_components/ArtisticCharts";
+import {
+  JsonLd,
+  orgJsonLd,
+  websiteJsonLd,
+  webPageJsonLd,
+} from "./_components/JsonLd";
 
 const APPROACH_TILES = [
   {
@@ -32,16 +38,26 @@ const APPROACH_TILES = [
 ];
 
 export default function Home() {
+  const homePage = webPageJsonLd({
+    path: "/",
+    name: "IMS Consultancy · Intelligence Made Simple",
+    description:
+      "A strategic consultancy for business decisions, development, and AI workflows. Honest answers and results that hold up over time.",
+    breadcrumbs: [{ name: "Home", path: "/" }],
+  });
+
   return (
     <>
+      <JsonLd data={[orgJsonLd, websiteJsonLd, homePage]} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col">
+      <main className="flex flex-1 flex-col" id="main">
         <HeroSection />
 
-        {/* APPROACH (dark band) */}
+        {/* APPROACH (three tiles, dark band) */}
         <section
           id="approach"
+          aria-labelledby="approach-heading"
           className="relative bg-deep px-6 pt-28 pb-32 text-paper-ink sm:pt-36 sm:pb-40 lg:pt-44 lg:pb-48"
         >
           <div className="mx-auto w-full max-w-5xl">
@@ -49,6 +65,9 @@ export default function Home() {
               <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
                 How we work
               </p>
+              <h2 id="approach-heading" className="sr-only">
+                Three doors into one engagement
+              </h2>
               <CharSplit
                 text={"Three doors into\none engagement."}
                 className="mt-5 max-w-3xl font-serif text-[clamp(2rem,4vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.012em]"
@@ -61,43 +80,66 @@ export default function Home() {
               </p>
             </Reveal>
 
-            <div className="mt-20 grid gap-6 sm:grid-cols-3 sm:gap-6 lg:gap-8">
+            <ol
+              className="mt-20 grid gap-6 sm:grid-cols-3 sm:gap-6 lg:gap-8"
+              role="list"
+            >
               {APPROACH_TILES.map((tile, i) => (
                 <Reveal key={tile.kicker} delay={120 + i * 100}>
                   <PointerTilt className="h-full" tilt={5}>
-                    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-mauve-300/12 bg-deep-soft/55 p-7 backdrop-blur transition-all duration-500 hover:border-mauve-300/30 hover:bg-deep-soft/75 sm:p-8">
-                      <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
-                        {tile.kicker}
-                      </p>
-                      <h3 className="mt-5 font-serif text-2xl font-medium leading-snug text-paper-ink">
-                        {tile.heading}
-                      </h3>
+                    <article
+                      id={tile.kicker.split(" ")[1]?.toLowerCase()}
+                      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-mauve-300/12 bg-deep-soft/55 p-7 backdrop-blur transition-all duration-500 hover:border-mauve-300/30 hover:bg-deep-soft/75 sm:p-8"
+                    >
+                      <header>
+                        <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
+                          {tile.kicker}
+                        </p>
+                        <h3 className="mt-5 font-serif text-2xl font-medium leading-snug text-paper-ink">
+                          {tile.heading}
+                        </h3>
+                      </header>
                       <p className="mt-4 text-[0.9375rem] leading-[1.75] text-mauve-300">
                         {tile.body}
                       </p>
-                      <div className="mt-auto pt-7">
+                      <footer className="mt-auto pt-7">
                         <div className="h-px w-12 bg-mauve-300/40 transition-all duration-500 group-hover:w-24 group-hover:bg-mauve-200/70" />
-                      </div>
+                      </footer>
                     </article>
                   </PointerTilt>
                 </Reveal>
               ))}
-            </div>
+            </ol>
           </div>
         </section>
 
         <MethodologyCarousel />
 
-        <CinematicBand />
+        {/* Reusable cinematic title using the figure-walking video as a window */}
+        <CinematicTitle
+          id="momentum"
+          videoSrc="/videos/ims-decide-figure-walking.mp4"
+          kicker="Engagement arc"
+          title={"Walk\nthrough it."}
+          body="A single engagement carries you from the first honest audit through to a clean exit. The figure on the right is doing it."
+          textSize={300}
+          textLetterSpacing={-18}
+        />
 
         <ArtisticCharts />
 
         <Testimonials />
 
         {/* CTA BAND */}
-        <section className="relative bg-deep-soft px-6 py-28 text-paper-ink sm:py-36">
+        <section
+          aria-labelledby="cta-heading"
+          className="relative bg-deep-soft px-6 py-28 text-paper-ink sm:py-36"
+        >
           <div className="mx-auto w-full max-w-3xl text-center">
             <Reveal>
+              <h2 id="cta-heading" className="sr-only">
+                Ready to make a clearer move
+              </h2>
               <CharSplit
                 text="Ready to make a clearer move?"
                 className="font-serif text-[clamp(2rem,4vw,3rem)] font-medium leading-[1.1] tracking-[-0.012em]"
@@ -117,7 +159,7 @@ export default function Home() {
                   <a
                     href="mailto:hello@intelmadesimple.com"
                     data-cursor="cta"
-                    className="inline-flex h-12 items-center justify-center rounded-md bg-mauve-300 px-8 text-sm font-medium tracking-[0.02em] text-deep transition-all duration-300 hover:bg-mauve-200 hover:shadow-[0_8px_32px_-8px_rgba(212,176,212,0.55)]"
+                    className="inline-flex h-12 items-center justify-center rounded-md bg-mauve-300 px-8 text-sm font-medium tracking-[0.02em] text-deep transition-all duration-300 hover:bg-mauve-200 hover:shadow-[0_8px_32px_-8px_rgba(212,176,212,0.5)]"
                   >
                     Start a conversation
                   </a>

@@ -7,54 +7,19 @@ import { Reveal } from "./Reveal";
 import { CharSplit } from "./CharSplit";
 
 const STEPS = [
-  {
-    n: "01",
-    title: "Audit",
-    body:
-      "We start by listening. Two weeks of close attention to how the business actually runs. The findings document is honest and short.",
-  },
-  {
-    n: "02",
-    title: "Decide",
-    body:
-      "We name the few moves that compound and the many that don't. Strategy becomes a single readable page, not a deck.",
-  },
-  {
-    n: "03",
-    title: "Blueprint",
-    body:
-      "Architecture for the next twelve months. What gets built, in what order, with which tradeoffs visible. Open to challenge.",
-  },
-  {
-    n: "04",
-    title: "Build",
-    body:
-      "Considered code, real tests, observable systems. We ship in small atomic deliveries you can review, deploy, and roll back.",
-  },
-  {
-    n: "05",
-    title: "Automate",
-    body:
-      "AI workflows that take the dull edges off your team's week. Small models, well chosen, that prove their value before they grow.",
-  },
-  {
-    n: "06",
-    title: "Train",
-    body:
-      "Your team learns by doing the work with us. By the end of the engagement they can extend, debug, and own everything that ships.",
-  },
-  {
-    n: "07",
-    title: "Hand-off",
-    body:
-      "A clean exit. Documentation, recordings, source, and a 90-day follow-up window. Most clients ask us back. The door stays open.",
-  },
+  { n: "01", title: "Audit", body: "Two weeks of close attention to how the business actually runs. Findings document is short, honest." },
+  { n: "02", title: "Decide", body: "Name the few moves that compound and the many that don't. Strategy on a single readable page." },
+  { n: "03", title: "Blueprint", body: "Architecture for the next twelve months, with tradeoffs visible. Open to challenge." },
+  { n: "04", title: "Build", body: "Considered code, real tests, observable systems. Shipped in small atomic deliveries." },
+  { n: "05", title: "Automate", body: "Quiet AI workflows that take the dull edges off your week. Small models, well chosen." },
+  { n: "06", title: "Train", body: "Your team learns by doing the work with us. They can extend and own everything that ships." },
+  { n: "07", title: "Hand-off", body: "Documentation, recordings, source, and a 90-day follow-up window. The door stays open." },
 ];
 
 export function MethodologyCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
-    align: "center",
+    align: "start",
     containScroll: "trimSnaps",
     skipSnaps: false,
   });
@@ -78,23 +43,20 @@ export function MethodologyCarousel() {
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
-  const scrollTo = useCallback(
-    (i: number) => emblaApi && emblaApi.scrollTo(i),
-    [emblaApi]
-  );
+  const scrollTo = useCallback((i: number) => emblaApi && emblaApi.scrollTo(i), [emblaApi]);
 
   return (
     <section
       id="method"
-      className="relative isolate overflow-hidden bg-deep px-6 py-32 text-paper-ink sm:py-40"
+      aria-labelledby="method-heading"
+      className="relative isolate overflow-hidden bg-deep px-6 py-24 text-paper-ink sm:py-32"
     >
-      {/* Atmospheric mauve veil top-right */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-32 -right-32 h-[520px] w-[520px] rounded-full"
+        className="pointer-events-none absolute -top-24 -right-24 h-[420px] w-[420px] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(120,100,120,0.30), rgba(120,100,120,0.10) 40%, transparent 70%)",
+            "radial-gradient(circle, rgba(120,100,120,0.26), rgba(120,100,120,0.08) 40%, transparent 70%)",
           filter: "blur(30px)",
         }}
       />
@@ -104,90 +66,77 @@ export function MethodologyCarousel() {
           <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
             Method · Seven steps
           </p>
+          <h2 id="method-heading" className="sr-only">
+            How an IMS engagement actually runs
+          </h2>
           <CharSplit
             text={"How an IMS engagement\nactually runs."}
-            className="mt-5 max-w-3xl font-serif text-[clamp(2rem,4vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.012em]"
+            className="mt-5 max-w-3xl font-serif text-[clamp(1.75rem,3.4vw,2.5rem)] font-medium leading-[1.12] tracking-[-0.012em]"
             stagger={0.018}
           />
-          <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-300">
-            Seven steps, in this order, every time. No skipped chapters,
-            no surprise upsell. The first two are funded by us before any
-            decision to continue. Drag, swipe, or use the dots.
+          <p className="mt-5 max-w-2xl text-[0.9375rem] leading-[1.65] text-mauve-300">
+            Seven steps, in this order, every time. The first two are funded by us before any decision to continue.
           </p>
         </Reveal>
 
-        {/* Carousel */}
-        <div className="relative mt-16">
+        {/* Compact carousel — three cards visible at a time on desktop */}
+        <div className="relative mt-12">
           <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex gap-6">
+            <ol className="flex gap-4" role="list">
               {STEPS.map((step, i) => (
-                <div
+                <li
                   key={step.n}
-                  className="min-w-0 flex-[0_0_88%] sm:flex-[0_0_60%] lg:flex-[0_0_42%]"
+                  className="min-w-0 flex-[0_0_85%] sm:flex-[0_0_47%] lg:flex-[0_0_31%]"
                 >
                   <PointerTilt className="h-full" tilt={4}>
                     <article
-                      className={`group relative flex h-full min-h-[360px] flex-col justify-between overflow-hidden rounded-2xl border bg-deep-soft/60 p-8 backdrop-blur transition-all duration-500 sm:p-10 ${
+                      aria-current={i === selectedIndex ? "true" : undefined}
+                      className={`group relative flex h-full min-h-[220px] flex-col justify-between overflow-hidden rounded-xl border bg-deep-soft/60 p-5 backdrop-blur transition-all duration-500 sm:p-6 ${
                         i === selectedIndex
-                          ? "border-mauve-300/40 bg-deep-soft/80 shadow-[0_24px_60px_-24px_rgba(212,176,212,0.30)]"
-                          : "border-mauve-300/12 hover:border-mauve-300/25"
+                          ? "border-mauve-300/40 bg-deep-soft/80 shadow-[0_18px_44px_-20px_rgba(212,176,212,0.32)]"
+                          : "border-mauve-300/12 hover:border-mauve-300/22"
                       }`}
                     >
-                      {/* Step number watermark */}
                       <span
                         aria-hidden
-                        className="pointer-events-none absolute -top-6 -right-2 font-serif text-[12rem] leading-none text-mauve-300/10 transition-all duration-700 group-hover:text-mauve-300/20 sm:text-[16rem]"
+                        className="pointer-events-none absolute -top-3 -right-1 font-serif text-[6.5rem] leading-none text-mauve-300/10 transition-all duration-700 group-hover:text-mauve-300/18 sm:text-[8rem]"
                       >
                         {step.n}
                       </span>
-
-                      <div className="relative">
-                        <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
+                      <header className="relative">
+                        <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-200">
                           Step {step.n}
                         </p>
-                        <h3 className="mt-5 font-serif text-[clamp(1.875rem,3.2vw,2.5rem)] font-medium leading-[1.1] tracking-[-0.012em] text-paper-ink">
+                        <h3 className="mt-3 font-serif text-[1.375rem] font-medium leading-snug text-paper-ink sm:text-[1.5rem]">
                           {step.title}
                         </h3>
-                      </div>
-                      <p className="relative mt-6 max-w-md text-[1rem] leading-[1.7] text-mauve-300">
+                      </header>
+                      <p className="relative mt-4 text-[0.875rem] leading-[1.65] text-mauve-300">
                         {step.body}
                       </p>
-                      <div className="relative mt-8">
-                        <div className="h-px w-12 bg-mauve-300/40 transition-all duration-500 group-hover:w-32 group-hover:bg-mauve-200/80" />
+                      <div className="relative mt-5">
+                        <div className="h-px w-8 bg-mauve-300/40 transition-all duration-500 group-hover:w-20 group-hover:bg-mauve-200/80" />
                       </div>
                     </article>
                   </PointerTilt>
-                </div>
+                </li>
               ))}
-            </div>
+            </ol>
           </div>
 
-          {/* Prev / Next buttons */}
           <button
             type="button"
             aria-label="Previous step"
             onClick={scrollPrev}
             disabled={!canPrev}
             data-cursor="link"
-            className={`absolute top-1/2 -left-1 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-mauve-300/30 bg-deep/60 text-paper-ink backdrop-blur transition-all duration-300 hover:border-mauve-200 hover:bg-deep/80 hover:shadow-[0_8px_28px_-8px_rgba(212,176,212,0.45)] disabled:opacity-30 disabled:cursor-not-allowed lg:flex ${
+            className={`absolute top-1/2 -left-1 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-mauve-300/30 bg-deep/60 text-paper-ink backdrop-blur transition-all duration-300 hover:border-mauve-200 hover:bg-deep/80 hover:shadow-[0_8px_24px_-8px_rgba(212,176,212,0.4)] disabled:opacity-30 disabled:cursor-not-allowed lg:flex ${
               canPrev ? "opacity-100" : "opacity-30"
             }`}
-            style={{ left: "calc(-1.5rem)" }}
+            style={{ left: "-1.25rem" }}
           >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              aria-hidden
-            >
-              <path
-                d="M10 3L5 8l5 5"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+              <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
           <button
@@ -196,41 +145,24 @@ export function MethodologyCarousel() {
             onClick={scrollNext}
             disabled={!canNext}
             data-cursor="link"
-            className={`absolute top-1/2 -right-1 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-mauve-300/30 bg-deep/60 text-paper-ink backdrop-blur transition-all duration-300 hover:border-mauve-200 hover:bg-deep/80 hover:shadow-[0_8px_28px_-8px_rgba(212,176,212,0.45)] disabled:opacity-30 disabled:cursor-not-allowed lg:flex ${
+            className={`absolute top-1/2 -right-1 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-mauve-300/30 bg-deep/60 text-paper-ink backdrop-blur transition-all duration-300 hover:border-mauve-200 hover:bg-deep/80 hover:shadow-[0_8px_24px_-8px_rgba(212,176,212,0.4)] disabled:opacity-30 disabled:cursor-not-allowed lg:flex ${
               canNext ? "opacity-100" : "opacity-30"
             }`}
-            style={{ right: "calc(-1.5rem)" }}
+            style={{ right: "-1.25rem" }}
           >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              aria-hidden
-            >
-              <path
-                d="M6 3l5 5-5 5"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+              <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         </div>
 
-        {/* Dot pagination + step label */}
-        <div className="mt-10 flex flex-col items-center gap-5 sm:flex-row sm:justify-between">
-          <div className="font-sans text-[11px] uppercase tracking-[0.22em] text-mauve-300">
+        <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
+          <div className="font-sans text-[10px] uppercase tracking-[0.22em] text-mauve-300">
             <span className="text-mauve-200">{STEPS[selectedIndex].n}</span>
             <span className="mx-2 opacity-50">/</span>
             <span>{STEPS[selectedIndex].title}</span>
           </div>
-          <div
-            role="tablist"
-            aria-label="Methodology steps"
-            className="flex items-center gap-2"
-          >
+          <div role="tablist" aria-label="Methodology steps" className="flex items-center gap-1.5">
             {STEPS.map((s, i) => (
               <button
                 key={s.n}
@@ -240,19 +172,19 @@ export function MethodologyCarousel() {
                 aria-label={`Go to step ${s.n}, ${s.title}`}
                 onClick={() => scrollTo(i)}
                 data-cursor="link"
-                className="group relative h-6 px-0.5"
+                className="group relative h-5 px-0.5"
               >
                 <span
                   className={`block h-1 rounded-full transition-all duration-500 ${
                     i === selectedIndex
-                      ? "w-10 bg-mauve-200"
-                      : "w-6 bg-mauve-300/40 group-hover:bg-mauve-300/70"
+                      ? "w-8 bg-mauve-200"
+                      : "w-5 bg-mauve-300/40 group-hover:bg-mauve-300/70"
                   }`}
                 />
               </button>
             ))}
           </div>
-          <div className="font-sans text-[11px] uppercase tracking-[0.22em] text-mauve-300">
+          <div className="font-sans text-[10px] uppercase tracking-[0.22em] text-mauve-300">
             <span>{selectedIndex + 1}</span>
             <span className="mx-1 opacity-50">of</span>
             <span>{STEPS.length}</span>
