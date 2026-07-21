@@ -8,7 +8,7 @@ export const mortgageBrokers: Industry = {
   regulatorLine:
     "Built for firms answerable to the FCA — detection and drafting by the system, advice and sending by your authorised people.",
   accent: "amber",
-  leakLine: "Maturities, orphaned clients and unmentioned protection are quietly funding someone else's book.",
+  leakLine: "62 maturities were waiting in one sample book",
   meta: {
     title: "AI Revenue Recovery for Mortgage Brokers | IntelMadeSimple",
     description:
