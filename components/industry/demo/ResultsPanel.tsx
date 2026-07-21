@@ -97,7 +97,7 @@ export function ResultsPanel({ tools, industry }: ResultsPanelProps) {
         <button
           type="button"
           onClick={handleRunAnother}
-          className="text-sm font-medium text-paper-ink underline-offset-4 hover:underline"
+          className="inline-flex min-h-[44px] items-center text-sm font-medium text-paper-ink underline-offset-4 hover:underline"
         >
           Run another tool
         </button>
