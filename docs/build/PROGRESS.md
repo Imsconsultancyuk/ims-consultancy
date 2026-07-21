@@ -56,7 +56,7 @@ Branch: `feat/industry-pages`. Source docs: `01-IMS-Industry-Pages-System-Build.
 **Gate E:** `tsc --noEmit && lint --max-warnings 0 && validate:content && build` — ✅ green (2026-07-21). Lint scoped to all files this feature has touched through EPIC E (`app/industries/`, `app/sitemap.ts`, `app/_components/TrophyFooter.tsx`, `components/industry/`, `lib/industries/`, `lib/analytics.ts`); same out-of-scope pre-existing errors as Gate A–D (`Testimonials.tsx`, `case-studies/page.tsx`, `AnimatedBackground.tsx`, `Authority.tsx`, `AutomationSystems.tsx`, `ConversionHub.tsx`, `Results.tsx`, `NoiseField.tsx`), undisturbed and out of scope per rule 6. `validate:content` still reports 0 industries — expected, IND tickets not started.
 
 ## Doc 2 — Content & industries (begin only after IMS-050)
-- [ ] IND-000 · Synthetic dataset generator
+- [x] IND-000 · Synthetic dataset generator (`lib/industries/demo-data/generate.ts`, `npm run gen:demo-data`; `checkDemoData()` wired into `validate:content` so config drift fails the build — flagged deviation, not in Doc 1's file map verbatim but is the file map's own build-gate entry point; 5 vitest cases against a throwaway fixture industry prove determinism/drift-detection since `industries[]` is still empty)
 - [ ] IND-001 · Mortgage & Finance Brokers (`mortgage-brokers`, amber, FCA)
 - [ ] IND-002 · Wealth Management & IFAs (`ifas-wealth-managers`, emerald, FCA)
 - [ ] IND-003 · Law Firms (`law-firms`, indigo, SRA)
