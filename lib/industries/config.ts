@@ -12,6 +12,18 @@ export const DEMO_SECTION_ID = "live-demo";
 // (IMS-028, footnote only) and PrivacyShield (IMS-029, full block) so the
 // compliance wording exists in exactly one place. Do not edit ad hoc — any
 // change must trace back to a Doc 2 revision (hard rule 4).
+// IndustryNav (IMS-030) section list — order matches the ticket's bar order
+// exactly. Also the single source IMS-050's page template must use for each
+// SectionShell's `id` prop, so the nav's anchors always resolve.
+export const NAV_SECTIONS = [
+  { id: "tools", label: "Tools" },
+  { id: DEMO_SECTION_ID, label: "Live demo" },
+  { id: "data-protection", label: "Data protection" },
+  { id: "results", label: "Results" },
+  { id: "package", label: "Package" },
+  { id: "faq", label: "FAQ" },
+] as const;
+
 export const GDPR_COPY = {
   eyebrow: "Data protection",
   heading: "Your client data never reaches the AI",
