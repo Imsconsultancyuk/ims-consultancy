@@ -28,6 +28,7 @@ export interface Industry {
   slug: string; name: string; shortName: string;
   regulator: Regulator; regulatorLine: string;
   accent: Accent;
+  leakLine: string;   // one-line leak stat for the /industries hub card (IMS-054/IND-011) — distinct from pains[0].line
   meta: { title: string; description: string };
   hero: { h1: string; sub: string; stats: [Stat, Stat, Stat] };
   pains: [Pain, Pain, Pain];

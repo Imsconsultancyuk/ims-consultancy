@@ -72,6 +72,7 @@ export const IndustrySchema = z.object({
   regulator: z.enum(REGULATORS),
   regulatorLine: z.string(),
   accent: z.enum(ACCENTS),
+  leakLine: z.string(),
   meta: z.object({
     title: z.string().max(60, "meta.title must be ≤60 chars"),
     description: z

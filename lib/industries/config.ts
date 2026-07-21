@@ -29,6 +29,20 @@ export const NAV_SECTIONS = [
   { id: "faq", label: "FAQ" },
 ] as const;
 
+// /industries hub intro block — Doc 2 §IND-011, verbatim (hard rule 4).
+export const HUB_COPY = {
+  meta: {
+    title: "Industries — AI Revenue Recovery Tools | IntelMadeSimple",
+    description:
+      "Revenue intelligence for professional firms: mortgage, wealth, legal, recruitment, insurance, M&A, property, accountancy, SaaS and private healthcare.",
+  },
+  eyebrow: "Industries",
+  h1: "Revenue intelligence for firms with valuable books",
+  sub: "Every practice below runs on a client book that leaks — maturities missed, follow-ups dropped, gaps unadvised. We build the AI tools that find it, prove it on your own data, and capture it monthly.",
+  reassurance:
+    "Every demo on these pages runs on synthetic data. Identifiable fields are tokenised before any AI processing.",
+} as const;
+
 export const GDPR_COPY = {
   eyebrow: "Data protection",
   heading: "Your client data never reaches the AI",

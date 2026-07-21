@@ -1,4 +1,4 @@
-import type { BreadcrumbList, FAQPage, Service, WithContext } from "schema-dts";
+import type { BreadcrumbList, CollectionPage, FAQPage, Service, WithContext } from "schema-dts";
 
 import { JsonLd, orgJsonLd, websiteJsonLd } from "@/app/_components/JsonLd";
 import { SITE_URL } from "@/lib/industries/config";
@@ -48,4 +48,30 @@ export function IndustryJsonLd({ industry }: IndustryJsonLdProps) {
   };
 
   return <JsonLd data={[orgJsonLd, websiteJsonLd, service, faqPage, breadcrumbList]} />;
+}
+
+interface IndustriesHubJsonLdProps {
+  industries: Industry[];
+}
+
+/** Structured data for the /industries hub (IMS-054): a CollectionPage listing all registered industries in registry order. */
+export function IndustriesHubJsonLd({ industries }: IndustriesHubJsonLdProps) {
+  const pageUrl = `${SITE_URL}/industries`;
+
+  const collectionPage: WithContext<CollectionPage> = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    url: pageUrl,
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: industries.map((industry, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: industry.name,
+        url: `${SITE_URL}/industries/${industry.slug}`,
+      })),
+    },
+  };
+
+  return <JsonLd data={[orgJsonLd, websiteJsonLd, collectionPage]} />;
 }
