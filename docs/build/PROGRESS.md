@@ -35,14 +35,14 @@ Branch: `feat/industry-pages`. Source docs: `01-IMS-Industry-Pages-System-Build.
 **Gate C:** `tsc --noEmit && lint --max-warnings 0 && validate:content && build` — ✅ green (2026-07-21). Lint scoped to all 22 files this feature has touched through EPIC C (same out-of-scope pre-existing errors as Gate A/B, undisturbed). `validate:content` reports 0 industries — expected, `lib/industries/data/` doesn't exist yet (IND tickets not started, correctly gated behind IMS-050 per rule 2).
 
 ## EPIC D — Demo engine
-- [ ] IMS-040 · useDemoMachine
-- [ ] IMS-041 · SampleFileChip
-- [ ] IMS-042 · DropZone + PipelineRail
-- [ ] IMS-043 · ResultsPanel
-- [ ] IMS-044 · LiveDemoPlayer
-- [ ] IMS-045 · Demo a11y & touch hardening (`docs/qa-demo-a11y.md`)
+- [x] IMS-040 · useDemoMachine
+- [x] IMS-041 · SampleFileChip
+- [x] IMS-042 · DropZone + PipelineRail
+- [x] IMS-043 · ResultsPanel
+- [x] IMS-044 · LiveDemoPlayer
+- [x] IMS-045 · Demo a11y & touch hardening (`docs/qa-demo-a11y.md`)
 
-**Gate D:** `tsc --noEmit && lint --max-warnings 0 && build` + vitest unit tests — ☐ green
+**Gate D:** `tsc --noEmit && lint --max-warnings 0 && build` + vitest unit tests — ✅ green (2026-07-21). Lint scoped to all EPIC D files (`components/industry/demo/`, `app/dev/`). Vitest: 1 file, 7 tests passing (`useDemoMachine.test.ts`, from IMS-040). `validate:content` still reports 0 industries — expected, unchanged from Gate C (IND tickets not started). IMS-045's live QA findings, one fixed touch-target defect, and two out-of-scope contrast observations recorded in `docs/qa-demo-a11y.md`.
 
 ## EPIC E — Page assembly & SEO
 - [ ] IMS-050 · Industry page template ← unlocks IND tickets
