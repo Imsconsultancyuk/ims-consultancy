@@ -12,6 +12,7 @@ import { DemoMachineProvider } from "@/components/industry/demo/useDemoMachine";
 import { FAQAccordion } from "@/components/industry/FAQAccordion";
 import { FlowInfographic } from "@/components/industry/FlowInfographic";
 import { IndustryHero } from "@/components/industry/IndustryHero";
+import { IndustryJsonLd } from "@/components/industry/JsonLd";
 import { IndustryNav } from "@/components/industry/IndustryNav";
 import { PackageBlock } from "@/components/industry/PackageBlock";
 import { PainGrid } from "@/components/industry/PainGrid";
@@ -64,6 +65,7 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
 
   return (
     <>
+      <IndustryJsonLd industry={industry} />
       <IndustryHero
         industry={industry.slug}
         h1={industry.hero.h1}
