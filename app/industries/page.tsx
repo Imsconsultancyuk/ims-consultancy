@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function IndustriesHubPage() {
   return (
-    <>
+    <main>
       <IndustriesHubJsonLd industries={industries} />
 
       <section className="bg-paper pb-16 pt-24 text-ink md:pb-24 md:pt-32">
@@ -54,10 +54,7 @@ export default function IndustriesHubPage() {
                   {industry.name}
                 </h2>
                 <p className="text-sm text-ink-soft">{industry.leakLine}</p>
-                <p
-                  className="mt-auto text-sm font-medium"
-                  style={{ color: `var(--color-signal-${industry.accent})` }}
-                >
+                <p className="mt-auto text-sm font-medium text-ink-soft">
                   {industry.tools[0].name}
                 </p>
               </Link>
@@ -65,6 +62,6 @@ export default function IndustriesHubPage() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }
