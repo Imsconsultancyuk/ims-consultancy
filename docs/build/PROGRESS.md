@@ -45,15 +45,15 @@ Branch: `feat/industry-pages`. Source docs: `01-IMS-Industry-Pages-System-Build.
 **Gate D:** `tsc --noEmit && lint --max-warnings 0 && build` + vitest unit tests — ✅ green (2026-07-21). Lint scoped to all EPIC D files (`components/industry/demo/`, `app/dev/`). Vitest: 1 file, 7 tests passing (`useDemoMachine.test.ts`, from IMS-040). `validate:content` still reports 0 industries — expected, unchanged from Gate C (IND tickets not started). IMS-045's live QA findings, one fixed touch-target defect, and two out-of-scope contrast observations recorded in `docs/qa-demo-a11y.md`.
 
 ## EPIC E — Page assembly & SEO
-- [ ] IMS-050 · Industry page template ← unlocks IND tickets
-- [ ] IMS-051 · Metadata
-- [ ] IMS-052 · JSON-LD
-- [ ] IMS-053 · OG images
-- [ ] IMS-054 · Hub page `/industries`
-- [ ] IMS-055 · Sitemap, robots, internal links
-- [ ] IMS-056 · Performance budget
+- [x] IMS-050 · Industry page template ← unlocks IND tickets
+- [x] IMS-051 · Metadata
+- [x] IMS-052 · JSON-LD
+- [x] IMS-053 · OG images
+- [x] IMS-054 · Hub page `/industries` (`app/industries/page.tsx`; added `leakLine: string` to `Industry` type/schema, flagged as a spec-required deviation in the IMS-054 commit — Doc 1 unambiguously requires a per-card one-line leak statement distinct from `pains[0].line`)
+- [x] IMS-055 · Sitemap, robots, internal links (`app/sitemap.ts` hub + dynamic `industrySlugs`, `TrophyFooter.tsx` Industries column, `CTASection.tsx` `related` prop) — both AC are config-driven and satisfied structurally now (`industries`/`industrySlugs` still empty pending IND tickets); will complete numerically once IND-001…010 land, consistent with the IMS-054 precedent
+- [x] IMS-056 · Performance budget (`next/dynamic` + sized skeletons for `LiveDemoPlayer`, `DropZone`, `PrivacyShield`, `FlowInfographic`; confirmed separate chunk files; fonts already preloaded via `next/font`; no above-fold images) — numeric route-size budget and CLS trace deferred to IMS-061 per the ticket plan
 
-**Gate E:** `tsc --noEmit && lint --max-warnings 0 && validate:content && build` — ☐ green
+**Gate E:** `tsc --noEmit && lint --max-warnings 0 && validate:content && build` — ✅ green (2026-07-21). Lint scoped to all files this feature has touched through EPIC E (`app/industries/`, `app/sitemap.ts`, `app/_components/TrophyFooter.tsx`, `components/industry/`, `lib/industries/`, `lib/analytics.ts`); same out-of-scope pre-existing errors as Gate A–D (`Testimonials.tsx`, `case-studies/page.tsx`, `AnimatedBackground.tsx`, `Authority.tsx`, `AutomationSystems.tsx`, `ConversionHub.tsx`, `Results.tsx`, `NoiseField.tsx`), undisturbed and out of scope per rule 6. `validate:content` still reports 0 industries — expected, IND tickets not started.
 
 ## Doc 2 — Content & industries (begin only after IMS-050)
 - [ ] IND-000 · Synthetic dataset generator
