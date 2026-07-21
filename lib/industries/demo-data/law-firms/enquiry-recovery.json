@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "law-enquiries",
+  "rowCount": 312,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Example Sampleworth",
+      "company": "Northbridge Group Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Sample Testwell",
+      "company": "Kingsley Associates Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Example Demoford",
+      "company": "Cedarfield Solutions Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Example Sampleworth",
+      "company": "Harrow Solutions Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Demo Testwell",
+      "company": "Harrow Capital Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "121 enquiries never followed up",
+    "metrics": [
+      {
+        "label": "Est. instruction value",
+        "value": "£186,300",
+        "emphasis": true
+      },
+      {
+        "label": "Recovery sequences drafted",
+        "value": "121"
+      },
+      {
+        "label": "High-value (£3k+ matters)",
+        "value": "38"
+      }
+    ],
+    "solution": "The engine watches your enquiry channels and drafts same-day responses for fee-earner sign-off."
+  }
+}

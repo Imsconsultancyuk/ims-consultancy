@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "saas-billing",
+  "rowCount": 480,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Sample Exampleton",
+      "company": "Ashworth Associates Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Placeholder Demoford",
+      "company": "Oakstone Capital Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Example Placehold",
+      "company": "Northbridge Trading Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Placeholder Sampleworth",
+      "company": "Millbank Group Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Example Testwell",
+      "company": "Millbank Capital Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "£23,400 in recoverable failed payments",
+    "metrics": [
+      {
+        "label": "Recoverable MRR events",
+        "value": "£23,400",
+        "emphasis": true
+      },
+      {
+        "label": "Card-expiry saves",
+        "value": "61%"
+      },
+      {
+        "label": "Sequences drafted",
+        "value": "48"
+      }
+    ],
+    "solution": "Recovery flows tuned to failure cause — not one generic dunning email on repeat."
+  }
+}

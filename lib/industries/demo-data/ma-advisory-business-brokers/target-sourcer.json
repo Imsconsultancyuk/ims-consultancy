@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "ma-mandate",
+  "rowCount": 1,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Placeholder Exampleton",
+      "company": "Cedarfield Ventures Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Test Testwell",
+      "company": "Fenwick Group Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Sample Sampleworth",
+      "company": "Ashworth Holdings Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Sample Demoford",
+      "company": "Kingsley Holdings Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Demo Demoford",
+      "company": "Fenwick Associates Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "38 matched targets for one mandate",
+    "metrics": [
+      {
+        "label": "Scored targets",
+        "value": "38",
+        "emphasis": true
+      },
+      {
+        "label": "Strong strategic fits",
+        "value": "14"
+      },
+      {
+        "label": "Profiles drafted",
+        "value": "38"
+      }
+    ],
+    "solution": "Target Sourcer turns a two-week research job into a same-day deliverable."
+  }
+}

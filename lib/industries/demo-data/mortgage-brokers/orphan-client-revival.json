@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "mb-orphans",
+  "rowCount": 180,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Placeholder Exampleton",
+      "company": "Millbank Holdings Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Placeholder Demoford",
+      "company": "Northbridge Trading Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Demo Placehold",
+      "company": "Northbridge Solutions Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Example Placehold",
+      "company": "Northbridge Solutions Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Demo Demoford",
+      "company": "Ashworth Solutions Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "118 revivable clients found",
+    "metrics": [
+      {
+        "label": "Est. fee opportunity",
+        "value": "£29,150",
+        "emphasis": true
+      },
+      {
+        "label": "Contactable & opted-in",
+        "value": "118"
+      },
+      {
+        "label": "Sequences drafted",
+        "value": "118"
+      }
+    ],
+    "solution": "Orphan Client Revival turns your dormant back book into a monthly reactivation pipeline."
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "ma-mandates",
+  "rowCount": 31,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Test Demoford",
+      "company": "Kingsley Group Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Example Exampleton",
+      "company": "Oakstone Solutions Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Placeholder Exampleton",
+      "company": "Harrow Group Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Demo Exampleton",
+      "company": "Northbridge Ventures Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Demo Testwell",
+      "company": "Cedarfield Ventures Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "12 live buyer-seller matches in your own book",
+    "metrics": [
+      {
+        "label": "Matches found",
+        "value": "12",
+        "emphasis": true
+      },
+      {
+        "label": "High-probability",
+        "value": "5"
+      },
+      {
+        "label": "Intro memos drafted",
+        "value": "12"
+      }
+    ],
+    "solution": "The matcher makes sure the deal sitting in your own office never walks out of it."
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "hc-quotes",
+  "rowCount": 140,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Demo Testwell",
+      "company": "Northbridge Group Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Test Sampleworth",
+      "company": "Northbridge Trading Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Sample Demoford",
+      "company": "Oakstone Associates Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Demo Demoford",
+      "company": "Kingsley Capital Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Sample Demoford",
+      "company": "Millbank Partners Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "£96,000 of quoted treatment still open",
+    "metrics": [
+      {
+        "label": "Recoverable pipeline",
+        "value": "£96,000",
+        "emphasis": true
+      },
+      {
+        "label": "Sequences drafted",
+        "value": "112"
+      },
+      {
+        "label": "Finance-option candidates",
+        "value": "37"
+      }
+    ],
+    "solution": "Recovery runs weekly across every site — no plan goes quiet without three considered follow-ups."
+  }
+}

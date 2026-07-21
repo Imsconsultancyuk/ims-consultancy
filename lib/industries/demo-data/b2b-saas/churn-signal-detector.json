@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "saas-usage",
+  "rowCount": 480,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Example Testwell",
+      "company": "Harrow Trading Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Demo Demoford",
+      "company": "Millbank Solutions Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Example Placehold",
+      "company": "Millbank Group Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Placeholder Demoford",
+      "company": "Kingsley Associates Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Demo Sampleworth",
+      "company": "Cedarfield Group Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "32 accounts showing churn signals",
+    "metrics": [
+      {
+        "label": "ARR at risk",
+        "value": "£186,000",
+        "emphasis": true
+      },
+      {
+        "label": "Save plays drafted",
+        "value": "32"
+      },
+      {
+        "label": "High-risk enterprise accounts",
+        "value": "7"
+      }
+    ],
+    "solution": "The detector runs weekly so CS works a ranked save list, not a renewal surprise."
+  }
+}

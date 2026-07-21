@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "ins-book",
+  "rowCount": 620,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Placeholder Exampleton",
+      "company": "Oakstone Trading Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Example Exampleton",
+      "company": "Ashworth Group Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Sample Placehold",
+      "company": "Ashworth Partners Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Test Placehold",
+      "company": "Oakstone Group Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Placeholder Demoford",
+      "company": "Millbank Capital Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "41 renewals at risk in the next 90 days",
+    "metrics": [
+      {
+        "label": "GWP at risk",
+        "value": "£74,000",
+        "emphasis": true
+      },
+      {
+        "label": "Commission exposure",
+        "value": "£11,100"
+      },
+      {
+        "label": "Retention plans drafted",
+        "value": "41"
+      }
+    ],
+    "solution": "Renewal Defence gives your handlers a 90-day head start on every wobbling account."
+  }
+}

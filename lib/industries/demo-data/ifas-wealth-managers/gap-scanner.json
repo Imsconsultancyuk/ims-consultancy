@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "ifa-holdings",
+  "rowCount": 410,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Example Demoford",
+      "company": "Fenwick Associates Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Test Exampleton",
+      "company": "Millbank Solutions Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Placeholder Sampleworth",
+      "company": "Millbank Partners Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Example Exampleton",
+      "company": "Harrow Trading Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Example Exampleton",
+      "company": "Millbank Ventures Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "143 advice gaps across 88 clients",
+    "metrics": [
+      {
+        "label": "Advice fee opportunity",
+        "value": "£57,200",
+        "emphasis": true
+      },
+      {
+        "label": "Review agendas drafted",
+        "value": "88"
+      },
+      {
+        "label": "Unprotected high-earners",
+        "value": "26"
+      }
+    ],
+    "solution": "Gap Scanner gives every adviser a reason to call — with the numbers already on the agenda."
+  }
+}

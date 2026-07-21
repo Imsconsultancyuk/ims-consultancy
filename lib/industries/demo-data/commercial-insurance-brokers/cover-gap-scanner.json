@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "ins-schedules",
+  "rowCount": 310,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Test Testwell",
+      "company": "Millbank Holdings Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Example Sampleworth",
+      "company": "Kingsley Solutions Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Demo Sampleworth",
+      "company": "Millbank Holdings Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Placeholder Testwell",
+      "company": "Fenwick Partners Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Placeholder Exampleton",
+      "company": "Cedarfield Holdings Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "133 uncovered risks across 97 clients",
+    "metrics": [
+      {
+        "label": "Premium opportunity",
+        "value": "£52,300",
+        "emphasis": true
+      },
+      {
+        "label": "Review invitations drafted",
+        "value": "97"
+      },
+      {
+        "label": "Cyber gaps in exposed sectors",
+        "value": "44"
+      }
+    ],
+    "solution": "The scanner turns your existing book into your best new-business pipeline."
+  }
+}

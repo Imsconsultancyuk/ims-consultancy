@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "ins-submission",
+  "rowCount": 1,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Demo Sampleworth",
+      "company": "Northbridge Partners Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Example Testwell",
+      "company": "Ashworth Associates Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Placeholder Exampleton",
+      "company": "Ashworth Holdings Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Test Sampleworth",
+      "company": "Harrow Associates Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Test Exampleton",
+      "company": "Millbank Capital Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "Underwriter-ready pack in 6 minutes",
+    "metrics": [
+      {
+        "label": "Turnaround time",
+        "value": "6 min",
+        "emphasis": true
+      },
+      {
+        "label": "Fields auto-completed",
+        "value": "58"
+      },
+      {
+        "label": "Missing items flagged",
+        "value": "3"
+      }
+    ],
+    "solution": "First complete submission in wins — the engine makes that yours by default."
+  }
+}

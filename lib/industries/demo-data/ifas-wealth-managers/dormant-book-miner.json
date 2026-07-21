@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "ifa-register",
+  "rowCount": 410,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Placeholder Demoford",
+      "company": "Ashworth Holdings Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Sample Testwell",
+      "company": "Cedarfield Capital Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Test Exampleton",
+      "company": "Millbank Partners Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Demo Placehold",
+      "company": "Millbank Ventures Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Test Exampleton",
+      "company": "Harrow Trading Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "96 clients past review with fees at risk",
+    "metrics": [
+      {
+        "label": "Recurring fees at risk",
+        "value": "£38,400/yr",
+        "emphasis": true
+      },
+      {
+        "label": "Invitations drafted",
+        "value": "96"
+      },
+      {
+        "label": "18+ months unseen",
+        "value": "34"
+      }
+    ],
+    "solution": "The Miner runs monthly so drift is caught in weeks, not at renewal."
+  }
+}

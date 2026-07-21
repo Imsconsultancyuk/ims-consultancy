@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "hc-reviews",
+  "rowCount": 420,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Example Testwell",
+      "company": "Oakstone Solutions Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Sample Exampleton",
+      "company": "Harrow Capital Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Example Demoford",
+      "company": "Oakstone Capital Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Example Sampleworth",
+      "company": "Harrow Solutions Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Sample Testwell",
+      "company": "Oakstone Ventures Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "14 patient questions you don't answer publicly",
+    "metrics": [
+      {
+        "label": "Content pieces drafted",
+        "value": "14",
+        "emphasis": true
+      },
+      {
+        "label": "Competitor-answered gaps",
+        "value": "9"
+      },
+      {
+        "label": "Booking-intent topics",
+        "value": "6"
+      }
+    ],
+    "solution": "The engine makes your clinic the answer patients find — before they've chosen a clinic."
+  }
+}

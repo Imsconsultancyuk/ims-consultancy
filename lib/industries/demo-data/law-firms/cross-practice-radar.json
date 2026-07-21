@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "law-matters",
+  "rowCount": 890,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Sample Testwell",
+      "company": "Harrow Trading Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Placeholder Testwell",
+      "company": "Millbank Associates Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Test Sampleworth",
+      "company": "Oakstone Capital Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Demo Testwell",
+      "company": "Millbank Holdings Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Demo Placehold",
+      "company": "Kingsley Trading Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "208 clients with an obvious next matter",
+    "metrics": [
+      {
+        "label": "Cross-sell opportunity",
+        "value": "£83,600",
+        "emphasis": true
+      },
+      {
+        "label": "Introduction letters drafted",
+        "value": "208"
+      },
+      {
+        "label": "Conveyancing → wills matches",
+        "value": "156"
+      }
+    ],
+    "solution": "The radar turns every closed matter into the start of the next one."
+  }
+}

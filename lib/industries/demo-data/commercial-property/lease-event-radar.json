@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "cp-portfolio",
+  "rowCount": 150,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Test Exampleton",
+      "company": "Oakstone Trading Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Test Demoford",
+      "company": "Northbridge Holdings Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Test Testwell",
+      "company": "Oakstone Solutions Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Example Placehold",
+      "company": "Harrow Capital Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Demo Placehold",
+      "company": "Northbridge Solutions Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "44 lease events in the next 12 months",
+    "metrics": [
+      {
+        "label": "Fee-event value",
+        "value": "£96,400",
+        "emphasis": true
+      },
+      {
+        "label": "Client briefs drafted",
+        "value": "44"
+      },
+      {
+        "label": "Break clauses needing action ≤6 mo",
+        "value": "13"
+      }
+    ],
+    "solution": "The radar turns lease admin into a scheduled instruction pipeline."
+  }
+}

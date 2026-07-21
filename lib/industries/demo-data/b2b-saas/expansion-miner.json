@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "saas-usage-2",
+  "rowCount": 100,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Test Exampleton",
+      "company": "Cedarfield Associates Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Example Sampleworth",
+      "company": "Northbridge Associates Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Example Exampleton",
+      "company": "Harrow Ventures Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Test Placehold",
+      "company": "Harrow Capital Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Placeholder Sampleworth",
+      "company": "Millbank Ventures Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "41 expansion-ready accounts",
+    "metrics": [
+      {
+        "label": "Expansion ARR available",
+        "value": "£96,000",
+        "emphasis": true
+      },
+      {
+        "label": "At plan limits now",
+        "value": "18"
+      },
+      {
+        "label": "Plays drafted",
+        "value": "41"
+      }
+    ],
+    "solution": "The miner hands sales a warm expansion list from the same file that defends your base."
+  }
+}

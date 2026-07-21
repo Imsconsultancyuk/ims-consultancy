@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "mb-client-book",
+  "rowCount": 240,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Test Placehold",
+      "company": "Northbridge Solutions Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Test Exampleton",
+      "company": "Millbank Ventures Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Demo Placehold",
+      "company": "Kingsley Associates Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Example Demoford",
+      "company": "Ashworth Capital Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Example Sampleworth",
+      "company": "Northbridge Associates Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "62 clients maturing within 6 months",
+    "metrics": [
+      {
+        "label": "Est. proc fees in window",
+        "value": "£43,400",
+        "emphasis": true
+      },
+      {
+        "label": "Outreach drafted",
+        "value": "62"
+      },
+      {
+        "label": "Highest-urgency (≤60 days)",
+        "value": "17"
+      }
+    ],
+    "solution": "Maturity Radar watches your book continuously and hands your advisers a ready-to-send pipeline every Monday."
+  }
+}

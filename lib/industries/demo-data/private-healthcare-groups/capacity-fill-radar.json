@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "hc-diary",
+  "rowCount": 7,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Sample Sampleworth",
+      "company": "Cedarfield Group Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Sample Sampleworth",
+      "company": "Kingsley Group Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Demo Exampleton",
+      "company": "Harrow Trading Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Test Demoford",
+      "company": "Millbank Partners Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Test Sampleworth",
+      "company": "Oakstone Associates Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "19 fillable slots in the next 7 days",
+    "metrics": [
+      {
+        "label": "Slot value",
+        "value": "£8,550",
+        "emphasis": true
+      },
+      {
+        "label": "Matched patients invited",
+        "value": "57"
+      },
+      {
+        "label": "Overdue recalls included",
+        "value": "24"
+      }
+    ],
+    "solution": "The radar treats every gap as revenue with a deadline — and moves before the day arrives."
+  }
+}

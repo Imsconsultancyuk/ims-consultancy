@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "cp-signals",
+  "rowCount": 3,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Test Sampleworth",
+      "company": "Cedarfield Associates Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Demo Testwell",
+      "company": "Fenwick Holdings Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Sample Demoford",
+      "company": "Harrow Associates Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Demo Exampleton",
+      "company": "Fenwick Partners Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Demo Demoford",
+      "company": "Northbridge Group Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "23 pre-market opportunities in 3 postcodes",
+    "metrics": [
+      {
+        "label": "Opportunities scored",
+        "value": "23",
+        "emphasis": true
+      },
+      {
+        "label": "Motivated-owner signals",
+        "value": "9"
+      },
+      {
+        "label": "Approach letters drafted",
+        "value": "23"
+      }
+    ],
+    "solution": "The spotter reads the public record daily so your acquisitions desk moves before the listing exists."
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "acc-clients",
+  "rowCount": 350,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Sample Testwell",
+      "company": "Cedarfield Capital Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Placeholder Demoford",
+      "company": "Millbank Trading Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Example Demoford",
+      "company": "Millbank Partners Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Sample Testwell",
+      "company": "Kingsley Capital Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Test Demoford",
+      "company": "Northbridge Partners Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "78 advisory opportunities across the base",
+    "metrics": [
+      {
+        "label": "Advisory pipeline",
+        "value": "£142,000",
+        "emphasis": true
+      },
+      {
+        "label": "R&D candidates",
+        "value": "12"
+      },
+      {
+        "label": "Conversation packs drafted",
+        "value": "78"
+      }
+    ],
+    "solution": "The scanner re-runs each quarter — advisory stops depending on which partner remembered what."
+  }
+}

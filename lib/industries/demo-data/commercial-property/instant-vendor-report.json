@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "cp-brief",
+  "rowCount": 1,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Test Sampleworth",
+      "company": "Millbank Associates Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Sample Demoford",
+      "company": "Ashworth Capital Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Example Exampleton",
+      "company": "Cedarfield Trading Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Placeholder Demoford",
+      "company": "Northbridge Partners Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Placeholder Sampleworth",
+      "company": "Oakstone Capital Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "Pitch-ready vendor report in 90 seconds",
+    "metrics": [
+      {
+        "label": "Time to report",
+        "value": "90 sec",
+        "emphasis": true
+      },
+      {
+        "label": "Comparables evidenced",
+        "value": "11"
+      },
+      {
+        "label": "Pricing scenarios",
+        "value": "3"
+      }
+    ],
+    "solution": "Walk into every pitch as the firm that already did the work."
+  }
+}

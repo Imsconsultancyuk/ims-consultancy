@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "ma-region",
+  "rowCount": 2400,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Placeholder Exampleton",
+      "company": "Ashworth Group Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Sample Demoford",
+      "company": "Northbridge Holdings Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Placeholder Testwell",
+      "company": "Fenwick Partners Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Demo Demoford",
+      "company": "Kingsley Trading Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Test Testwell",
+      "company": "Kingsley Group Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "67 succession-risk targets identified",
+    "metrics": [
+      {
+        "label": "Priority pipeline",
+        "value": "67",
+        "emphasis": true
+      },
+      {
+        "label": "Directors 60+ with no successor",
+        "value": "41"
+      },
+      {
+        "label": "Approach letters drafted",
+        "value": "67"
+      }
+    ],
+    "solution": "The scanner refreshes monthly — your origination pipeline fills from public data, not networking luck."
+  }
+}

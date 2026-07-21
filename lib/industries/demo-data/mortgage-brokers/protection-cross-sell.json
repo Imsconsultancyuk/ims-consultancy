@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "mb-completions",
+  "rowCount": 95,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Placeholder Demoford",
+      "company": "Northbridge Capital Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Sample Sampleworth",
+      "company": "Oakstone Partners Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Example Demoford",
+      "company": "Cedarfield Solutions Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Sample Demoford",
+      "company": "Cedarfield Capital Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Test Placehold",
+      "company": "Northbridge Associates Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "71 completions with no protection recorded",
+    "metrics": [
+      {
+        "label": "First-year commission opportunity",
+        "value": "£24,850",
+        "emphasis": true
+      },
+      {
+        "label": "Review invitations drafted",
+        "value": "71"
+      },
+      {
+        "label": "High-exposure households",
+        "value": "23"
+      }
+    ],
+    "solution": "The engine flags the gap and drafts the invitation — your authorised adviser owns the advice."
+  }
+}

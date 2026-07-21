@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "rec-jobspec",
+  "rowCount": 1,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Placeholder Exampleton",
+      "company": "Harrow Ventures Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Sample Placehold",
+      "company": "Cedarfield Holdings Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Example Exampleton",
+      "company": "Kingsley Holdings Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Test Testwell",
+      "company": "Harrow Associates Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Placeholder Sampleworth",
+      "company": "Fenwick Partners Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "Ranked shortlist of 12 in 4 minutes",
+    "metrics": [
+      {
+        "label": "Time to shortlist",
+        "value": "4 min",
+        "emphasis": true
+      },
+      {
+        "label": "Evidence-backed profiles",
+        "value": "12"
+      },
+      {
+        "label": "Interview packs drafted",
+        "value": "12"
+      }
+    ],
+    "solution": "The accelerator makes yours the first credible shortlist on the client's desk — every time."
+  }
+}

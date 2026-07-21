@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "rec-targets",
+  "rowCount": 150,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Sample Exampleton",
+      "company": "Ashworth Ventures Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Demo Testwell",
+      "company": "Harrow Associates Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Sample Testwell",
+      "company": "Kingsley Trading Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Demo Exampleton",
+      "company": "Fenwick Group Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Sample Testwell",
+      "company": "Cedarfield Partners Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "27 accounts showing live hiring signals",
+    "metrics": [
+      {
+        "label": "Warm BD briefs drafted",
+        "value": "27",
+        "emphasis": true
+      },
+      {
+        "label": "Funding-round triggers",
+        "value": "9"
+      },
+      {
+        "label": "Leadership-change triggers",
+        "value": "11"
+      }
+    ],
+    "solution": "The radar makes every BD call a response to something that happened this week."
+  }
+}

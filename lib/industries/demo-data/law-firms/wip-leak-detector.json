@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "law-ledger",
+  "rowCount": 2400,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Sample Demoford",
+      "company": "Fenwick Group Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Example Testwell",
+      "company": "Ashworth Ventures Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Sample Exampleton",
+      "company": "Oakstone Partners Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Placeholder Sampleworth",
+      "company": "Millbank Holdings Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Test Exampleton",
+      "company": "Fenwick Partners Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "£47,200 unbilled beyond 90 days",
+    "metrics": [
+      {
+        "label": "Recoverable WIP",
+        "value": "£47,200",
+        "emphasis": true
+      },
+      {
+        "label": "Matters affected",
+        "value": "34"
+      },
+      {
+        "label": "Narratives drafted",
+        "value": "34"
+      }
+    ],
+    "solution": "The detector runs weekly so WIP gets billed at 30 days, not written off at 120."
+  }
+}

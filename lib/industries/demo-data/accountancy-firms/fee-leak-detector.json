@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "acc-engagements",
+  "rowCount": 350,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Sample Placehold",
+      "company": "Northbridge Group Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Placeholder Placehold",
+      "company": "Oakstone Partners Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Test Demoford",
+      "company": "Cedarfield Ventures Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Test Exampleton",
+      "company": "Oakstone Partners Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Example Placehold",
+      "company": "Kingsley Holdings Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "£38,200 of out-of-scope work unbilled",
+    "metrics": [
+      {
+        "label": "Recoverable fees",
+        "value": "£38,200",
+        "emphasis": true
+      },
+      {
+        "label": "Clients affected",
+        "value": "41"
+      },
+      {
+        "label": "Conversations drafted",
+        "value": "41"
+      }
+    ],
+    "solution": "The detector catches creep in the month it happens, while the value is fresh in the client's mind."
+  }
+}

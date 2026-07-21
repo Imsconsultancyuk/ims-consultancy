@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "rec-database",
+  "rowCount": 1500,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Demo Sampleworth",
+      "company": "Oakstone Trading Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Test Exampleton",
+      "company": "Oakstone Trading Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Example Sampleworth",
+      "company": "Cedarfield Group Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Demo Sampleworth",
+      "company": "Oakstone Solutions Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Placeholder Placehold",
+      "company": "Cedarfield Solutions Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "84 strong matches for live mandates",
+    "metrics": [
+      {
+        "label": "Fee value if 3 place",
+        "value": "£54,000",
+        "emphasis": true
+      },
+      {
+        "label": "Re-engagement drafted",
+        "value": "84"
+      },
+      {
+        "label": "Interview-ready this month",
+        "value": "22"
+      }
+    ],
+    "solution": "The engine re-reads your database every time a mandate opens — sourcing starts warm."
+  }
+}

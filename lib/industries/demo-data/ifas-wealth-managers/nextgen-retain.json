@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "ifa-households",
+  "rowCount": 410,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Placeholder Exampleton",
+      "company": "Millbank Capital Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Example Sampleworth",
+      "company": "Northbridge Partners Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Sample Testwell",
+      "company": "Ashworth Partners Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Sample Demoford",
+      "company": "Millbank Partners Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Example Testwell",
+      "company": "Northbridge Trading Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "64 households facing wealth transfer",
+    "metrics": [
+      {
+        "label": "AUM exposed",
+        "value": "£9.6m",
+        "emphasis": true
+      },
+      {
+        "label": "No next-gen contact on file",
+        "value": "51"
+      },
+      {
+        "label": "Introduction plans drafted",
+        "value": "64"
+      }
+    ],
+    "solution": "NextGen Retain starts the second-generation relationship years before the transfer event."
+  }
+}

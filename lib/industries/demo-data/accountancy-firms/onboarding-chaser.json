@@ -1,0 +1,50 @@
+{
+  "sampleFileId": "acc-onboarding",
+  "rowCount": 38,
+  "preview": [
+    {
+      "ref": "SMP-0001",
+      "name": "Test Testwell",
+      "company": "Northbridge Solutions Sample Ltd"
+    },
+    {
+      "ref": "SMP-0002",
+      "name": "Test Placehold",
+      "company": "Harrow Capital Sample Ltd"
+    },
+    {
+      "ref": "SMP-0003",
+      "name": "Placeholder Exampleton",
+      "company": "Harrow Partners Sample Ltd"
+    },
+    {
+      "ref": "SMP-0004",
+      "name": "Test Demoford",
+      "company": "Northbridge Capital Sample Ltd"
+    },
+    {
+      "ref": "SMP-0005",
+      "name": "Sample Testwell",
+      "company": "Millbank Holdings Sample Ltd"
+    }
+  ],
+  "resultPayload": {
+    "headline": "23 stalled onboardings unblocked",
+    "metrics": [
+      {
+        "label": "Onboarding time",
+        "value": "11 → 3 days",
+        "emphasis": true
+      },
+      {
+        "label": "Chase sequences drafted",
+        "value": "23"
+      },
+      {
+        "label": "Documents auto-requested",
+        "value": "61"
+      }
+    ],
+    "solution": "The chaser never forgets, never nags twice the same way, and starts your WIP a week earlier."
+  }
+}
