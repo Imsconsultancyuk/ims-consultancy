@@ -69,7 +69,7 @@ Branch: `feat/industry-pages`. Source docs: `01-IMS-Industry-Pages-System-Build.
 - [x] IND-010 · Private Healthcare Groups (`private-healthcare-groups`, fuchsia, CQC) — `shortName: "Group"` inferred; meta.title trimmed 67→60 chars
 
 **Gate (IND-001–010, all 10 industries registered):** `tsc --noEmit && eslint lib/industries --max-warnings 0 && validate:content && build && vitest run` — ✅ green (2026-07-21). `validate:content` reports "10 industries valid"; `next build` statically generates all 10 `/industries/[slug]` routes + 10 opengraph-image routes via `generateStaticParams`; vitest 12/12 passing. `npm run gen:demo-data` run for real, producing 30 deterministic JSON files (3 tools × 10 industries), committed separately.
-- [ ] IND-011 · Hub page `/industries` content
+- [x] IND-011 · Hub page `/industries` content — already satisfied by IMS-054's build, no code changes needed. Verified this session: `HUB_COPY` (`lib/industries/config.ts`) matches Doc 2's eyebrow/H1/sub/reassurance/meta verbatim (title 56/60 chars, description 150/120–160); `IndustriesHubJsonLd` emits a correct `CollectionPage` + `ItemList` of all 10 industries in registry order with canonical URLs; card grid renders in matching registry order with `leakLine` values confirmed byte-identical to Doc 2's canonical 10-item list; all 10 links resolve (proven by `next build`'s static generation of all 10 `/industries/[slug]` routes).
 - [ ] IND-012 · Final content QA (`docs/content-qa.md`)
 
 ## EPIC F — QA & launch gates (all P0)
