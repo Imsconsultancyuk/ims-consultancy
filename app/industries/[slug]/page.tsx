@@ -128,7 +128,7 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
       </SectionShell>
 
       <SectionShell id="next-step" eyebrow="Next step" heading="See it on your own book">
-        <CTASection industry={industry.slug} />
+        <CTASection industry={industry.slug} related={industry.related} />
       </SectionShell>
     </>
   );

@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 
+import { industrySlugs } from "@/lib/industries";
+
 const SITE = "https://intelmadesimple.com";
 
 type Entry = {
@@ -26,6 +28,14 @@ const ENTRIES: Entry[] = [
   { path: "/privacy", priority: 0.4, changeFrequency: "yearly" },
   { path: "/terms", priority: 0.4, changeFrequency: "yearly" },
   { path: "/ai-policy", priority: 0.65, changeFrequency: "yearly" },
+  { path: "/industries", priority: 0.9, changeFrequency: "monthly" },
+  ...industrySlugs.map(
+    (slug): Entry => ({
+      path: `/industries/${slug}`,
+      priority: 0.85,
+      changeFrequency: "monthly",
+    }),
+  ),
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
