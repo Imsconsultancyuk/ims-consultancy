@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { CTASection } from "@/components/industry/CTASection";
@@ -18,7 +19,7 @@ import { PrivacyShield } from "@/components/industry/PrivacyShield";
 import { ResultsBlock } from "@/components/industry/ResultsBlock";
 import { SectionShell } from "@/components/industry/SectionShell";
 import { ToolGrid } from "@/components/industry/ToolGrid";
-import { DEMO_SECTION_ID, GDPR_COPY } from "@/lib/industries/config";
+import { DEMO_SECTION_ID, GDPR_COPY, SITE_URL } from "@/lib/industries/config";
 import { getIndustry, industrySlugs } from "@/lib/industries";
 
 interface IndustryPageProps {
@@ -27,6 +28,33 @@ interface IndustryPageProps {
 
 export function generateStaticParams() {
   return industrySlugs.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: IndustryPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const industry = getIndustry(slug);
+  if (!industry) return {};
+
+  const url = `${SITE_URL}/industries/${industry.slug}`;
+
+  return {
+    title: industry.meta.title,
+    description: industry.meta.description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: industry.meta.title,
+      description: industry.meta.description,
+      url,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: industry.meta.title,
+      description: industry.meta.description,
+    },
+  };
 }
 
 export default async function IndustryPage({ params }: IndustryPageProps) {

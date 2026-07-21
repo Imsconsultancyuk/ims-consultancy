@@ -1,6 +1,11 @@
 // Site-wide constants for the Industry Pages feature. Single source of
 // truth so every CTA points at the same target (Doc 1 IMS-028 AC).
 
+// Matches the non-www canonical origin already used by every other page's
+// per-page SITE constant (e.g. app/services/seo/page.tsx) for canonical
+// URLs, OpenGraph URLs, and JSON-LD @ids (IMS-051/IMS-052).
+export const SITE_URL = "https://intelmadesimple.com";
+
 // Matches the book-call target used sitewide (TrophyHeader, TrophyFooter,
 // /contact, /services/*) — see docs/industry-pages-audit.md.
 export const BOOK_CALL_URL = "/contact";
