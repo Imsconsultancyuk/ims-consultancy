@@ -13,11 +13,11 @@ Branch: `feat/industry-pages`. Source docs: `01-IMS-Industry-Pages-System-Build.
 **npm audit:** installing zod/schema-dts/tsx surfaced 5 vulnerabilities. 3 fixed via plain `npm audit fix` (`@babel/core`, `brace-expansion`, `js-yaml`). 2 remain (`next`, `postcss`) — only fixable via `npm audit fix --force`, which bumps the pinned `next@16.2.4` to `16.2.10`, outside the stated dependency range and outside this ticket's scope. Left unforced; flagged here as a known, deferred item.
 
 ## EPIC B — Content system
-- [ ] IMS-010 · Type system (`lib/industries/types.ts`)
-- [ ] IMS-011 · Zod schema + build gate (`lib/industries/schema.ts`)
-- [ ] IMS-012 · Registry & loader (`lib/industries/index.ts`)
+- [x] IMS-010 · Type system (`lib/industries/types.ts`)
+- [x] IMS-011 · Zod schema + build gate (`lib/industries/schema.ts`; refinements verified against a deliberately-broken fixture — 8/8 expected issues caught with clear paths+messages, exit 1; reverted to empty registry, exit 0)
+- [x] IMS-012 · Registry & loader (`lib/industries/index.ts` — empty `industries[]` until IND tickets land, `getIndustry`/`industrySlugs` exported)
 
-**Gate B:** `tsc --noEmit && lint --max-warnings 0 && validate:content && build` — ☐ green
+**Gate B:** `tsc --noEmit && lint --max-warnings 0 && validate:content && build` — ✅ green (2026-07-21). Same lint scoping as Gate A: full-repo `eslint --max-warnings 0` still fails on the same 15 pre-existing errors/2 warnings in unrelated files (documented in Gate A) — clean on every file this EPIC touched (`lib/industries/{types,schema,validate-run,index}.ts`).
 
 ## EPIC C — Component library
 - [ ] IMS-020 · SectionShell
