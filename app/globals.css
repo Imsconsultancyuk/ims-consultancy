@@ -101,6 +101,67 @@
   animation-play-state: running;
 }
 
+/* Industry Pages — PrivacyShield vault sequence. Ambient loop, paused
+   off-screen (data-vault-visible, IntersectionObserver-driven) same as the
+   flow diagram above. data-pinned is set once the user operates
+   TokenizationToggle: it freezes the card at vault-centre and forces the
+   chosen face, overriding the loop until the page reloads (no "resume
+   ambient loop" affordance — not requested by the ticket). */
+@keyframes ims-vault-card {
+  0% { left: 0%; transform: translateX(0); opacity: 0; }
+  8% { opacity: 1; }
+  42%, 58% { left: 50%; transform: translateX(-50%); opacity: 1; }
+  92% { left: 100%; transform: translateX(-100%); opacity: 1; }
+  100% { left: 100%; transform: translateX(-100%); opacity: 0; }
+}
+.ims-vault-card {
+  animation: ims-vault-card 6s ease-in-out infinite;
+  animation-play-state: paused;
+  left: 0%;
+}
+[data-vault-visible] .ims-vault-card {
+  animation-play-state: running;
+}
+[data-pinned] .ims-vault-card {
+  animation-play-state: paused !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  opacity: 1 !important;
+}
+
+@keyframes ims-vault-face-raw {
+  0%, 44% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes ims-vault-face-tokenised {
+  0%, 44% { opacity: 0; }
+  50%, 100% { opacity: 1; }
+}
+.ims-vault-face-raw {
+  animation: ims-vault-face-raw 6s ease-in-out infinite;
+  animation-play-state: paused;
+}
+.ims-vault-face-tokenised {
+  animation: ims-vault-face-tokenised 6s ease-in-out infinite;
+  animation-play-state: paused;
+  opacity: 0;
+}
+[data-vault-visible] .ims-vault-face-raw,
+[data-vault-visible] .ims-vault-face-tokenised {
+  animation-play-state: running;
+}
+[data-pinned="raw"] .ims-vault-face-raw { opacity: 1 !important; animation-play-state: paused !important; }
+[data-pinned="raw"] .ims-vault-face-tokenised { opacity: 0 !important; animation-play-state: paused !important; }
+[data-pinned="tokenised"] .ims-vault-face-raw { opacity: 0 !important; animation-play-state: paused !important; }
+[data-pinned="tokenised"] .ims-vault-face-tokenised { opacity: 1 !important; animation-play-state: paused !important; }
+
+/* Static two-card fallback (reduced motion only, see media query below);
+   hidden by default so both the motion and static variants never render
+   simultaneously for a motion-tolerant visitor. */
+.ims-vault-static {
+  display: none;
+}
+
 :root {
   --background: var(--color-paper);
   --foreground: var(--color-ink);
@@ -697,6 +758,13 @@ html.js .ims-cinema-section:not(.ims-cinema-in) .ims-cinema-caption {
   .ims-paper-aura,
   .ims-footer-orb,
   .ims-footer-grid {
+    animation: none !important;
+  }
+  .ims-vault-motion { display: none; }
+  .ims-vault-static { display: grid; }
+  .ims-vault-card,
+  .ims-vault-face-raw,
+  .ims-vault-face-tokenised {
     animation: none !important;
   }
 }
