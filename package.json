@@ -9,6 +9,7 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "validate:content": "tsx lib/industries/validate-run.ts",
+    "gen:demo-data": "tsx lib/industries/demo-data/generate.ts",
     "test": "vitest run"
   },
   "dependencies": {
