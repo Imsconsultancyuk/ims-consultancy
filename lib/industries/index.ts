@@ -9,6 +9,7 @@ import { maAdvisoryBusinessBrokers } from "./data/ma-advisory-business-brokers";
 import { commercialProperty } from "./data/commercial-property";
 import { accountancyFirms } from "./data/accountancy-firms";
 import { b2bSaas } from "./data/b2b-saas";
+import { privateHealthcareGroups } from "./data/private-healthcare-groups";
 
 // IND tickets (gated on IMS-050) each add one data file under ./data and one
 // import line here, in the order listed in Doc 2.
@@ -22,6 +23,7 @@ export const industries: Industry[] = [
   commercialProperty,
   accountancyFirms,
   b2bSaas,
+  privateHealthcareGroups,
 ];
 
 export const industrySlugs: string[] = industries.map((industry) => industry.slug);
