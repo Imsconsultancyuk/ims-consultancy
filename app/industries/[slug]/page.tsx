@@ -1,22 +1,19 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 
 import { CTASection } from "@/components/industry/CTASection";
 import { DemoArmProvider } from "@/components/industry/demo/DemoContext";
-import { DropZone } from "@/components/industry/demo/DropZone";
-import { LiveDemoPlayer } from "@/components/industry/demo/LiveDemoPlayer";
 import { PipelineRail } from "@/components/industry/demo/PipelineRail";
 import { ResultsPanel } from "@/components/industry/demo/ResultsPanel";
 import { SampleFileChip } from "@/components/industry/demo/SampleFileChip";
 import { DemoMachineProvider } from "@/components/industry/demo/useDemoMachine";
 import { FAQAccordion } from "@/components/industry/FAQAccordion";
-import { FlowInfographic } from "@/components/industry/FlowInfographic";
 import { IndustryHero } from "@/components/industry/IndustryHero";
 import { IndustryJsonLd } from "@/components/industry/JsonLd";
 import { IndustryNav } from "@/components/industry/IndustryNav";
 import { PackageBlock } from "@/components/industry/PackageBlock";
 import { PainGrid } from "@/components/industry/PainGrid";
-import { PrivacyShield } from "@/components/industry/PrivacyShield";
 import { ResultsBlock } from "@/components/industry/ResultsBlock";
 import { SectionShell } from "@/components/industry/SectionShell";
 import { ToolGrid } from "@/components/industry/ToolGrid";
@@ -26,6 +23,38 @@ import { getIndustry, industrySlugs } from "@/lib/industries";
 interface IndustryPageProps {
   params: Promise<{ slug: string }>;
 }
+
+// IMS-056: below-fold, dynamically imported with a sized skeleton so the
+// initial JS payload for the route stays under budget without shifting
+// layout once each chunk hydrates.
+function SectionSkeleton({ className }: { className: string }) {
+  return (
+    <div
+      aria-hidden="true"
+      className={`animate-pulse rounded-lg border border-line bg-paper-soft ${className}`}
+    />
+  );
+}
+
+const LiveDemoPlayer = dynamic(
+  () => import("@/components/industry/demo/LiveDemoPlayer").then((m) => m.LiveDemoPlayer),
+  { loading: () => <SectionSkeleton className="min-h-[220px]" /> },
+);
+
+const DropZone = dynamic(
+  () => import("@/components/industry/demo/DropZone").then((m) => m.DropZone),
+  { loading: () => <SectionSkeleton className="min-h-[160px]" /> },
+);
+
+const PrivacyShield = dynamic(
+  () => import("@/components/industry/PrivacyShield").then((m) => m.PrivacyShield),
+  { loading: () => <SectionSkeleton className="min-h-[420px]" /> },
+);
+
+const FlowInfographic = dynamic(
+  () => import("@/components/industry/FlowInfographic").then((m) => m.FlowInfographic),
+  { loading: () => <SectionSkeleton className="min-h-[220px] sm:min-h-[64px]" /> },
+);
 
 export function generateStaticParams() {
   return industrySlugs.map((slug) => ({ slug }));
