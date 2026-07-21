@@ -36,6 +36,7 @@ export function SampleFileChip({ tool, accent }: SampleFileChipProps) {
     <button
       type="button"
       draggable
+      data-sample-chip
       onDragStart={handleDragStart}
       onClick={handleActivate}
       aria-pressed={isArmed}
