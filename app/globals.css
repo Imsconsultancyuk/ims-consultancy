@@ -38,6 +38,25 @@
   --font-serif: var(--font-serif);
   --font-sans: var(--font-sans);
 
+  /* Industry Pages — additive only, see docs/industry-pages-audit.md §2/§3.
+     --color-paper / --color-ink above are reused as-is, not duplicated. */
+  --color-line: #d8d5cc;
+  --color-positive: #1f8a5d;
+
+  --color-signal-amber:   #d97706;
+  --color-signal-emerald: #059669;
+  --color-signal-indigo:  #4f46e5;
+  --color-signal-violet:  #7c3aed;
+  --color-signal-sky:     #0284c7;
+  --color-signal-rose:    #e11d48;
+  --color-signal-teal:    #0d9488;
+  --color-signal-orange:  #ea580c;
+  --color-signal-cyan:    #0891b2;
+  --color-signal-fuchsia: #c026d3;
+
+  --font-industry-display: var(--font-industry-display);
+  --font-mono: var(--font-mono);
+
   /* Radius (slightly larger for premium feel) */
   --radius-sm: 0.25rem;
   --radius:    0.5rem;
@@ -47,6 +66,13 @@
   /* Motion */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Industry Pages — data/counter figures. Proportional digits jitter on
+   animated counters; tabular-nums is non-negotiable (Doc 1 §3). */
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
 }
 
 :root {

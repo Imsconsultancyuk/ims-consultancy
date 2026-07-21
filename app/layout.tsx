@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import { Cinzel, Cormorant_Garamond, Inter } from "next/font/google";
+import {
+  Cinzel,
+  Cormorant_Garamond,
+  Inter,
+  Space_Grotesk,
+  JetBrains_Mono,
+} from "next/font/google";
 import { SmoothScroll } from "./_components/SmoothScroll";
 import { SiteCursor } from "./_components/SiteCursor";
 import { NoiseField } from "./_components/NoiseField";
@@ -22,6 +28,22 @@ const cormorant = Cormorant_Garamond({
 const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
+});
+
+// Scoped to the Industry Pages feature only — does not replace the site's
+// Cinzel display identity. See docs/industry-pages-audit.md §3.
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-industry-display",
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
@@ -70,7 +92,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cinzel.variable} ${cormorant.variable} ${inter.variable} h-full antialiased`}
+      className={`${cinzel.variable} ${cormorant.variable} ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body
