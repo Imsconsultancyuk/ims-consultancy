@@ -57,16 +57,18 @@ Branch: `feat/industry-pages`. Source docs: `01-IMS-Industry-Pages-System-Build.
 
 ## Doc 2 — Content & industries (begin only after IMS-050)
 - [x] IND-000 · Synthetic dataset generator (`lib/industries/demo-data/generate.ts`, `npm run gen:demo-data`; `checkDemoData()` wired into `validate:content` so config drift fails the build — flagged deviation, not in Doc 1's file map verbatim but is the file map's own build-gate entry point; 5 vitest cases against a throwaway fixture industry prove determinism/drift-detection since `industries[]` is still empty)
-- [ ] IND-001 · Mortgage & Finance Brokers (`mortgage-brokers`, amber, FCA)
-- [ ] IND-002 · Wealth Management & IFAs (`ifas-wealth-managers`, emerald, FCA)
-- [ ] IND-003 · Law Firms (`law-firms`, indigo, SRA)
-- [ ] IND-004 · Executive Search & Recruitment (`executive-search-recruitment`, violet, ICO)
-- [ ] IND-005 · Commercial Insurance Brokers (`commercial-insurance-brokers`, sky, FCA)
-- [ ] IND-006 · M&A Advisory & Business Brokers (`ma-advisory-business-brokers`, rose, ICO)
-- [ ] IND-007 · Commercial Property (`commercial-property`, teal, ICO)
-- [ ] IND-008 · Accountancy Firms (`accountancy-firms`, orange, ICO)
-- [ ] IND-009 · B2B SaaS (`b2b-saas`, cyan, ICO)
-- [ ] IND-010 · Private Healthcare Groups (`private-healthcare-groups`, fuchsia, CQC)
+- [x] IND-001 · Mortgage & Finance Brokers (`mortgage-brokers`, amber, FCA) — verified via tsc + eslint scoped + single-object `IndustrySchema.safeParse` (full array-level `validate:content`/`build` deferred until all 10 IND industries exist, since `related` cross-refs and accent uniqueness can't resolve with a partial registry; confirmed the expected 2-issue failure matches only the not-yet-written related slugs)
+- [x] IND-002 · Wealth Management & IFAs (`ifas-wealth-managers`, emerald, FCA)
+- [x] IND-003 · Law Firms (`law-firms`, indigo, SRA)
+- [x] IND-004 · Executive Search & Recruitment (`executive-search-recruitment`, violet, ICO)
+- [x] IND-005 · Commercial Insurance Brokers (`commercial-insurance-brokers`, sky, FCA)
+- [x] IND-006 · M&A Advisory & Business Brokers (`ma-advisory-business-brokers`, rose, ICO) — `shortName: "Advisory Firm"` inferred, not explicit in Doc 2
+- [x] IND-007 · Commercial Property (`commercial-property`, teal, ICO) — `shortName: "Property Firm"` inferred; meta.title trimmed 64→58 chars
+- [x] IND-008 · Accountancy Firms (`accountancy-firms`, orange, ICO) — `shortName: "Practice"` inferred; meta.title trimmed 65→57 chars
+- [x] IND-009 · B2B SaaS (`b2b-saas`, cyan, ICO) — `shortName: "Company"` inferred; meta fit as drafted, no trimming
+- [x] IND-010 · Private Healthcare Groups (`private-healthcare-groups`, fuchsia, CQC) — `shortName: "Group"` inferred; meta.title trimmed 67→60 chars
+
+**Gate (IND-001–010, all 10 industries registered):** `tsc --noEmit && eslint lib/industries --max-warnings 0 && validate:content && build && vitest run` — ✅ green (2026-07-21). `validate:content` reports "10 industries valid"; `next build` statically generates all 10 `/industries/[slug]` routes + 10 opengraph-image routes via `generateStaticParams`; vitest 12/12 passing. `npm run gen:demo-data` run for real, producing 30 deterministic JSON files (3 tools × 10 industries), committed separately.
 - [ ] IND-011 · Hub page `/industries` content
 - [ ] IND-012 · Final content QA (`docs/content-qa.md`)
 
