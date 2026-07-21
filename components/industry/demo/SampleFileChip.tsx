@@ -40,7 +40,7 @@ export function SampleFileChip({ tool, accent }: SampleFileChipProps) {
       onDragStart={handleDragStart}
       onClick={handleActivate}
       aria-pressed={isArmed}
-      className="flex items-center gap-3 border border-line bg-paper px-4 py-3 text-left transition-shadow"
+      className="flex max-w-full flex-wrap items-center gap-3 border border-line bg-paper px-4 py-3 text-left transition-shadow"
       style={isArmed ? { boxShadow: `0 0 0 2px var(--color-signal-${accent})` } : undefined}
     >
       <svg viewBox="0 0 24 24" className="h-6 w-6 shrink-0 text-ink-soft" fill="none" aria-hidden="true">
