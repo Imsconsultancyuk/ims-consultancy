@@ -73,7 +73,7 @@ Branch: `feat/industry-pages`. Source docs: `01-IMS-Industry-Pages-System-Build.
 - [x] IND-012 · Final content QA (`docs/content-qa.md`) — all six audits recorded and passing (UK spellcheck, number-consistency, claims, synthetic-fiction, meta, read-aloud), plus a fresh Zod + generator equality gate run (typecheck/eslint/validate:content/vitest/build all green).
 
 ## EPIC F — QA & launch gates (all P0)
-- [ ] IMS-060 · Playwright smoke suite (all 10 slugs + hub)
+- [x] IMS-060 · Playwright smoke suite (all 10 slugs + hub) — `playwright.config.ts` runs against a production build (`next build && next start`, matching the "runs in CI before deploy" AC). `tests/e2e/industries.spec.ts` is data-driven off the live `industries` registry (no per-slug duplication): page-200 + H1-match + zero console errors/warnings, all in-page anchor links resolve, FAQ accordion toggles, first tool's "See it run" arms the demo zone and RUN (reduced-motion, deterministic) reveals the exact results headline, and dropping a fake OS file (synthetic `DataTransfer`/`File`, never touches disk) shows the exact Doc 2 rejection copy. 51/51 passing. One fix mid-ticket: `getByRole("alert")` initially collided with Next.js's own built-in empty `role="alert"` route announcer (`#__next-route-announcer__`) present on every page — resolved via `getByText(...)` on the exact rejection string instead of role-based lookup.
 - [ ] IMS-061 · Lighthouse CI (`docs/lighthouse-report.md`)
 - [ ] IMS-062 · Schema & meta validation
 - [ ] IMS-063 · Cross-device manual pass (`docs/qa-device-matrix.md`)

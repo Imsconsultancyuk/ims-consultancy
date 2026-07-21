@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "validate:content": "tsx lib/industries/validate-run.ts",
     "gen:demo-data": "tsx lib/industries/demo-data/generate.ts",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
@@ -30,6 +31,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.61.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
