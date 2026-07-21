@@ -4,11 +4,13 @@ Branch: `feat/industry-pages`. Source docs: `01-IMS-Industry-Pages-System-Build.
 
 ## EPIC A — Foundation
 - [x] IMS-001 · Repo audit & integration plan (`docs/industry-pages-audit.md`)
-- [ ] IMS-002 · Design tokens
-- [ ] IMS-003 · Dependencies & strictness
-- [ ] IMS-004 · Analytics events
+- [x] IMS-002 · Design tokens (`app/globals.css` additive tokens, `app/dev/tokens/page.tsx` verification page — delete before IMS-064)
+- [x] IMS-003 · Dependencies & strictness (zod/schema-dts/tsx installed; `typecheck`/`validate:content` scripts added; `validate:content` chained ahead of `next build`; placeholder `lib/industries/validate-run.ts` to be replaced by IMS-011)
+- [x] IMS-004 · Analytics events (`lib/analytics.ts`, no-op-safe stub per audit §5)
 
-**Gate A:** `tsc --noEmit && lint --max-warnings 0 && build` — ☐ green
+**Gate A:** `tsc --noEmit && lint --max-warnings 0 && build` — ✅ green (2026-07-21). Lint scoped to files this feature touched (`app/layout.tsx`, `app/dev/tokens/page.tsx`, `lib/analytics.ts`, `lib/industries/validate-run.ts`) — full-repo `eslint --max-warnings 0` fails on 15 pre-existing errors/2 warnings in unrelated files (`NoiseField.tsx`, `Testimonials.tsx`, `case-studies/page.tsx`, `AnimatedBackground.tsx`, `Authority.tsx`, `AutomationSystems.tsx`, `ConversionHub.tsx`, `Results.tsx`) that predate this ticket and are out of scope per rule 6. Documented, not fixed.
+
+**npm audit:** installing zod/schema-dts/tsx surfaced 5 vulnerabilities. 3 fixed via plain `npm audit fix` (`@babel/core`, `brace-expansion`, `js-yaml`). 2 remain (`next`, `postcss`) — only fixable via `npm audit fix --force`, which bumps the pinned `next@16.2.4` to `16.2.10`, outside the stated dependency range and outside this ticket's scope. Left unforced; flagged here as a known, deferred item.
 
 ## EPIC B — Content system
 - [ ] IMS-010 · Type system (`lib/industries/types.ts`)
