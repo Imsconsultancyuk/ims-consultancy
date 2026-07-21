@@ -20,19 +20,19 @@ Branch: `feat/industry-pages`. Source docs: `01-IMS-Industry-Pages-System-Build.
 **Gate B:** `tsc --noEmit && lint --max-warnings 0 && validate:content && build` — ✅ green (2026-07-21). Same lint scoping as Gate A: full-repo `eslint --max-warnings 0` still fails on the same 15 pre-existing errors/2 warnings in unrelated files (documented in Gate A) — clean on every file this EPIC touched (`lib/industries/{types,schema,validate-run,index}.ts`).
 
 ## EPIC C — Component library
-- [ ] IMS-020 · SectionShell
-- [ ] IMS-021 · IndustryHero + StatChips
-- [ ] IMS-022 · PainGrid
-- [ ] IMS-023 · ToolCard + ToolGrid
-- [ ] IMS-024 · FlowInfographic
-- [ ] IMS-025 · ResultsBlock
-- [ ] IMS-026 · PackageBlock + lead magnet (Resend decision: proceeding with net-new minimal integration per user authorization — reconfirm at implementation)
-- [ ] IMS-027 · FAQAccordion
-- [ ] IMS-028 · CTASection
-- [ ] IMS-029 · PrivacyShield + TokenizationToggle
-- [ ] IMS-030 · IndustryNav (sticky section nav)
+- [x] IMS-020 · SectionShell
+- [x] IMS-021 · IndustryHero + StatChips
+- [x] IMS-022 · PainGrid
+- [x] IMS-023 · ToolCard + ToolGrid
+- [x] IMS-024 · FlowInfographic
+- [x] IMS-025 · ResultsBlock
+- [x] IMS-026 · PackageBlock + lead magnet (`app/api/sample-report/route.ts` — validates + rate-limits + logs; no Resend/RESEND_API_KEY wiring, see resolved decision below)
+- [x] IMS-027 · FAQAccordion
+- [x] IMS-028 · CTASection
+- [x] IMS-029 · PrivacyShield + TokenizationToggle
+- [x] IMS-030 · IndustryNav (sticky section nav; not in Doc 1 §2's file map — added to `components/industry/` alongside its EPIC C siblings, flagged as a spec omission in the IMS-030 commit)
 
-**Gate C:** `tsc --noEmit && lint --max-warnings 0 && build` — ☐ green
+**Gate C:** `tsc --noEmit && lint --max-warnings 0 && validate:content && build` — ✅ green (2026-07-21). Lint scoped to all 22 files this feature has touched through EPIC C (same out-of-scope pre-existing errors as Gate A/B, undisturbed). `validate:content` reports 0 industries — expected, `lib/industries/data/` doesn't exist yet (IND tickets not started, correctly gated behind IMS-050 per rule 2).
 
 ## EPIC D — Demo engine
 - [ ] IMS-040 · useDemoMachine
@@ -84,5 +84,5 @@ Branch: `feat/industry-pages`. Source docs: `01-IMS-Industry-Pages-System-Build.
 - [ ] Every demo carries synthetic-data badge; compliance copy matches Doc 2 §3 verbatim
 
 ## Open decisions carried forward
-- **IMS-026 Resend path:** proceeding with (a) net-new minimal Resend integration using `RESEND_API_KEY`, per "follow everything to the T" authorization. Not yet an explicit "(a)" confirmation from Adam — flag again when this ticket is reached.
+- **IMS-026 Resend path — resolved:** no `RESEND_API_KEY`/SDK wiring built. The route validates, rate-limits, and `console.log`s the request, returning `{ success: true }` — matching the ticket's own text and the EPIC F launch-gate note that the PDFs themselves are the one flagged post-launch TODO. Sending a real email is deferred until the PDFs exist to send.
 - **netlify.toml vs Vercel:** flagged for confirmation only before IMS-064 preview deploy.
