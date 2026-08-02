@@ -1,36 +1,41 @@
 import type { Metadata } from "next";
 import {
-  Sora,
-  Instrument_Sans,
-  JetBrains_Mono,
+  Geist,
+  IBM_Plex_Sans,
+  IBM_Plex_Mono,
 } from "next/font/google";
 import { SmoothScroll } from "./_components/SmoothScroll";
 import { SiteCursor } from "./_components/SiteCursor";
 import { NoiseField } from "./_components/NoiseField";
 import "./globals.css";
 
-// Type system v3 (2026-07-25) — third pass through design-taste for the light
-// theme. Display: Sora, a clean geometric-humanist grotesk (premium, calm,
-// modern — distinct from both the retired serif and the condensed Bricolage).
-// Body: Instrument Sans, a neutral humanist sans. Both drive every
+// Type system v4 (2026-08-02) — letterforms only. Sizes, weights, tracking and
+// spacing are untouched from v3; this changes which typefaces fill the same
+// slots. Display: Geist, a Swiss-derived neo-grotesque — engineered and
+// institutional where Sora's geometric bowls read startup-generic at large
+// sizes. Body: IBM Plex Sans, a humanist sans, so the pairing has a real
+// grotesque-vs-humanist contrast instead of two interchangeable neutrals
+// (ui-ux-pro-max's professional-services typography set ranks Plex first for
+// trust registers). Mono: IBM Plex Mono, for family coherence with the body —
+// JetBrains Mono alongside Plex was an orphan. All three drive every
 // headline/body slot via the --font-* remap in globals.css, so component class
-// names (font-display / font-serif / font-sans) are unchanged.
-const sora = Sora({
-  variable: "--font-sora",
+// names (font-display / font-serif / font-sans / font-mono) are unchanged.
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const instrument = Instrument_Sans({
-  variable: "--font-instrument",
+const plexSans = IBM_Plex_Sans({
+  variable: "--font-plex",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains",
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
@@ -81,7 +86,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sora.variable} ${instrument.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${geist.variable} ${plexSans.variable} ${plexMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body

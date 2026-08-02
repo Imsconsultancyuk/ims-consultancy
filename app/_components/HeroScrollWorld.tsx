@@ -95,19 +95,30 @@ const BEATS: Beat[] = [
 interface HeroScrollWorldProps {
   videoSrc?: string;
   posterSrc?: string;
-  /** Viewport-heights of scroll distance the hero occupies. */
+  /**
+   * Viewport-heights of scroll distance the hero occupies.
+   *
+   * This sets the scrub pace. The clip is scrubbed over ScrollTrigger's range,
+   * which is trackHeight - viewportHeight, so the denominator is
+   * (scrollLength - 1) viewport-heights, NOT scrollLength — the final viewport
+   * height is the sticky release. House pace is 6.16 s/vh (the original 30.8s
+   * clip over 6vh, i.e. 5vh of scrub). The current clip runs 24.27s, so
+   * 24.27 / 6.16 = 3.94 vh of scrub, +1 for the release = 4.94. Recompute this
+   * whenever the clip changes.
+   */
   scrollLength?: number;
 }
 
 export function HeroScrollWorld({
   videoSrc = "/videos/hero/flagship.mp4",
   posterSrc = "/videos/hero/flagship-poster.jpg",
-  scrollLength = 6,
+  scrollLength = 4.94,
 }: HeroScrollWorldProps) {
   const trackRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const dimRef = useRef<HTMLDivElement>(null);
+  const introRef = useRef<HTMLDivElement>(null);
   const pointer = useRef<[number, number]>([0.5, 0.5]);
   const [activeBeat, setActiveBeat] = useState(0);
   const [clipReady, setClipReady] = useState(false);
@@ -169,6 +180,15 @@ export function HeroScrollWorld({
             video.currentTime = p * video.duration;
           }
           setActiveBeat(Math.min(BEATS.length - 1, Math.floor(p * BEATS.length)));
+          // The clip opens on its own wordmark and logo, which land in the same
+          // column as beat 1's headline and body. Rather than trim the clip
+          // (it plays front to end), lift a paper wash over the copy column for
+          // the opening beat only, released by the time the wordmark clears.
+          if (introRef.current) {
+            introRef.current.style.opacity = String(
+              Math.max(0, 1 - p / 0.11),
+            );
+          }
           // Dim the last frame so the closing CTA reads (ramps over final 26%).
           if (dimRef.current) {
             const dim = Math.max(0, (p - 0.74) / 0.26);
@@ -183,7 +203,14 @@ export function HeroScrollWorld({
   // Pointer parallax on the copy.
   useEffect(() => {
     if (typeof window === "undefined" || reduced) return;
+    // Touch devices never fire mousemove, so the rAF loop would run every frame
+    // for the life of the page writing the same transform.
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
     let raf = 0;
+    // Eased follower. Writing the pointer straight to transform tracks the
+    // cursor exactly, which reads as mechanical; lerping gives the copy its own
+    // small amount of inertia.
+    const eased: [number, number] = [0, 0];
     const onMove = (e: MouseEvent) => {
       pointer.current = [
         e.clientX / window.innerWidth - 0.5,
@@ -191,9 +218,10 @@ export function HeroScrollWorld({
       ];
     };
     const tick = () => {
-      const [px, py] = pointer.current;
+      eased[0] += (pointer.current[0] - eased[0]) * 0.08;
+      eased[1] += (pointer.current[1] - eased[1]) * 0.08;
       if (stageRef.current) {
-        stageRef.current.style.transform = `translate3d(${px * -16}px, ${py * -10}px, 0)`;
+        stageRef.current.style.transform = `translate3d(${eased[0] * -16}px, ${eased[1] * -10}px, 0)`;
       }
       raf = requestAnimationFrame(tick);
     };
@@ -233,13 +261,44 @@ export function HeroScrollWorld({
           />
         </div>
 
-        {/* Legibility scrim: cream-left behind the copy, clearing right. */}
+        {/* Legibility scrim: paper-left behind the copy, clearing right.
+            Tinted to --color-paper (#eff2fb); an earlier warm-cream mix threw a
+            muddy cast over the whole film once the palette went cool. Held at
+            0.90 behind the headline column so near-black type keeps AA, then
+            released hard past 55% so the film itself actually reads. */}
         <div
           aria-hidden
           className="absolute inset-0 -z-10"
           style={{
             background:
-              "linear-gradient(100deg, rgba(247,243,236,0.95) 0%, rgba(247,243,236,0.82) 32%, rgba(247,243,236,0.45) 60%, rgba(247,243,236,0.10) 100%), linear-gradient(to top, rgba(247,243,236,0.55) 0%, rgba(247,243,236,0) 44%)",
+              "linear-gradient(100deg, rgba(239,242,251,0.90) 0%, rgba(239,242,251,0.76) 34%, rgba(239,242,251,0.30) 62%, rgba(239,242,251,0) 100%), linear-gradient(to top, rgba(239,242,251,0.40) 0%, rgba(239,242,251,0) 40%)",
+          }}
+        />
+        {/* Mobile reinforcement. The scrim's gradient stops are element-relative:
+            34% of 1440px clears the desktop copy column, but 34% of 390px stops
+            short and body copy ends up over raw film. Flat wash under lg only. */}
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 lg:hidden"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(239,242,251,0.62) 0%, rgba(239,242,251,0.80) 30%, rgba(239,242,251,0.80) 82%, rgba(239,242,251,0.62) 100%)",
+          }}
+        />
+        {/* Intro wash: the clip's own opening title card sits exactly where beat 1's
+            copy sits. Opaque paper over the copy column at p=0, released by ~11%
+            once the wordmark has left frame, so the clip still runs front to end. */}
+        <div
+          ref={introRef}
+          aria-hidden
+          className="absolute inset-0 -z-10"
+          style={{
+            // Reduced motion never scrubs, so nothing would ever fade this out.
+            opacity: reduced ? 0 : 1,
+            // Two passes: horizontal clears the copy column, vertical knocks
+            // back the lower band where the clip's wordmark tail sits.
+            background:
+              "linear-gradient(100deg, rgba(239,242,251,1) 0%, rgba(239,242,251,1) 48%, rgba(239,242,251,0.74) 72%, rgba(239,242,251,0.30) 100%), linear-gradient(to top, rgba(239,242,251,0.72) 0%, rgba(239,242,251,0.55) 40%, rgba(239,242,251,0) 72%)",
           }}
         />
         {/* End-dim: fades up to cream over the final stretch so the closing CTA pops. */}
@@ -259,19 +318,30 @@ export function HeroScrollWorld({
               const isFirst = i === 0;
               const isLast = i === BEATS.length - 1;
               const visible = mounted && !reduced ? i === activeBeat : isFirst;
+              // Entering beats get a strong ease-out; the built-in `ease` is
+              // too weak to read as deliberate at this size. Exits run ~65% of
+              // the enter duration so the outgoing beat clears before the next
+              // one lands rather than the two overlapping at half opacity.
+              const enterMs = isFirst ? 500 : isLast ? 700 : 550;
+              const ms = visible ? enterMs : Math.round(enterMs * 0.65);
+              const curve = "cubic-bezier(0.23, 1, 0.32, 1)";
               return (
                 <div
                   key={beat.id}
+                  // opacity:0 still leaves the beat focusable and readable by
+                  // screen readers, so all six CTAs sat in the tab order at once.
+                  inert={!visible}
                   className={isFirst ? "relative" : "pointer-events-none absolute inset-0 top-1/2"}
                   style={
                     isFirst
-                      ? { opacity: visible ? 1 : 0, transition: "opacity 500ms ease" }
+                      ? {
+                          opacity: visible ? 1 : 0,
+                          transition: `opacity ${ms}ms ${curve}`,
+                        }
                       : {
                           opacity: visible ? 1 : 0,
                           transform: `translateY(${visible ? "-50%" : "calc(-50% + 26px)"})`,
-                          transition: isLast
-                            ? "opacity 700ms ease, transform 700ms ease"
-                            : "opacity 550ms ease, transform 550ms ease",
+                          transition: `opacity ${ms}ms ${curve}, transform ${ms}ms ${curve}`,
                         }
                   }
                 >
@@ -286,7 +356,7 @@ export function HeroScrollWorld({
                   <h1
                     id={isFirst ? "hero-heading" : undefined}
                     className="mt-6 font-serif text-[clamp(3rem,7vw,6.25rem)] font-semibold leading-[1.02] tracking-[-0.02em] text-ink"
-                    style={{ textShadow: "0 1px 1px rgba(247,243,236,0.6)" }}
+                    style={{ textShadow: "0 1px 2px rgba(239,242,251,0.55)" }}
                   >
                     {beat.title}
                   </h1>
@@ -300,7 +370,7 @@ export function HeroScrollWorld({
                       <Link
                         href={beat.cta.href}
                         data-cursor="cta"
-                        className="group inline-flex h-12 items-center gap-2 rounded-full px-8 text-sm font-medium tracking-[0.02em] text-paper-pure transition-all duration-300"
+                        className="group inline-flex h-12 items-center gap-2 rounded-full px-8 text-sm font-medium tracking-[0.02em] text-paper-pure transition-[transform,box-shadow] duration-200 ease-out active:scale-[0.97]"
                         style={{
                           background: "linear-gradient(120deg, #5f86f7 0%, #3a6df0 55%, #2a54d4 100%)",
                           boxShadow: "0 8px 34px -10px rgba(58,109,240,0.65)",

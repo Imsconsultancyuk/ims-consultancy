@@ -54,12 +54,12 @@
   --color-ink-700: #3a3c44;
   --color-ink-500: #8a8d95;
 
-  /* Type v3 — Sora (display) + Instrument Sans (body).
-     Every semantic slot points at the two loaded families so component class
-     names stay unchanged; the old serif/display identities are retired. */
-  --font-display: var(--font-sora);
-  --font-serif: var(--font-sora);
-  --font-sans: var(--font-instrument);
+  /* Type v4 — Geist (display) + IBM Plex Sans (body). Letterforms only:
+     every semantic slot still points at the loaded families so component class
+     names, sizes, weights and tracking are unchanged from v3. */
+  --font-display: var(--font-geist);
+  --font-serif: var(--font-geist);
+  --font-sans: var(--font-plex);
 
   /* Industry Pages — additive only, see docs/industry-pages-audit.md §2/§3.
      --color-paper / --color-ink above are reused as-is, not duplicated. */
@@ -77,8 +77,8 @@
   --color-signal-cyan:    #0891b2;
   --color-signal-fuchsia: #c026d3;
 
-  --font-industry-display: var(--font-sora);
-  --font-mono: var(--font-jetbrains);
+  --font-industry-display: var(--font-geist);
+  --font-mono: var(--font-plex-mono);
 
   /* Radius (slightly larger for premium feel) */
   --radius-sm: 0.25rem;
