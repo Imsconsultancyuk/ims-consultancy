@@ -139,7 +139,7 @@ export default function PricingPage() {
 
       <main className="flex flex-1 flex-col">
         <header
-          className="relative isolate overflow-hidden bg-deep px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
+          className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="pricing-heading"
         >
           <div className="relative mx-auto w-full max-w-4xl">
@@ -163,7 +163,7 @@ export default function PricingPage() {
 
         <section
           aria-labelledby="tiers-heading"
-          className="relative bg-paper px-6 py-20 text-ink sm:py-24 lg:py-28"
+          className="relative ims-band-light px-6 py-20 text-ink sm:py-24 lg:py-28"
         >
           <div
             aria-hidden
@@ -177,9 +177,9 @@ export default function PricingPage() {
               <Reveal key={t.slug} delay={i * 100}>
                 <article
                   id={t.slug}
-                  className={`ims-flip-card group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-paper-soft/80 p-8 backdrop-blur transition-all duration-500 hover:border-mauve-500/0 hover:bg-mauve-500 hover:shadow-[0_24px_60px_-22px_rgba(120,100,120,0.65)] sm:p-9 ${
+                  className={`ims-flip-card group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-paper-soft/80 p-8 backdrop-blur transition-all duration-500 hover:border-accent-500/0 hover:bg-accent-500 hover:shadow-[0_24px_60px_-22px_rgba(58, 109, 240,0.65)] sm:p-9 ${
                     i === 1
-                      ? "border-mauve-500/35 shadow-[0_18px_48px_-22px_rgba(120,100,120,0.32)]"
+                      ? "border-mauve-500/35 shadow-[0_18px_48px_-22px_rgba(58, 109, 240,0.32)]"
                       : "border-mauve-500/15"
                   }`}
                 >
@@ -245,7 +245,7 @@ export default function PricingPage() {
 
         <section
           aria-labelledby="pricing-principles-heading"
-          className="relative bg-deep-soft px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
+          className="relative ims-band-dark px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
         >
           <div className="mx-auto w-full max-w-3xl">
             <Reveal>
@@ -277,7 +277,7 @@ export default function PricingPage() {
 
         <section
           aria-labelledby="pricing-cta-heading"
-          className="relative bg-deep px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
+          className="relative ims-band-dark px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
         >
           <div className="mx-auto w-full max-w-3xl text-center">
             <Reveal>
@@ -298,7 +298,7 @@ export default function PricingPage() {
                   <Link
                     href="/contact"
                     data-cursor="cta"
-                    className="inline-flex h-12 items-center justify-center rounded-md bg-mauve-300 px-8 text-sm font-medium tracking-[0.02em] text-deep transition-all duration-300 hover:bg-mauve-200 hover:shadow-[0_8px_32px_-8px_rgba(212,176,212,0.55)]"
+                    className="inline-flex h-12 items-center justify-center rounded-md bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_8px_32px_-8px_rgba(126, 160, 255,0.55)]"
                   >
                     Request a proposal
                   </Link>

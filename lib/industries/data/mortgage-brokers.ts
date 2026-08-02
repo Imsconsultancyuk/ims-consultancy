@@ -6,17 +6,17 @@ export const mortgageBrokers: Industry = {
   shortName: "Mortgage Broker",
   regulator: "FCA",
   regulatorLine:
-    "Built for firms answerable to the FCA — detection and drafting by the system, advice and sending by your authorised people.",
+    "Built for firms answerable to the FCA. The system detects and drafts; your authorised people advise and send.",
   accent: "amber",
   leakLine: "62 maturities were waiting in one sample book",
   meta: {
     title: "AI Revenue Recovery for Mortgage Brokers | IntelMadeSimple",
     description:
-      "Maturity tracking, orphan client revival and protection cross-sell — AI tools that find the fees already sitting in your client book. GDPR-safe, FCA-aware.",
+      "Maturity tracking, orphan client revival and protection cross-sell. AI tools that find the fees already sitting in your client book. GDPR-safe, FCA-aware.",
   },
   hero: {
     h1: "Your client book already knows your next six months of fees",
-    sub: "Three tools that read your book, find every maturing deal and dormant client, and draft the outreach — before the high-street lender gets there.",
+    sub: "Three tools that read your book, find every maturing deal and dormant client, and draft the outreach before the high-street lender gets there.",
     stats: [
       { value: "£1,244", label: "avg proc fee left unclaimed per lapsed client" },
       { value: "6 mo", label: "warning your book gives you before every maturity" },
@@ -44,8 +44,13 @@ export const mortgageBrokers: Industry = {
     {
       id: "maturity-radar",
       name: "Maturity Radar",
-      problem: "Fixed-rate end dates are scheduled fee events — most books have no system watching them.",
+      problem: "Fixed-rate end dates are scheduled fee events. Most books have no system watching them.",
       outcome: "Every maturing client surfaced six months out, scored by fee value, outreach drafted.",
+      actions: [
+        "Open Monday's list and assign each maturing client to the adviser who wrote the original case.",
+        "Send the drafted outreach from that adviser's own inbox, highest fee value first.",
+        "Book the review before the incumbent lender's retention team makes its call.",
+      ],
       demo: {
         sampleFile: { id: "mb-client-book", label: "client_book_sample.csv", type: "csv", meta: "240 client records" },
         stages: [
@@ -68,8 +73,13 @@ export const mortgageBrokers: Industry = {
     {
       id: "orphan-client-revival",
       name: "Orphan Client Revival",
-      problem: "Clients with no assigned adviser remortgage with someone else — silently, every month.",
+      problem: "Clients with no assigned adviser remortgage with someone else. Silently, every month.",
       outcome: "Dormant and orphaned clients identified, verified as contactable, revival sequences drafted.",
+      actions: [
+        "Work the verified-contactable list first and park anything that failed the check.",
+        "Reassign every revived client to a named adviser so the book stops going orphan again.",
+        "Release the revival sequence in weekly batches your team can actually answer.",
+      ],
       demo: {
         sampleFile: { id: "mb-orphans", label: "orphaned_clients.csv", type: "csv", meta: "180 dormant records" },
         stages: [
@@ -94,6 +104,11 @@ export const mortgageBrokers: Industry = {
       name: "Protection Cross-Sell Engine",
       problem: "Most completions close without a protection conversation ever being logged.",
       outcome: "Every completion without protection flagged, review invitations drafted for adviser sign-off.",
+      actions: [
+        "Review the flagged completions and sign off only the drafts you are happy to send.",
+        "Route each invitation to the adviser who handled the mortgage, never a call centre.",
+        "Log the protection outcome back on the case so the flag clears itself.",
+      ],
       demo: {
         sampleFile: { id: "mb-completions", label: "completions_2024.csv", type: "csv", meta: "95 completed cases" },
         stages: [
@@ -109,7 +124,7 @@ export const mortgageBrokers: Industry = {
             { label: "Review invitations drafted", value: "71" },
             { label: "High-exposure households", value: "23" },
           ],
-          solution: "The engine flags the gap and drafts the invitation — your authorised adviser owns the advice.",
+          solution: "The engine flags the gap and drafts the invitation. Your authorised adviser owns the advice.",
         },
       },
     },
@@ -143,19 +158,19 @@ export const mortgageBrokers: Industry = {
     },
     {
       q: "What data do you need?",
-      a: "A CSV or CRM export of your client book — client, lender, rate end date, last contact. We map it in onboarding; you never reformat anything.",
+      a: "A CSV or CRM export of your client book: client, lender, rate end date, last contact. We map it in onboarding; you never reformat anything.",
     },
     {
       q: "How long does setup take?",
-      a: "Most firms are live within 14 days of granting data access. The demo you just ran mirrors the real pipeline — configuration, not construction.",
+      a: "Most firms are live within 14 days of granting data access. The demo you just ran mirrors the real pipeline. What follows is configuration, not construction.",
     },
     {
       q: "Does it work with our systems?",
-      a: "Yes — Smartr365, 360 Lifecycle, Intelligent Office and spreadsheet books. If it exports, we ingest it.",
+      a: "Yes. Smartr365, 360 Lifecycle, Intelligent Office and spreadsheet books. If it exports, we ingest it.",
     },
     {
       q: "What does it cost?",
-      a: "A one-off build fee then a monthly retainer — anchored so a single recovered maturity covers months of fees. Exact pricing on the call, based on book size.",
+      a: "A one-off build fee then a monthly retainer, anchored so a single recovered maturity covers months of fees. Exact pricing on the call, based on book size.",
     },
   ],
   related: ["ifas-wealth-managers", "commercial-insurance-brokers"],

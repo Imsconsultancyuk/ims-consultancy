@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import {
-  Cinzel,
-  Cormorant_Garamond,
-  Inter,
-  Space_Grotesk,
+  Sora,
+  Instrument_Sans,
   JetBrains_Mono,
 } from "next/font/google";
 import { SmoothScroll } from "./_components/SmoothScroll";
@@ -11,37 +9,28 @@ import { SiteCursor } from "./_components/SiteCursor";
 import { NoiseField } from "./_components/NoiseField";
 import "./globals.css";
 
-const cinzel = Cinzel({
-  variable: "--font-display",
+// Type system v3 (2026-07-25) — third pass through design-taste for the light
+// theme. Display: Sora, a clean geometric-humanist grotesk (premium, calm,
+// modern — distinct from both the retired serif and the condensed Bricolage).
+// Body: Instrument Sans, a neutral humanist sans. Both drive every
+// headline/body slot via the --font-* remap in globals.css, so component class
+// names (font-display / font-serif / font-sans) are unchanged.
+const sora = Sora({
+  variable: "--font-sora",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const instrument = Instrument_Sans({
+  variable: "--font-instrument",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
-  display: "swap",
-});
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  display: "swap",
-});
-
-const inter = Inter({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-// Scoped to the Industry Pages feature only — does not replace the site's
-// Cinzel display identity. See docs/industry-pages-audit.md §3.
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-industry-display",
-  subsets: ["latin"],
-  weight: ["500", "600"],
   display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
+  variable: "--font-jetbrains",
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
@@ -92,7 +81,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cinzel.variable} ${cormorant.variable} ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${sora.variable} ${instrument.variable} ${jetbrainsMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body

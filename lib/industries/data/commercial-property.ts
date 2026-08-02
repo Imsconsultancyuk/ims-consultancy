@@ -6,16 +6,16 @@ export const commercialProperty: Industry = {
   shortName: "Property Firm",
   regulator: "ICO",
   regulatorLine:
-    "Registered with the ICO and built to UK GDPR — your data is processed under a DPA, tokenised, and never used for model training.",
+    "Registered with the ICO and built to UK GDPR. Your data is processed under a DPA, tokenised, and never used for model training.",
   accent: "teal",
   leakLine: "44 lease events in one portfolio",
   meta: {
     title: "AI Revenue Tools for Commercial Property | IntelMadeSimple",
     description:
-      "Lease-event radar, off-market spotting and instant vendor reports — AI tools that surface instructions before competitors know they exist. GDPR-safe.",
+      "Lease-event radar, off-market spotting and instant vendor reports. AI tools that surface instructions before competitors know they exist. GDPR-safe.",
   },
   hero: {
-    h1: "Every lease event is an instruction — if you see it first",
+    h1: "Every lease event is an instruction, if you see it first",
     sub: "Three tools that read portfolios and public signals to surface rent reviews, breaks, off-market opportunities and pitch-winning reports.",
     stats: [
       { value: "44", label: "fee events found in one 150-lease portfolio" },
@@ -32,7 +32,7 @@ export const commercialProperty: Industry = {
     {
       title: "On-market only",
       cost: "23 deals",
-      line: "By the time it's listed, it's an auction — the margin was off-market.",
+      line: "By the time it's listed, it's an auction. The margin was off-market.",
     },
     {
       title: "Slow pitches",
@@ -46,6 +46,11 @@ export const commercialProperty: Industry = {
       name: "Lease Event Radar",
       problem: "Rent reviews and break clauses are diarised in five places and watched in none.",
       outcome: "Every lease event surfaced 12 months out with fee value, client briefs drafted.",
+      actions: [
+        "Take the 12-month view into the quarterly client meeting as the fee plan.",
+        "Send the drafted brief to the landlord before the tenant's surveyor calls.",
+        "Diarise the instruction, not just the lease event.",
+      ],
       demo: {
         sampleFile: { id: "cp-portfolio", label: "portfolio_leases.csv", type: "csv", meta: "150 leases" },
         stages: [
@@ -68,8 +73,13 @@ export const commercialProperty: Industry = {
     {
       id: "off-market-spotter",
       name: "Off-Market Spotter",
-      problem: "Planning applications and distress signals show tomorrow's deals — nobody reads them daily.",
+      problem: "Planning applications and distress signals show tomorrow's deals. Nobody reads them daily.",
       outcome: "Public signals scanned across target areas, off-market opportunities scored, approaches drafted.",
+      actions: [
+        "Read the scored signals over morning coffee instead of the full planning register.",
+        "Approach on the specific signal and reference the application by number.",
+        "Track which signal types convert in your patch and drop the ones that do not.",
+      ],
       demo: {
         sampleFile: { id: "cp-signals", label: "area_signals_sample.csv", type: "csv", meta: "3 postcodes · 90 days of signals" },
         stages: [
@@ -92,8 +102,13 @@ export const commercialProperty: Industry = {
     {
       id: "instant-vendor-report",
       name: "Instant Vendor Report",
-      problem: "Pitch-winning reports take days of comparables work — pitches happen this week.",
+      problem: "Pitch-winning reports take days of comparables work. Pitches happen this week.",
       outcome: "Address in, branded vendor report with comparables and strategy out in 90 seconds.",
+      actions: [
+        "Generate the report before the pitch call, not after it.",
+        "Check the comparables against your own recent deals and add the local colour.",
+        "Leave the branded report with the vendor as the reason to instruct you.",
+      ],
       demo: {
         sampleFile: { id: "cp-brief", label: "instruction_brief_sample.pdf", type: "pdf", meta: "1 property · pitch brief" },
         stages: [
@@ -147,15 +162,15 @@ export const commercialProperty: Industry = {
     },
     {
       q: "How long does setup take?",
-      a: "Most firms are live within 14 days of granting data access. The demo you just ran mirrors the real pipeline — configuration, not construction.",
+      a: "Most firms are live within 14 days of granting data access. The demo you just ran mirrors the real pipeline. What follows is configuration, not construction.",
     },
     {
       q: "Does it work with our systems?",
-      a: "Yes — Reapit, Alto, MRI Qube and schedule spreadsheets.",
+      a: "Yes. Reapit, Alto, MRI Qube and schedule spreadsheets.",
     },
     {
       q: "What does it cost?",
-      a: "A one-off build fee then a monthly retainer — anchored so a single recovered instruction covers months of fees. Exact pricing on the call, based on book size.",
+      a: "A one-off build fee then a monthly retainer, anchored so a single recovered instruction covers months of fees. Exact pricing on the call, based on book size.",
     },
   ],
   related: ["commercial-insurance-brokers", "ma-advisory-business-brokers"],

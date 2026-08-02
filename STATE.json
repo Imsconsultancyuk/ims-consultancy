@@ -1,0 +1,31 @@
+{
+  "project": "IMS Consultancy — site redesign + content/SEO engine",
+  "tier": "T1",
+  "tier_note": "Marketing + content site. One T2 touchpoint: existing contact form (name/email). No new personal-data model, no auth changes in this scope.",
+  "phase": "G0 (exiting to G1)",
+  "gates_passed": ["G0 brief filed (docs/gates/G0-report.md)"],
+  "decisions": {
+    "direction": "Evolve but bolder — IMS's own mauve/paper + jewellery-box-dark, Cormorant + Inter, variance 7 / motion 8 / density 3",
+    "about_face": "Named founder + first-person bio, NO photo (Adam to supply name)",
+    "priority": "Cinematic scroll-world hero FIRST, content/SEO engine second"
+  },
+  "open_risks": [
+    "FAL_KEY not set locally — hero VIDEO pixels blocked until Adam runs setx FAL_KEY and restarts session. On the critical path now that hero is priority 1.",
+    "Bolder token evolution + 34-keyframe/51-rgba migration in globals.css must ship as one milestone — a half-migrated globals.css reads as a bug.",
+    "Design must clear the AH Architecture quality floor; final sign-off via emil-design-eng + impeccable + user, never self-graded (2026-07-23 incident)."
+  ],
+  "escalations": [],
+  "last_verified_state": "HERO PREVIEW LIVE. 6 cinematic fal.ai stills generated (IMS account, nano-banana-pro, on-brand mauve) at public/videos/hero/scene-1..6.jpg. HeroScrollWorld.tsx built: pin + scene-scrub crossfade + 6 Decide/Build/Compound beats + bolder Cormorant display + DOM-text fallback + reduced-motion. Beat-overlap bug found via screenshot and fixed (mounted-gated opacity). Verified: tsc clean, prod build green, screenshot captured at /dev/hero-preview (localhost:3021). fal REST works via scripts/fal-hero-stills.mjs (reads FAL_KEY from .env.local). Founder = Adam Khalid. Billing confirmed IMS account.",
+  "next_actions": [
+    "G1: SITE_PLAN -> story/story-tree spec (hero beats already mapped in SITE_PLAN §3.1).",
+    "G2 (light T1): ADR-001 Remotion dependency; confirm no other new components beyond installed stack.",
+    "Build: evolved tokens in globals.css + HeroScrollWorld.tsx scrub skeleton (poster + DOM-text fallback, GSAP pin/scrub) = first visible milestone -> checkpoint.",
+    "Stage fal.ai calls (nano-banana-pro stills, seedance-1-0-pro legs) to fire once FAL_KEY is set.",
+    "Adam to supply: FAL_KEY (setx + restart) and the founder name for /about."
+  ],
+  "awaiting_human_approval": [
+    "First visible milestone (tokens + hero skeleton) — review before downstream pages",
+    "FAL_KEY set locally (blocks hero video)",
+    "Founder name for /about"
+  ]
+}

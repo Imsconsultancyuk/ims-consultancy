@@ -46,7 +46,7 @@ export default function TermsPage() {
 
       <main className="flex flex-1 flex-col">
         <header
-          className="relative isolate overflow-hidden bg-deep px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
+          className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="terms-heading"
         >
           <div className="relative mx-auto w-full max-w-3xl">
@@ -70,7 +70,7 @@ export default function TermsPage() {
 
         <section
           aria-labelledby="terms-body-heading"
-          className="relative bg-deep px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
+          className="relative ims-band-dark px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
         >
           <h2 id="terms-body-heading" className="sr-only">
             Terms detail

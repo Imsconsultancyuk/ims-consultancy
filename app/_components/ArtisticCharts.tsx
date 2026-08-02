@@ -65,8 +65,8 @@ function ConsolidationChart() {
       <svg viewBox="0 0 200 200" className="h-full w-full" aria-hidden>
         <defs>
           <linearGradient id="grad-consol" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#786478" stopOpacity="0.85" />
-            <stop offset="100%" stopColor="#d4b0d4" stopOpacity="0.95" />
+            <stop offset="0%" stopColor="#3a6df0" stopOpacity="0.85" />
+            <stop offset="100%" stopColor="#8aa9ff" stopOpacity="0.95" />
           </linearGradient>
           <filter id="glow-consol" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="1.6" result="blur" />
@@ -142,7 +142,7 @@ function ConsolidationChart() {
           const pathD = `M ${startX} ${t.y} C ${cpX} ${t.y}, ${cpX} ${endY}, ${endX} ${endY}`;
           return (
             <g key={`packet-${i}`} data-fade style={{ transitionDelay: `${1400 + i * 80}ms` }}>
-              <circle r="1.8" fill="#d4b0d4" filter="url(#glow-consol)">
+              <circle r="1.8" fill="#8aa9ff" filter="url(#glow-consol)">
                 <animateMotion
                   dur="3.6s"
                   repeatCount="indefinite"
@@ -182,7 +182,7 @@ function ConsolidationChart() {
           cx="186"
           cy="95"
           r="3"
-          fill="#d4b0d4"
+          fill="#8aa9ff"
           filter="url(#glow-consol)"
           className="ims-chart-pulse-strong"
           data-fade
@@ -209,8 +209,8 @@ function SmoothingChart() {
       <svg viewBox="0 0 200 200" className="h-full w-full" aria-hidden>
         <defs>
           <linearGradient id="grad-smooth" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#786478" stopOpacity="0.75" />
-            <stop offset="100%" stopColor="#d4b0d4" stopOpacity="0.95" />
+            <stop offset="0%" stopColor="#3a6df0" stopOpacity="0.75" />
+            <stop offset="100%" stopColor="#8aa9ff" stopOpacity="0.95" />
           </linearGradient>
           <filter id="glow-smooth" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="1.6" result="blur" />
@@ -248,7 +248,7 @@ function SmoothingChart() {
           y1="90"
           x2="100"
           y2="125"
-          stroke="#786478"
+          stroke="#3a6df0"
           strokeWidth="1"
           strokeOpacity="0.4"
           data-draw
@@ -263,7 +263,7 @@ function SmoothingChart() {
         <path
           d="M 96 121 L 100 127 L 104 121"
           fill="none"
-          stroke="#786478"
+          stroke="#3a6df0"
           strokeWidth="1"
           strokeOpacity="0.5"
           className="ims-chart-arrow"
@@ -292,7 +292,7 @@ function SmoothingChart() {
         {/* Three packets riding the smooth path on a loop */}
         {[0, 1, 2].map((i) => (
           <g key={`s-pkt-${i}`} data-fade style={{ transitionDelay: `${1900 + i * 80}ms` }}>
-            <circle r="2.2" fill="#d4b0d4" filter="url(#glow-smooth)">
+            <circle r="2.2" fill="#8aa9ff" filter="url(#glow-smooth)">
               <animateMotion
                 dur="3s"
                 repeatCount="indefinite"
@@ -316,7 +316,7 @@ function SmoothingChart() {
           cx="180"
           cy="140"
           r="3"
-          fill="#d4b0d4"
+          fill="#8aa9ff"
           filter="url(#glow-smooth)"
           className="ims-chart-pulse-strong"
           data-fade
@@ -340,12 +340,12 @@ function CompoundingChart() {
       <svg viewBox="0 0 200 200" className="h-full w-full" aria-hidden>
         <defs>
           <radialGradient id="grad-compound-core" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#d4b0d4" stopOpacity="1" />
-            <stop offset="100%" stopColor="#786478" stopOpacity="0.75" />
+            <stop offset="0%" stopColor="#8aa9ff" stopOpacity="1" />
+            <stop offset="100%" stopColor="#3a6df0" stopOpacity="0.75" />
           </radialGradient>
           <linearGradient id="grad-compound-arc" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#d4b0d4" stopOpacity="0.95" />
-            <stop offset="100%" stopColor="#786478" stopOpacity="0.45" />
+            <stop offset="0%" stopColor="#8aa9ff" stopOpacity="0.95" />
+            <stop offset="100%" stopColor="#3a6df0" stopOpacity="0.45" />
           </linearGradient>
           <filter id="glow-compound" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="1.8" result="blur" />
@@ -387,7 +387,7 @@ function CompoundingChart() {
             cx="100"
             cy="100"
             fill="none"
-            stroke="#d4b0d4"
+            stroke="#8aa9ff"
             strokeWidth="1.2"
             data-fade
             style={{ transitionDelay: `${1500 + i * 60}ms` }}
@@ -440,7 +440,7 @@ interface MiniChartProps {
 
 function MiniChart({ title, caption, children }: MiniChartProps) {
   return (
-    <article className="ims-flip-card group relative flex h-full flex-col items-center overflow-hidden rounded-2xl border border-mauve-500/15 bg-paper-soft/80 p-8 text-center backdrop-blur transition-all duration-500 hover:border-mauve-500/0 hover:bg-mauve-500 hover:shadow-[0_24px_60px_-22px_rgba(120,100,120,0.65)]">
+    <article className="ims-flip-card group relative flex h-full flex-col items-center overflow-hidden rounded-2xl border border-mauve-500/15 bg-paper-soft/80 p-8 text-center backdrop-blur transition-all duration-500 hover:border-accent-500/0 hover:bg-accent-500 hover:shadow-[0_24px_60px_-22px_rgba(58,109,240,0.6)]">
       <span
         aria-hidden="true"
         className="ims-flip-sweep pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"

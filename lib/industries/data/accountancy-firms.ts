@@ -6,13 +6,13 @@ export const accountancyFirms: Industry = {
   shortName: "Practice",
   regulator: "ICO",
   regulatorLine:
-    "Registered with the ICO and built to UK GDPR — your data is processed under a DPA, tokenised, and never used for model training.",
+    "Registered with the ICO and built to UK GDPR. Your data is processed under a DPA, tokenised, and never used for model training.",
   accent: "orange",
   leakLine: "78 advisory opportunities in one client base",
   meta: {
     title: "AI Advisory Tools for Accountancy Firms | IntelMadeSimple",
     description:
-      "Advisory opportunity scanning, fee-leak detection and onboarding automation — AI tools that turn a compliance client base into an advisory pipeline. GDPR-safe.",
+      "Advisory opportunity scanning, fee-leak detection and onboarding automation. AI tools that turn a compliance client base into an advisory pipeline. GDPR-safe.",
   },
   hero: {
     h1: "Your compliance base is an advisory goldmine nobody's mining",
@@ -44,8 +44,13 @@ export const accountancyFirms: Industry = {
     {
       id: "advisory-opportunity-scanner",
       name: "Advisory Opportunity Scanner",
-      problem: "Advisory triggers hide in data your firm already holds — nobody reads the base as one dataset.",
+      problem: "Advisory triggers hide in data your firm already holds. Nobody reads the base as one dataset.",
       outcome: "Every client scanned for advisory triggers, opportunities sized, partner conversation packs drafted.",
+      actions: [
+        "Take the sized opportunities into the partner meeting as an agenda, not a report.",
+        "Attach the drafted conversation pack to the next compliance meeting with that client.",
+        "Price the advisory work before the year-end conversation, not after it.",
+      ],
       demo: {
         sampleFile: { id: "acc-clients", label: "client_base_sample.csv", type: "csv", meta: "350 clients" },
         stages: [
@@ -61,15 +66,20 @@ export const accountancyFirms: Industry = {
             { label: "R&D candidates", value: "12" },
             { label: "Conversation packs drafted", value: "78" },
           ],
-          solution: "The scanner re-runs each quarter — advisory stops depending on which partner remembered what.",
+          solution: "The scanner re-runs each quarter, so advisory stops depending on which partner remembered what.",
         },
       },
     },
     {
       id: "fee-leak-detector",
       name: "Fee Leak Detector",
-      problem: "Scope creep is invisible until year-end margin review — then it's history.",
+      problem: "Scope creep is invisible until year-end margin review, and by then it's history.",
       outcome: "Out-of-scope work surfaced monthly against engagement letters, fee conversations drafted.",
+      actions: [
+        "Review out-of-scope work against the engagement letter while it is still this month's work.",
+        "Open the drafted fee conversation before the extra work is finished.",
+        "Update the engagement letter so the same leak does not repeat next year.",
+      ],
       demo: {
         sampleFile: { id: "acc-engagements", label: "engagements_sample.csv", type: "csv", meta: "350 engagements · time data" },
         stages: [
@@ -94,6 +104,11 @@ export const accountancyFirms: Industry = {
       name: "Onboarding Chaser",
       problem: "Onboarding stalls on unanswered document requests nobody has time to chase.",
       outcome: "Every stalled onboarding chased automatically with polite persistence, status board live.",
+      actions: [
+        "Read the status board instead of asking the team where each client has got to.",
+        "Let the chaser run and step in only on the clients it flags as stuck.",
+        "Close onboarding the day the last document lands, not at the next review.",
+      ],
       demo: {
         sampleFile: { id: "acc-onboarding", label: "onboarding_status.csv", type: "csv", meta: "38 in-progress clients" },
         stages: [
@@ -147,15 +162,15 @@ export const accountancyFirms: Industry = {
     },
     {
       q: "How long does setup take?",
-      a: "Most firms are live within 14 days of granting data access. The demo you just ran mirrors the real pipeline — configuration, not construction.",
+      a: "Most firms are live within 14 days of granting data access. The demo you just ran mirrors the real pipeline. What follows is configuration, not construction.",
     },
     {
       q: "Does it work with our systems?",
-      a: "Yes — Xero HQ, IRIS, Karbon, Senta and practice-management exports.",
+      a: "Yes. Xero HQ, IRIS, Karbon, Senta and practice-management exports.",
     },
     {
       q: "What does it cost?",
-      a: "A one-off build fee then a monthly retainer — anchored so a single recovered advisory engagement covers months of fees. Exact pricing on the call, based on book size.",
+      a: "A one-off build fee then a monthly retainer, anchored so a single recovered advisory engagement covers months of fees. Exact pricing on the call, based on book size.",
     },
   ],
   related: ["law-firms", "ifas-wealth-managers"],

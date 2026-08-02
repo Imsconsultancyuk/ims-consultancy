@@ -14,6 +14,11 @@ function buildFixtureTool(overrides: Partial<Tool["demo"]["result"]> = {}): Tool
     name: "Fixture Tool",
     problem: "Fixture problem line.",
     outcome: "Fixture outcome line.",
+    actions: [
+      "Fixture action line one.",
+      "Fixture action line two.",
+      "Fixture action line three.",
+    ],
     demo: {
       sampleFile: { id: "fixture-sample", label: "fixture.csv", type: "csv", meta: "42 fixture records" },
       stages: [

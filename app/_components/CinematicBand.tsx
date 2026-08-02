@@ -134,7 +134,7 @@ export function CinematicBand() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 70% 50%, rgba(120,100,120,0.18), transparent 60%)",
+              "radial-gradient(ellipse at 70% 50%, rgba(58, 109, 240,0.18), transparent 60%)",
           }}
         />
 

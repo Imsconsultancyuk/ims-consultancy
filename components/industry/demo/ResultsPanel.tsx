@@ -92,7 +92,7 @@ export function ResultsPanel({ tools, industry }: ResultsPanelProps) {
           onClick={() => track("book_call_clicked", { industry, tool: tool.id })}
           className="inline-flex items-center justify-center rounded-md bg-paper px-6 py-3 text-sm font-medium text-ink transition-opacity hover:opacity-90"
         >
-          Book 20 minutes — run it on your book
+          Book 20 minutes, run it on your book
         </a>
         <button
           type="button"

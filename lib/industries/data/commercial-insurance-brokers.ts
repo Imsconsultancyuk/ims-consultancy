@@ -6,16 +6,16 @@ export const commercialInsuranceBrokers: Industry = {
   shortName: "Broker",
   regulator: "FCA",
   regulatorLine:
-    "Built for firms answerable to the FCA — detection and drafting by the system, advice and sending by your authorised people.",
+    "Built for firms answerable to the FCA. The system detects and drafts; your authorised people advise and send.",
   accent: "sky",
   leakLine: "41 renewals wobbling in the next 90 days",
   meta: {
     title: "AI Revenue Recovery for Insurance Brokers | IntelMadeSimple",
     description:
-      "Renewal defence, cover-gap scanning and quote turnaround — AI tools that protect your book and win the ones you quote. GDPR-safe, FCA-aware.",
+      "Renewal defence, cover-gap scanning and quote turnaround. AI tools that protect your book and win the ones you quote. GDPR-safe, FCA-aware.",
   },
   hero: {
-    h1: "Your renewal book is your business — defend it like one",
+    h1: "Your renewal book is your business. Defend it like one",
     sub: "Three tools that spot at-risk renewals 90 days out, find uncovered risks across your book, and get your submissions to underwriters first.",
     stats: [
       { value: "90 days", label: "before renewal, when retention is won or lost" },
@@ -32,7 +32,7 @@ export const commercialInsuranceBrokers: Industry = {
     {
       title: "Uncovered risks",
       cost: "£52k",
-      line: "Clients hold property cover and no cyber, D&O or BI — nobody's checked the book.",
+      line: "Clients hold property cover and no cyber, D&O or BI. Nobody has checked the book.",
     },
     {
       title: "Slow submissions",
@@ -44,8 +44,13 @@ export const commercialInsuranceBrokers: Industry = {
     {
       id: "renewal-defence",
       name: "Renewal Defence",
-      problem: "Churn risk hides in mid-term behaviour — claims friction, contact gaps, premium jumps.",
+      problem: "Churn risk hides in mid-term behaviour: claims friction, contact gaps, premium jumps.",
       outcome: "Every renewal risk-scored 90 days out, retention outreach drafted for account handlers.",
+      actions: [
+        "Give each account handler their at-risk renewals 90 days out, not 30.",
+        "Send the drafted retention outreach before the incumbent insurer's invitation lands.",
+        "Escalate anything above your premium threshold to the director who signed the account.",
+      ],
       demo: {
         sampleFile: { id: "ins-book", label: "policy_book.csv", type: "csv", meta: "620 policies" },
         stages: [
@@ -70,6 +75,11 @@ export const commercialInsuranceBrokers: Industry = {
       name: "Cover Gap Scanner",
       problem: "Cross-sell across a 600-policy book is impossible client-by-client.",
       outcome: "Every obvious uncovered risk flagged and sized, review invitations drafted.",
+      actions: [
+        "Pick the gaps that match the agencies you actually hold and park the rest.",
+        "Attach the drafted invitation to the renewal review already in the diary.",
+        "Record any client decline in writing so the file evidences the advice given.",
+      ],
       demo: {
         sampleFile: { id: "ins-schedules", label: "client_schedules.csv", type: "csv", meta: "310 clients · cover schedules" },
         stages: [
@@ -94,6 +104,11 @@ export const commercialInsuranceBrokers: Industry = {
       name: "Quote Turnaround Engine",
       problem: "Assembling a clean underwriter submission from client documents takes days.",
       outcome: "Client docs in, structured underwriter-ready submission pack out in minutes.",
+      actions: [
+        "Check the submission pack against the client's own documents before it goes out.",
+        "Send the same clean pack to every underwriter on the panel.",
+        "Reuse last year's pack as the starting point at the next renewal.",
+      ],
       demo: {
         sampleFile: { id: "ins-submission", label: "submission_docs_sample.pdf", type: "pdf", meta: "1 client · 4 documents" },
         stages: [
@@ -109,7 +124,7 @@ export const commercialInsuranceBrokers: Industry = {
             { label: "Fields auto-completed", value: "58" },
             { label: "Missing items flagged", value: "3" },
           ],
-          solution: "First complete submission in wins — the engine makes that yours by default.",
+          solution: "First complete submission in wins. The engine makes that yours by default.",
         },
       },
     },
@@ -143,19 +158,19 @@ export const commercialInsuranceBrokers: Industry = {
     },
     {
       q: "What data do you need?",
-      a: "A policy book export — client, line, renewal date, premium, claims flag — plus cover schedules for the scanner.",
+      a: "A policy book export covering client, line, renewal date, premium and claims flag, plus cover schedules for the scanner.",
     },
     {
       q: "How long does setup take?",
-      a: "Most firms are live within 14 days of granting data access. The demo you just ran mirrors the real pipeline — configuration, not construction.",
+      a: "Most firms are live within 14 days of granting data access. The demo you just ran mirrors the real pipeline. What follows is configuration, not construction.",
     },
     {
       q: "Does it work with our systems?",
-      a: "Yes — Acturis, Open GI, Applied Epic and broker-system CSV exports.",
+      a: "Yes. Acturis, Open GI, Applied Epic and broker-system CSV exports.",
     },
     {
       q: "What does it cost?",
-      a: "A one-off build fee then a monthly retainer — anchored so a single recovered defended renewal covers months of fees. Exact pricing on the call, based on book size.",
+      a: "A one-off build fee then a monthly retainer, anchored so a single defended renewal covers months of fees. Exact pricing on the call, based on book size.",
     },
   ],
   related: ["mortgage-brokers", "commercial-property"],

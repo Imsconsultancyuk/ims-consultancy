@@ -101,7 +101,7 @@ export default function SeoPage() {
 
       <main className="flex flex-1 flex-col">
         <header
-          className="relative isolate overflow-hidden bg-deep px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
+          className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="seo-heading"
         >
           <div
@@ -109,7 +109,7 @@ export default function SeoPage() {
             className="pointer-events-none absolute -top-24 -left-24 h-[420px] w-[420px] rounded-full"
             style={{
               background:
-                "radial-gradient(circle, rgba(120,100,120,0.28), rgba(120,100,120,0.08) 40%, transparent 70%)",
+                "radial-gradient(circle, rgba(58, 109, 240,0.28), rgba(58, 109, 240,0.08) 40%, transparent 70%)",
               filter: "blur(30px)",
             }}
           />
@@ -135,7 +135,7 @@ export default function SeoPage() {
 
         <section
           aria-labelledby="seo-pillars-heading"
-          className="relative bg-paper px-6 py-20 text-ink sm:py-24 lg:py-28"
+          className="relative ims-band-light px-6 py-20 text-ink sm:py-24 lg:py-28"
         >
           <div
             aria-hidden
@@ -157,7 +157,7 @@ export default function SeoPage() {
             <ol className="mt-12 grid gap-6 sm:grid-cols-2" role="list">
               {PILLARS.map((p, i) => (
                 <Reveal key={p.n} delay={80 + i * 70}>
-                  <article className="ims-flip-card group relative h-full overflow-hidden rounded-2xl border border-mauve-500/15 bg-paper-soft/80 p-7 backdrop-blur transition-all duration-500 hover:border-mauve-500/0 hover:bg-mauve-500 hover:shadow-[0_24px_60px_-22px_rgba(120,100,120,0.65)] sm:p-8">
+                  <article className="ims-flip-card group relative h-full overflow-hidden rounded-2xl border border-mauve-500/15 bg-paper-soft/80 p-7 backdrop-blur transition-all duration-500 hover:border-accent-500/0 hover:bg-accent-500 hover:shadow-[0_24px_60px_-22px_rgba(58, 109, 240,0.65)] sm:p-8">
                     <span
                       aria-hidden="true"
                       className="ims-flip-sweep pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -180,7 +180,7 @@ export default function SeoPage() {
 
         <section
           aria-labelledby="seo-standards-heading"
-          className="relative bg-deep-soft px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
+          className="relative ims-band-dark px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
         >
           <div className="mx-auto w-full max-w-3xl">
             <Reveal>
@@ -212,7 +212,7 @@ export default function SeoPage() {
 
         <section
           aria-labelledby="seo-cta-heading"
-          className="relative bg-deep px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
+          className="relative ims-band-dark px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
         >
           <div className="mx-auto w-full max-w-3xl text-center">
             <Reveal>
@@ -234,7 +234,7 @@ export default function SeoPage() {
                   <a
                     href="/contact"
                     data-cursor="cta"
-                    className="inline-flex h-12 items-center justify-center rounded-md bg-mauve-300 px-7 text-sm font-medium tracking-[0.02em] text-deep transition-all duration-300 hover:bg-mauve-200 hover:shadow-[0_8px_32px_-8px_rgba(212,176,212,0.55)]"
+                    className="inline-flex h-12 items-center justify-center rounded-md bg-accent-500 px-7 text-sm font-medium tracking-[0.02em] text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_8px_32px_-8px_rgba(126, 160, 255,0.55)]"
                   >
                     Request the audit
                   </a>

@@ -80,26 +80,35 @@ export function CharSplit({
     };
   }, [stagger, delay, y, text]);
 
-  // Preserve newlines as <br>; split into characters elsewhere.
+  // Preserve newlines as separate blocks; split into characters elsewhere.
   const lines = text.split("\n");
 
   return (
     <div ref={ref} className={className} style={{ overflow: "hidden" }}>
       {lines.map((line, li) => (
         <span key={`l-${li}`} className="block">
-          {Array.from(line).map((ch, ci) => {
-            const isSpace = ch === " ";
-            return (
-              <span
-                key={`c-${li}-${ci}`}
-                data-char
-                className="inline-block"
-                style={{ willChange: "transform, opacity" }}
-              >
-                {isSpace ? " " : ch}
+          {/* Every char is its own inline-block so it can be transformed, and a
+              run of inline-blocks is breakable between any two of them. Words
+              therefore get a nowrap wrapper, and the separators between them
+              are plain breakable spaces, so headings only ever wrap at word
+              boundaries. */}
+          {line.split(" ").map((word, wi, words) => (
+            <span key={`w-${li}-${wi}`}>
+              <span className="inline-block whitespace-nowrap">
+                {Array.from(word).map((ch, ci) => (
+                  <span
+                    key={`c-${li}-${wi}-${ci}`}
+                    data-char
+                    className="inline-block"
+                    style={{ willChange: "transform, opacity" }}
+                  >
+                    {ch}
+                  </span>
+                ))}
               </span>
-            );
-          })}
+              {wi < words.length - 1 ? " " : null}
+            </span>
+          ))}
         </span>
       ))}
     </div>

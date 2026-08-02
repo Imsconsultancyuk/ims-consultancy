@@ -58,8 +58,8 @@ export function SiteCursor() {
           gsap.to(dot, {
             scale: 1,
             opacity: 1,
-            backgroundColor: "rgba(212,176,212,1)",
-            boxShadow: "0 0 10px rgba(212,176,212,0.55)",
+            backgroundColor: "rgba(126, 160, 255,1)",
+            boxShadow: "0 0 10px rgba(126, 160, 255,0.55)",
             duration: 0.25,
             ease: "power3.out",
           });
@@ -68,8 +68,8 @@ export function SiteCursor() {
           gsap.to(dot, {
             scale: 1.6,
             opacity: 1,
-            backgroundColor: "rgba(212,176,212,1)",
-            boxShadow: "0 0 18px rgba(212,176,212,0.75)",
+            backgroundColor: "rgba(126, 160, 255,1)",
+            boxShadow: "0 0 18px rgba(126, 160, 255,0.75)",
             duration: 0.25,
             ease: "power3.out",
           });
@@ -78,8 +78,8 @@ export function SiteCursor() {
           gsap.to(dot, {
             scale: 2.2,
             opacity: 1,
-            backgroundColor: "rgba(212,176,212,1)",
-            boxShadow: "0 0 32px rgba(212,176,212,0.95)",
+            backgroundColor: "rgba(126, 160, 255,1)",
+            boxShadow: "0 0 32px rgba(126, 160, 255,0.95)",
             duration: 0.25,
             ease: "power3.out",
           });
@@ -88,8 +88,8 @@ export function SiteCursor() {
           gsap.to(dot, {
             scale: 1.3,
             opacity: 0.9,
-            backgroundColor: "rgba(212,176,212,1)",
-            boxShadow: "0 0 22px rgba(212,176,212,0.55)",
+            backgroundColor: "rgba(126, 160, 255,1)",
+            boxShadow: "0 0 22px rgba(126, 160, 255,0.55)",
             duration: 0.25,
             ease: "power3.out",
           });
@@ -139,7 +139,7 @@ export function SiteCursor() {
           marginTop: -280,
           borderRadius: "50%",
           background:
-            "radial-gradient(circle, rgba(212,176,212,0.18), rgba(180,160,180,0.06) 35%, transparent 70%)",
+            "radial-gradient(circle, rgba(126, 160, 255,0.18), rgba(58, 109, 240,0.06) 35%, transparent 70%)",
           mixBlendMode: "screen",
           opacity: 1,
           willChange: "transform, opacity",
@@ -155,8 +155,8 @@ export function SiteCursor() {
           marginLeft: -4,
           marginTop: -4,
           borderRadius: "50%",
-          background: "rgba(212,176,212,1)",
-          boxShadow: "0 0 10px rgba(212,176,212,0.55)",
+          background: "rgba(126, 160, 255,1)",
+          boxShadow: "0 0 10px rgba(126, 160, 255,0.55)",
           opacity: 1,
           willChange: "transform, opacity",
         }}

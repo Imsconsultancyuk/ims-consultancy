@@ -18,6 +18,11 @@ const DEV_TOOLS: [Tool, Tool, Tool] = [
     name: "Dev Tool A",
     problem: "Placeholder problem line for harness tool A.",
     outcome: "Placeholder outcome line for harness tool A.",
+    actions: [
+      "Placeholder action point one for harness tool A.",
+      "Placeholder action point two for harness tool A.",
+      "Placeholder action point three for harness tool A.",
+    ],
     demo: {
       sampleFile: { id: "dev-sample-a", label: "sample-a.csv", type: "csv", meta: "180 rows" },
       stages: [
@@ -42,6 +47,11 @@ const DEV_TOOLS: [Tool, Tool, Tool] = [
     name: "Dev Tool B",
     problem: "Placeholder problem line for harness tool B.",
     outcome: "Placeholder outcome line for harness tool B.",
+    actions: [
+      "Placeholder action point one for harness tool B.",
+      "Placeholder action point two for harness tool B.",
+      "Placeholder action point three for harness tool B.",
+    ],
     demo: {
       sampleFile: { id: "dev-sample-b", label: "sample-b.pdf", type: "pdf", meta: "42 pages" },
       stages: [
@@ -66,6 +76,11 @@ const DEV_TOOLS: [Tool, Tool, Tool] = [
     name: "Dev Tool C",
     problem: "Placeholder problem line for harness tool C.",
     outcome: "Placeholder outcome line for harness tool C.",
+    actions: [
+      "Placeholder action point one for harness tool C.",
+      "Placeholder action point two for harness tool C.",
+      "Placeholder action point three for harness tool C.",
+    ],
     demo: {
       sampleFile: { id: "dev-sample-c", label: "sample-c.csv", type: "csv", meta: "96 clients" },
       stages: [

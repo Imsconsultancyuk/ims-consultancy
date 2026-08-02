@@ -131,22 +131,22 @@ export function MethodologyCarousel() {
       ref={sectionRef}
       id="method"
       aria-labelledby="method-heading"
-      className="relative isolate overflow-hidden bg-deep px-6 py-24 text-paper-ink sm:py-32 lg:py-40"
+      className="relative isolate overflow-hidden ims-band-dark px-6 py-24 text-paper-ink sm:py-32 lg:py-40"
     >
-      {/* Ambient mauve drift */}
+      {/* Ambient cobalt drift */}
       <div
         aria-hidden
         className="pointer-events-none absolute -top-32 -right-32 h-[520px] w-[520px] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(120,100,120,0.26), rgba(120,100,120,0.08) 40%, transparent 70%)",
-          filter: "blur(30px)",
+            "radial-gradient(circle, rgba(58,109,240,0.12), rgba(58,109,240,0.04) 40%, transparent 70%)",
+          filter: "blur(34px)",
         }}
       />
 
       <div className="relative mx-auto w-full max-w-6xl">
         <Reveal>
-          <p className="font-sans text-[11px] font-medium uppercase tracking-[0.32em] text-mauve-200">
+          <p className="font-sans text-[11px] font-medium uppercase tracking-[0.32em] text-accent-300">
             Method · Seven steps
           </p>
           <h2 id="method-heading" className="sr-only">
@@ -168,10 +168,10 @@ export function MethodologyCarousel() {
           >
             <div className="sticky top-1/2 -translate-y-1/2">
               <div className="relative h-[640px]">
-                <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-mauve-300/15" />
+                <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-paper-ink/12" />
                 <div
                   ref={railRef}
-                  className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 origin-top bg-mauve-200"
+                  className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 origin-top bg-accent-500"
                   style={{ transform: "scaleY(0)" }}
                 />
                 {/* Step markers along the rail */}
@@ -187,8 +187,8 @@ export function MethodologyCarousel() {
                       <div
                         className={`flex h-9 w-9 items-center justify-center rounded-full border transition-all duration-500 ${
                           active
-                            ? "border-mauve-200 bg-mauve-200 text-deep shadow-[0_0_24px_4px_rgba(212,176,212,0.45)]"
-                            : "border-mauve-300/30 bg-deep text-mauve-300"
+                            ? "border-accent-400 bg-accent-500 text-paper-pure shadow-[0_0_24px_4px_rgba(58,109,240,0.35)]"
+                            : "border-paper-ink/20 bg-deep text-paper-ink/50"
                         }`}
                       >
                         <span className="font-sans text-[10px] font-medium tracking-[0.06em]">
@@ -218,8 +218,8 @@ export function MethodologyCarousel() {
                       <p
                         className={`font-serif leading-none transition-all duration-700 ${
                           active
-                            ? "text-mauve-200"
-                            : "text-mauve-300/35"
+                            ? "text-accent-300"
+                            : "text-paper-ink/25"
                         }`}
                         style={{
                           fontSize: "clamp(3.5rem, 7vw, 5.5rem)",
@@ -228,14 +228,14 @@ export function MethodologyCarousel() {
                       >
                         {s.n}
                       </p>
-                      <p className="mt-3 font-sans text-[10px] uppercase tracking-[0.28em] text-mauve-300">
+                      <p className="mt-3 font-sans text-[10px] uppercase tracking-[0.28em] text-paper-ink/50">
                         {s.duration}
                       </p>
                     </div>
                     <div>
                       <h3
                         className={`font-serif text-[clamp(1.5rem,2.4vw,2rem)] font-medium leading-[1.15] tracking-[-0.012em] transition-colors duration-700 ${
-                          active ? "text-paper-ink" : "text-paper-ink/65"
+                          active ? "text-paper-ink" : "text-paper-ink/45"
                         }`}
                       >
                         {s.title}
@@ -243,13 +243,13 @@ export function MethodologyCarousel() {
                       <div
                         className={`mt-4 h-px origin-left transition-all duration-700 ${
                           active
-                            ? "w-32 bg-mauve-200"
-                            : "w-12 bg-mauve-300/30"
+                            ? "w-32 bg-accent-500"
+                            : "w-12 bg-paper-ink/20"
                         }`}
                       />
                       <p
                         className={`mt-5 max-w-2xl text-[1.0625rem] leading-[1.7] transition-colors duration-700 ${
-                          active ? "text-mauve-200" : "text-mauve-300/70"
+                          active ? "text-paper-ink/80" : "text-paper-ink/45"
                         }`}
                       >
                         {s.body}

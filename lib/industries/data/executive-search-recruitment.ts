@@ -6,13 +6,13 @@ export const executiveSearchRecruitment: Industry = {
   shortName: "Search Firm",
   regulator: "ICO",
   regulatorLine:
-    "Registered with the ICO and built to UK GDPR — your data is processed under a DPA, tokenised, and never used for model training.",
+    "Registered with the ICO and built to UK GDPR. Your data is processed under a DPA, tokenised, and never used for model training.",
   accent: "violet",
   leakLine: "84 placements hiding in one database",
   meta: {
     title: "AI Revenue Recovery for Executive Search | IntelMadeSimple",
     description:
-      "Candidate database revival, hiring-signal radar and shortlist acceleration — AI tools that turn your existing database into placements. GDPR-safe.",
+      "Candidate database revival, hiring-signal radar and shortlist acceleration. AI tools that turn your existing database into placements. GDPR-safe.",
   },
   hero: {
     h1: "Your next placement is already in your database",
@@ -46,6 +46,11 @@ export const executiveSearchRecruitment: Industry = {
       name: "CV Revival Engine",
       problem: "New mandates get new sourcing; the database you already paid for stays unread.",
       outcome: "Whole database re-matched against live roles, best-fit candidates ranked, re-engagement drafted.",
+      actions: [
+        "Screen the ranked matches before your consultants start fresh sourcing.",
+        "Send the drafted re-engagement from the consultant who placed them last time.",
+        "Refresh each record as candidates reply so the database stays worth mining.",
+      ],
       demo: {
         sampleFile: { id: "rec-database", label: "candidate_db_sample.csv", type: "csv", meta: "1,500 candidate records" },
         stages: [
@@ -61,7 +66,7 @@ export const executiveSearchRecruitment: Industry = {
             { label: "Re-engagement drafted", value: "84" },
             { label: "Interview-ready this month", value: "22" },
           ],
-          solution: "The engine re-reads your database every time a mandate opens — sourcing starts warm.",
+          solution: "The engine re-reads your database every time a mandate opens, so sourcing starts warm.",
         },
       },
     },
@@ -70,6 +75,11 @@ export const executiveSearchRecruitment: Industry = {
       name: "Hiring Signal Radar",
       problem: "Funding rounds, leadership exits and growth signals fire while your BD list sleeps.",
       outcome: "Target accounts monitored for hiring signals, warm briefs drafted the morning they fire.",
+      actions: [
+        "Read the morning brief before your BD calls, not after them.",
+        "Approach on the signal itself rather than a generic introduction.",
+        "Log the outcome so the radar learns which signals convert on your desk.",
+      ],
       demo: {
         sampleFile: { id: "rec-targets", label: "target_accounts.csv", type: "csv", meta: "150 target companies" },
         stages: [
@@ -93,7 +103,12 @@ export const executiveSearchRecruitment: Industry = {
       id: "shortlist-accelerator",
       name: "Shortlist Accelerator",
       problem: "Manual longlist-to-shortlist takes days the client spends talking to your competitor.",
-      outcome: "Job spec in, ranked shortlist with rationale and interview packs out — in minutes.",
+      outcome: "Job spec in, ranked shortlist with rationale and interview packs out, in minutes.",
+      actions: [
+        "Sense-check the ranking and the rationale before anything reaches the client.",
+        "Get the shortlist over inside the client's first 48 hours.",
+        "Use the interview packs to brief consultants who did not run the search.",
+      ],
       demo: {
         sampleFile: { id: "rec-jobspec", label: "job_spec_sample.pdf", type: "pdf", meta: "1 role · Head of Engineering" },
         stages: [
@@ -109,7 +124,7 @@ export const executiveSearchRecruitment: Industry = {
             { label: "Evidence-backed profiles", value: "12" },
             { label: "Interview packs drafted", value: "12" },
           ],
-          solution: "The accelerator makes yours the first credible shortlist on the client's desk — every time.",
+          solution: "The accelerator makes yours the first credible shortlist on the client's desk, every time.",
         },
       },
     },
@@ -147,15 +162,15 @@ export const executiveSearchRecruitment: Industry = {
     },
     {
       q: "How long does setup take?",
-      a: "Most firms are live within 14 days of granting data access. The demo you just ran mirrors the real pipeline — configuration, not construction.",
+      a: "Most firms are live within 14 days of granting data access. The demo you just ran mirrors the real pipeline. What follows is configuration, not construction.",
     },
     {
       q: "Does it work with our systems?",
-      a: "Yes — Bullhorn, Vincere, JobAdder, Loxo and ATS CSV exports.",
+      a: "Yes. Bullhorn, Vincere, JobAdder, Loxo and ATS CSV exports.",
     },
     {
       q: "What does it cost?",
-      a: "A one-off build fee then a monthly retainer — anchored so a single recovered placement covers months of fees. Exact pricing on the call, based on book size.",
+      a: "A one-off build fee then a monthly retainer, anchored so a single recovered placement covers months of fees. Exact pricing on the call, based on book size.",
     },
   ],
   related: ["b2b-saas", "ma-advisory-business-brokers"],

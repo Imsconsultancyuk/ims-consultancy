@@ -6,13 +6,13 @@ export const privateHealthcareGroups: Industry = {
   shortName: "Group",
   regulator: "CQC",
   regulatorLine:
-    "Built for CQC-registered providers — patient identifiers are tokenised end to end; clinical decisions stay with your clinicians.",
+    "Built for CQC-registered providers. Patient identifiers are tokenised end to end, and clinical decisions stay with your clinicians.",
   accent: "fuchsia",
   leakLine: "£96k of quoted treatment still open",
   meta: {
     title: "AI Revenue Recovery for Private Healthcare | IntelMadeSimple",
     description:
-      "Treatment-plan recovery, capacity-fill radar and review-to-revenue content — AI tools that convert quoted care and fill empty diary time. GDPR-safe, CQC-aware.",
+      "Treatment-plan recovery, capacity-fill radar and review-to-revenue content. AI tools that convert quoted care and fill empty diary time. GDPR-safe, CQC-aware.",
   },
   hero: {
     h1: "The revenue you quoted last quarter is still sitting in your diary system",
@@ -32,7 +32,7 @@ export const privateHealthcareGroups: Industry = {
     {
       title: "Empty chair time",
       cost: "19 slots",
-      line: "Tomorrow's gaps are found tomorrow — too late to fill.",
+      line: "Tomorrow's gaps are found tomorrow, too late to fill.",
     },
     {
       title: "Unanswered questions",
@@ -46,6 +46,11 @@ export const privateHealthcareGroups: Industry = {
       name: "Treatment Plan Recovery",
       problem: "Unconverted plans get one follow-up call, if the front desk finds time.",
       outcome: "Every open quote followed up with a patient-appropriate sequence, pipeline visible to the group.",
+      actions: [
+        "Let the sequence run and give the front desk only the patients who reply.",
+        "Keep clinical claims out of the follow-up and route questions to the clinician.",
+        "Close the plan in the PMS the moment it converts so chasing stops.",
+      ],
       demo: {
         sampleFile: { id: "hc-quotes", label: "treatment_quotes_sample.csv", type: "csv", meta: "140 unconverted plans · one quarter" },
         stages: [
@@ -61,7 +66,7 @@ export const privateHealthcareGroups: Industry = {
             { label: "Sequences drafted", value: "112" },
             { label: "Finance-option candidates", value: "37" },
           ],
-          solution: "Recovery runs weekly across every site — no plan goes quiet without three considered follow-ups.",
+          solution: "Recovery runs weekly across every site, so no plan goes quiet without three considered follow-ups.",
         },
       },
     },
@@ -70,6 +75,11 @@ export const privateHealthcareGroups: Industry = {
       name: "Capacity Fill Radar",
       problem: "Cancellations create gaps the diary team discovers on the day.",
       outcome: "Tomorrow's gaps detected tonight, matched patients invited automatically.",
+      actions: [
+        "Approve tonight's invitation list before it goes out against tomorrow's gaps.",
+        "Match on clinician and treatment type, never on availability alone.",
+        "Hold a short waiting list per site so the radar always has someone to invite.",
+      ],
       demo: {
         sampleFile: { id: "hc-diary", label: "diary_export_sample.csv", type: "csv", meta: "7 days · 4 practitioners" },
         stages: [
@@ -85,15 +95,20 @@ export const privateHealthcareGroups: Industry = {
             { label: "Matched patients invited", value: "57" },
             { label: "Overdue recalls included", value: "24" },
           ],
-          solution: "The radar treats every gap as revenue with a deadline — and moves before the day arrives.",
+          solution: "The radar treats every gap as revenue with a deadline, and moves before the day arrives.",
         },
       },
     },
     {
       id: "review-to-revenue",
       name: "Review-to-Revenue Engine",
-      problem: "Your reviews contain every question patients ask before booking — unused.",
+      problem: "Your reviews contain every question patients ask before booking, and nobody uses them.",
       outcome: "Reviews mined for real patient questions, answer content drafted for your site and AI search.",
+      actions: [
+        "Have a clinician approve every answer before it goes anywhere near your site.",
+        "Publish each answer on the treatment page the question was actually asked about.",
+        "Re-run quarterly so new reviews keep the content current for AI search.",
+      ],
       demo: {
         sampleFile: { id: "hc-reviews", label: "reviews_export_sample.csv", type: "csv", meta: "420 reviews · you + 3 competitors" },
         stages: [
@@ -109,7 +124,7 @@ export const privateHealthcareGroups: Industry = {
             { label: "Competitor-answered gaps", value: "9" },
             { label: "Booking-intent topics", value: "6" },
           ],
-          solution: "The engine makes your clinic the answer patients find — before they've chosen a clinic.",
+          solution: "The engine makes your clinic the answer patients find, before they have chosen a clinic.",
         },
       },
     },
@@ -143,19 +158,19 @@ export const privateHealthcareGroups: Industry = {
     },
     {
       q: "What data do you need?",
-      a: "Exports of open treatment plans and diary data — patient identifiers are tokenised on ingestion, before any AI processing.",
+      a: "Exports of open treatment plans and diary data. Patient identifiers are tokenised on ingestion, before any AI processing.",
     },
     {
       q: "How long does setup take?",
-      a: "Most firms are live within 14 days of granting data access. The demo you just ran mirrors the real pipeline — configuration, not construction.",
+      a: "Most firms are live within 14 days of granting data access. The demo you just ran mirrors the real pipeline. What follows is configuration, not construction.",
     },
     {
       q: "Does it work with our systems?",
-      a: "Yes — Dentally, SOE Exact, Pabau, Semble and PMS CSV exports.",
+      a: "Yes. Dentally, SOE Exact, Pabau, Semble and PMS CSV exports.",
     },
     {
       q: "What does it cost?",
-      a: "A one-off build fee then a monthly retainer — anchored so a single recovered plan covers months of fees. Exact pricing on the call, based on book size.",
+      a: "A one-off build fee then a monthly retainer, anchored so a single recovered plan covers months of fees. Exact pricing on the call, based on book size.",
     },
   ],
   related: ["ifas-wealth-managers", "b2b-saas"],

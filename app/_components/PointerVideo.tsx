@@ -154,7 +154,7 @@ export function PointerVideo({
               marginTop: -260,
               borderRadius: "50%",
               background:
-                "radial-gradient(circle, rgba(212, 176, 212, 0.55), rgba(180, 160, 180, 0.20) 35%, transparent 70%)",
+                "radial-gradient(circle, rgba(126, 160, 255, 0.55), rgba(58, 109, 240, 0.20) 35%, transparent 70%)",
               mixBlendMode: "screen",
               willChange: "transform",
             }}

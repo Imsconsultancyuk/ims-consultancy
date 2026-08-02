@@ -132,7 +132,7 @@ export function PackageBlock({ industry, package: pkg }: PackageBlockProps) {
       ) : null}
       {state === "sent" ? (
         <p role="status" className="text-sm text-positive">
-          Request received — we&apos;ll email the sample report over.
+          Request received. We&apos;ll email the sample report over.
         </p>
       ) : null}
       {state === "error" ? (

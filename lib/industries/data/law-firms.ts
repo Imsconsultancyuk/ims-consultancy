@@ -6,17 +6,17 @@ export const lawFirms: Industry = {
   shortName: "Law Firm",
   regulator: "SRA",
   regulatorLine:
-    "Built for SRA-regulated practices — the system detects and drafts; your fee earners review, advise and send.",
+    "Built for SRA-regulated practices. The system detects and drafts; your fee earners review, advise and send.",
   accent: "indigo",
   leakLine: "121 enquiries never followed up in six months",
   meta: {
     title: "AI Revenue Recovery for Law Firms | IntelMadeSimple",
     description:
-      "Enquiry recovery, WIP leak detection and cross-practice radar — AI tools that capture the instructions and time your firm already earned. GDPR-safe, SRA-aware.",
+      "Enquiry recovery, WIP leak detection and cross-practice radar. AI tools that capture the instructions and time your firm already earned. GDPR-safe, SRA-aware.",
   },
   hero: {
     h1: "Your firm loses more to slow follow-up than to any competitor",
-    sub: "Three tools that read your enquiry log, time ledger and matter history — and hand your fee earners the instructions they were about to lose.",
+    sub: "Three tools that read your enquiry log, time ledger and matter history, then hand your fee earners the instructions they were about to lose.",
     stats: [
       { value: "42%", label: "of law-firm enquiries never receive a follow-up" },
       { value: "£1,540", label: "average instruction value lost per unanswered enquiry" },
@@ -46,6 +46,11 @@ export const lawFirms: Industry = {
       name: "Enquiry Recovery Engine",
       problem: "Enquiries arrive nights and weekends; follow-up depends on who's busiest.",
       outcome: "Every unconverted enquiry found, valued by matter type, follow-up sequences drafted.",
+      actions: [
+        "Work the unconverted list by matter value, highest first.",
+        "Send the drafted follow-up under the fee earner who took the original call.",
+        "Mark the outcome so a genuinely dead enquiry stops being chased.",
+      ],
       demo: {
         sampleFile: { id: "law-enquiries", label: "enquiry_log.csv", type: "csv", meta: "312 enquiries · 6 months" },
         stages: [
@@ -70,6 +75,11 @@ export const lawFirms: Industry = {
       name: "WIP Leak Detector",
       problem: "Unbilled time ages invisibly across dozens of matters until write-off.",
       outcome: "Ageing WIP surfaced by matter and fee earner, billing narratives drafted.",
+      actions: [
+        "Put the ageing WIP report in front of each fee earner at the Monday billing meeting.",
+        "Approve or edit the drafted narrative and raise the bill the same day.",
+        "Escalate anything past your write-off threshold to the supervising partner.",
+      ],
       demo: {
         sampleFile: { id: "law-ledger", label: "time_ledger.csv", type: "csv", meta: "2,400 time entries" },
         stages: [
@@ -94,6 +104,11 @@ export const lawFirms: Industry = {
       name: "Cross-Practice Radar",
       problem: "Each department's clients never hear what the other departments do.",
       outcome: "Single-matter clients matched to obvious next needs, introduction letters drafted.",
+      actions: [
+        "Have the originating fee earner make the introduction, not the receiving department.",
+        "Send the drafted letter only where the client relationship is genuinely warm.",
+        "Record the referral so the department that gave it gets the credit.",
+      ],
       demo: {
         sampleFile: { id: "law-matters", label: "matter_history.csv", type: "csv", meta: "890 closed matters" },
         stages: [
@@ -143,19 +158,19 @@ export const lawFirms: Industry = {
     },
     {
       q: "What data do you need?",
-      a: "Exports of your enquiry log, time ledger and closed-matter list. We map fields in onboarding — no reformatting by your team.",
+      a: "Exports of your enquiry log, time ledger and closed-matter list. We map fields in onboarding, so nobody on your team reformats anything.",
     },
     {
       q: "How long does setup take?",
-      a: "Most firms are live within 14 days of granting data access. The demo you just ran mirrors the real pipeline — configuration, not construction.",
+      a: "Most firms are live within 14 days of granting data access. The demo you just ran mirrors the real pipeline. What follows is configuration, not construction.",
     },
     {
       q: "Does it work with our systems?",
-      a: "Yes — Clio, LEAP, Actionstep, Proclaim and practice-management exports.",
+      a: "Yes. Clio, LEAP, Actionstep, Proclaim and practice-management exports.",
     },
     {
       q: "What does it cost?",
-      a: "A one-off build fee then a monthly retainer — anchored so a single recovered instruction covers months of fees. Exact pricing on the call, based on book size.",
+      a: "A one-off build fee then a monthly retainer, anchored so a single recovered instruction covers months of fees. Exact pricing on the call, based on book size.",
     },
   ],
   related: ["accountancy-firms", "ma-advisory-business-brokers"],

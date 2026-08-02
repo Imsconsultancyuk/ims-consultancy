@@ -4,7 +4,7 @@ interface SectionShellProps {
   id: string;
   eyebrow?: string;
   heading: string;
-  tone?: "paper" | "ink";
+  tone?: "paper" | "paper-soft" | "ink";
   className?: string;
   children: ReactNode;
 }
@@ -17,8 +17,15 @@ export function SectionShell({
   className,
   children,
 }: SectionShellProps) {
+  // Three surfaces, not two: the shared industry template alternates
+  // light / soft / dark down the page, and `paper-soft` is what keeps two
+  // consecutive light bands from reading as one undifferentiated block.
   const toneClasses =
-    tone === "ink" ? "bg-ink text-paper-ink" : "bg-paper text-ink";
+    tone === "ink"
+      ? "ims-band-dark text-paper-ink"
+      : tone === "paper-soft"
+        ? "ims-band-light-soft text-ink"
+        : "ims-band-light text-ink";
   const eyebrowClasses =
     tone === "ink" ? "text-paper-ink-soft" : "text-ink-soft";
 

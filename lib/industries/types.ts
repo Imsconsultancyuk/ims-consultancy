@@ -20,6 +20,10 @@ export interface Tool {
   id: string; name: string;
   problem: string;      // one line, ≤110 chars
   outcome: string;      // one line, ≤110 chars
+  // What the firm's own people do with the output, in their own workflow.
+  // Rendered as the "action points" column of each tool section, so each
+  // line must be an imperative a fee earner would recognise, not a benefit.
+  actions: [string, string, string];
   demo: DemoScript;
 }
 export interface Faq { q: string; a: string }

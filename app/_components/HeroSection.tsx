@@ -139,7 +139,7 @@ export function HeroSection() {
             <Link
               href="/contact"
               data-cursor="cta"
-              className="inline-flex h-12 items-center justify-center rounded-md bg-mauve-300 px-7 text-sm font-medium tracking-[0.02em] text-deep transition-all duration-300 hover:bg-mauve-200 hover:shadow-[0_8px_32px_-8px_rgba(212,176,212,0.55)]"
+              className="inline-flex h-12 items-center justify-center rounded-md bg-accent-500 px-7 text-sm font-medium tracking-[0.02em] text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_8px_32px_-8px_rgba(126, 160, 255,0.55)]"
             >
               Start a conversation
             </Link>
@@ -183,7 +183,7 @@ export function HeroSection() {
             className="mt-2 inline-block h-10 w-px animate-[scrollHint_2.4s_ease-in-out_infinite]"
             style={{
               background:
-                "linear-gradient(to bottom, rgba(212,176,212,0.75), rgba(212,176,212,0))",
+                "linear-gradient(to bottom, rgba(126, 160, 255,0.75), rgba(126, 160, 255,0))",
             }}
           />
         </div>

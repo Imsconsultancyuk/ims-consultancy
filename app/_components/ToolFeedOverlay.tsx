@@ -81,7 +81,7 @@ const TOOLS: Tool[] = [
     x: 92,
     y: 50,
     delay: 1.6,
-    tint: "#f5eff3",
+    tint: "#f7f3ec",
     icon: <NotionIcon className="h-full w-full" />,
   },
 ];
@@ -100,9 +100,9 @@ export function ToolFeedOverlay() {
       >
         <defs>
           <linearGradient id="feed-grad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#d4b0d4" stopOpacity="0" />
-            <stop offset="50%" stopColor="#d4b0d4" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#d4b0d4" stopOpacity="0" />
+            <stop offset="0%" stopColor="#8aa9ff" stopOpacity="0" />
+            <stop offset="50%" stopColor="#8aa9ff" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="#8aa9ff" stopOpacity="0" />
           </linearGradient>
         </defs>
         {TOOLS.map((t) => (
@@ -112,13 +112,13 @@ export function ToolFeedOverlay() {
               y1={t.y}
               x2={50}
               y2={50}
-              stroke="rgba(212, 176, 212, 0.18)"
+              stroke="rgba(126, 160, 255, 0.18)"
               strokeWidth="0.18"
               strokeDasharray="0.6 0.8"
               vectorEffect="non-scaling-stroke"
             />
             {/* Travelling packet down each line */}
-            <circle r="0.6" fill="#d4b0d4">
+            <circle r="0.6" fill="#8aa9ff">
               <animateMotion
                 dur="4.5s"
                 begin={`${t.delay}s`}
@@ -142,7 +142,7 @@ export function ToolFeedOverlay() {
             cx="50"
             cy="50"
             r="2.2"
-            fill="#d4b0d4"
+            fill="#8aa9ff"
             opacity="0.85"
           >
             <animate
@@ -163,7 +163,7 @@ export function ToolFeedOverlay() {
             cy="50"
             r="3.5"
             fill="none"
-            stroke="#d4b0d4"
+            stroke="#8aa9ff"
             strokeWidth="0.2"
             vectorEffect="non-scaling-stroke"
           >

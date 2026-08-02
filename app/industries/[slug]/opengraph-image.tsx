@@ -8,7 +8,7 @@ import type { Accent } from "@/lib/industries/types";
 
 // Config exports per the opengraph-image file convention — Next.js
 // auto-injects the og:image / twitter:image meta tags from these.
-export const alt = "IMS Consultancy — AI Revenue Recovery";
+export const alt = "IMS Consultancy: AI Revenue Recovery";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -35,8 +35,8 @@ const ACCENT_HEX: Record<Accent, string> = {
   fuchsia: "#c026d3",
 };
 
-const INK = "#1a1620";
-const PAPER = "#f5eff3";
+const INK = "#12141c";
+const PAPER = "#f7f3ec";
 
 interface OgImageProps {
   params: Promise<{ slug: string }>;

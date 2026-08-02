@@ -45,6 +45,6 @@
         "value": "22"
       }
     ],
-    "solution": "The engine re-reads your database every time a mandate opens — sourcing starts warm."
+    "solution": "The engine re-reads your database every time a mandate opens, so sourcing starts warm."
   }
 }

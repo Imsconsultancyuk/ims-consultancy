@@ -112,7 +112,7 @@ export function PointerTilt({
               marginTop: -150,
               borderRadius: "50%",
               background:
-                "radial-gradient(circle, rgba(212,176,212,0.20), transparent 70%)",
+                "radial-gradient(circle, rgba(126, 160, 255,0.20), transparent 70%)",
               mixBlendMode: "screen",
               willChange: "transform, opacity",
             }}

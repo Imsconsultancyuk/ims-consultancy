@@ -39,7 +39,7 @@ function buildCycle(tool: Tool): CycleStep[] {
 }
 
 const CAPTION =
-  "Live demonstration — synthetic data. Drag a file below to drive it yourself.";
+  "Live demonstration on synthetic data. Drag a file below to drive it yourself.";
 
 function subscribeReducedMotion(callback: () => void) {
   const mql = window.matchMedia("(prefers-reduced-motion: reduce)");

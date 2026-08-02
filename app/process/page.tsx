@@ -120,7 +120,7 @@ export default function ProcessPage() {
 
       <main className="flex flex-1 flex-col">
         <header
-          className="relative isolate overflow-hidden bg-deep px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
+          className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="process-heading"
         >
           <div className="relative mx-auto w-full max-w-4xl">
@@ -144,7 +144,7 @@ export default function ProcessPage() {
 
         <section
           aria-labelledby="process-steps-heading"
-          className="relative bg-deep px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
+          className="relative ims-band-dark px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
         >
           <div className="mx-auto w-full max-w-4xl">
             <h2 id="process-steps-heading" className="sr-only">
@@ -179,7 +179,7 @@ export default function ProcessPage() {
 
         <section
           aria-labelledby="process-principles-heading"
-          className="relative bg-deep-soft px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
+          className="relative ims-band-dark px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
         >
           <div className="mx-auto w-full max-w-3xl">
             <Reveal>
@@ -211,7 +211,7 @@ export default function ProcessPage() {
 
         <section
           aria-labelledby="process-cta-heading"
-          className="relative bg-deep px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
+          className="relative ims-band-dark px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
         >
           <div className="mx-auto w-full max-w-3xl text-center">
             <Reveal>
@@ -228,7 +228,7 @@ export default function ProcessPage() {
                   <Link
                     href="/case-studies"
                     data-cursor="cta"
-                    className="inline-flex h-12 items-center justify-center rounded-md bg-mauve-300 px-7 text-sm font-medium tracking-[0.02em] text-deep transition-all duration-300 hover:bg-mauve-200 hover:shadow-[0_8px_32px_-8px_rgba(212,176,212,0.55)]"
+                    className="inline-flex h-12 items-center justify-center rounded-md bg-accent-500 px-7 text-sm font-medium tracking-[0.02em] text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_8px_32px_-8px_rgba(126, 160, 255,0.55)]"
                   >
                     See case studies
                   </Link>

@@ -6,13 +6,13 @@ export const maAdvisoryBusinessBrokers: Industry = {
   shortName: "Advisory Firm",
   regulator: "ICO",
   regulatorLine:
-    "Registered with the ICO and built to UK GDPR — your data is processed under a DPA, tokenised, and never used for model training.",
+    "Registered with the ICO and built to UK GDPR. Your data is processed under a DPA, tokenised, and never used for model training.",
   accent: "rose",
   leakLine: "67 succession-risk owners in one region",
   meta: {
     title: "AI Deal Origination for M&A Advisers | IntelMadeSimple",
     description:
-      "Succession scanning, target sourcing and buyer-mandate matching — AI tools that originate sell-side mandates before the market sees them. GDPR-safe.",
+      "Succession scanning, target sourcing and buyer-mandate matching. AI tools that originate sell-side mandates before the market sees them. GDPR-safe.",
   },
   hero: {
     h1: "The best mandates are signed before anyone knows they're for sale",
@@ -44,8 +44,13 @@ export const maAdvisoryBusinessBrokers: Industry = {
     {
       id: "succession-signal-scanner",
       name: "Succession Signal Scanner",
-      problem: "Succession-risk owners don't announce themselves — their filings do.",
+      problem: "Succession-risk owners don't announce themselves. Their filings do.",
       outcome: "Regional company base scanned for succession signals, ranked pipeline with approach drafts.",
+      actions: [
+        "Work the ranked pipeline from the top and ignore anything below your fee floor.",
+        "Approach through the owner's accountant wherever the filings show one.",
+        "Re-run the scan quarterly so new filings enter the pipeline on their own.",
+      ],
       demo: {
         sampleFile: { id: "ma-region", label: "region_companies.csv", type: "csv", meta: "2,400 companies · one region" },
         stages: [
@@ -61,7 +66,7 @@ export const maAdvisoryBusinessBrokers: Industry = {
             { label: "Directors 60+ with no successor", value: "41" },
             { label: "Approach letters drafted", value: "67" },
           ],
-          solution: "The scanner refreshes monthly — your origination pipeline fills from public data, not networking luck.",
+          solution: "The scanner refreshes monthly, so your origination pipeline fills from public data, not networking luck.",
         },
       },
     },
@@ -70,6 +75,11 @@ export const maAdvisoryBusinessBrokers: Industry = {
       name: "Target Sourcer",
       problem: "A buyer mandate is only as good as the target list behind it.",
       outcome: "Mandate criteria in, scored long-list of matched acquisition targets out.",
+      actions: [
+        "Sanity-check the long list against the mandate before the buyer ever sees it.",
+        "Present the scored list as evidence of coverage, not as a first draft.",
+        "Keep the rejected targets so the next mandate starts warmer.",
+      ],
       demo: {
         sampleFile: { id: "ma-mandate", label: "buyer_mandate_sample.pdf", type: "pdf", meta: "1 mandate · acquisition criteria" },
         stages: [
@@ -94,6 +104,11 @@ export const maAdvisoryBusinessBrokers: Industry = {
       name: "Buyer-Mandate Matcher",
       problem: "Matches between your own live buyers and sellers go unnoticed across desks.",
       outcome: "Every live buyer and seller cross-matched, introduction memos drafted.",
+      actions: [
+        "Run the cross-match before you take a new mandate to market.",
+        "Introduce through both deal leads so neither desk gets bypassed.",
+        "Agree the fee split at introduction rather than at completion.",
+      ],
       demo: {
         sampleFile: { id: "ma-mandates", label: "live_mandates.csv", type: "csv", meta: "31 buy-side · 19 sell-side" },
         stages: [
@@ -143,11 +158,11 @@ export const maAdvisoryBusinessBrokers: Industry = {
     },
     {
       q: "What data do you need?",
-      a: "Your live mandate list and target regions/sectors. Company data comes from public filings — we bring that.",
+      a: "Your live mandate list and target regions/sectors. Company data comes from public filings, which we bring.",
     },
     {
       q: "How long does setup take?",
-      a: "Most firms are live within 14 days of granting data access. The demo you just ran mirrors the real pipeline — configuration, not construction.",
+      a: "Most firms are live within 14 days of granting data access. The demo you just ran mirrors the real pipeline. What follows is configuration, not construction.",
     },
     {
       q: "Does it work with our systems?",
@@ -155,7 +170,7 @@ export const maAdvisoryBusinessBrokers: Industry = {
     },
     {
       q: "What does it cost?",
-      a: "A one-off build fee then a monthly retainer — anchored so a single recovered mandate covers months of fees. Exact pricing on the call, based on book size.",
+      a: "A one-off build fee then a monthly retainer, anchored so a single recovered mandate covers months of fees. Exact pricing on the call, based on book size.",
     },
   ],
   related: ["law-firms", "accountancy-firms"],

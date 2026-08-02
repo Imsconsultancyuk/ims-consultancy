@@ -1,42 +1,65 @@
 @import "tailwindcss";
 
 @theme {
-  /* IMS brand palette (Direction C: Light to Dark Journey)
-     Locked 2026-05-22. Mauve is the carrying chromatic across both bands. */
-  --color-paper: #f5eff3;       /* warm mauve paper (replaces pure white) */
-  --color-paper-soft: #ebe2e8;  /* paper one step deeper for cards on light */
-  --color-paper-pure: #fdfbfc;  /* near-white only for tightest contrast */
+  /* IMS brand palette v2 — "Cobalt & Cream" (2026-07-24).
+     Retires mauve as the carrying chromatic: a pervasive lilac wash reads as
+     generic AI-purple (design-taste "LILA rule"). New system is a single
+     disciplined cobalt accent on a warm-cream / cool-ink neutral base — the
+     design-taste-named "saturated blue against one neutral, no brass"
+     direction. Legacy --color-mauve-* names are KEPT and re-valued to quiet
+     cool-neutral greys so ~90 existing call sites inherit the calm base;
+     cobalt lives in the new --color-accent-* scale and is applied
+     deliberately only on interactive / emphasis surfaces, never body text. */
 
-  --color-deep: #1a1620;        /* jewellery-box dark */
-  --color-deep-soft: #221c28;   /* card surface on dark */
-  --color-deep-veil: #2a2230;   /* transition stop */
+  /* Neutrals — cool blue-white light band (tuned to sit with cobalt) */
+  --color-paper: #eff2fb;       /* cool off-white with a blue undertone */
+  --color-paper-soft: #e4e9f6;  /* one step deeper for cards / alt bands */
+  --color-paper-pure: #fbfcff;  /* cool near-white for tightest contrast */
 
-  --color-mauve-50:  #f5eff3;
-  --color-mauve-100: #ebd9e3;
-  --color-mauve-200: #d4b0d4;   /* highlight, hover */
-  --color-mauve-300: #b4a0b4;   /* light accent (dark band) */
-  --color-mauve-500: #786478;   /* brand primary mauve */
-  --color-mauve-700: #4e3f4e;
-  --color-mauve-900: #2a1f2a;
+  --color-deep: #0f1320;        /* blue-black ink (dark bands) */
+  --color-deep-soft: #171c2c;   /* card surface on dark */
+  --color-deep-veil: #1f2438;   /* transition stop */
 
-  --color-ink:       #1a1620;
-  --color-ink-soft:  #5a4c5a;
-  --color-paper-ink: #f5eff3;   /* text on dark */
-  --color-paper-ink-soft: #b4a0b4;
+  /* Legacy mauve scale, re-valued → quiet cool-neutral greys.
+     Nothing here is chromatic any more; emphasis comes from --color-accent-*. */
+  --color-mauve-50:  #f4f1ea;
+  --color-mauve-100: #e7e3da;   /* light warm-neutral (cards, hairlines on light) */
+  --color-mauve-200: #c9cdd6;   /* light cool-grey highlight on dark */
+  --color-mauve-300: #969ba8;   /* muted secondary text on dark */
+  --color-mauve-500: #5b6170;   /* mid cool-neutral (secondary text on light) */
+  --color-mauve-700: #3a3f4b;
+  --color-mauve-900: #191c26;
+
+  /* Cobalt — the single accent. Buttons, eyebrows, highlights, ambient glow. */
+  --color-accent-50:  #eef3ff;
+  --color-accent-100: #dbe6ff;
+  --color-accent-200: #b3c9ff;  /* light accent / highlight on dark */
+  --color-accent-300: #8aa9ff;
+  --color-accent-400: #5f86f7;
+  --color-accent-500: #3a6df0;  /* primary cobalt */
+  --color-accent-600: #2a54d4;
+  --color-accent-700: #1e3ea6;  /* accent text on cream (AA at body sizes) */
+
+  --color-ink:       #14161d;
+  --color-ink-soft:  #565b68;   /* cool-neutral body text on cream */
+  --color-paper-ink: #f3efe8;   /* cream text on dark */
+  --color-paper-ink-soft: #a9adba;
 
   /* Backwards compatibility aliases */
-  --color-brand-mauve: #786478;
-  --color-brand-light: #b4a0b4;
-  --color-brand-mist:  #d4d1d6;
-  --color-ink-900: #0f0f12;
-  --color-ink-800: #282429;
-  --color-ink-700: #3c3c3c;
-  --color-ink-500: #8c8c8c;
+  --color-brand-mauve: #5b6170;
+  --color-brand-light: #969ba8;
+  --color-brand-mist:  #d4d3d0;
+  --color-ink-900: #0d0e14;
+  --color-ink-800: #24262e;
+  --color-ink-700: #3a3c44;
+  --color-ink-500: #8a8d95;
 
-  /* Type */
-  --font-display: var(--font-display);
-  --font-serif: var(--font-serif);
-  --font-sans: var(--font-sans);
+  /* Type v3 — Sora (display) + Instrument Sans (body).
+     Every semantic slot points at the two loaded families so component class
+     names stay unchanged; the old serif/display identities are retired. */
+  --font-display: var(--font-sora);
+  --font-serif: var(--font-sora);
+  --font-sans: var(--font-instrument);
 
   /* Industry Pages — additive only, see docs/industry-pages-audit.md §2/§3.
      --color-paper / --color-ink above are reused as-is, not duplicated. */
@@ -54,8 +77,8 @@
   --color-signal-cyan:    #0891b2;
   --color-signal-fuchsia: #c026d3;
 
-  --font-industry-display: var(--font-industry-display);
-  --font-mono: var(--font-mono);
+  --font-industry-display: var(--font-sora);
+  --font-mono: var(--font-jetbrains);
 
   /* Radius (slightly larger for premium feel) */
   --radius-sm: 0.25rem;
@@ -211,13 +234,39 @@ html {
 }
 
 body {
-  background: var(--color-paper);
+  background:
+    radial-gradient(1100px 760px at 12% -5%, rgba(58, 109, 240, 0.07), transparent 58%),
+    radial-gradient(1000px 700px at 100% 12%, rgba(58, 109, 240, 0.05), transparent 55%),
+    var(--color-paper);
+  background-attachment: fixed;
   color: var(--color-ink);
 }
 
+/* Section band backgrounds — every band carries a soft cobalt atmosphere so
+   no section reads as a flat fill. Light bands for content, dark bands as
+   rhythm anchors (method / CTA / footer). Use in place of bg-paper / bg-deep. */
+.ims-band-light {
+  background:
+    radial-gradient(920px 640px at 8% 0%, rgba(58, 109, 240, 0.10), transparent 56%),
+    radial-gradient(780px 560px at 100% 26%, rgba(58, 109, 240, 0.06), transparent 52%),
+    var(--color-paper);
+}
+.ims-band-light-soft {
+  background:
+    radial-gradient(920px 640px at 12% 0%, rgba(58, 109, 240, 0.11), transparent 56%),
+    radial-gradient(780px 560px at 100% 30%, rgba(58, 109, 240, 0.06), transparent 52%),
+    var(--color-paper-soft);
+}
+.ims-band-dark {
+  background:
+    radial-gradient(940px 660px at 14% 0%, rgba(58, 109, 240, 0.22), transparent 56%),
+    radial-gradient(820px 620px at 100% 44%, rgba(58, 109, 240, 0.13), transparent 56%),
+    var(--color-deep);
+}
+
 ::selection {
-  background: var(--color-mauve-500);
-  color: var(--color-paper);
+  background: var(--color-accent-500);
+  color: var(--color-paper-pure);
 }
 
 @media (pointer: fine) {
@@ -270,23 +319,23 @@ html.lenis, html.lenis body { height: auto; }
 .ims-glass-text {
   background: linear-gradient(
     180deg,
-    rgba(245, 239, 243, 1.00) 0%,
+    rgba(247, 243, 236, 1.00) 0%,
     rgba(232, 220, 232, 0.95) 45%,
-    rgba(212, 176, 212, 0.92) 100%
+    rgba(126, 160, 255, 0.92) 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
   text-shadow:
-    0 0 36px rgba(212, 176, 212, 0.45),
-    0 2px 12px rgba(26, 22, 32, 0.45);
-  filter: drop-shadow(0 6px 28px rgba(212, 176, 212, 0.20));
+    0 0 36px rgba(126, 160, 255, 0.45),
+    0 2px 12px rgba(18, 20, 28, 0.45);
+  filter: drop-shadow(0 6px 28px rgba(126, 160, 255, 0.20));
 }
 @supports not (-webkit-background-clip: text) {
   .ims-glass-text {
     color: var(--color-paper-ink);
-    text-shadow: 0 0 36px rgba(212, 176, 212, 0.45);
+    text-shadow: 0 0 36px rgba(126, 160, 255, 0.45);
   }
 }
 
@@ -299,17 +348,17 @@ html.lenis, html.lenis body { height: auto; }
   -webkit-text-fill-color: transparent;
   color: transparent;
   text-shadow:
-    0 0 48px rgba(212, 176, 212, 0.55),
-    0 2px 18px rgba(26, 22, 32, 0.65),
-    0 6px 32px rgba(26, 22, 32, 0.45);
-  filter: drop-shadow(0 8px 38px rgba(212, 176, 212, 0.28));
+    0 0 48px rgba(126, 160, 255, 0.55),
+    0 2px 18px rgba(18, 20, 28, 0.65),
+    0 6px 32px rgba(18, 20, 28, 0.45);
+  filter: drop-shadow(0 8px 38px rgba(126, 160, 255, 0.28));
 }
 @supports not (-webkit-background-clip: text) {
   .ims-glass-cinema {
     color: var(--color-paper-ink);
     text-shadow:
-      0 0 48px rgba(212, 176, 212, 0.55),
-      0 2px 18px rgba(26, 22, 32, 0.65);
+      0 0 48px rgba(126, 160, 255, 0.55),
+      0 2px 18px rgba(18, 20, 28, 0.65);
   }
 }
 
@@ -317,23 +366,23 @@ html.lenis, html.lenis body { height: auto; }
    like real glass laid into the page. */
 .ims-cinema-frame {
   box-shadow:
-    0 30px 80px -30px rgba(26, 22, 32, 0.75),
-    0 0 0 1px rgba(212, 176, 212, 0.08);
+    0 30px 80px -30px rgba(18, 20, 28, 0.75),
+    0 0 0 1px rgba(126, 160, 255, 0.08);
 }
 
 /* Cinematic stage — full-bleed, no rounding, deep cinema ratio.
    The page reads it as a chapter break. */
 .ims-cinema-stage {
   box-shadow:
-    inset 0 0 0 1px rgba(212, 176, 212, 0.10),
+    inset 0 0 0 1px rgba(126, 160, 255, 0.10),
     0 40px 120px -40px rgba(0, 0, 0, 0.85);
 }
 
 /* Film grain texture for cinema feel */
 .ims-cinema-grain {
   background-image:
-    radial-gradient(rgba(212, 176, 212, 0.12) 1px, transparent 1px),
-    radial-gradient(rgba(245, 239, 243, 0.08) 1px, transparent 1px);
+    radial-gradient(rgba(126, 160, 255, 0.12) 1px, transparent 1px),
+    radial-gradient(rgba(247, 243, 236, 0.08) 1px, transparent 1px);
   background-size: 3px 3px, 5px 5px;
   background-position: 0 0, 1px 2px;
   mix-blend-mode: overlay;
@@ -437,8 +486,8 @@ html.js .ims-cinema-section:not(.ims-cinema-in) .ims-cinema-caption {
   background:
     radial-gradient(
       ellipse 40% 60% at 50% 50%,
-      rgba(212, 176, 212, 0.45) 0%,
-      rgba(212, 176, 212, 0.18) 40%,
+      rgba(126, 160, 255, 0.45) 0%,
+      rgba(126, 160, 255, 0.18) 40%,
       transparent 70%
     );
   mix-blend-mode: screen;
@@ -460,13 +509,13 @@ html.js .ims-cinema-section:not(.ims-cinema-in) .ims-cinema-caption {
 @keyframes ims-cinema-aura {
   0%, 100% {
     background:
-      radial-gradient(circle at 20% 30%, rgba(120, 100, 120, 0.22), transparent 50%),
-      radial-gradient(circle at 80% 70%, rgba(212, 176, 212, 0.16), transparent 55%);
+      radial-gradient(circle at 20% 30%, rgba(58, 109, 240, 0.22), transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(126, 160, 255, 0.16), transparent 55%);
   }
   50% {
     background:
-      radial-gradient(circle at 70% 25%, rgba(120, 100, 120, 0.28), transparent 50%),
-      radial-gradient(circle at 25% 75%, rgba(212, 176, 212, 0.22), transparent 55%);
+      radial-gradient(circle at 70% 25%, rgba(58, 109, 240, 0.28), transparent 50%),
+      radial-gradient(circle at 25% 75%, rgba(126, 160, 255, 0.22), transparent 55%);
   }
 }
 .ims-cinematic-aura {
@@ -483,11 +532,11 @@ html.js .ims-cinema-section:not(.ims-cinema-in) .ims-cinema-caption {
   background-image:
     linear-gradient(
       110deg,
-      rgba(255, 250, 254, 1) 0%,
-      rgba(245, 235, 245, 0.97) 35%,
-      rgba(255, 250, 254, 1) 50%,
-      rgba(245, 235, 245, 0.97) 65%,
-      rgba(212, 176, 212, 0.92) 100%
+      rgba(253, 252, 248, 1) 0%,
+      rgba(247, 243, 236, 0.97) 35%,
+      rgba(253, 252, 248, 1) 50%,
+      rgba(247, 243, 236, 0.97) 65%,
+      rgba(126, 160, 255, 0.92) 100%
     );
   background-size: 200% 100%;
   background-position: 0% 50%;
@@ -584,13 +633,13 @@ html.js .ims-cinema-section:not(.ims-cinema-in) .ims-cinema-caption {
 @keyframes ims-paper-aura {
   0%, 100% {
     background:
-      radial-gradient(circle at 18% 20%, rgba(212, 176, 212, 0.30), transparent 50%),
-      radial-gradient(circle at 82% 80%, rgba(120, 100, 120, 0.16), transparent 55%);
+      radial-gradient(circle at 18% 20%, rgba(126, 160, 255, 0.30), transparent 50%),
+      radial-gradient(circle at 82% 80%, rgba(58, 109, 240, 0.16), transparent 55%);
   }
   50% {
     background:
-      radial-gradient(circle at 70% 30%, rgba(212, 176, 212, 0.34), transparent 50%),
-      radial-gradient(circle at 25% 78%, rgba(120, 100, 120, 0.20), transparent 55%);
+      radial-gradient(circle at 70% 30%, rgba(126, 160, 255, 0.34), transparent 50%),
+      radial-gradient(circle at 25% 78%, rgba(58, 109, 240, 0.20), transparent 55%);
   }
 }
 .ims-paper-aura {
@@ -620,17 +669,17 @@ html.js .ims-cinema-section:not(.ims-cinema-in) .ims-cinema-caption {
 }
 .ims-footer-grid {
   background-image:
-    linear-gradient(rgba(212, 176, 212, 0.4) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212, 176, 212, 0.4) 1px, transparent 1px);
+    linear-gradient(rgba(126, 160, 255, 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(126, 160, 255, 0.4) 1px, transparent 1px);
   background-size: 80px 80px;
   animation: ims-footer-grid-drift 50s linear infinite;
 }
 
 /* Standards badges shimmer-in once revealed */
 @keyframes ims-standards-shimmer {
-  0%   { box-shadow: 0 0 0 0 rgba(212, 176, 212, 0); }
-  50%  { box-shadow: 0 0 16px 0 rgba(212, 176, 212, 0.18); }
-  100% { box-shadow: 0 0 0 0 rgba(212, 176, 212, 0); }
+  0%   { box-shadow: 0 0 0 0 rgba(126, 160, 255, 0); }
+  50%  { box-shadow: 0 0 16px 0 rgba(126, 160, 255, 0.18); }
+  100% { box-shadow: 0 0 0 0 rgba(126, 160, 255, 0); }
 }
 
 /* =========================================================================
@@ -638,8 +687,8 @@ html.js .ims-cinema-section:not(.ims-cinema-in) .ims-cinema-caption {
    site so every box has a quiet sheen on hover and an animated accent.
 ========================================================================= */
 @keyframes ims-card-border-glow {
-  0%, 100% { border-color: rgba(212, 176, 212, 0.12); }
-  50%      { border-color: rgba(212, 176, 212, 0.30); }
+  0%, 100% { border-color: rgba(126, 160, 255, 0.12); }
+  50%      { border-color: rgba(126, 160, 255, 0.30); }
 }
 
 @keyframes ims-divider-flow {
@@ -650,9 +699,9 @@ html.js .ims-cinema-section:not(.ims-cinema-in) .ims-cinema-caption {
 .ims-divider-anim {
   background: linear-gradient(
     90deg,
-    rgba(120, 100, 120, 0.5) 0%,
-    rgba(212, 176, 212, 1) 50%,
-    rgba(120, 100, 120, 0.5) 100%
+    rgba(58, 109, 240, 0.5) 0%,
+    rgba(126, 160, 255, 1) 50%,
+    rgba(58, 109, 240, 0.5) 100%
   );
   background-size: 200% 100%;
   animation: ims-divider-flow 4s linear infinite;
@@ -679,8 +728,8 @@ html.js .ims-cinema-section:not(.ims-cinema-in) .ims-cinema-caption {
 
 /* Card rim — soft glow ring that travels around the card on hover */
 @keyframes ims-card-rim-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 176, 212, 0.0); }
-  50%      { box-shadow: 0 0 30px 4px rgba(212, 176, 212, 0.18); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(126, 160, 255, 0.0); }
+  50%      { box-shadow: 0 0 30px 4px rgba(126, 160, 255, 0.18); }
 }
 .ims-card-rim {
   border-radius: inherit;
@@ -694,8 +743,8 @@ html.js .ims-cinema-section:not(.ims-cinema-in) .ims-cinema-caption {
 
 /* Metric pop — headline numbers gently pulse so the eye lands on them */
 @keyframes ims-metric-pop {
-  0%, 100% { transform: scale(1);    text-shadow: 0 0 0 rgba(212,176,212,0); }
-  50%      { transform: scale(1.015); text-shadow: 0 0 24px rgba(212,176,212,0.40); }
+  0%, 100% { transform: scale(1);    text-shadow: 0 0 0 rgba(126,160,255,0); }
+  50%      { transform: scale(1.015); text-shadow: 0 0 24px rgba(126,160,255,0.40); }
 }
 .ims-metric-pop {
   animation: ims-metric-pop 4s ease-in-out infinite;
@@ -736,7 +785,7 @@ html.js .ims-cinema-section:not(.ims-cinema-in) .ims-cinema-caption {
   background: linear-gradient(
     100deg,
     transparent 0%,
-    rgba(245, 239, 243, 0.30) 50%,
+    rgba(247, 243, 236, 0.30) 50%,
     transparent 100%
   );
 }
@@ -755,8 +804,8 @@ html.js .ims-cinema-section:not(.ims-cinema-in) .ims-cinema-caption {
 
 /* CTA — continuous pulse halo + sheen sweep across the button */
 @keyframes ims-cta-pulse-halo {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(212,176,212,0.0); }
-  50%      { box-shadow: 0 0 36px 6px rgba(212,176,212,0.35); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(126,160,255,0.0); }
+  50%      { box-shadow: 0 0 36px 6px rgba(126,160,255,0.35); }
 }
 .ims-cta-pulse {
   animation: ims-cta-pulse-halo 3.5s ease-in-out infinite;

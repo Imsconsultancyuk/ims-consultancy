@@ -6,13 +6,13 @@ export const ifasWealthManagers: Industry = {
   shortName: "IFA",
   regulator: "FCA",
   regulatorLine:
-    "Built for firms answerable to the FCA — detection and drafting by the system, advice and sending by your authorised people.",
+    "Built for firms answerable to the FCA. The system detects and drafts; your authorised people advise and send.",
   accent: "emerald",
   leakLine: "£38k of recurring fees at risk in one register",
   meta: {
     title: "IFA & Wealth Manager Revenue Recovery | IntelMadeSimple",
     description:
-      "Dormant book mining, advice gap scanning and next-gen retention — AI tools that protect recurring fees and surface advice opportunities. GDPR-safe, FCA-aware.",
+      "Dormant book mining, advice gap scanning and next-gen retention. AI tools that protect recurring fees and surface advice opportunities. GDPR-safe, FCA-aware.",
   },
   hero: {
     h1: "Your recurring fees are only as safe as your least-contacted client",
@@ -44,8 +44,13 @@ export const ifasWealthManagers: Industry = {
     {
       id: "dormant-book-miner",
       name: "Dormant Book Miner",
-      problem: "Review dates lapse quietly — nobody sees the whole book's drift in one place.",
+      problem: "Review dates lapse quietly. Nobody sees the whole book's drift in one place.",
       outcome: "Every overdue relationship surfaced, ranked by recurring fee at risk, review invitations drafted.",
+      actions: [
+        "Take the top of the fee-at-risk list into the adviser meeting as this week's calls.",
+        "Send the drafted review invitations from the servicing adviser's address.",
+        "Clear each overdue flag as the review lands in the diary.",
+      ],
       demo: {
         sampleFile: { id: "ifa-register", label: "client_register.csv", type: "csv", meta: "410 client records" },
         stages: [
@@ -70,6 +75,11 @@ export const ifasWealthManagers: Industry = {
       name: "Gap Scanner",
       problem: "Advice gaps across a whole book are invisible client-by-client.",
       outcome: "Protection, pension and ISA gaps flagged book-wide, sized in fee terms, agendas drafted.",
+      actions: [
+        "Sort the gaps by fee value and pick the ones that sit inside your permissions.",
+        "Drop the drafted agenda straight into the annual review already scheduled.",
+        "Evidence the gap and the recommendation in the client file as you go.",
+      ],
       demo: {
         sampleFile: { id: "ifa-holdings", label: "holdings_export.csv", type: "csv", meta: "410 clients · 1,120 holdings" },
         stages: [
@@ -85,7 +95,7 @@ export const ifasWealthManagers: Industry = {
             { label: "Review agendas drafted", value: "88" },
             { label: "Unprotected high-earners", value: "26" },
           ],
-          solution: "Gap Scanner gives every adviser a reason to call — with the numbers already on the agenda.",
+          solution: "Gap Scanner gives every adviser a reason to call, with the numbers already on the agenda.",
         },
       },
     },
@@ -94,6 +104,11 @@ export const ifasWealthManagers: Industry = {
       name: "NextGen Retain",
       problem: "When wealth transfers, the next generation rarely knows your firm's name.",
       outcome: "Households facing transfer identified, next-gen contact status mapped, introduction plans drafted.",
+      actions: [
+        "Ask each adviser to confirm which next-generation contacts the firm already holds.",
+        "Make the drafted introduction through the existing client, never cold.",
+        "Add the next generation to the servicing record so the relationship survives the transfer.",
+      ],
       demo: {
         sampleFile: { id: "ifa-households", label: "household_links.csv", type: "csv", meta: "410 clients · 130 linked households" },
         stages: [
@@ -143,19 +158,19 @@ export const ifasWealthManagers: Industry = {
     },
     {
       q: "What data do you need?",
-      a: "A client register export — client, recurring fee, last review, holdings summary. Back-office exports work as-is.",
+      a: "A client register export: client, recurring fee, last review, holdings summary. Back-office exports work as-is.",
     },
     {
       q: "How long does setup take?",
-      a: "Most firms are live within 14 days of granting data access. The demo you just ran mirrors the real pipeline — configuration, not construction.",
+      a: "Most firms are live within 14 days of granting data access. The demo you just ran mirrors the real pipeline. What follows is configuration, not construction.",
     },
     {
       q: "Does it work with our systems?",
-      a: "Yes — Intelliflo Office, Xplan, Curo and spreadsheet registers.",
+      a: "Yes. Intelliflo Office, Xplan, Curo and spreadsheet registers.",
     },
     {
       q: "What does it cost?",
-      a: "A one-off build fee then a monthly retainer — anchored so one retained client typically covers the year. Exact pricing on the call, based on book size.",
+      a: "A one-off build fee then a monthly retainer, anchored so one retained client typically covers the year. Exact pricing on the call, based on book size.",
     },
   ],
   related: ["mortgage-brokers", "accountancy-firms"],

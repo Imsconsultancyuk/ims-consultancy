@@ -7,6 +7,7 @@ export type AnalyticsEvent =
   | "demo_file_dropped"
   | "demo_completed"
   | "tool_card_view"
+  | "tool_quick_select"
   | "privacy_toggle_used"
   | "package_cta_clicked"
   | "book_call_clicked"

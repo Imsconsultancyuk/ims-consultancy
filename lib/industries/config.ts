@@ -32,13 +32,13 @@ export const NAV_SECTIONS = [
 // /industries hub intro block — Doc 2 §IND-011, verbatim (hard rule 4).
 export const HUB_COPY = {
   meta: {
-    title: "Industries — AI Revenue Recovery Tools | IntelMadeSimple",
+    title: "AI Revenue Recovery Tools by Industry | IntelMadeSimple",
     description:
       "Revenue intelligence for professional firms: mortgage, wealth, legal, recruitment, insurance, M&A, property, accountancy, SaaS and private healthcare.",
   },
   eyebrow: "Industries",
   h1: "Revenue intelligence for firms with valuable books",
-  sub: "Every practice below runs on a client book that leaks — maturities missed, follow-ups dropped, gaps unadvised. We build the AI tools that find it, prove it on your own data, and capture it monthly.",
+  sub: "Every practice below runs on a client book that leaks. Maturities missed, follow-ups dropped, gaps left unadvised. We build the three tools that find it, prove it on your own data, and capture it every month.",
   reassurance:
     "Every demo on these pages runs on synthetic data. Identifiable fields are tokenised before any AI processing.",
 } as const;
@@ -46,7 +46,7 @@ export const HUB_COPY = {
 export const GDPR_COPY = {
   eyebrow: "Data protection",
   heading: "Your client data never reaches the AI",
-  body: "Every engagement runs through our tokenisation layer. Names, contact details and account identifiers are swapped for tokens before AI processing — the AI finds the revenue, the encrypted vault holds the identities, and the two only meet back inside your environment.",
+  body: "Every engagement runs through our tokenisation layer. Names, contact details and account identifiers are swapped for tokens before AI processing. The AI finds the revenue, the encrypted vault holds the identities, and the two only meet back inside your environment.",
   toggleLabels: { raw: "Your view", tokenised: "What the AI sees" },
   trustChips: [
     "UK data residency",

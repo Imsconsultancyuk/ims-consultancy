@@ -149,7 +149,7 @@ export default function CaseStudiesPage() {
 
       <main className="flex flex-1 flex-col">
         <header
-          className="relative isolate overflow-hidden bg-deep px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
+          className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="cs-heading"
         >
           <div className="relative mx-auto w-full max-w-4xl">
@@ -173,7 +173,7 @@ export default function CaseStudiesPage() {
 
         <section
           aria-labelledby="cs-list-heading"
-          className="relative bg-deep px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
+          className="relative ims-band-dark px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
         >
           <h2 id="cs-list-heading" className="sr-only">
             Engagements
@@ -190,7 +190,7 @@ export default function CaseStudiesPage() {
                 <Reveal key={c.id} delay={i * 80}>
                   <article
                     id={c.id}
-                    className="group relative overflow-hidden rounded-2xl border border-mauve-300/12 bg-deep-soft/55 p-8 backdrop-blur transition-all duration-500 hover:border-mauve-300/35 hover:bg-deep-soft/75 hover:shadow-[0_24px_60px_-28px_rgba(212,176,212,0.45)] sm:p-10 lg:p-12"
+                    className="group relative overflow-hidden rounded-2xl border border-mauve-300/12 bg-deep-soft/55 p-8 backdrop-blur transition-all duration-500 hover:border-mauve-300/35 hover:bg-deep-soft/75 hover:shadow-[0_24px_60px_-28px_rgba(126, 160, 255,0.45)] sm:p-10 lg:p-12"
                   >
                     {/* Floating mauve sheen that drifts on hover */}
                     <span
@@ -198,7 +198,7 @@ export default function CaseStudiesPage() {
                       className="ims-card-sheen pointer-events-none absolute -top-32 -right-16 h-72 w-72 rounded-full opacity-0 transition-opacity duration-700 group-hover:opacity-100"
                       style={{
                         background:
-                          "radial-gradient(circle, rgba(212,176,212,0.35), transparent 70%)",
+                          "radial-gradient(circle, rgba(126, 160, 255,0.35), transparent 70%)",
                       }}
                     />
                     {/* Subtle continuous border-glow drift */}
@@ -267,7 +267,7 @@ export default function CaseStudiesPage() {
 
         <section
           aria-labelledby="cs-cta-heading"
-          className="relative bg-deep-soft px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
+          className="relative ims-band-dark px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
         >
           <div className="mx-auto w-full max-w-3xl text-center">
             <Reveal>
@@ -288,7 +288,7 @@ export default function CaseStudiesPage() {
                   <Link
                     href="/contact"
                     data-cursor="cta"
-                    className="inline-flex h-12 items-center justify-center rounded-md bg-mauve-300 px-8 text-sm font-medium tracking-[0.02em] text-deep transition-all duration-300 hover:bg-mauve-200 hover:shadow-[0_8px_32px_-8px_rgba(212,176,212,0.55)]"
+                    className="inline-flex h-12 items-center justify-center rounded-md bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_8px_32px_-8px_rgba(126, 160, 255,0.55)]"
                   >
                     Start a conversation
                   </Link>

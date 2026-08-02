@@ -69,7 +69,7 @@ export default function ContactPage() {
 
       <main className="flex flex-1 flex-col">
         <header
-          className="relative isolate overflow-hidden bg-deep px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
+          className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="contact-heading"
         >
           <div
@@ -77,7 +77,7 @@ export default function ContactPage() {
             className="pointer-events-none absolute -top-24 -right-24 h-[420px] w-[420px] rounded-full"
             style={{
               background:
-                "radial-gradient(circle, rgba(120,100,120,0.28), rgba(120,100,120,0.08) 40%, transparent 70%)",
+                "radial-gradient(circle, rgba(58, 109, 240,0.28), rgba(58, 109, 240,0.08) 40%, transparent 70%)",
               filter: "blur(30px)",
             }}
           />
@@ -102,7 +102,7 @@ export default function ContactPage() {
 
         <section
           aria-labelledby="contact-grid-heading"
-          className="relative bg-deep px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
+          className="relative ims-band-dark px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
         >
           <h2 id="contact-grid-heading" className="sr-only">
             Reach IMS Consultancy
@@ -177,7 +177,7 @@ export default function ContactPage() {
 
         <section
           aria-labelledby="contact-after-heading"
-          className="relative bg-deep-soft px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
+          className="relative ims-band-dark px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
         >
           <div className="mx-auto w-full max-w-3xl text-center">
             <Reveal>

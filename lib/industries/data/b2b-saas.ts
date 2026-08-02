@@ -6,13 +6,13 @@ export const b2bSaas: Industry = {
   shortName: "Company",
   regulator: "ICO",
   regulatorLine:
-    "Registered with the ICO and built to UK GDPR — your data is processed under a DPA, tokenised, and never used for model training.",
+    "Registered with the ICO and built to UK GDPR. Your data is processed under a DPA, tokenised, and never used for model training.",
   accent: "cyan",
   leakLine: "£186k ARR at risk in one export",
   meta: {
     title: "AI Revenue Recovery for B2B SaaS | IntelMadeSimple",
     description:
-      "Churn-signal detection, failed-payment recovery and expansion mining — AI tools that defend and grow ARR from data you already have. GDPR-safe.",
+      "Churn-signal detection, failed-payment recovery and expansion mining. AI tools that defend and grow ARR from data you already have. GDPR-safe.",
   },
   hero: {
     h1: "Your ARR leaks are in the data you already collect",
@@ -27,7 +27,7 @@ export const b2bSaas: Industry = {
     {
       title: "Silent churn",
       cost: "£186k",
-      line: "Usage decline shows 60 days before the cancellation email — if anyone's looking.",
+      line: "Usage decline shows 60 days before the cancellation email, if anyone is looking.",
     },
     {
       title: "Involuntary churn",
@@ -46,6 +46,11 @@ export const b2bSaas: Industry = {
       name: "Churn Signal Detector",
       problem: "Churn risk shows in usage decline and support friction long before renewal.",
       outcome: "Every account risk-scored from usage patterns, save-plays drafted for CS.",
+      actions: [
+        "Give CS the risk-scored list at the start of the week, not at renewal.",
+        "Run the drafted save-play while the account still has runway to recover.",
+        "Feed the outcome back so the score reflects what actually saved the account.",
+      ],
       demo: {
         sampleFile: { id: "saas-usage", label: "usage_export_sample.csv", type: "csv", meta: "480 accounts · 90 days" },
         stages: [
@@ -70,6 +75,11 @@ export const b2bSaas: Industry = {
       name: "Failed Payment Recovery",
       problem: "Dunning defaults let recoverable revenue expire in silence.",
       outcome: "Failed payments segmented by cause, recovery sequences drafted per segment.",
+      actions: [
+        "Split hard failures from soft ones and stop dunning the ones that cannot recover.",
+        "Send the cause-specific sequence instead of the generic card-update email.",
+        "Route anything above your ACV threshold to a human before the account lapses.",
+      ],
       demo: {
         sampleFile: { id: "saas-billing", label: "billing_export_sample.csv", type: "csv", meta: "480 accounts · billing events" },
         stages: [
@@ -85,7 +95,7 @@ export const b2bSaas: Industry = {
             { label: "Card-expiry saves", value: "61%" },
             { label: "Sequences drafted", value: "48" },
           ],
-          solution: "Recovery flows tuned to failure cause — not one generic dunning email on repeat.",
+          solution: "Recovery flows tuned to failure cause, not one generic dunning email on repeat.",
         },
       },
     },
@@ -94,6 +104,11 @@ export const b2bSaas: Industry = {
       name: "Expansion Miner",
       problem: "Expansion-ready accounts announce themselves in usage data nobody mines.",
       outcome: "Accounts at plan limits or multi-team usage flagged, expansion plays drafted for sales.",
+      actions: [
+        "Hand sales the accounts already at plan limits before the renewal conversation.",
+        "Lead with the usage evidence rather than the price list.",
+        "Time the play to the usage spike, not to the contract date.",
+      ],
       demo: {
         sampleFile: { id: "saas-usage-2", label: "usage_export_sample.csv", type: "csv", meta: "same 480-account export" },
         stages: [
@@ -143,19 +158,19 @@ export const b2bSaas: Industry = {
     },
     {
       q: "What data do you need?",
-      a: "Usage and billing exports (CSV) — or read-only access to Stripe and your analytics. No production access needed.",
+      a: "Usage and billing exports (CSV), or read-only access to Stripe and your analytics. No production access needed.",
     },
     {
       q: "How long does setup take?",
-      a: "Most firms are live within 14 days of granting data access. The demo you just ran mirrors the real pipeline — configuration, not construction.",
+      a: "Most firms are live within 14 days of granting data access. The demo you just ran mirrors the real pipeline. What follows is configuration, not construction.",
     },
     {
       q: "Does it work with our systems?",
-      a: "Yes — Stripe, Chargebee, HubSpot, Mixpanel/Amplitude exports and warehouse CSVs.",
+      a: "Yes. Stripe, Chargebee, HubSpot, Mixpanel/Amplitude exports and warehouse CSVs.",
     },
     {
       q: "What does it cost?",
-      a: "A one-off build fee then a monthly retainer — anchored so a single saved account covers months of fees. Exact pricing on the call, based on book size.",
+      a: "A one-off build fee then a monthly retainer, anchored so a single saved account covers months of fees. Exact pricing on the call, based on book size.",
     },
   ],
   related: ["executive-search-recruitment", "ma-advisory-business-brokers"],

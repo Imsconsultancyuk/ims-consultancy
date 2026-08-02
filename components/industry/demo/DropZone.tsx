@@ -7,9 +7,11 @@ import type { Accent, Tool } from "@/lib/industries/types";
 import { SAMPLE_FILE_DRAG_TYPE } from "./SampleFileChip";
 import { useDemoMachineContext } from "./useDemoMachine";
 
-// Exact copy required by IMS-042 AC — never paraphrase.
+// Exact copy required by IMS-042 AC — never paraphrase. Punctuation only:
+// the em-dash is a hard-banned character in user-facing copy, so it becomes a
+// full stop. Wording is untouched.
 const REJECTION_MESSAGE =
-  "Use one of the sample files provided — we never take real data here";
+  "Use one of the sample files provided. We never take real data here";
 
 interface DropZoneProps {
   tools: readonly Tool[];
