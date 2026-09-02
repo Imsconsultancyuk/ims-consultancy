@@ -10,16 +10,26 @@ import { MagneticButton } from "./MagneticButton";
  * HeroScrollWorld — IMS's flagship scroll hero.
  *
  * A tall outer track holds the scroll distance; an inner CSS-`sticky` stage
- * stays fixed in the viewport while the cinematic clip is scrubbed frame-by-
- * frame by scroll position and solution beats reveal over it. CSS sticky is
- * used for the visual hold (GSAP pinning fights Lenis smooth scroll and was
- * letting the section scroll away). ScrollTrigger only reads progress to drive
- * the video time, the active beat, and the end-dim.
+ * stays fixed in the viewport while a cinematic frame sequence is scrubbed by
+ * scroll position and solution beats reveal over it. CSS sticky is used for the
+ * visual hold (GSAP pinning fights Lenis smooth scroll and was letting the
+ * section scroll away). ScrollTrigger only reads progress to drive the frame
+ * index, the active beat, and the end-dim.
+ *
+ * Why a frame sequence and not <video>:
+ * The clip used to be scrubbed by writing `video.currentTime` on every
+ * ScrollTrigger update. Lenis emits scroll events at rAF rate, so that issued a
+ * seek every ~16ms into a 1080p decoder, and each new write aborts the seek
+ * still in flight. Measured on this page: 212 seeks issued per pass, 105 of
+ * them aborted before completing — the film froze, then snapped, for the whole
+ * scrub. Seeking cannot be made reliable at scroll frequency, so the seek is
+ * gone: 194 pre-decoded WebP frames are painted straight to a canvas. Zero
+ * seeks, one draw per animation frame, and the sequence streams in
+ * progressively instead of blocking on a 37MB blob download.
  *
  * Non-negotiables:
  * - Text never gated behind animation (LESSONS #2): every beat is in the SSR
  *   DOM; reduced-motion / no-JS sees poster + beat 1.
- * - The clip loads as a seekable blob so scrubbing works on any host.
  */
 
 interface Beat {
@@ -92,17 +102,21 @@ const BEATS: Beat[] = [
   },
 ];
 
+/** Frames extracted from flagship.mp4 at 8fps (24.29s clip → 194 frames). */
+const FRAME_COUNT = 194;
+const frameUrl = (i: number) =>
+  `/videos/hero/frames/f-${String(i + 1).padStart(3, "0")}.webp`;
+
 interface HeroScrollWorldProps {
-  videoSrc?: string;
   posterSrc?: string;
   /**
    * Viewport-heights of scroll distance the hero occupies.
    *
-   * This sets the scrub pace. The clip is scrubbed over ScrollTrigger's range,
-   * which is trackHeight - viewportHeight, so the denominator is
+   * This sets the scrub pace. The sequence is scrubbed over ScrollTrigger's
+   * range, which is trackHeight - viewportHeight, so the denominator is
    * (scrollLength - 1) viewport-heights, NOT scrollLength — the final viewport
    * height is the sticky release. House pace is 6.16 s/vh (the original 30.8s
-   * clip over 6vh, i.e. 5vh of scrub). The current clip runs 24.27s, so
+   * clip over 6vh, i.e. 5vh of scrub). The source clip runs 24.27s, so
    * 24.27 / 6.16 = 3.94 vh of scrub, +1 for the release = 4.94. Recompute this
    * whenever the clip changes.
    */
@@ -110,16 +124,18 @@ interface HeroScrollWorldProps {
 }
 
 export function HeroScrollWorld({
-  videoSrc = "/videos/hero/flagship.mp4",
   posterSrc = "/videos/hero/flagship-poster.jpg",
   scrollLength = 4.94,
 }: HeroScrollWorldProps) {
   const trackRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const dimRef = useRef<HTMLDivElement>(null);
   const introRef = useRef<HTMLDivElement>(null);
   const pointer = useRef<[number, number]>([0.5, 0.5]);
+  /** Frame index the scroll wants; read by the paint loop, never painted from directly. */
+  const wantedFrame = useRef(0);
+  const framesRef = useRef<(HTMLImageElement | null)[]>([]);
   const [activeBeat, setActiveBeat] = useState(0);
   const [clipReady, setClipReady] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -135,30 +151,111 @@ export function HeroScrollWorld({
     );
   }, []);
 
-  // Seekable-blob load of the clip.
+  // Load the sequence, then paint it. One effect: the loader and the paint loop
+  // share the same frame store and must be torn down together.
   useEffect(() => {
-    if (typeof window === "undefined" || !videoSrc || reduced) return;
-    const el = videoRef.current;
-    if (!el) return;
-    let objectUrl: string | null = null;
+    if (typeof window === "undefined" || reduced) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d", { alpha: false });
+    if (!ctx) return;
+
+    const frames: (HTMLImageElement | null)[] = new Array(FRAME_COUNT).fill(null);
+    framesRef.current = frames;
     let cancelled = false;
-    fetch(videoSrc)
-      .then((r) => (r.ok ? r.blob() : Promise.reject(new Error("clip fetch failed"))))
-      .then((blob) => {
+    let painted = -1;
+    let raf = 0;
+
+    // Backing store in device pixels, capped at 2x — a 3x DPR phone would other-
+    // wise allocate a 9x canvas for no visible gain and drop frames drawing it.
+    const size = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const w = Math.round(canvas.clientWidth * dpr);
+      const h = Math.round(canvas.clientHeight * dpr);
+      if (canvas.width !== w || canvas.height !== h) {
+        canvas.width = w;
+        canvas.height = h;
+        painted = -1; // resized buffer is blank; force a repaint
+      }
+    };
+    size();
+
+    /** Nearest loaded frame to `i`, so a gap in the sequence never blanks the stage. */
+    const nearestLoaded = (i: number) => {
+      if (frames[i]) return frames[i];
+      for (let d = 1; d < FRAME_COUNT; d++) {
+        if (i - d >= 0 && frames[i - d]) return frames[i - d];
+        if (i + d < FRAME_COUNT && frames[i + d]) return frames[i + d];
+      }
+      return null;
+    };
+
+    // object-cover, computed against the backing store.
+    const draw = (img: HTMLImageElement) => {
+      const cw = canvas.width;
+      const ch = canvas.height;
+      const scale = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
+      const dw = img.naturalWidth * scale;
+      const dh = img.naturalHeight * scale;
+      ctx.drawImage(img, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
+    };
+
+    const tick = () => {
+      if (cancelled) return;
+      size();
+      const want = wantedFrame.current;
+      if (want !== painted) {
+        const img = nearestLoaded(want);
+        if (img) {
+          draw(img);
+          // Only bank the index once the exact frame is the one on screen;
+          // otherwise a stand-in would suppress the repaint when it arrives.
+          painted = frames[want] ? want : -1;
+          if (!clipReady) setClipReady(true);
+        }
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+
+    // Load order: frame 0, then a coarse sweep so scrubbing is usable early,
+    // then everything else. Concurrency-capped so the sweep isn't starved by
+    // 194 parallel requests competing for sockets.
+    const order: number[] = [0];
+    for (let i = 0; i < FRAME_COUNT; i += 8) if (!order.includes(i)) order.push(i);
+    for (let i = 0; i < FRAME_COUNT; i++) if (!order.includes(i)) order.push(i);
+
+    let cursor = 0;
+    const pump = () => {
+      if (cancelled || cursor >= order.length) return;
+      const index = order[cursor++];
+      const img = new Image();
+      img.decoding = "async";
+      img.onload = () => {
         if (cancelled) return;
-        objectUrl = URL.createObjectURL(blob);
-        el.src = objectUrl;
-        el.load();
-      })
-      .catch(() => {});
-    const onReady = () => setClipReady(true);
-    el.addEventListener("loadeddata", onReady);
+        frames[index] = img;
+        if (index === wantedFrame.current) painted = -1; // repaint at full fidelity
+        pump();
+      };
+      img.onerror = () => {
+        if (!cancelled) pump();
+      };
+      img.src = frameUrl(index);
+    };
+    for (let i = 0; i < 6; i++) pump();
+
+    const onResize = () => size();
+    window.addEventListener("resize", onResize);
     return () => {
       cancelled = true;
-      el.removeEventListener("loadeddata", onReady);
-      if (objectUrl) URL.revokeObjectURL(objectUrl);
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", onResize);
+      framesRef.current = [];
     };
-  }, [videoSrc, reduced]);
+    // clipReady is intentionally absent: it flips once, and re-running would
+    // restart the whole download.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reduced]);
 
   // Scrub progress off the tall track. Sticky handles the visual hold.
   useEffect(() => {
@@ -175,18 +272,22 @@ export function HeroScrollWorld({
         invalidateOnRefresh: true,
         onUpdate: (self) => {
           const p = self.progress;
-          const video = videoRef.current;
-          if (video && clipReady && video.duration) {
-            video.currentTime = p * video.duration;
-          }
+          // Hand the paint loop an index and nothing else — no decode work runs
+          // on the scroll event itself.
+          wantedFrame.current = Math.min(
+            FRAME_COUNT - 1,
+            Math.max(0, Math.round(p * (FRAME_COUNT - 1))),
+          );
           setActiveBeat(Math.min(BEATS.length - 1, Math.floor(p * BEATS.length)));
           // The clip opens on its own wordmark and logo, which land in the same
           // column as beat 1's headline and body. Rather than trim the clip
-          // (it plays front to end), lift a paper wash over the copy column for
-          // the opening beat only, released by the time the wordmark clears.
+          // (it plays front to end), hold a paper wash over the copy column
+          // while the wordmark is in frame. Held solid to 5%, released by 15%:
+          // an earlier 11% linear release left the wash at 0.27 while the
+          // wordmark was still full-height behind the headline.
           if (introRef.current) {
             introRef.current.style.opacity = String(
-              Math.max(0, 1 - p / 0.11),
+              Math.min(1, Math.max(0, 1 - (p - 0.05) / 0.1)),
             );
           }
           // Dim the last frame so the closing CTA reads (ramps over final 26%).
@@ -198,7 +299,7 @@ export function HeroScrollWorld({
       });
     }, track);
     return () => ctx.revert();
-  }, [clipReady, reduced]);
+  }, [reduced]);
 
   // Pointer parallax on the copy.
   useEffect(() => {
@@ -241,7 +342,7 @@ export function HeroScrollWorld({
       style={{ height: reduced ? "100dvh" : `${scrollLength * 100}vh` }}
     >
       <div className="sticky top-0 h-[100dvh] overflow-hidden text-ink">
-        {/* Film: poster until the blob paints, then the scrubbed clip. */}
+        {/* Film: poster until the first frame paints, then the scrubbed canvas. */}
         <div aria-hidden className="absolute inset-0 -z-20">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -250,14 +351,10 @@ export function HeroScrollWorld({
             className="h-full w-full object-cover"
             style={{ opacity: clipReady ? 0 : 1, transition: "opacity 600ms ease" }}
           />
-          <video
-            ref={videoRef}
-            className="absolute inset-0 h-full w-full object-cover"
+          <canvas
+            ref={canvasRef}
+            className="absolute inset-0 h-full w-full"
             style={{ opacity: clipReady ? 1 : 0, transition: "opacity 600ms ease" }}
-            muted
-            playsInline
-            preload="none"
-            poster={posterSrc}
           />
         </div>
 
@@ -286,7 +383,7 @@ export function HeroScrollWorld({
           }}
         />
         {/* Intro wash: the clip's own opening title card sits exactly where beat 1's
-            copy sits. Opaque paper over the copy column at p=0, released by ~11%
+            copy sits. Opaque paper over the copy column at p=0, released by ~15%
             once the wordmark has left frame, so the clip still runs front to end. */}
         <div
           ref={introRef}

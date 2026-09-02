@@ -18,6 +18,12 @@
   [headers.values]
     Cache-Control = "public, max-age=604800, immutable"
 
+# Hero frame sequence: content-addressed by filename, never mutated in place
+[[headers]]
+  for = "/videos/hero/frames/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 [[headers]]
   for = "/_next/static/*"
   [headers.values]
