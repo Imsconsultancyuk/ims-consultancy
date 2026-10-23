@@ -44,3 +44,28 @@
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Flagship pages. Netlify-level rewrites run before the Next function; Next rewrites to public files 404 here.
+[[redirects]]
+  from = "/"
+  to = "/flagship/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/tools"
+  to = "/flagship/tools.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/faq"
+  to = "/flagship/faq.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/contact"
+  to = "/flagship/contact.html"
+  status = 200
+  force = true
