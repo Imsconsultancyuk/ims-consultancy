@@ -112,7 +112,7 @@ export function LiveDemoPlayer({ tools }: LiveDemoPlayerProps) {
     const activeTool = tools[reducedMotionTabIndex];
     const { result } = activeTool.demo;
     return (
-      <div className="relative flex flex-col gap-5 rounded-lg bg-ink p-6 text-paper-ink md:p-8">
+      <div className="relative flex flex-col gap-5 rounded-[14px] bg-deep p-6 text-paper-ink md:p-8">
         <span className="absolute right-4 top-4 whitespace-nowrap rounded-full border border-paper-ink-soft px-2 py-0.5 text-[11px] uppercase tracking-wide text-paper-ink-soft">
           Synthetic demonstration data
         </span>
@@ -138,7 +138,7 @@ export function LiveDemoPlayer({ tools }: LiveDemoPlayerProps) {
         <p className="font-industry-display text-xl font-medium md:text-2xl">{result.headline}</p>
         <dl className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           {result.metrics.map((metric) => (
-            <div key={metric.label} className="border-l-2 border-paper-ink-soft pl-4">
+            <div key={metric.label} className="border-t border-paper-ink-soft pt-3">
               <dd
                 className={`num text-2xl font-semibold ${
                   metric.emphasis ? "text-positive" : "text-paper-ink"
@@ -161,7 +161,7 @@ export function LiveDemoPlayer({ tools }: LiveDemoPlayerProps) {
       onMouseLeave={() => setIsPausedByInteraction(false)}
       onFocus={() => setIsPausedByInteraction(true)}
       onBlur={() => setIsPausedByInteraction(false)}
-      className="relative flex min-h-[220px] flex-col gap-5 rounded-lg bg-ink p-6 text-paper-ink md:p-8"
+      className="relative flex min-h-[220px] flex-col gap-5 rounded-[14px] bg-deep p-6 text-paper-ink md:p-8"
     >
       <span className="absolute right-4 top-4 whitespace-nowrap rounded-full border border-paper-ink-soft px-2 py-0.5 text-[11px] uppercase tracking-wide text-paper-ink-soft">
         Synthetic demonstration data

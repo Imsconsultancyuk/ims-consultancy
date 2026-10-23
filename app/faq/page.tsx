@@ -5,6 +5,8 @@ import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
 import { MagneticButton } from "../_components/MagneticButton";
+
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -25,6 +27,7 @@ export const metadata: Metadata = {
       "Honest answers to the questions clients ask before engaging.",
     url: `${SITE}/faq`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 
@@ -115,7 +118,7 @@ export default function FaqPage() {
       <JsonLd data={[orgJsonLd, websiteJsonLd, page, faqJsonLd]} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col">
+      <main id="main" className="flex flex-1 flex-col">
         <header
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="faq-heading"
@@ -205,7 +208,7 @@ export default function FaqPage() {
                   <Link
                     href="/contact"
                     data-cursor="cta"
-                    className="inline-flex h-12 items-center justify-center rounded-md bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_8px_32px_-8px_rgba(126, 160, 255,0.55)]"
+                    className="inline-flex h-12 items-center justify-center rounded-md bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-on-amber transition-all duration-300 hover:bg-accent-600"
                   >
                     Ask us anything
                   </Link>

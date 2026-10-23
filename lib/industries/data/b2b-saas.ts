@@ -10,7 +10,7 @@ export const b2bSaas: Industry = {
   accent: "cyan",
   leakLine: "£186k ARR at risk in one export",
   meta: {
-    title: "AI Revenue Recovery for B2B SaaS | IntelMadeSimple",
+    title: "AI Revenue Recovery for B2B SaaS",
     description:
       "Churn-signal detection, failed-payment recovery and expansion mining. AI tools that defend and grow ARR from data you already have. GDPR-safe.",
   },

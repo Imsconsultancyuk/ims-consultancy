@@ -10,7 +10,7 @@ export const commercialInsuranceBrokers: Industry = {
   accent: "sky",
   leakLine: "41 renewals wobbling in the next 90 days",
   meta: {
-    title: "AI Revenue Recovery for Insurance Brokers | IntelMadeSimple",
+    title: "AI Revenue Recovery for Insurance Brokers",
     description:
       "Renewal defence, cover-gap scanning and quote turnaround. AI tools that protect your book and win the ones you quote. GDPR-safe, FCA-aware.",
   },

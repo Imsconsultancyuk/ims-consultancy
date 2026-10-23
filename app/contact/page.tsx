@@ -5,6 +5,7 @@ import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
 import { ContactForm } from "../_components/ContactForm";
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
       "Start a conversation with IMS Consultancy.",
     url: `${SITE}/contact`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 
@@ -46,7 +48,7 @@ export default function ContactPage() {
     "@id": `${SITE}/contact#contactpage`,
     mainEntity: {
       "@type": "Organization",
-      "@id": `${SITE}#organization`,
+      "@id": `${SITE}/#organization`,
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "Customer service",
@@ -67,20 +69,11 @@ export default function ContactPage() {
       <JsonLd data={[orgJsonLd, websiteJsonLd, page, contactPoint]} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col">
+      <main id="main" className="flex flex-1 flex-col">
         <header
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="contact-heading"
         >
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -top-24 -right-24 h-[420px] w-[420px] rounded-full"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(58, 109, 240,0.28), rgba(58, 109, 240,0.08) 40%, transparent 70%)",
-              filter: "blur(30px)",
-            }}
-          />
           <div className="relative mx-auto w-full max-w-4xl">
             <Reveal>
               <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">

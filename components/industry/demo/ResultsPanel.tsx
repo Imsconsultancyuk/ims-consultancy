@@ -60,7 +60,7 @@ export function ResultsPanel({ tools, industry }: ResultsPanelProps) {
   const { result } = tool.demo;
 
   return (
-    <div className="ims-results-panel relative flex flex-col gap-6 rounded-lg bg-ink p-6 text-paper-ink md:p-8">
+    <div className="ims-results-panel relative flex flex-col gap-6 rounded-[14px] bg-deep p-6 text-paper-ink md:p-8">
       <span className="absolute right-4 top-4 whitespace-nowrap rounded-full border border-paper-ink-soft px-2 py-0.5 text-[11px] uppercase tracking-wide text-paper-ink-soft">
         Synthetic demonstration data
       </span>
@@ -73,7 +73,7 @@ export function ResultsPanel({ tools, industry }: ResultsPanelProps) {
       </p>
       <dl className="grid grid-cols-1 gap-6 sm:grid-cols-3">
         {result.metrics.map((metric) => (
-          <div key={metric.label} className="border-l-2 border-paper-ink-soft pl-4">
+          <div key={metric.label} className="border-t border-paper-ink-soft pt-3">
             <dd
               className={`num text-3xl font-semibold md:text-4xl ${
                 metric.emphasis ? "text-positive" : "text-paper-ink"
@@ -90,7 +90,7 @@ export function ResultsPanel({ tools, industry }: ResultsPanelProps) {
         <a
           href={BOOK_CALL_URL}
           onClick={() => track("book_call_clicked", { industry, tool: tool.id })}
-          className="inline-flex items-center justify-center rounded-md bg-paper px-6 py-3 text-sm font-medium text-ink transition-opacity hover:opacity-90"
+          className="inline-flex items-center justify-center rounded-full bg-paper px-6 py-3 text-sm font-medium text-ink transition-opacity hover:opacity-90"
         >
           Book 20 minutes, run it on your book
         </a>

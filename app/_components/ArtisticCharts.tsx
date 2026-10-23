@@ -440,7 +440,7 @@ interface MiniChartProps {
 
 function MiniChart({ title, caption, children }: MiniChartProps) {
   return (
-    <article className="ims-flip-card group relative flex h-full flex-col items-center overflow-hidden rounded-2xl border border-mauve-500/15 bg-paper-soft/80 p-8 text-center backdrop-blur transition-all duration-500 hover:border-accent-500/0 hover:bg-accent-500 hover:shadow-[0_24px_60px_-22px_rgba(58,109,240,0.6)]">
+    <article className="ims-flip-card group relative flex h-full flex-col items-center overflow-hidden rounded-2xl border border-mauve-500/15 bg-paper-soft/80 p-8 text-center backdrop-blur transition-all duration-500 hover:border-deep hover:bg-deep">
       <span
         aria-hidden="true"
         className="ims-flip-sweep pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -449,10 +449,10 @@ function MiniChart({ title, caption, children }: MiniChartProps) {
         {children}
       </div>
       <div className="relative mt-6">
-        <p className="font-serif text-[1.125rem] font-medium leading-snug text-ink transition-colors duration-500 group-hover:text-paper">
+        <p className="font-serif text-[1.125rem] font-medium leading-snug text-ink transition-colors duration-500 group-hover:text-paper-ink">
           {title}
         </p>
-        <p className="mt-2 max-w-[240px] text-[0.875rem] leading-[1.55] text-ink-soft transition-colors duration-500 group-hover:text-paper/90">
+        <p className="mt-2 max-w-[240px] text-[0.875rem] leading-[1.55] text-ink-soft transition-colors duration-500 group-hover:text-paper-ink/90">
           {caption}
         </p>
       </div>

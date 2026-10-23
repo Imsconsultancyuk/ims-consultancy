@@ -3,6 +3,7 @@ import { TrophyHeader } from "../_components/TrophyHeader";
 import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
       "Who IMS is, how we work, and why we keep the engagement list small.",
     url: `${SITE}/about`,
     type: "profile",
+    images: OG_IMAGES,
   },
 };
 
@@ -42,8 +44,8 @@ export default function AboutPage() {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     "@id": `${SITE}/about#aboutpage`,
-    mainEntity: { "@id": `${SITE}#organization` },
-    isPartOf: { "@id": `${SITE}#website` },
+    mainEntity: { "@id": `${SITE}/#organization` },
+    isPartOf: { "@id": `${SITE}/#website` },
     url: `${SITE}/about`,
   };
 
@@ -52,28 +54,20 @@ export default function AboutPage() {
       <JsonLd data={[orgJsonLd, websiteJsonLd, aboutPage, aboutEntity]} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col">
+      <main id="main" className="flex flex-1 flex-col">
         <article
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-20 text-paper-ink sm:pt-44 sm:pb-24 lg:pt-48 lg:pb-28"
           aria-labelledby="about-heading"
         >
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -top-24 -left-24 h-[520px] w-[520px] rounded-full"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(58, 109, 240,0.28), rgba(58, 109, 240,0.08) 40%, transparent 70%)",
-              filter: "blur(28px)",
-            }}
-          />
           <div className="relative mx-auto w-full max-w-3xl">
             <Reveal>
               <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
                 About IMS
               </p>
               <CharSplit
+                as="h1"
                 text={"Small firm,\nhigh judgement,\nquiet wins."}
-                className="mt-5 font-serif text-[clamp(2.5rem,5vw,4rem)] font-medium leading-[1.05] tracking-[-0.018em]"
+                className="mt-5 font-display text-[clamp(2.5rem,5vw,4rem)] font-semibold leading-[1.05] tracking-[-0.018em]"
                 stagger={0.018}
               />
             </Reveal>
@@ -140,7 +134,7 @@ export default function AboutPage() {
               </p>
               <h2
                 id="principles-heading"
-                className="mt-5 max-w-3xl font-serif text-[clamp(1.75rem,3.4vw,2.5rem)] font-medium leading-[1.12] tracking-[-0.012em] text-ink"
+                className="mt-5 max-w-3xl font-display text-[clamp(1.75rem,3.4vw,2.5rem)] font-semibold leading-[1.12] tracking-[-0.012em] text-ink"
               >
                 The rules we hold ourselves to.
               </h2>
@@ -170,18 +164,18 @@ export default function AboutPage() {
                 },
               ].map((p, i) => (
                 <Reveal key={p.n} delay={80 + i * 80}>
-                  <article className="ims-flip-card group relative h-full overflow-hidden rounded-2xl border border-mauve-500/15 bg-paper-soft/80 p-7 backdrop-blur transition-all duration-500 hover:border-accent-500/0 hover:bg-accent-500 hover:shadow-[0_24px_60px_-22px_rgba(58, 109, 240,0.65)] sm:p-8">
+                  <article className="ims-flip-card group relative h-full overflow-hidden rounded-[14px] border border-mauve-500/15 bg-paper-soft/80 p-7 transition-all duration-500 hover:border-deep hover:bg-deep sm:p-8">
                     <span
                       aria-hidden="true"
                       className="ims-flip-sweep pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                     />
-                    <p className="relative font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-500 transition-colors duration-500 group-hover:text-paper">
+                    <p className="relative font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-500 transition-colors duration-500 group-hover:text-paper-ink">
                       {p.n}
                     </p>
-                    <h3 className="relative mt-4 font-serif text-xl font-medium leading-snug text-ink transition-colors duration-500 group-hover:text-paper">
+                    <h3 className="relative mt-4 font-display text-xl font-semibold leading-snug text-ink transition-colors duration-500 group-hover:text-paper-ink">
                       {p.title}
                     </h3>
-                    <p className="relative mt-3 text-[0.9375rem] leading-[1.7] text-ink-soft transition-colors duration-500 group-hover:text-paper/95">
+                    <p className="relative mt-3 text-[0.9375rem] leading-[1.7] text-ink-soft transition-colors duration-500 group-hover:text-paper-ink/95">
                       {p.body}
                     </p>
                   </article>

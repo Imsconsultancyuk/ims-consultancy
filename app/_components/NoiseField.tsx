@@ -72,9 +72,9 @@ const FRAGMENT = /* glsl */ `
     float ring = smoothstep(0.22, 0.18, d) * 0.18;
 
     // Cobalt & Cream palette (ambient, kept subtle at zIndex -30)
-    vec3 deep   = vec3(0.071, 0.078, 0.110);  // #12141c cool ink
-    vec3 mauve  = vec3(0.227, 0.427, 0.941);  // #3a6df0 cobalt
-    vec3 light  = vec3(0.702, 0.788, 1.000);  // #b3c9ff light cobalt
+    vec3 deep   = vec3(0.071, 0.078, 0.110);  // #19141a cool ink
+    vec3 mauve  = vec3(0.227, 0.427, 0.941);  // #f5b028 cobalt
+    vec3 light  = vec3(0.702, 0.788, 1.000);  // #fde6a8 light cobalt
 
     // Base ramp tinted by noise
     float mix1 = clamp(0.20 + n * 0.18 + glow * 0.45, 0.0, 1.0);

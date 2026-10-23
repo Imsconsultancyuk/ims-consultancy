@@ -162,7 +162,7 @@ function CountUp({
 function TallyBar({ label, value, pct, win }: { label: string; value: string; pct: number; win: boolean }) {
   return (
     <div className="flex items-center gap-3">
-      <span className="w-12 shrink-0 font-sans text-[10px] font-medium uppercase tracking-[0.14em] text-ink/45">
+      <span className="w-12 shrink-0 font-sans text-[10px] font-medium uppercase tracking-[0.14em] text-ink-soft">
         {label}
       </span>
       <div className="relative h-2 flex-1 overflow-hidden rounded-full bg-ink/10">
@@ -182,7 +182,7 @@ function TallyBar({ label, value, pct, win }: { label: string; value: string; pc
       </div>
       <span
         className={`w-24 shrink-0 text-right font-mono text-[0.8rem] tabular-nums ${
-          win ? "text-accent-600" : "text-ink/55"
+          win ? "text-accent-700" : "text-ink-soft"
         }`}
       >
         {value}
@@ -217,7 +217,7 @@ function VoiceCard({ v }: { v: Voice }) {
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           />
-          <p className="font-sans text-[10px] font-medium uppercase tracking-[0.2em] text-ink/60">
+          <p className="font-sans text-[10px] font-medium uppercase tracking-[0.2em] text-ink-soft">
             {v.tierLabel}
           </p>
         </div>
@@ -226,18 +226,18 @@ function VoiceCard({ v }: { v: Voice }) {
         </p>
       </div>
 
-      <figcaption className="relative mt-4 font-sans text-[11px] uppercase tracking-[0.16em] text-ink/45">
+      <figcaption className="relative mt-4 font-sans text-[11px] uppercase tracking-[0.16em] text-ink-soft">
         {v.attribution}
       </figcaption>
 
       {/* Problem -> solution tally */}
       <div className="relative mt-5 space-y-2">
-        <p className="flex gap-2 text-[0.9rem] leading-snug text-ink/55">
-          <span aria-hidden className="mt-[3px] text-ink/40">✕</span>
+        <p className="flex gap-2 text-[0.9rem] leading-snug text-ink-soft">
+          <span aria-hidden className="mt-[3px] text-ink-soft">✕</span>
           {v.problem}
         </p>
         <p className="flex gap-2 text-[0.9rem] leading-snug text-ink">
-          <span aria-hidden className="mt-[3px] text-accent-600">→</span>
+          <span aria-hidden className="mt-[3px] text-accent-700">→</span>
           {v.solution}
         </p>
       </div>
@@ -269,7 +269,7 @@ export function Testimonials() {
 
       <div className="relative mx-auto w-full max-w-6xl">
         <Reveal>
-          <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-accent-600">
+          <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-accent-700">
             Voices · Five engagements
           </p>
           <h2 id="voices-heading" className="sr-only">
@@ -290,7 +290,7 @@ export function Testimonials() {
                 <dt className="font-display text-[clamp(1.75rem,3vw,2.5rem)] font-semibold leading-none text-ink">
                   <CountUp prefix={s.prefix} value={s.value} suffix={s.suffix} decimals={s.decimals} />
                 </dt>
-                <dd className="mt-2 max-w-[22ch] text-[0.85rem] leading-snug text-ink/55">
+                <dd className="mt-2 max-w-[22ch] text-[0.85rem] leading-snug text-ink-soft">
                   {s.label}
                 </dd>
               </div>

@@ -10,7 +10,7 @@ export const mortgageBrokers: Industry = {
   accent: "amber",
   leakLine: "62 maturities were waiting in one sample book",
   meta: {
-    title: "AI Revenue Recovery for Mortgage Brokers | IntelMadeSimple",
+    title: "AI Revenue Recovery for Mortgage Brokers",
     description:
       "Maturity tracking, orphan client revival and protection cross-sell. AI tools that find the fees already sitting in your client book. GDPR-safe, FCA-aware.",
   },

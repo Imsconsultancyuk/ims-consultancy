@@ -76,7 +76,7 @@ export function PrivacyShield({ industry, regulatorLine }: PrivacyShieldProps) {
             ref={trackRef}
             data-vault-visible={visible ? "" : undefined}
             data-pinned={pinned ?? undefined}
-            className="relative h-64 overflow-hidden rounded-lg border border-line bg-paper"
+            className="relative h-64 overflow-hidden rounded-[14px] border border-line bg-paper"
           >
             <div className="absolute inset-x-0 top-4 flex items-center justify-between px-5 text-xs font-medium uppercase tracking-wide text-ink-soft">
               <span>Your book</span>
@@ -86,7 +86,7 @@ export function PrivacyShield({ industry, regulatorLine }: PrivacyShieldProps) {
               </span>
               <span>AI engine</span>
             </div>
-            <div className="ims-vault-card absolute top-16 h-32 w-52 rounded-md border border-line bg-ink">
+            <div className="ims-vault-card absolute top-16 h-32 w-52 rounded-md border border-line bg-deep">
               <RecordFace fields={RECORD_FIELDS} variant="raw" className="ims-vault-face-raw" />
               <RecordFace
                 fields={RECORD_FIELDS}
@@ -99,13 +99,13 @@ export function PrivacyShield({ industry, regulatorLine }: PrivacyShieldProps) {
 
         {/* Reduced-motion fallback: both states shown at once, no animation. */}
         <div className="ims-vault-static grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <div className="rounded-md border border-line bg-ink p-4">
+          <div className="rounded-md border border-line bg-deep p-4">
             <p className="mb-2 text-xs font-medium uppercase tracking-wide text-paper-ink-soft">
               {GDPR_COPY.toggleLabels.raw}
             </p>
             <RecordFace fields={RECORD_FIELDS} variant="raw" />
           </div>
-          <div className="rounded-md border border-line bg-ink p-4">
+          <div className="rounded-md border border-line bg-deep p-4">
             <p className="mb-2 text-xs font-medium uppercase tracking-wide text-paper-ink-soft">
               {GDPR_COPY.toggleLabels.tokenised}
             </p>

@@ -1,48 +1,25 @@
-import type { Metadata } from "next";
-import {
-  Geist,
-  IBM_Plex_Sans,
-  IBM_Plex_Mono,
-} from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Schibsted_Grotesk } from "next/font/google";
 import { SmoothScroll } from "./_components/SmoothScroll";
-import { SiteCursor } from "./_components/SiteCursor";
-import { NoiseField } from "./_components/NoiseField";
+import { OG_IMAGES } from "@/lib/og";
 import "./globals.css";
+import "./chrome.css";
 
-// Type system v4 (2026-08-02) — letterforms only. Sizes, weights, tracking and
-// spacing are untouched from v3; this changes which typefaces fill the same
-// slots. Display: Geist, a Swiss-derived neo-grotesque — engineered and
-// institutional where Sora's geometric bowls read startup-generic at large
-// sizes. Body: IBM Plex Sans, a humanist sans, so the pairing has a real
-// grotesque-vs-humanist contrast instead of two interchangeable neutrals
-// (ui-ux-pro-max's professional-services typography set ranks Plex first for
-// trust registers). Mono: IBM Plex Mono, for family coherence with the body —
-// JetBrains Mono alongside Plex was an orphan. All three drive every
-// headline/body slot via the --font-* remap in globals.css, so component class
-// names (font-display / font-serif / font-sans / font-mono) are unchanged.
-const geist = Geist({
-  variable: "--font-geist",
+// One family, contrast by weight and scale, same as the flagship pages. The
+// variable axis covers 400 to 900 plus italic, so no per-weight list is needed.
+const schibsted = Schibsted_Grotesk({
+  variable: "--font-schibsted",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
-const plexSans = IBM_Plex_Sans({
-  variable: "--font-plex",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  display: "swap",
-});
-
-const plexMono = IBM_Plex_Mono({
-  variable: "--font-plex-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  display: "swap",
-});
+// Applies the saved theme before first paint so there is no light flash. The
+// key matches the flagship pages, so the choice carries across both.
+const THEME_INIT = 'try{var t=localStorage.getItem("ims-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}';
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.intelmadesimple.com"),
+  metadataBase: new URL("https://intelmadesimple.com"),
   title: {
     default: "IMS Consultancy · Intelligence Made Simple",
     template: "%s · IMS Consultancy",
@@ -61,7 +38,8 @@ export const metadata: Metadata = {
     title: "IMS Consultancy · Intelligence Made Simple",
     description:
       "Strategic consultancy for business decisions, development, and AI workflows.",
-    url: "https://www.intelmadesimple.com",
+    url: "https://intelmadesimple.com",
+    images: OG_IMAGES,
     siteName: "IMS Consultancy",
     locale: "en_GB",
     type: "website",
@@ -71,11 +49,19 @@ export const metadata: Metadata = {
     title: "IMS Consultancy · Intelligence Made Simple",
     description:
       "Strategic consultancy for business decisions, development, and AI workflows.",
+    images: OG_IMAGES.map((i) => i.url),
   },
   robots: {
     index: true,
     follow: true,
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f7f2f5" },
+    { media: "(prefers-color-scheme: dark)", color: "#19141a" },
+  ],
 };
 
 export default function RootLayout({
@@ -85,17 +71,18 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${geist.variable} ${plexSans.variable} ${plexMono.variable} h-full antialiased`}
+      lang="en-GB"
+      className={`${schibsted.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
+      </head>
       <body
         className="min-h-full flex flex-col bg-paper text-ink font-sans"
         suppressHydrationWarning
       >
         <SmoothScroll />
-        <NoiseField />
-        <SiteCursor />
         {children}
       </body>
     </html>

@@ -5,6 +5,8 @@ import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
 import { MagneticButton } from "../_components/MagneticButton";
+
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -24,6 +26,7 @@ export const metadata: Metadata = {
     description: "Seven steps. One engagement. Open by design.",
     url: `${SITE}/process`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 
@@ -118,7 +121,7 @@ export default function ProcessPage() {
       <JsonLd data={[orgJsonLd, websiteJsonLd, page, howTo]} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col">
+      <main id="main" className="flex flex-1 flex-col">
         <header
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="process-heading"
@@ -129,8 +132,9 @@ export default function ProcessPage() {
                 Process · Seven steps
               </p>
               <CharSplit
+                as="h1"
                 text={"Open by design.\nQuiet by intent."}
-                className="mt-5 font-serif text-[clamp(2.25rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.018em]"
+                className="mt-5 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.018em]"
                 stagger={0.018}
               />
               <p className="mt-7 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-300">
@@ -155,7 +159,7 @@ export default function ProcessPage() {
                 <Reveal key={s.n} delay={i * 60}>
                   <li className="relative grid gap-6 border-l border-mauve-300/15 pl-8 sm:grid-cols-[auto_1fr] sm:gap-10 sm:border-l-0 sm:pl-0">
                     <div className="sm:w-40 sm:shrink-0">
-                      <p className="font-serif text-[3rem] leading-none text-mauve-300/40 sm:text-[3.5rem]">
+                      <p className="font-display text-[3rem] font-bold leading-none tracking-[-0.03em] text-accent-400 sm:text-[3.5rem]">
                         {s.n}
                       </p>
                       <p className="mt-3 font-sans text-[10px] uppercase tracking-[0.22em] text-mauve-300">
@@ -163,7 +167,7 @@ export default function ProcessPage() {
                       </p>
                     </div>
                     <div>
-                      <h3 className="font-serif text-[1.75rem] font-medium leading-tight text-paper-ink">
+                      <h3 className="font-display text-[1.75rem] font-semibold leading-tight text-paper-ink">
                         {s.name}
                       </h3>
                       <p className="mt-4 text-[1.0625rem] leading-[1.7] text-mauve-300">
@@ -188,7 +192,7 @@ export default function ProcessPage() {
               </p>
               <h2
                 id="process-principles-heading"
-                className="mt-5 font-serif text-[clamp(1.75rem,3.4vw,2.5rem)] font-medium leading-[1.12] tracking-[-0.012em]"
+                className="mt-5 font-display text-[clamp(1.75rem,3.4vw,2.5rem)] font-semibold leading-[1.12] tracking-[-0.012em]"
               >
                 The rhythm under the rhythm.
               </h2>
@@ -217,7 +221,7 @@ export default function ProcessPage() {
             <Reveal>
               <h2
                 id="process-cta-heading"
-                className="font-serif text-[clamp(1.875rem,3.6vw,2.75rem)] font-medium leading-[1.1] tracking-[-0.012em]"
+                className="font-display text-[clamp(1.875rem,3.6vw,2.75rem)] font-semibold leading-[1.1] tracking-[-0.012em]"
               >
                 Read the engagements that ran this way.
               </h2>
@@ -228,7 +232,7 @@ export default function ProcessPage() {
                   <Link
                     href="/case-studies"
                     data-cursor="cta"
-                    className="inline-flex h-12 items-center justify-center rounded-md bg-accent-500 px-7 text-sm font-medium tracking-[0.02em] text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_8px_32px_-8px_rgba(126, 160, 255,0.55)]"
+                    className="inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-7 text-sm font-medium tracking-[0.02em] text-on-amber transition-all duration-300 hover:bg-accent-600"
                   >
                     See case studies
                   </Link>
@@ -236,7 +240,7 @@ export default function ProcessPage() {
                 <Link
                   href="/contact"
                   data-cursor="link"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-md border border-mauve-300/40 bg-deep/40 px-7 text-sm font-medium tracking-[0.02em] text-paper-ink backdrop-blur transition-all duration-300 hover:border-mauve-200 hover:bg-deep/70"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-mauve-300/40 bg-deep/40 px-7 text-sm font-medium tracking-[0.02em] text-paper-ink transition-all duration-300 hover:border-mauve-200 hover:bg-deep/70"
                 >
                   Start a conversation
                 </Link>

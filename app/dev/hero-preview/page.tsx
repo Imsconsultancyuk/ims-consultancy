@@ -1,3 +1,4 @@
+import { devOnly } from "@/lib/dev-only";
 import { HeroScrollWorld } from "../../_components/HeroScrollWorld";
 
 /**
@@ -6,6 +7,7 @@ import { HeroScrollWorld } from "../../_components/HeroScrollWorld";
  * parallax, and the copper infinity motif. Not yet through emil / impeccable.
  */
 export default function HeroPreviewPage() {
+  devOnly();
   return (
     <main>
       <HeroScrollWorld />

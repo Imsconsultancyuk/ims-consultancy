@@ -5,6 +5,7 @@ import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
 import { MagneticButton } from "../_components/MagneticButton";
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
       "Field notes from inside IMS engagements.",
     url: `${SITE}/insights`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 
@@ -86,7 +88,7 @@ export default function InsightsPage() {
     name: "IMS Consultancy Insights",
     description:
       "Field notes from inside IMS engagements covering strategy, technology, and AI workflows.",
-    publisher: { "@id": `${SITE}#organization` },
+    publisher: { "@id": `${SITE}/#organization` },
     inLanguage: "en-GB",
   };
 
@@ -95,7 +97,7 @@ export default function InsightsPage() {
       <JsonLd data={[orgJsonLd, websiteJsonLd, page, blogList]} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col">
+      <main id="main" className="flex flex-1 flex-col">
         <header
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="insights-heading"
@@ -106,8 +108,9 @@ export default function InsightsPage() {
                 Insights · Field notes
               </p>
               <CharSplit
+                as="h1"
                 text={"Notes from inside\nreal engagements."}
-                className="mt-5 font-serif text-[clamp(2.25rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.018em]"
+                className="mt-5 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.018em]"
                 stagger={0.018}
               />
               <p className="mt-7 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-300">
@@ -129,12 +132,12 @@ export default function InsightsPage() {
           <div className="mx-auto grid w-full max-w-5xl gap-6 sm:gap-8">
             {INSIGHTS.map((p, i) => (
               <Reveal key={p.slug} delay={i * 80}>
-                <article className="group relative overflow-hidden rounded-2xl border border-mauve-300/12 bg-deep-soft/55 p-8 backdrop-blur transition-all duration-500 hover:border-mauve-300/30 hover:bg-deep-soft/75 sm:p-10">
+                <article className="group relative overflow-hidden rounded-[14px] border border-mauve-300/12 bg-deep-soft/55 p-8 transition-all duration-500 hover:border-mauve-300/30 hover:bg-deep-soft/75 sm:p-10">
                   <header className="flex flex-wrap items-center gap-4 text-mauve-300">
                     <span className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-200">
                       {p.topic}
                     </span>
-                    <span aria-hidden className="text-mauve-300/50">·</span>
+                    <span aria-hidden className="text-mauve-300/80">·</span>
                     <time
                       dateTime={p.date}
                       className="font-sans text-[12px] tracking-[0.04em]"
@@ -145,13 +148,13 @@ export default function InsightsPage() {
                         year: "numeric",
                       })}
                     </time>
-                    <span aria-hidden className="text-mauve-300/50">·</span>
+                    <span aria-hidden className="text-mauve-300/80">·</span>
                     <span className="font-sans text-[12px] tracking-[0.04em]">
                       {p.readTime}
                     </span>
                   </header>
 
-                  <h3 className="mt-5 font-serif text-[clamp(1.375rem,2.4vw,1.875rem)] font-medium leading-[1.15] tracking-[-0.01em] text-paper-ink">
+                  <h3 className="mt-5 font-display text-[clamp(1.375rem,2.4vw,1.875rem)] font-semibold leading-[1.15] tracking-[-0.01em] text-paper-ink">
                     {p.title}
                   </h3>
                   <p className="mt-4 text-[1rem] leading-[1.7] text-mauve-300">
@@ -176,7 +179,7 @@ export default function InsightsPage() {
             <Reveal>
               <h2
                 id="insights-cta-heading"
-                className="font-serif text-[clamp(1.875rem,3.6vw,2.75rem)] font-medium leading-[1.1] tracking-[-0.012em]"
+                className="font-display text-[clamp(1.875rem,3.6vw,2.75rem)] font-semibold leading-[1.1] tracking-[-0.012em]"
               >
                 One short note per month.
               </h2>
@@ -191,7 +194,7 @@ export default function InsightsPage() {
                   <Link
                     href="/#newsletter"
                     data-cursor="cta"
-                    className="inline-flex h-12 items-center justify-center rounded-md bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_8px_32px_-8px_rgba(126, 160, 255,0.55)]"
+                    className="inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-on-amber transition-all duration-300 hover:bg-accent-600"
                   >
                     Subscribe to the letter
                   </Link>

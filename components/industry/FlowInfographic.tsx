@@ -30,7 +30,7 @@ export function FlowInfographic() {
     >
       {NODES.map((node, index) => (
         <Fragment key={node}>
-          <div className="rounded-lg border border-line bg-paper px-4 py-3 text-center sm:flex-1">
+          <div className="rounded-[14px] border border-line bg-paper px-4 py-3 text-center sm:flex-1">
             <span className="font-industry-display text-sm font-medium text-ink">
               {node}
             </span>

@@ -10,7 +10,7 @@ export const executiveSearchRecruitment: Industry = {
   accent: "violet",
   leakLine: "84 placements hiding in one database",
   meta: {
-    title: "AI Revenue Recovery for Executive Search | IntelMadeSimple",
+    title: "AI Revenue Recovery for Executive Search",
     description:
       "Candidate database revival, hiring-signal radar and shortlist acceleration. AI tools that turn your existing database into placements. GDPR-safe.",
   },

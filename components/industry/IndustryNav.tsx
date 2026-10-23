@@ -39,7 +39,7 @@ export function IndustryNav() {
   return (
     <nav
       aria-label="Section navigation"
-      className="sticky top-[76px] z-40 hidden h-16 items-center border-y border-line bg-paper/90 backdrop-blur md:flex"
+      className="sticky top-[76px] z-40 hidden h-16 items-center border-y border-line bg-paper/90 md:flex"
     >
       <ul className="mx-auto flex max-w-6xl items-center gap-8 px-6 text-sm">
         {NAV_SECTIONS.map((section) => (

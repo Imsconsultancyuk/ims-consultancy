@@ -11,6 +11,8 @@ import { industries } from "@/lib/industries";
 import type { Industry } from "@/lib/industries/types";
 import { BOOK_CALL_URL, HUB_COPY, SITE_URL } from "@/lib/industries/config";
 
+import { OG_IMAGES } from "@/lib/og";
+
 export const metadata: Metadata = {
   title: HUB_COPY.meta.title,
   description: HUB_COPY.meta.description,
@@ -20,6 +22,7 @@ export const metadata: Metadata = {
     description: HUB_COPY.meta.description,
     url: `${SITE_URL}/industries`,
     type: "website",
+    images: OG_IMAGES,
   },
   twitter: {
     card: "summary_large_image",
@@ -29,13 +32,13 @@ export const metadata: Metadata = {
 };
 
 function IndustryCard({ industry }: { industry: Industry }) {
-  const accent = `var(--color-signal-${industry.accent})`;
+  const accent = "var(--color-accent-400)";
 
   return (
     <Link
       href={`/industries/${industry.slug}`}
       data-cursor="link"
-      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-paper-ink/10 bg-deep transition-all duration-500 hover:border-paper-ink/25 hover:shadow-[0_28px_70px_-30px_rgba(0,0,0,0.85)]"
+      className="group flex h-full flex-col overflow-hidden rounded-[14px] border border-paper-ink/10 bg-deep transition-all duration-500 hover:border-paper-ink/25 hover:shadow-[0_28px_70px_-30px_rgba(0,0,0,0.85)]"
     >
       <div className="relative h-40 overflow-hidden">
         <Image
@@ -44,7 +47,7 @@ function IndustryCard({ industry }: { industry: Industry }) {
           fill
           aria-hidden
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover opacity-70 transition-transform duration-700 group-hover:scale-[1.06]"
+          className="object-cover opacity-60 grayscale transition-transform duration-700 group-hover:scale-[1.06]"
         />
         {/* Legibility ramp into the card body so the image never fights the type. */}
         <div
@@ -52,7 +55,7 @@ function IndustryCard({ industry }: { industry: Industry }) {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to top, rgba(15,19,32,1) 0%, rgba(15,19,32,0.55) 45%, rgba(15,19,32,0.25) 100%)",
+              "linear-gradient(to top, var(--color-deep) 0%, color-mix(in oklab, var(--color-deep) 70%, transparent) 45%, color-mix(in oklab, var(--color-deep) 55%, transparent) 100%)",
           }}
         />
         <span
@@ -67,7 +70,7 @@ function IndustryCard({ industry }: { industry: Industry }) {
           <span
             aria-hidden
             className="h-2 w-2 shrink-0 rounded-full"
-            style={{ background: accent, boxShadow: `0 0 12px ${accent}` }}
+            style={{ background: accent }}
           />
           <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-paper-ink/70">
             {industry.regulator} · {industry.shortName}
@@ -130,7 +133,7 @@ export default function IndustriesHubPage() {
       <IndustriesHubJsonLd industries={industries} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col">
+      <main id="main" className="flex flex-1 flex-col">
         <header
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="industries-heading"
@@ -141,6 +144,7 @@ export default function IndustriesHubPage() {
                 {HUB_COPY.eyebrow} · Ten practices
               </p>
               <CharSplit
+                as="h1"
                 text={HUB_COPY.h1}
                 className="mt-5 font-display text-[clamp(2.25rem,4.5vw,3.5rem)] font-semibold leading-[1.05] tracking-[-0.018em]"
                 stagger={0.014}
@@ -152,14 +156,14 @@ export default function IndustriesHubPage() {
                 <Link
                   href={BOOK_CALL_URL}
                   data-cursor="link"
-                  className="rounded-md bg-accent-500 px-6 py-3 text-sm font-medium text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_6px_24px_-6px_rgba(58,109,240,0.55)]"
+                  className="rounded-full bg-accent-500 px-6 py-3 text-sm font-medium text-on-amber transition-all duration-300 hover:bg-accent-600"
                 >
                   Book 20 minutes
                 </Link>
                 <a
                   href="#practices"
                   data-cursor="link"
-                  className="rounded-md border border-mauve-300/25 px-6 py-3 text-sm font-medium text-paper-ink transition-colors hover:border-mauve-300/50 hover:bg-deep-soft/70"
+                  className="rounded-full border border-mauve-300/25 px-6 py-3 text-sm font-medium text-paper-ink transition-colors hover:border-mauve-300/50 hover:bg-deep-soft/70"
                 >
                   Find your practice
                 </a>
@@ -182,7 +186,7 @@ export default function IndustriesHubPage() {
           />
           <div className="relative mx-auto w-full max-w-[1400px]">
             <Reveal>
-              <p className="font-sans text-[11px] font-medium uppercase tracking-[0.24em] text-accent-600">
+              <p className="font-sans text-[11px] font-medium uppercase tracking-[0.24em] text-accent-700">
                 Pick your practice
               </p>
               <h2
@@ -232,7 +236,7 @@ export default function IndustriesHubPage() {
               <Link
                 href={BOOK_CALL_URL}
                 data-cursor="link"
-                className="mt-9 inline-flex items-center justify-center rounded-md bg-accent-500 px-6 py-3 text-sm font-medium text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_6px_24px_-6px_rgba(58,109,240,0.55)]"
+                className="mt-9 inline-flex items-center justify-center rounded-full bg-accent-500 px-6 py-3 text-sm font-medium text-on-amber transition-all duration-300 hover:bg-accent-600"
               >
                 Book a call
               </Link>

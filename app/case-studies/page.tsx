@@ -5,6 +5,8 @@ import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
 import { MagneticButton } from "../_components/MagneticButton";
+
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -17,7 +19,7 @@ const SITE = "https://intelmadesimple.com";
 export const metadata: Metadata = {
   title: "Case Studies",
   description:
-    "Five real IMS engagements, no names attached. Two quiet workflows that returned a team's afternoon, two professional revamps that changed how a department runs, one embedded partnership that rewired a whole business.",
+    "Five real IMS engagements, no names attached: two workflow automations, two departmental revamps and one embedded partnership.",
   alternates: { canonical: `${SITE}/case-studies` },
   openGraph: {
     title: "Case Studies · IMS Consultancy",
@@ -25,6 +27,7 @@ export const metadata: Metadata = {
       "Anonymised case studies of real IMS engagements.",
     url: `${SITE}/case-studies`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 
@@ -147,7 +150,7 @@ export default function CaseStudiesPage() {
       <JsonLd data={[orgJsonLd, websiteJsonLd, page, itemList]} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col">
+      <main id="main" className="flex flex-1 flex-col">
         <header
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="cs-heading"
@@ -158,8 +161,9 @@ export default function CaseStudiesPage() {
                 Case studies · Five engagements
               </p>
               <CharSplit
+                as="h1"
                 text={"Five real engagements,\nno names attached."}
-                className="mt-5 font-serif text-[clamp(2.25rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.018em]"
+                className="mt-5 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.018em]"
                 stagger={0.018}
               />
               <p className="mt-7 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-300">
@@ -190,22 +194,8 @@ export default function CaseStudiesPage() {
                 <Reveal key={c.id} delay={i * 80}>
                   <article
                     id={c.id}
-                    className="group relative overflow-hidden rounded-2xl border border-mauve-300/12 bg-deep-soft/55 p-8 backdrop-blur transition-all duration-500 hover:border-mauve-300/35 hover:bg-deep-soft/75 hover:shadow-[0_24px_60px_-28px_rgba(126, 160, 255,0.45)] sm:p-10 lg:p-12"
+                    className="group relative overflow-hidden rounded-[14px] border border-mauve-300/12 bg-deep-soft/55 p-8 transition-all duration-500 hover:border-mauve-300/35 hover:bg-deep-soft/75 sm:p-10 lg:p-12"
                   >
-                    {/* Floating mauve sheen that drifts on hover */}
-                    <span
-                      aria-hidden
-                      className="ims-card-sheen pointer-events-none absolute -top-32 -right-16 h-72 w-72 rounded-full opacity-0 transition-opacity duration-700 group-hover:opacity-100"
-                      style={{
-                        background:
-                          "radial-gradient(circle, rgba(126, 160, 255,0.35), transparent 70%)",
-                      }}
-                    />
-                    {/* Subtle continuous border-glow drift */}
-                    <span
-                      aria-hidden
-                      className="ims-card-rim pointer-events-none absolute inset-0 rounded-2xl"
-                    />
 
                     <header className="relative border-b border-mauve-300/10 pb-6">
                       <div className="flex items-center gap-3">
@@ -217,7 +207,7 @@ export default function CaseStudiesPage() {
                           {c.tier}
                         </p>
                       </div>
-                      <h3 className="mt-4 font-serif text-[clamp(1.5rem,2.6vw,2rem)] font-medium leading-[1.15] tracking-[-0.012em]">
+                      <h3 className="mt-4 font-display text-[clamp(1.5rem,2.6vw,2rem)] font-semibold leading-[1.15] tracking-[-0.012em]">
                         {c.subject}
                       </h3>
                       <p className="mt-3 text-[0.9375rem] uppercase tracking-[0.16em] text-mauve-300">
@@ -231,7 +221,7 @@ export default function CaseStudiesPage() {
                           <div className="flex items-center gap-2">
                             <span
                               aria-hidden
-                              className="inline-block h-1.5 w-1.5 rounded-full bg-mauve-200 transition-all duration-500 group-hover/cell:scale-[1.6] group-hover/cell:bg-mauve-100"
+                              className="inline-block h-1.5 w-1.5 rounded-full bg-mauve-200 transition-all duration-500 group-hover/cell:scale-[1.6] group-hover/cell:bg-accent-400"
                             />
                             <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-200">
                               {cell.label}
@@ -254,7 +244,7 @@ export default function CaseStudiesPage() {
                           Headline number
                         </p>
                       </div>
-                      <p className="ims-metric-pop mt-3 font-serif text-[1.375rem] leading-[1.4] text-mauve-100">
+                      <p className="mt-3 font-display text-[1.75rem] font-bold leading-[1.25] tracking-[-0.015em] text-accent-400">
                         {c.metric}
                       </p>
                     </footer>
@@ -273,7 +263,7 @@ export default function CaseStudiesPage() {
             <Reveal>
               <h2
                 id="cs-cta-heading"
-                className="font-serif text-[clamp(1.875rem,3.6vw,2.75rem)] font-medium leading-[1.1] tracking-[-0.012em]"
+                className="font-display text-[clamp(1.875rem,3.6vw,2.75rem)] font-semibold leading-[1.1] tracking-[-0.012em]"
               >
                 Your engagement could read like one of these.
               </h2>
@@ -288,7 +278,7 @@ export default function CaseStudiesPage() {
                   <Link
                     href="/contact"
                     data-cursor="cta"
-                    className="inline-flex h-12 items-center justify-center rounded-md bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_8px_32px_-8px_rgba(126, 160, 255,0.55)]"
+                    className="inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-on-amber transition-all duration-300 hover:bg-accent-600"
                   >
                     Start a conversation
                   </Link>

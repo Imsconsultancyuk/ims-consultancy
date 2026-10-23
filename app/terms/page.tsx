@@ -3,6 +3,8 @@ import { TrophyHeader } from "../_components/TrophyHeader";
 import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
+
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -24,6 +26,7 @@ export const metadata: Metadata = {
       "Terms of use for the IMS Consultancy site and standard engagement terms.",
     url: `${SITE}/terms`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 
@@ -44,7 +47,7 @@ export default function TermsPage() {
       <JsonLd data={[orgJsonLd, websiteJsonLd, page]} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col">
+      <main id="main" className="flex flex-1 flex-col">
         <header
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="terms-heading"
@@ -55,8 +58,9 @@ export default function TermsPage() {
                 Terms · Site and engagement
               </p>
               <CharSplit
+                as="h1"
                 text={"Short terms.\nWritten plainly."}
-                className="mt-5 font-serif text-[clamp(2.25rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.018em]"
+                className="mt-5 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.018em]"
                 stagger={0.018}
               />
               <p className="mt-7 text-[1.0625rem] leading-[1.7] text-mauve-300">
@@ -211,7 +215,7 @@ function Section({
   return (
     <Reveal>
       <section>
-        <h3 className="font-serif text-[clamp(1.375rem,2.4vw,1.75rem)] font-medium leading-[1.2] tracking-[-0.01em] text-paper-ink">
+        <h3 className="font-display text-[clamp(1.375rem,2.4vw,1.75rem)] font-semibold leading-[1.2] tracking-[-0.01em] text-paper-ink">
           {title}
         </h3>
         <div className="mt-5 space-y-4 text-mauve-300">{children}</div>

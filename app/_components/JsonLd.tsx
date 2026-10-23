@@ -31,9 +31,9 @@ const SITE = "https://intelmadesimple.com";
 export const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "@id": `${SITE}#organization`,
-  name: "IMS Consultancy",
-  alternateName: "Intelligence Made Simple",
+  "@id": `${SITE}/#organization`,
+  name: "IntelMadeSimple",
+  alternateName: ["IMS Consultancy", "Intelligence Made Simple"],
   url: SITE,
   logo: `${SITE}/logos/ims-vertical-dark.png`,
   image: `${SITE}/opengraph-image.png`,
@@ -63,12 +63,12 @@ export const orgJsonLd = {
 export const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": `${SITE}#website`,
+  "@id": `${SITE}/#website`,
   url: SITE,
-  name: "IMS Consultancy",
+  name: "IntelMadeSimple",
   description:
     "Strategic consultancy for business decisions, development, and AI workflows.",
-  publisher: { "@id": `${SITE}#organization` },
+  publisher: { "@id": `${SITE}/#organization` },
   inLanguage: "en-GB",
 };
 
@@ -86,8 +86,8 @@ export function webPageJsonLd(args: {
     url: `${SITE}${args.path}`,
     name: args.name,
     description: args.description,
-    isPartOf: { "@id": `${SITE}#website` },
-    about: { "@id": `${SITE}#organization` },
+    isPartOf: { "@id": `${SITE}/#website` },
+    about: { "@id": `${SITE}/#organization` },
     primaryImageOfPage: `${SITE}/opengraph-image.png`,
     inLanguage: "en-GB",
   };

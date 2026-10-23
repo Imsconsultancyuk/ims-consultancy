@@ -5,6 +5,7 @@ import { TrophyFooter } from "../../_components/TrophyFooter";
 import { Reveal } from "../../_components/Reveal";
 import { CharSplit } from "../../_components/CharSplit";
 import { MagneticButton } from "../../_components/MagneticButton";
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -17,7 +18,7 @@ const SITE = "https://intelmadesimple.com";
 export const metadata: Metadata = {
   title: "Custom Software",
   description:
-    "Software built on real architecture, with tests, observability, and an honest hand-over. Web apps, dashboards, internal tools, integrations, and the systems that run your operations.",
+    "Software built on real architecture, with tests, observability and an honest hand-over. Web apps, dashboards, internal tools and integrations.",
   alternates: { canonical: `${SITE}/services/custom-software` },
   openGraph: {
     title: "Custom Software · IMS Consultancy",
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
       "Software that ships and stays shipped. Considered architecture, real tests, clean hand-over.",
     url: `${SITE}/services/custom-software`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 
@@ -91,7 +93,7 @@ export default function CustomSoftwarePage() {
     description:
       "Web platforms, internal tools, integrations, APIs, data layers, and rescue engagements.",
     serviceType: "Software development",
-    provider: { "@id": `${SITE}#organization` },
+    provider: { "@id": `${SITE}/#organization` },
     areaServed: "Worldwide",
   };
 
@@ -100,28 +102,20 @@ export default function CustomSoftwarePage() {
       <JsonLd data={[orgJsonLd, websiteJsonLd, page, service]} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col">
+      <main id="main" className="flex flex-1 flex-col">
         <header
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="cs-heading"
         >
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -top-24 -right-24 h-[420px] w-[420px] rounded-full"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(58, 109, 240,0.28), rgba(58, 109, 240,0.08) 40%, transparent 70%)",
-              filter: "blur(30px)",
-            }}
-          />
           <div className="relative mx-auto w-full max-w-4xl">
             <Reveal>
               <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
                 Service · Custom Software
               </p>
               <CharSplit
+                as="h1"
                 text={"Software that ships\nand stays shipped."}
-                className="mt-5 font-serif text-[clamp(2.25rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.018em]"
+                className="mt-5 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.018em]"
                 stagger={0.018}
               />
               <p className="mt-7 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-300">
@@ -149,7 +143,7 @@ export default function CustomSoftwarePage() {
               </p>
               <h2
                 id="cs-cap-heading"
-                className="mt-5 max-w-3xl font-serif text-[clamp(1.75rem,3.4vw,2.5rem)] font-medium leading-[1.12] tracking-[-0.012em] text-ink"
+                className="mt-5 max-w-3xl font-display text-[clamp(1.75rem,3.4vw,2.5rem)] font-semibold leading-[1.12] tracking-[-0.012em] text-ink"
               >
                 Six capabilities, one engagement model.
               </h2>
@@ -158,18 +152,18 @@ export default function CustomSoftwarePage() {
             <ol className="mt-12 grid gap-6 sm:grid-cols-2" role="list">
               {CAPABILITIES.map((c, i) => (
                 <Reveal key={c.n} delay={80 + i * 70}>
-                  <article className="ims-flip-card group relative h-full overflow-hidden rounded-2xl border border-mauve-500/15 bg-paper-soft/80 p-7 backdrop-blur transition-all duration-500 hover:border-accent-500/0 hover:bg-accent-500 hover:shadow-[0_24px_60px_-22px_rgba(58, 109, 240,0.65)] sm:p-8">
+                  <article className="ims-flip-card group relative h-full overflow-hidden rounded-[14px] border border-mauve-500/15 bg-paper-soft/80 p-7 transition-all duration-500 hover:border-deep hover:bg-deep sm:p-8">
                     <span
                       aria-hidden="true"
                       className="ims-flip-sweep pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                     />
-                    <p className="relative font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-500 transition-colors duration-500 group-hover:text-paper">
+                    <p className="relative font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-500 transition-colors duration-500 group-hover:text-paper-ink">
                       {c.n}
                     </p>
-                    <h3 className="relative mt-4 font-serif text-xl font-medium leading-snug text-ink transition-colors duration-500 group-hover:text-paper">
+                    <h3 className="relative mt-4 font-display text-xl font-semibold leading-snug text-ink transition-colors duration-500 group-hover:text-paper-ink">
                       {c.title}
                     </h3>
-                    <p className="relative mt-3 text-[0.9375rem] leading-[1.7] text-ink-soft transition-colors duration-500 group-hover:text-paper/95">
+                    <p className="relative mt-3 text-[0.9375rem] leading-[1.7] text-ink-soft transition-colors duration-500 group-hover:text-paper-ink/95">
                       {c.body}
                     </p>
                   </article>
@@ -190,7 +184,7 @@ export default function CustomSoftwarePage() {
               </p>
               <h2
                 id="cs-standards-heading"
-                className="mt-5 font-serif text-[clamp(1.75rem,3.4vw,2.5rem)] font-medium leading-[1.12] tracking-[-0.012em]"
+                className="mt-5 font-display text-[clamp(1.75rem,3.4vw,2.5rem)] font-semibold leading-[1.12] tracking-[-0.012em]"
               >
                 The work behind the work.
               </h2>
@@ -219,7 +213,7 @@ export default function CustomSoftwarePage() {
             <Reveal>
               <h2
                 id="cs-cta-heading"
-                className="font-serif text-[clamp(1.875rem,3.6vw,2.75rem)] font-medium leading-[1.1] tracking-[-0.012em]"
+                className="font-display text-[clamp(1.875rem,3.6vw,2.75rem)] font-semibold leading-[1.1] tracking-[-0.012em]"
               >
                 Tell us what is on fire.
               </h2>
@@ -234,7 +228,7 @@ export default function CustomSoftwarePage() {
                   <a
                     href="/contact"
                     data-cursor="cta"
-                    className="inline-flex h-12 items-center justify-center rounded-md bg-accent-500 px-7 text-sm font-medium tracking-[0.02em] text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_8px_32px_-8px_rgba(126, 160, 255,0.55)]"
+                    className="inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-7 text-sm font-medium tracking-[0.02em] text-on-amber transition-all duration-300 hover:bg-accent-600"
                   >
                     Start the conversation
                   </a>
@@ -242,7 +236,7 @@ export default function CustomSoftwarePage() {
                 <Link
                   href="/case-studies"
                   data-cursor="link"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-md border border-mauve-300/40 bg-deep/40 px-7 text-sm font-medium tracking-[0.02em] text-paper-ink backdrop-blur transition-all duration-300 hover:border-mauve-200 hover:bg-deep/70"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-mauve-300/40 bg-deep/40 px-7 text-sm font-medium tracking-[0.02em] text-paper-ink transition-all duration-300 hover:border-mauve-200 hover:bg-deep/70"
                 >
                   See real engagements
                 </Link>

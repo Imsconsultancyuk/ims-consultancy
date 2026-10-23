@@ -50,7 +50,7 @@ export function PackageBlock({ industry, package: pkg }: PackageBlockProps) {
   }
 
   return (
-    <div className="flex flex-col gap-6 rounded-lg border border-line bg-paper p-8">
+    <div className="flex flex-col gap-6 rounded-[14px] border border-line bg-paper p-8">
       <h3 className="font-industry-display text-lg font-medium text-ink">
         {pkg.heading}
       </h3>
@@ -73,7 +73,7 @@ export function PackageBlock({ industry, package: pkg }: PackageBlockProps) {
         <a
           href={BOOK_CALL_URL}
           onClick={handlePrimaryCta}
-          className="inline-flex items-center justify-center rounded-md bg-ink px-5 py-3 text-sm font-medium text-paper-ink transition-opacity hover:opacity-90"
+          className="inline-flex items-center justify-center rounded-full bg-accent-500 px-5 py-3 text-sm font-medium text-on-amber transition-colors hover:bg-accent-600"
         >
           Book a call
         </a>
@@ -124,7 +124,7 @@ export function PackageBlock({ industry, package: pkg }: PackageBlockProps) {
           <button
             type="submit"
             disabled={state === "sending" || state === "sent"}
-            className="rounded-md border border-line px-5 py-3 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper-ink disabled:opacity-60"
+            className="rounded-full border border-line px-5 py-3 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper-ink disabled:opacity-60"
           >
             {state === "sent" ? "Sent" : state === "sending" ? "Sending…" : "Send"}
           </button>

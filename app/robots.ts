@@ -10,7 +10,7 @@ const SITE = "https://intelmadesimple.com";
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: "*", allow: "/" },
+      { userAgent: "*", allow: "/", disallow: ["/api/", "/dev/"] },
       // Explicitly named AI crawlers
       { userAgent: "GPTBot", allow: "/" },
       { userAgent: "ChatGPT-User", allow: "/" },
