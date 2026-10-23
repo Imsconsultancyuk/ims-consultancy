@@ -138,8 +138,8 @@ export default function IndustriesHubPage() {
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="industries-heading"
         >
-          <div className="relative mx-auto w-full max-w-3xl">
-            <Reveal>
+          <div className="relative mx-auto w-full max-w-[1160px]">
+            <Reveal className="max-w-3xl">
               <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-accent-200">
                 {HUB_COPY.eyebrow} · Ten practices
               </p>
@@ -184,7 +184,7 @@ export default function IndustriesHubPage() {
             aria-hidden
             className="ims-footer-grid pointer-events-none absolute inset-0 opacity-[0.04]"
           />
-          <div className="relative mx-auto w-full max-w-[1400px]">
+          <div className="relative mx-auto w-full max-w-[1160px]">
             <Reveal>
               <p className="font-sans text-[11px] font-medium uppercase tracking-[0.24em] text-accent-700">
                 Pick your practice
@@ -216,8 +216,8 @@ export default function IndustriesHubPage() {
           aria-labelledby="hub-cta-heading"
           className="relative ims-band-dark px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
         >
-          <div className="mx-auto w-full max-w-3xl">
-            <Reveal>
+          <div className="mx-auto w-full max-w-[1160px]">
+            <Reveal className="max-w-3xl">
               <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-accent-200">
                 Not listed
               </p>

@@ -103,7 +103,7 @@ export function PackageBlock({ industry, package: pkg }: PackageBlockProps) {
               required
               placeholder="you@company.com"
               disabled={state === "sending" || state === "sent"}
-              className="w-full rounded-md border border-line bg-paper px-4 py-3 text-sm text-ink disabled:opacity-60"
+              className="w-full rounded-[14px] border border-line bg-paper px-4 py-3 text-sm text-ink disabled:opacity-60"
             />
           </div>
           {/* Honeypot: visually collapsed to 0x0 and pulled out of tab order.

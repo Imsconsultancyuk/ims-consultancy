@@ -125,7 +125,7 @@ export function LiveDemoPlayer({ tools }: LiveDemoPlayerProps) {
               role="tab"
               aria-selected={index === reducedMotionTabIndex}
               onClick={() => setReducedMotionTabIndex(index)}
-              className={`min-h-[44px] rounded-md border px-3 py-2 text-sm font-medium transition-colors ${
+              className={`min-h-[44px] rounded-full border px-3 py-2 text-sm font-medium transition-colors ${
                 index === reducedMotionTabIndex
                   ? "border-paper-ink bg-paper text-ink"
                   : "border-paper-ink-soft text-paper-ink-soft"
