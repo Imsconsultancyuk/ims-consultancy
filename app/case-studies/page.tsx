@@ -163,7 +163,7 @@ export default function CaseStudiesPage() {
               <CharSplit
                 as="h1"
                 text={"Five real engagements,\nno names attached."}
-                className="mt-5 font-serif text-[clamp(2.25rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.018em]"
+                className="mt-5 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.018em]"
                 stagger={0.018}
               />
               <p className="mt-7 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-300">
@@ -207,7 +207,7 @@ export default function CaseStudiesPage() {
                           {c.tier}
                         </p>
                       </div>
-                      <h3 className="mt-4 font-serif text-[clamp(1.5rem,2.6vw,2rem)] font-medium leading-[1.15] tracking-[-0.012em]">
+                      <h3 className="mt-4 font-display text-[clamp(1.5rem,2.6vw,2rem)] font-semibold leading-[1.15] tracking-[-0.012em]">
                         {c.subject}
                       </h3>
                       <p className="mt-3 text-[0.9375rem] uppercase tracking-[0.16em] text-mauve-300">
@@ -221,7 +221,7 @@ export default function CaseStudiesPage() {
                           <div className="flex items-center gap-2">
                             <span
                               aria-hidden
-                              className="inline-block h-1.5 w-1.5 rounded-full bg-mauve-200 transition-all duration-500 group-hover/cell:scale-[1.6] group-hover/cell:bg-mauve-100"
+                              className="inline-block h-1.5 w-1.5 rounded-full bg-mauve-200 transition-all duration-500 group-hover/cell:scale-[1.6] group-hover/cell:bg-accent-400"
                             />
                             <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-200">
                               {cell.label}
@@ -244,7 +244,7 @@ export default function CaseStudiesPage() {
                           Headline number
                         </p>
                       </div>
-                      <p className="ims-metric-pop mt-3 font-serif text-[1.375rem] leading-[1.4] text-mauve-100">
+                      <p className="mt-3 font-display text-[1.75rem] font-bold leading-[1.25] tracking-[-0.015em] text-accent-400">
                         {c.metric}
                       </p>
                     </footer>
@@ -263,7 +263,7 @@ export default function CaseStudiesPage() {
             <Reveal>
               <h2
                 id="cs-cta-heading"
-                className="font-serif text-[clamp(1.875rem,3.6vw,2.75rem)] font-medium leading-[1.1] tracking-[-0.012em]"
+                className="font-display text-[clamp(1.875rem,3.6vw,2.75rem)] font-semibold leading-[1.1] tracking-[-0.012em]"
               >
                 Your engagement could read like one of these.
               </h2>

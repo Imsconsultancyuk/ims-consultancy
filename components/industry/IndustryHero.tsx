@@ -64,7 +64,7 @@ export function IndustryHero({
           <a
             href={BOOK_CALL_URL}
             onClick={handleBookClick}
-            className="rounded-md border border-line px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-paper-soft"
+            className="rounded-full border border-line px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-paper-soft"
           >
             Book 20 minutes
           </a>

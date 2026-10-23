@@ -32,7 +32,7 @@ export default function NotFound() {
             </p>
             <h1
               id="nf-heading"
-              className="mt-5 font-serif text-[clamp(2.25rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.018em]"
+              className="mt-5 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.018em]"
             >
               That page is not on our list.
             </h1>

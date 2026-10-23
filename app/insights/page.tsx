@@ -110,7 +110,7 @@ export default function InsightsPage() {
               <CharSplit
                 as="h1"
                 text={"Notes from inside\nreal engagements."}
-                className="mt-5 font-serif text-[clamp(2.25rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.018em]"
+                className="mt-5 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.018em]"
                 stagger={0.018}
               />
               <p className="mt-7 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-300">
@@ -137,7 +137,7 @@ export default function InsightsPage() {
                     <span className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-200">
                       {p.topic}
                     </span>
-                    <span aria-hidden className="text-mauve-300/50">·</span>
+                    <span aria-hidden className="text-mauve-300/80">·</span>
                     <time
                       dateTime={p.date}
                       className="font-sans text-[12px] tracking-[0.04em]"
@@ -148,13 +148,13 @@ export default function InsightsPage() {
                         year: "numeric",
                       })}
                     </time>
-                    <span aria-hidden className="text-mauve-300/50">·</span>
+                    <span aria-hidden className="text-mauve-300/80">·</span>
                     <span className="font-sans text-[12px] tracking-[0.04em]">
                       {p.readTime}
                     </span>
                   </header>
 
-                  <h3 className="mt-5 font-serif text-[clamp(1.375rem,2.4vw,1.875rem)] font-medium leading-[1.15] tracking-[-0.01em] text-paper-ink">
+                  <h3 className="mt-5 font-display text-[clamp(1.375rem,2.4vw,1.875rem)] font-semibold leading-[1.15] tracking-[-0.01em] text-paper-ink">
                     {p.title}
                   </h3>
                   <p className="mt-4 text-[1rem] leading-[1.7] text-mauve-300">
@@ -179,7 +179,7 @@ export default function InsightsPage() {
             <Reveal>
               <h2
                 id="insights-cta-heading"
-                className="font-serif text-[clamp(1.875rem,3.6vw,2.75rem)] font-medium leading-[1.1] tracking-[-0.012em]"
+                className="font-display text-[clamp(1.875rem,3.6vw,2.75rem)] font-semibold leading-[1.1] tracking-[-0.012em]"
               >
                 One short note per month.
               </h2>

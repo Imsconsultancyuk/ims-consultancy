@@ -142,7 +142,7 @@ export function IndustriesShowcase() {
       <div aria-hidden className="ims-footer-grid pointer-events-none absolute inset-0 opacity-[0.04]" />
       <div className="relative mx-auto w-full max-w-[1400px]">
         <Reveal>
-          <p className="font-sans text-[11px] font-medium uppercase tracking-[0.24em] text-accent-600">
+          <p className="font-sans text-[11px] font-medium uppercase tracking-[0.24em] text-accent-700">
             Industries
           </p>
           <h2

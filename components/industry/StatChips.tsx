@@ -11,7 +11,7 @@ export function StatChips({ stats }: StatChipsProps) {
         <div
           key={stat.label}
           data-stat-chip
-          className="border-l-2 border-line pl-4"
+          className="border-t border-line pt-3"
           style={{ animationDelay: `${index * 90}ms` }}
         >
           <dd className="num text-3xl font-semibold text-ink md:text-4xl">

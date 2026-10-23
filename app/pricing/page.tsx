@@ -152,7 +152,7 @@ export default function PricingPage() {
               <CharSplit
                 as="h1"
                 text={"Honest pricing,\nwritten down."}
-                className="mt-5 font-serif text-[clamp(2.25rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.018em]"
+                className="mt-5 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.018em]"
                 stagger={0.018}
               />
               <p className="mt-7 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-300">
@@ -180,9 +180,9 @@ export default function PricingPage() {
               <Reveal key={t.slug} delay={i * 100}>
                 <article
                   id={t.slug}
-                  className={`ims-flip-card group relative flex h-full flex-col overflow-hidden rounded-[14px] border bg-paper-soft/80 p-8 transition-all duration-500 hover:border-accent-500/0 hover:bg-accent-500 sm:p-9 ${
+                  className={`ims-flip-card group relative flex h-full flex-col overflow-hidden rounded-[14px] border bg-paper-soft/80 p-8 transition-all duration-500 hover:border-deep hover:bg-deep sm:p-9 ${
                     i === 1
-                      ? "border-mauve-500/35 shadow-[0_18px_48px_-22px_rgba(245,176,40,0.32)]"
+                      ? "border-accent-500"
                       : "border-mauve-500/15"
                   }`}
                 >
@@ -191,39 +191,39 @@ export default function PricingPage() {
                     className="ims-flip-sweep pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                   />
                   <header className="relative">
-                    <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-500 transition-colors duration-500 group-hover:text-paper">
+                    <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-500 transition-colors duration-500 group-hover:text-paper-ink">
                       {t.name}
                     </p>
-                    <h3 className="mt-3 font-serif text-[1.5rem] font-medium leading-tight text-ink transition-colors duration-500 group-hover:text-paper">
+                    <h3 className="mt-3 font-display text-[1.5rem] font-semibold leading-tight text-ink transition-colors duration-500 group-hover:text-paper-ink">
                       {t.positioning}
                     </h3>
-                    <p className="mt-5 font-serif text-[2rem] leading-none text-mauve-500 transition-colors duration-500 group-hover:text-paper">
+                    <p className="mt-5 font-display text-[2.5rem] font-bold leading-none tracking-[-0.02em] text-ink transition-colors duration-500 group-hover:text-paper-ink">
                       {t.price}
                     </p>
-                    <p className="mt-2 font-sans text-[12px] uppercase tracking-[0.18em] text-ink-soft transition-colors duration-500 group-hover:text-paper/85">
+                    <p className="mt-2 font-sans text-[12px] uppercase tracking-[0.18em] text-ink-soft transition-colors duration-500 group-hover:text-paper-ink/85">
                       {t.cadence}
                     </p>
                   </header>
 
-                  <div className="relative mt-7 border-t border-mauve-500/15 pt-6 transition-colors duration-500 group-hover:border-paper/30">
-                    <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-500 transition-colors duration-500 group-hover:text-paper">
+                  <div className="relative mt-7 border-t border-mauve-500/15 pt-6 transition-colors duration-500 group-hover:border-paper-ink/25">
+                    <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-500 transition-colors duration-500 group-hover:text-paper-ink">
                       Best for
                     </p>
-                    <p className="mt-2 text-[0.9375rem] leading-[1.7] text-ink-soft transition-colors duration-500 group-hover:text-paper/90">
+                    <p className="mt-2 text-[0.9375rem] leading-[1.7] text-ink-soft transition-colors duration-500 group-hover:text-paper-ink/90">
                       {t.bestFor}
                     </p>
                   </div>
 
-                  <div className="relative mt-6 border-t border-mauve-500/15 pt-6 transition-colors duration-500 group-hover:border-paper/30">
-                    <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-500 transition-colors duration-500 group-hover:text-paper">
+                  <div className="relative mt-6 border-t border-mauve-500/15 pt-6 transition-colors duration-500 group-hover:border-paper-ink/25">
+                    <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-500 transition-colors duration-500 group-hover:text-paper-ink">
                       What you get
                     </p>
-                    <ul className="mt-4 space-y-3 text-[0.9375rem] leading-[1.65] text-ink/90 transition-colors duration-500 group-hover:text-paper/95" role="list">
+                    <ul className="mt-4 space-y-3 text-[0.9375rem] leading-[1.65] text-ink/90 transition-colors duration-500 group-hover:text-paper-ink/95" role="list">
                       {t.whatYouGet.map((w) => (
                         <li key={w} className="flex items-start gap-3">
                           <span
                             aria-hidden
-                            className="mt-2.5 inline-block h-[3px] w-3 shrink-0 bg-mauve-500 transition-colors duration-500 group-hover:bg-paper"
+                            className="mt-2.5 inline-block h-[3px] w-3 shrink-0 bg-mauve-500 transition-colors duration-500 group-hover:bg-accent-400"
                           />
                           <span>{w}</span>
                         </li>
@@ -235,7 +235,7 @@ export default function PricingPage() {
                     <Link
                       href="/contact"
                       data-cursor="cta"
-                      className="inline-flex h-11 w-full items-center justify-center rounded-full bg-mauve-500 px-6 text-[12px] font-medium uppercase tracking-[0.18em] text-paper transition-all duration-300 hover:bg-mauve-700 group-hover:bg-paper group-hover:text-mauve-500"
+                      className="inline-flex h-11 w-full items-center justify-center rounded-full bg-accent-500 px-6 text-[14px] font-semibold text-on-amber transition-colors duration-300 hover:bg-accent-600"
                     >
                       {t.cta}
                     </Link>
@@ -257,7 +257,7 @@ export default function PricingPage() {
               </p>
               <h2
                 id="pricing-principles-heading"
-                className="mt-5 font-serif text-[clamp(1.75rem,3.4vw,2.5rem)] font-medium leading-[1.12] tracking-[-0.012em]"
+                className="mt-5 font-display text-[clamp(1.75rem,3.4vw,2.5rem)] font-semibold leading-[1.12] tracking-[-0.012em]"
               >
                 The rules we hold to.
               </h2>
@@ -286,7 +286,7 @@ export default function PricingPage() {
             <Reveal>
               <h2
                 id="pricing-cta-heading"
-                className="font-serif text-[clamp(1.875rem,3.6vw,2.75rem)] font-medium leading-[1.1] tracking-[-0.012em]"
+                className="font-display text-[clamp(1.875rem,3.6vw,2.75rem)] font-semibold leading-[1.1] tracking-[-0.012em]"
               >
                 Get a real quote.
               </h2>

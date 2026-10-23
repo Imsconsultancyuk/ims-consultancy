@@ -120,7 +120,7 @@ export default function ServicesPage() {
               <CharSplit
                 as="h1"
                 text={"Three services,\none engagement."}
-                className="mt-5 font-serif text-[clamp(2.25rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.018em]"
+                className="mt-5 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.018em]"
                 stagger={0.018}
               />
               <p className="mt-7 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-300">
@@ -144,7 +144,7 @@ export default function ServicesPage() {
               </p>
               <h2
                 id="categories-heading"
-                className="mt-4 max-w-2xl font-serif text-[clamp(1.375rem,2.4vw,1.75rem)] font-medium leading-[1.2] tracking-[-0.01em]"
+                className="mt-4 max-w-2xl font-display text-[clamp(1.375rem,2.4vw,1.75rem)] font-semibold leading-[1.2] tracking-[-0.01em]"
               >
                 Where the engagement shows up in the work.
               </h2>
@@ -213,18 +213,12 @@ export default function ServicesPage() {
                   id={s.slug}
                   className="relative overflow-hidden rounded-[14px] border border-mauve-300/12 bg-deep-soft/55 p-8 sm:p-10 lg:p-12"
                 >
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute -top-6 -right-2 font-serif text-[10rem] leading-none text-mauve-300/12 sm:text-[14rem]"
-                  >
-                    {s.n}
-                  </span>
                   <div className="relative grid gap-8 lg:grid-cols-[1fr_1.3fr] lg:gap-12">
                     <header>
                       <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
                         Service {s.n}
                       </p>
-                      <h3 className="mt-4 font-serif text-[clamp(2rem,3.6vw,2.75rem)] font-medium leading-[1.05] tracking-[-0.015em]">
+                      <h3 className="mt-4 font-display text-[clamp(2rem,3.6vw,2.75rem)] font-semibold leading-[1.05] tracking-[-0.015em]">
                         {s.name}
                       </h3>
                       <p className="mt-5 text-[1.0625rem] leading-[1.7] text-mauve-300">
@@ -268,7 +262,7 @@ export default function ServicesPage() {
             <Reveal>
               <CharSplit
                 text="Worth a conversation?"
-                className="font-serif text-[clamp(1.875rem,3.6vw,2.75rem)] font-medium leading-[1.1] tracking-[-0.012em]"
+                className="font-display text-[clamp(1.875rem,3.6vw,2.75rem)] font-semibold leading-[1.1] tracking-[-0.012em]"
                 stagger={0.02}
               />
               <p id="contact-cta-heading" className="sr-only">

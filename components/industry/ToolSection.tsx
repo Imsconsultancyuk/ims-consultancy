@@ -51,7 +51,7 @@ export function ToolSection({ industry, tool, index, accent, tone }: ToolSection
   }
 
   const isDark = tone === "dark";
-  const accentVar = `var(--color-signal-${accent})`;
+  const accentVar = tone === "dark" ? "var(--color-accent-400)" : `var(--color-signal-${accent})`;
 
   const band = isDark ? "ims-band-dark text-paper-ink" : "ims-band-light text-ink";
   const muted = isDark ? "text-paper-ink/70" : "text-ink-soft";
@@ -91,7 +91,7 @@ export function ToolSection({ industry, tool, index, accent, tone }: ToolSection
           <p className={`mt-5 text-lg leading-relaxed ${muted}`}>{tool.problem}</p>
 
           <p
-            className="mt-6 border-l-2 pl-5 text-base font-medium leading-relaxed"
+            className="mt-6 border-t-2 pt-4 text-base font-medium leading-relaxed"
             style={{ borderColor: accentVar }}
           >
             {tool.outcome}
@@ -101,14 +101,14 @@ export function ToolSection({ industry, tool, index, accent, tone }: ToolSection
             <button
               type="button"
               onClick={handleSeeItRun}
-              className="rounded-md bg-accent-500 px-6 py-3 text-sm font-medium text-on-amber transition-all duration-300 hover:bg-accent-600"
+              className="rounded-full bg-accent-500 px-6 py-3 text-sm font-medium text-on-amber transition-all duration-300 hover:bg-accent-600"
             >
               Run {tool.name} on sample data
             </button>
             <a
               href={BOOK_CALL_URL}
               onClick={handleBookClick}
-              className={`rounded-md border px-6 py-3 text-sm font-medium transition-colors ${ghostCta}`}
+              className={`rounded-full border px-6 py-3 text-sm font-medium transition-colors ${ghostCta}`}
             >
               Book 20 minutes
             </a>

@@ -134,7 +134,7 @@ export default function ProcessPage() {
               <CharSplit
                 as="h1"
                 text={"Open by design.\nQuiet by intent."}
-                className="mt-5 font-serif text-[clamp(2.25rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.018em]"
+                className="mt-5 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.018em]"
                 stagger={0.018}
               />
               <p className="mt-7 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-300">
@@ -159,7 +159,7 @@ export default function ProcessPage() {
                 <Reveal key={s.n} delay={i * 60}>
                   <li className="relative grid gap-6 border-l border-mauve-300/15 pl-8 sm:grid-cols-[auto_1fr] sm:gap-10 sm:border-l-0 sm:pl-0">
                     <div className="sm:w-40 sm:shrink-0">
-                      <p className="font-serif text-[3rem] leading-none text-mauve-300/40 sm:text-[3.5rem]">
+                      <p className="font-display text-[3rem] font-bold leading-none tracking-[-0.03em] text-accent-400 sm:text-[3.5rem]">
                         {s.n}
                       </p>
                       <p className="mt-3 font-sans text-[10px] uppercase tracking-[0.22em] text-mauve-300">
@@ -167,7 +167,7 @@ export default function ProcessPage() {
                       </p>
                     </div>
                     <div>
-                      <h3 className="font-serif text-[1.75rem] font-medium leading-tight text-paper-ink">
+                      <h3 className="font-display text-[1.75rem] font-semibold leading-tight text-paper-ink">
                         {s.name}
                       </h3>
                       <p className="mt-4 text-[1.0625rem] leading-[1.7] text-mauve-300">
@@ -192,7 +192,7 @@ export default function ProcessPage() {
               </p>
               <h2
                 id="process-principles-heading"
-                className="mt-5 font-serif text-[clamp(1.75rem,3.4vw,2.5rem)] font-medium leading-[1.12] tracking-[-0.012em]"
+                className="mt-5 font-display text-[clamp(1.75rem,3.4vw,2.5rem)] font-semibold leading-[1.12] tracking-[-0.012em]"
               >
                 The rhythm under the rhythm.
               </h2>
@@ -221,7 +221,7 @@ export default function ProcessPage() {
             <Reveal>
               <h2
                 id="process-cta-heading"
-                className="font-serif text-[clamp(1.875rem,3.6vw,2.75rem)] font-medium leading-[1.1] tracking-[-0.012em]"
+                className="font-display text-[clamp(1.875rem,3.6vw,2.75rem)] font-semibold leading-[1.1] tracking-[-0.012em]"
               >
                 Read the engagements that ran this way.
               </h2>

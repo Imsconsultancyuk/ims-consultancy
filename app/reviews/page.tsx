@@ -113,7 +113,7 @@ export default function ReviewsPage() {
               <CharSplit
                 as="h1"
                 text={"What the work\nfelt like."}
-                className="mt-5 font-serif text-[clamp(2.25rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.018em]"
+                className="mt-5 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.018em]"
                 stagger={0.018}
               />
               <p className="mt-7 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-300">
@@ -135,12 +135,12 @@ export default function ReviewsPage() {
           <div className="mx-auto grid w-full max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {REVIEWS.map((r, i) => (
               <Reveal key={r.attribution + r.role} delay={i * 70}>
-                <PointerTilt className="h-full" tilt={4}>
+                <PointerTilt className="h-full" tilt={4} sheen={false}>
                   <figure className="group relative flex h-full flex-col overflow-hidden rounded-[14px] border border-mauve-300/12 bg-deep-soft p-7 transition-all duration-500 hover:border-mauve-300/30 hover:bg-deep-soft/75 sm:p-8">
-                    <p className="relative font-serif text-[1.25rem] leading-[1.45] text-mauve-200">
+                    <p className="relative font-display text-[1.25rem] font-semibold leading-[1.35] tracking-[-0.01em] text-paper-ink">
                       {r.highlight}
                     </p>
-                    <blockquote className="relative mt-5 text-[0.9375rem] leading-[1.7] text-paper-ink/95">
+                    <blockquote className="relative mt-5 text-[0.9375rem] leading-[1.7] text-paper-ink-soft">
                       {r.body}
                     </blockquote>
                     <figcaption className="relative mt-auto pt-6">
@@ -167,7 +167,7 @@ export default function ReviewsPage() {
             <Reveal>
               <h2
                 id="reviews-cta-heading"
-                className="font-serif text-[clamp(1.875rem,3.6vw,2.75rem)] font-medium leading-[1.1] tracking-[-0.012em]"
+                className="font-display text-[clamp(1.875rem,3.6vw,2.75rem)] font-semibold leading-[1.1] tracking-[-0.012em]"
               >
                 Read the engagements behind the reviews.
               </h2>

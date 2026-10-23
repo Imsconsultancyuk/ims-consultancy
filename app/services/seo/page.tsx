@@ -114,7 +114,7 @@ export default function SeoPage() {
               <CharSplit
                 as="h1"
                 text={"Search visibility\nthat compounds."}
-                className="mt-5 font-serif text-[clamp(2.25rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.018em]"
+                className="mt-5 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.018em]"
                 stagger={0.018}
               />
               <p className="mt-7 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-300">
@@ -142,7 +142,7 @@ export default function SeoPage() {
               </p>
               <h2
                 id="seo-pillars-heading"
-                className="mt-5 max-w-3xl font-serif text-[clamp(1.75rem,3.4vw,2.5rem)] font-medium leading-[1.12] tracking-[-0.012em] text-ink"
+                className="mt-5 max-w-3xl font-display text-[clamp(1.75rem,3.4vw,2.5rem)] font-semibold leading-[1.12] tracking-[-0.012em] text-ink"
               >
                 What is in scope.
               </h2>
@@ -151,18 +151,18 @@ export default function SeoPage() {
             <ol className="mt-12 grid gap-6 sm:grid-cols-2" role="list">
               {PILLARS.map((p, i) => (
                 <Reveal key={p.n} delay={80 + i * 70}>
-                  <article className="ims-flip-card group relative h-full overflow-hidden rounded-[14px] border border-mauve-500/15 bg-paper-soft/80 p-7 transition-all duration-500 hover:border-accent-500/0 hover:bg-accent-500 sm:p-8">
+                  <article className="ims-flip-card group relative h-full overflow-hidden rounded-[14px] border border-mauve-500/15 bg-paper-soft/80 p-7 transition-all duration-500 hover:border-deep hover:bg-deep sm:p-8">
                     <span
                       aria-hidden="true"
                       className="ims-flip-sweep pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                     />
-                    <p className="relative font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-500 transition-colors duration-500 group-hover:text-paper">
+                    <p className="relative font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-500 transition-colors duration-500 group-hover:text-paper-ink">
                       {p.n}
                     </p>
-                    <h3 className="relative mt-4 font-serif text-xl font-medium leading-snug text-ink transition-colors duration-500 group-hover:text-paper">
+                    <h3 className="relative mt-4 font-display text-xl font-semibold leading-snug text-ink transition-colors duration-500 group-hover:text-paper-ink">
                       {p.title}
                     </h3>
-                    <p className="relative mt-3 text-[0.9375rem] leading-[1.7] text-ink-soft transition-colors duration-500 group-hover:text-paper/95">
+                    <p className="relative mt-3 text-[0.9375rem] leading-[1.7] text-ink-soft transition-colors duration-500 group-hover:text-paper-ink/95">
                       {p.body}
                     </p>
                   </article>
@@ -183,7 +183,7 @@ export default function SeoPage() {
               </p>
               <h2
                 id="seo-standards-heading"
-                className="mt-5 font-serif text-[clamp(1.75rem,3.4vw,2.5rem)] font-medium leading-[1.12] tracking-[-0.012em]"
+                className="mt-5 font-display text-[clamp(1.75rem,3.4vw,2.5rem)] font-semibold leading-[1.12] tracking-[-0.012em]"
               >
                 The non-negotiables.
               </h2>
@@ -212,7 +212,7 @@ export default function SeoPage() {
             <Reveal>
               <h2
                 id="seo-cta-heading"
-                className="font-serif text-[clamp(1.875rem,3.6vw,2.75rem)] font-medium leading-[1.1] tracking-[-0.012em]"
+                className="font-display text-[clamp(1.875rem,3.6vw,2.75rem)] font-semibold leading-[1.1] tracking-[-0.012em]"
               >
                 Get the free audit.
               </h2>

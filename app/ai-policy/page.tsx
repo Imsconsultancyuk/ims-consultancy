@@ -141,7 +141,7 @@ export default function AiPolicyPage() {
               <CharSplit
                 as="h1"
                 text={"AI we ship,\nclearly governed."}
-                className="mt-5 font-serif text-[clamp(2.25rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.018em]"
+                className="mt-5 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.018em]"
                 stagger={0.018}
               />
               <p className="mt-7 text-[1.0625rem] leading-[1.7] text-mauve-300">
@@ -164,7 +164,7 @@ export default function AiPolicyPage() {
               </p>
               <h2
                 id="ai-standards-heading"
-                className="mt-5 font-serif text-[clamp(1.75rem,3.4vw,2.5rem)] font-medium leading-[1.12] tracking-[-0.012em]"
+                className="mt-5 font-display text-[clamp(1.75rem,3.4vw,2.5rem)] font-semibold leading-[1.12] tracking-[-0.012em]"
               >
                 The frameworks that shape our practice.
               </h2>
@@ -179,7 +179,7 @@ export default function AiPolicyPage() {
               {STANDARDS.map((s, i) => (
                 <Reveal key={s.name} delay={i * 60}>
                   <li className="relative grid gap-3 border-l border-mauve-300/15 pl-6 sm:grid-cols-[14rem_1fr] sm:gap-8 sm:border-l-0 sm:pl-0">
-                    <h3 className="font-serif text-[1.125rem] font-medium leading-tight text-paper-ink">
+                    <h3 className="font-display text-[1.125rem] font-semibold leading-tight text-paper-ink">
                       {s.name}
                     </h3>
                     <p className="text-[0.9375rem] leading-[1.7] text-mauve-300">
@@ -203,7 +203,7 @@ export default function AiPolicyPage() {
               </p>
               <h2
                 id="ai-principles-heading"
-                className="mt-5 font-serif text-[clamp(1.75rem,3.4vw,2.5rem)] font-medium leading-[1.12] tracking-[-0.012em]"
+                className="mt-5 font-display text-[clamp(1.75rem,3.4vw,2.5rem)] font-semibold leading-[1.12] tracking-[-0.012em]"
               >
                 What you can hold us to.
               </h2>
@@ -215,7 +215,7 @@ export default function AiPolicyPage() {
                     <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-200">
                       Principle {String(i + 1).padStart(2, "0")}
                     </p>
-                    <h3 className="mt-3 font-serif text-[1.25rem] font-medium leading-snug text-paper-ink">
+                    <h3 className="mt-3 font-display text-[1.25rem] font-semibold leading-snug text-paper-ink">
                       {p.title}
                     </h3>
                     <p className="mt-3 text-[0.9375rem] leading-[1.7] text-mauve-300">
@@ -240,7 +240,7 @@ export default function AiPolicyPage() {
                 </p>
                 <h2
                   id="ai-inside-heading"
-                  className="mt-5 font-serif text-[clamp(1.625rem,3vw,2.125rem)] font-medium leading-[1.15] tracking-[-0.012em]"
+                  className="mt-5 font-display text-[clamp(1.625rem,3vw,2.125rem)] font-semibold leading-[1.15] tracking-[-0.012em]"
                 >
                   How we use AI in our own work.
                 </h2>
@@ -266,7 +266,7 @@ export default function AiPolicyPage() {
                 <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
                   Your rights as a client
                 </p>
-                <h2 className="mt-5 font-serif text-[clamp(1.625rem,3vw,2.125rem)] font-medium leading-[1.15] tracking-[-0.012em]">
+                <h2 className="mt-5 font-display text-[clamp(1.625rem,3vw,2.125rem)] font-semibold leading-[1.15] tracking-[-0.012em]">
                   Levers you can pull at any time.
                 </h2>
                 <ul className="mt-8 space-y-4" role="list">
@@ -296,7 +296,7 @@ export default function AiPolicyPage() {
             <Reveal>
               <h2
                 id="ai-questions-heading"
-                className="font-serif text-[clamp(1.875rem,3.6vw,2.75rem)] font-medium leading-[1.1] tracking-[-0.012em]"
+                className="font-display text-[clamp(1.875rem,3.6vw,2.75rem)] font-semibold leading-[1.1] tracking-[-0.012em]"
               >
                 A specific question on AI governance?
               </h2>

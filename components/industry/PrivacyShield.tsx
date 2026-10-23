@@ -86,7 +86,7 @@ export function PrivacyShield({ industry, regulatorLine }: PrivacyShieldProps) {
               </span>
               <span>AI engine</span>
             </div>
-            <div className="ims-vault-card absolute top-16 h-32 w-52 rounded-md border border-line bg-ink">
+            <div className="ims-vault-card absolute top-16 h-32 w-52 rounded-md border border-line bg-deep">
               <RecordFace fields={RECORD_FIELDS} variant="raw" className="ims-vault-face-raw" />
               <RecordFace
                 fields={RECORD_FIELDS}
@@ -99,13 +99,13 @@ export function PrivacyShield({ industry, regulatorLine }: PrivacyShieldProps) {
 
         {/* Reduced-motion fallback: both states shown at once, no animation. */}
         <div className="ims-vault-static grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <div className="rounded-md border border-line bg-ink p-4">
+          <div className="rounded-md border border-line bg-deep p-4">
             <p className="mb-2 text-xs font-medium uppercase tracking-wide text-paper-ink-soft">
               {GDPR_COPY.toggleLabels.raw}
             </p>
             <RecordFace fields={RECORD_FIELDS} variant="raw" />
           </div>
-          <div className="rounded-md border border-line bg-ink p-4">
+          <div className="rounded-md border border-line bg-deep p-4">
             <p className="mb-2 text-xs font-medium uppercase tracking-wide text-paper-ink-soft">
               {GDPR_COPY.toggleLabels.tokenised}
             </p>

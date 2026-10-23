@@ -28,7 +28,7 @@ const ACCENT_HEX: Record<Accent, string> = {
   indigo: "#7a3f78",
   violet: "#a64a8c",
   sky: "#b07a3c",
-  rose: "#e11d48",
+  rose: "#b8527a",
   teal: "#0d9488",
   orange: "#ea580c",
   cyan: "#7a8a3a",

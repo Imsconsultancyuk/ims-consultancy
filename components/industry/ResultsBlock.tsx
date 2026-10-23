@@ -35,7 +35,7 @@ export function ResultsBlock({ results }: ResultsBlockProps) {
       </div>
       <dl className="grid grid-cols-1 gap-6 sm:grid-cols-3">
         {results.metrics.map((metric) => (
-          <div key={metric.label} className="border-l-2 border-line pl-4">
+          <div key={metric.label} className="border-t border-line pt-3">
             <dd
               className={`num text-3xl font-semibold md:text-4xl ${
                 metric.emphasis ? "text-ink" : "text-ink-soft"

@@ -12,7 +12,7 @@ type Entry = {
 };
 
 // Dates are the last real content change, not the build time. Bump one when its page changes.
-const NEXT_PAGES_UPDATED = "2026-08-02";
+const NEXT_PAGES_UPDATED = "2026-10-23";
 const FLAGSHIP_UPDATED = "2026-10-23";
 
 const ENTRIES: Entry[] = [
