@@ -76,7 +76,7 @@ export function PrivacyShield({ industry, regulatorLine }: PrivacyShieldProps) {
             ref={trackRef}
             data-vault-visible={visible ? "" : undefined}
             data-pinned={pinned ?? undefined}
-            className="relative h-64 overflow-hidden rounded-lg border border-line bg-paper"
+            className="relative h-64 overflow-hidden rounded-[14px] border border-line bg-paper"
           >
             <div className="absolute inset-x-0 top-4 flex items-center justify-between px-5 text-xs font-medium uppercase tracking-wide text-ink-soft">
               <span>Your book</span>

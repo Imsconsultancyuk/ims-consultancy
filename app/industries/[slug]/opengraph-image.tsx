@@ -25,17 +25,17 @@ export function generateStaticParams() {
 const ACCENT_HEX: Record<Accent, string> = {
   amber: "#d97706",
   emerald: "#059669",
-  indigo: "#4f46e5",
-  violet: "#7c3aed",
-  sky: "#0284c7",
+  indigo: "#7a3f78",
+  violet: "#a64a8c",
+  sky: "#b07a3c",
   rose: "#e11d48",
   teal: "#0d9488",
   orange: "#ea580c",
-  cyan: "#0891b2",
+  cyan: "#7a8a3a",
   fuchsia: "#c026d3",
 };
 
-const INK = "#12141c";
+const INK = "#19141a";
 const PAPER = "#f7f3ec";
 
 interface OgImageProps {

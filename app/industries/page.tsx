@@ -38,7 +38,7 @@ function IndustryCard({ industry }: { industry: Industry }) {
     <Link
       href={`/industries/${industry.slug}`}
       data-cursor="link"
-      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-paper-ink/10 bg-deep transition-all duration-500 hover:border-paper-ink/25 hover:shadow-[0_28px_70px_-30px_rgba(0,0,0,0.85)]"
+      className="group flex h-full flex-col overflow-hidden rounded-[14px] border border-paper-ink/10 bg-deep transition-all duration-500 hover:border-paper-ink/25 hover:shadow-[0_28px_70px_-30px_rgba(0,0,0,0.85)]"
     >
       <div className="relative h-40 overflow-hidden">
         <Image
@@ -133,7 +133,7 @@ export default function IndustriesHubPage() {
       <IndustriesHubJsonLd industries={industries} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col">
+      <main id="main" className="flex flex-1 flex-col">
         <header
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="industries-heading"
@@ -144,6 +144,7 @@ export default function IndustriesHubPage() {
                 {HUB_COPY.eyebrow} · Ten practices
               </p>
               <CharSplit
+                as="h1"
                 text={HUB_COPY.h1}
                 className="mt-5 font-display text-[clamp(2.25rem,4.5vw,3.5rem)] font-semibold leading-[1.05] tracking-[-0.018em]"
                 stagger={0.014}
@@ -155,7 +156,7 @@ export default function IndustriesHubPage() {
                 <Link
                   href={BOOK_CALL_URL}
                   data-cursor="link"
-                  className="rounded-md bg-accent-500 px-6 py-3 text-sm font-medium text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_6px_24px_-6px_rgba(58,109,240,0.55)]"
+                  className="rounded-md bg-accent-500 px-6 py-3 text-sm font-medium text-on-amber transition-all duration-300 hover:bg-accent-600"
                 >
                   Book 20 minutes
                 </Link>
@@ -235,7 +236,7 @@ export default function IndustriesHubPage() {
               <Link
                 href={BOOK_CALL_URL}
                 data-cursor="link"
-                className="mt-9 inline-flex items-center justify-center rounded-md bg-accent-500 px-6 py-3 text-sm font-medium text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_6px_24px_-6px_rgba(58,109,240,0.55)]"
+                className="mt-9 inline-flex items-center justify-center rounded-md bg-accent-500 px-6 py-3 text-sm font-medium text-on-amber transition-all duration-300 hover:bg-accent-600"
               >
                 Book a call
               </Link>

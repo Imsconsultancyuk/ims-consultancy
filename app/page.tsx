@@ -80,7 +80,7 @@ export default function Home() {
                   <Link
                     href="/contact"
                     data-cursor="cta"
-                    className="ims-cta-pulse group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_12px_40px_-10px_rgba(58,109,240,0.65)]"
+                    className="ims-cta-pulse group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-on-amber transition-all duration-300 hover:bg-accent-600"
                   >
                     <span className="relative z-10">Start a conversation</span>
                     <span

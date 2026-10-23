@@ -97,7 +97,7 @@ export default function InsightsPage() {
       <JsonLd data={[orgJsonLd, websiteJsonLd, page, blogList]} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col">
+      <main id="main" className="flex flex-1 flex-col">
         <header
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="insights-heading"
@@ -132,7 +132,7 @@ export default function InsightsPage() {
           <div className="mx-auto grid w-full max-w-5xl gap-6 sm:gap-8">
             {INSIGHTS.map((p, i) => (
               <Reveal key={p.slug} delay={i * 80}>
-                <article className="group relative overflow-hidden rounded-2xl border border-mauve-300/12 bg-deep-soft/55 p-8 backdrop-blur transition-all duration-500 hover:border-mauve-300/30 hover:bg-deep-soft/75 sm:p-10">
+                <article className="group relative overflow-hidden rounded-[14px] border border-mauve-300/12 bg-deep-soft/55 p-8 transition-all duration-500 hover:border-mauve-300/30 hover:bg-deep-soft/75 sm:p-10">
                   <header className="flex flex-wrap items-center gap-4 text-mauve-300">
                     <span className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-200">
                       {p.topic}
@@ -194,7 +194,7 @@ export default function InsightsPage() {
                   <Link
                     href="/#newsletter"
                     data-cursor="cta"
-                    className="inline-flex h-12 items-center justify-center rounded-md bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_8px_32px_-8px_rgba(126, 160, 255,0.55)]"
+                    className="inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-on-amber transition-all duration-300 hover:bg-accent-600"
                   >
                     Subscribe to the letter
                   </Link>

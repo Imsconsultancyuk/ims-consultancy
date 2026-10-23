@@ -128,7 +128,7 @@ export default function AiPolicyPage() {
       <JsonLd data={[orgJsonLd, websiteJsonLd, page]} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col">
+      <main id="main" className="flex flex-1 flex-col">
         <header
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="ai-policy-heading"
@@ -211,7 +211,7 @@ export default function AiPolicyPage() {
             <ol className="mt-12 grid gap-6 sm:grid-cols-2" role="list">
               {PRINCIPLES.map((p, i) => (
                 <Reveal key={p.title} delay={i * 60}>
-                  <article className="relative h-full rounded-2xl border border-mauve-300/12 bg-deep/40 p-7 backdrop-blur sm:p-8">
+                  <article className="relative h-full rounded-[14px] border border-mauve-300/12 bg-deep/40 p-7 sm:p-8">
                     <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-200">
                       Principle {String(i + 1).padStart(2, "0")}
                     </p>
@@ -311,7 +311,7 @@ export default function AiPolicyPage() {
                 <Link
                   href="/contact"
                   data-cursor="cta"
-                  className="inline-flex h-12 items-center justify-center rounded-md bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_8px_32px_-8px_rgba(126, 160, 255,0.55)]"
+                  className="inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-on-amber transition-all duration-300 hover:bg-accent-600"
                 >
                   Ask the question
                 </Link>

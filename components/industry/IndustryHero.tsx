@@ -57,7 +57,7 @@ export function IndustryHero({
           <a
             href={`#${DEMO_SECTION_ID}`}
             onClick={handleDemoClick}
-            className="rounded-md bg-accent-500 px-6 py-3 text-sm font-medium text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_6px_24px_-6px_rgba(58,109,240,0.55)]"
+            className="rounded-md bg-accent-500 px-6 py-3 text-sm font-medium text-on-amber transition-all duration-300 hover:bg-accent-600"
           >
             See it run on sample data
           </a>

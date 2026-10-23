@@ -101,7 +101,7 @@ export function ToolSection({ industry, tool, index, accent, tone }: ToolSection
             <button
               type="button"
               onClick={handleSeeItRun}
-              className="rounded-md bg-accent-500 px-6 py-3 text-sm font-medium text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_6px_24px_-6px_rgba(58,109,240,0.55)]"
+              className="rounded-md bg-accent-500 px-6 py-3 text-sm font-medium text-on-amber transition-all duration-300 hover:bg-accent-600"
             >
               Run {tool.name} on sample data
             </button>
@@ -159,7 +159,7 @@ export function ToolSection({ industry, tool, index, accent, tone }: ToolSection
             </ul>
           </div>
 
-          <div className={`rounded-lg border p-6 md:p-8 ${panel}`}>
+          <div className={`rounded-[14px] border p-6 md:p-8 ${panel}`}>
             <p className={`text-sm font-medium uppercase tracking-wide ${muted}`}>
               On sample data
             </p>

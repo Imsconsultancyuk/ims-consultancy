@@ -100,7 +100,7 @@ export default function ReviewsPage() {
       <JsonLd data={[orgJsonLd, websiteJsonLd, page]} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col">
+      <main id="main" className="flex flex-1 flex-col">
         <header
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="reviews-heading"
@@ -136,15 +136,7 @@ export default function ReviewsPage() {
             {REVIEWS.map((r, i) => (
               <Reveal key={r.attribution + r.role} delay={i * 70}>
                 <PointerTilt className="h-full" tilt={4}>
-                  <figure className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-mauve-300/12 bg-deep-soft/55 p-7 backdrop-blur transition-all duration-500 hover:border-mauve-300/30 hover:bg-deep-soft/75 sm:p-8">
-                    <span
-                      aria-hidden="true"
-                      className="pointer-events-none absolute -top-20 -right-12 h-48 w-48 rounded-full opacity-0 transition-opacity duration-700 group-hover:opacity-100"
-                      style={{
-                        background:
-                          "radial-gradient(circle, rgba(126, 160, 255,0.28), transparent 70%)",
-                      }}
-                    />
+                  <figure className="group relative flex h-full flex-col overflow-hidden rounded-[14px] border border-mauve-300/12 bg-deep-soft p-7 transition-all duration-500 hover:border-mauve-300/30 hover:bg-deep-soft/75 sm:p-8">
                     <p className="relative font-serif text-[1.25rem] leading-[1.45] text-mauve-200">
                       {r.highlight}
                     </p>
@@ -186,7 +178,7 @@ export default function ReviewsPage() {
                   <Link
                     href="/case-studies"
                     data-cursor="cta"
-                    className="inline-flex h-12 items-center justify-center rounded-md bg-accent-500 px-7 text-sm font-medium tracking-[0.02em] text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_8px_32px_-8px_rgba(126, 160, 255,0.55)]"
+                    className="inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-7 text-sm font-medium tracking-[0.02em] text-on-amber transition-all duration-300 hover:bg-accent-600"
                   >
                     See case studies
                   </Link>
@@ -194,7 +186,7 @@ export default function ReviewsPage() {
                 <Link
                   href="/contact"
                   data-cursor="link"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-md border border-mauve-300/40 bg-deep/40 px-7 text-sm font-medium tracking-[0.02em] text-paper-ink backdrop-blur transition-all duration-300 hover:border-mauve-200 hover:bg-deep/70"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-mauve-300/40 bg-deep/40 px-7 text-sm font-medium tracking-[0.02em] text-paper-ink transition-all duration-300 hover:border-mauve-200 hover:bg-deep/70"
                 >
                   Start a conversation
                 </Link>

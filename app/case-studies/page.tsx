@@ -150,7 +150,7 @@ export default function CaseStudiesPage() {
       <JsonLd data={[orgJsonLd, websiteJsonLd, page, itemList]} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col">
+      <main id="main" className="flex flex-1 flex-col">
         <header
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="cs-heading"
@@ -194,22 +194,8 @@ export default function CaseStudiesPage() {
                 <Reveal key={c.id} delay={i * 80}>
                   <article
                     id={c.id}
-                    className="group relative overflow-hidden rounded-2xl border border-mauve-300/12 bg-deep-soft/55 p-8 backdrop-blur transition-all duration-500 hover:border-mauve-300/35 hover:bg-deep-soft/75 hover:shadow-[0_24px_60px_-28px_rgba(126, 160, 255,0.45)] sm:p-10 lg:p-12"
+                    className="group relative overflow-hidden rounded-[14px] border border-mauve-300/12 bg-deep-soft/55 p-8 transition-all duration-500 hover:border-mauve-300/35 hover:bg-deep-soft/75 sm:p-10 lg:p-12"
                   >
-                    {/* Floating mauve sheen that drifts on hover */}
-                    <span
-                      aria-hidden
-                      className="ims-card-sheen pointer-events-none absolute -top-32 -right-16 h-72 w-72 rounded-full opacity-0 transition-opacity duration-700 group-hover:opacity-100"
-                      style={{
-                        background:
-                          "radial-gradient(circle, rgba(126, 160, 255,0.35), transparent 70%)",
-                      }}
-                    />
-                    {/* Subtle continuous border-glow drift */}
-                    <span
-                      aria-hidden
-                      className="ims-card-rim pointer-events-none absolute inset-0 rounded-2xl"
-                    />
 
                     <header className="relative border-b border-mauve-300/10 pb-6">
                       <div className="flex items-center gap-3">
@@ -292,7 +278,7 @@ export default function CaseStudiesPage() {
                   <Link
                     href="/contact"
                     data-cursor="cta"
-                    className="inline-flex h-12 items-center justify-center rounded-md bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_8px_32px_-8px_rgba(126, 160, 255,0.55)]"
+                    className="inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-on-amber transition-all duration-300 hover:bg-accent-600"
                   >
                     Start a conversation
                   </Link>

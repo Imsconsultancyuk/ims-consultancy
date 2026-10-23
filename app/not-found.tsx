@@ -21,7 +21,7 @@ export default function NotFound() {
   return (
     <>
       <TrophyHeader />
-      <main className="flex flex-1 flex-col">
+      <main id="main" className="flex flex-1 flex-col">
         <section
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-24 text-paper-ink sm:pt-44 sm:pb-32 lg:pt-48"
           aria-labelledby="nf-heading"

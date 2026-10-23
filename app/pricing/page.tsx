@@ -139,7 +139,7 @@ export default function PricingPage() {
       <JsonLd data={[orgJsonLd, websiteJsonLd, page, offerCatalog]} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col">
+      <main id="main" className="flex flex-1 flex-col">
         <header
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="pricing-heading"
@@ -180,9 +180,9 @@ export default function PricingPage() {
               <Reveal key={t.slug} delay={i * 100}>
                 <article
                   id={t.slug}
-                  className={`ims-flip-card group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-paper-soft/80 p-8 backdrop-blur transition-all duration-500 hover:border-accent-500/0 hover:bg-accent-500 hover:shadow-[0_24px_60px_-22px_rgba(58, 109, 240,0.65)] sm:p-9 ${
+                  className={`ims-flip-card group relative flex h-full flex-col overflow-hidden rounded-[14px] border bg-paper-soft/80 p-8 transition-all duration-500 hover:border-accent-500/0 hover:bg-accent-500 sm:p-9 ${
                     i === 1
-                      ? "border-mauve-500/35 shadow-[0_18px_48px_-22px_rgba(58, 109, 240,0.32)]"
+                      ? "border-mauve-500/35 shadow-[0_18px_48px_-22px_rgba(245,176,40,0.32)]"
                       : "border-mauve-500/15"
                   }`}
                 >
@@ -235,7 +235,7 @@ export default function PricingPage() {
                     <Link
                       href="/contact"
                       data-cursor="cta"
-                      className="inline-flex h-11 w-full items-center justify-center rounded-md bg-mauve-500 px-6 text-[12px] font-medium uppercase tracking-[0.18em] text-paper transition-all duration-300 hover:bg-mauve-700 group-hover:bg-paper group-hover:text-mauve-500"
+                      className="inline-flex h-11 w-full items-center justify-center rounded-full bg-mauve-500 px-6 text-[12px] font-medium uppercase tracking-[0.18em] text-paper transition-all duration-300 hover:bg-mauve-700 group-hover:bg-paper group-hover:text-mauve-500"
                     >
                       {t.cta}
                     </Link>
@@ -301,7 +301,7 @@ export default function PricingPage() {
                   <Link
                     href="/contact"
                     data-cursor="cta"
-                    className="inline-flex h-12 items-center justify-center rounded-md bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_8px_32px_-8px_rgba(126, 160, 255,0.55)]"
+                    className="inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-on-amber transition-all duration-300 hover:bg-accent-600"
                   >
                     Request a proposal
                   </Link>

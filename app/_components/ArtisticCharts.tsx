@@ -440,7 +440,7 @@ interface MiniChartProps {
 
 function MiniChart({ title, caption, children }: MiniChartProps) {
   return (
-    <article className="ims-flip-card group relative flex h-full flex-col items-center overflow-hidden rounded-2xl border border-mauve-500/15 bg-paper-soft/80 p-8 text-center backdrop-blur transition-all duration-500 hover:border-accent-500/0 hover:bg-accent-500 hover:shadow-[0_24px_60px_-22px_rgba(58,109,240,0.6)]">
+    <article className="ims-flip-card group relative flex h-full flex-col items-center overflow-hidden rounded-2xl border border-mauve-500/15 bg-paper-soft/80 p-8 text-center backdrop-blur transition-all duration-500 hover:border-accent-500/0 hover:bg-accent-500">
       <span
         aria-hidden="true"
         className="ims-flip-sweep pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"

@@ -187,7 +187,7 @@ export function MethodologyCarousel() {
                       <div
                         className={`flex h-9 w-9 items-center justify-center rounded-full border transition-all duration-500 ${
                           active
-                            ? "border-accent-400 bg-accent-500 text-paper-pure shadow-[0_0_24px_4px_rgba(58,109,240,0.35)]"
+                            ? "border-accent-400 bg-accent-500 text-on-amber shadow-[0_0_24px_4px_rgba(58,109,240,0.35)]"
                             : "border-paper-ink/20 bg-deep text-paper-ink/50"
                         }`}
                       >

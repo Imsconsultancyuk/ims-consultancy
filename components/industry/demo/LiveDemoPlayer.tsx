@@ -112,7 +112,7 @@ export function LiveDemoPlayer({ tools }: LiveDemoPlayerProps) {
     const activeTool = tools[reducedMotionTabIndex];
     const { result } = activeTool.demo;
     return (
-      <div className="relative flex flex-col gap-5 rounded-lg bg-ink p-6 text-paper-ink md:p-8">
+      <div className="relative flex flex-col gap-5 rounded-[14px] bg-ink p-6 text-paper-ink md:p-8">
         <span className="absolute right-4 top-4 whitespace-nowrap rounded-full border border-paper-ink-soft px-2 py-0.5 text-[11px] uppercase tracking-wide text-paper-ink-soft">
           Synthetic demonstration data
         </span>
@@ -161,7 +161,7 @@ export function LiveDemoPlayer({ tools }: LiveDemoPlayerProps) {
       onMouseLeave={() => setIsPausedByInteraction(false)}
       onFocus={() => setIsPausedByInteraction(true)}
       onBlur={() => setIsPausedByInteraction(false)}
-      className="relative flex min-h-[220px] flex-col gap-5 rounded-lg bg-ink p-6 text-paper-ink md:p-8"
+      className="relative flex min-h-[220px] flex-col gap-5 rounded-[14px] bg-ink p-6 text-paper-ink md:p-8"
     >
       <span className="absolute right-4 top-4 whitespace-nowrap rounded-full border border-paper-ink-soft px-2 py-0.5 text-[11px] uppercase tracking-wide text-paper-ink-soft">
         Synthetic demonstration data

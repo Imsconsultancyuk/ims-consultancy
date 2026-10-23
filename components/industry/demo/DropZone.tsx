@@ -78,7 +78,7 @@ export function DropZone({ tools, accent }: DropZoneProps) {
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         data-shaking={rejection ? "" : undefined}
-        className="ims-dropzone flex flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-line bg-paper px-6 py-10 text-center transition-colors"
+        className="ims-dropzone flex flex-col items-center justify-center gap-2 rounded-[14px] border-2 border-dashed border-line bg-paper px-6 py-10 text-center transition-colors"
         style={
           isDragOver
             ? {

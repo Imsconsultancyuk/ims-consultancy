@@ -54,20 +54,11 @@ export default function AboutPage() {
       <JsonLd data={[orgJsonLd, websiteJsonLd, aboutPage, aboutEntity]} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col">
+      <main id="main" className="flex flex-1 flex-col">
         <article
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-20 text-paper-ink sm:pt-44 sm:pb-24 lg:pt-48 lg:pb-28"
           aria-labelledby="about-heading"
         >
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -top-24 -left-24 h-[520px] w-[520px] rounded-full"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(58, 109, 240,0.28), rgba(58, 109, 240,0.08) 40%, transparent 70%)",
-              filter: "blur(28px)",
-            }}
-          />
           <div className="relative mx-auto w-full max-w-3xl">
             <Reveal>
               <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
@@ -173,7 +164,7 @@ export default function AboutPage() {
                 },
               ].map((p, i) => (
                 <Reveal key={p.n} delay={80 + i * 80}>
-                  <article className="ims-flip-card group relative h-full overflow-hidden rounded-2xl border border-mauve-500/15 bg-paper-soft/80 p-7 backdrop-blur transition-all duration-500 hover:border-accent-500/0 hover:bg-accent-500 hover:shadow-[0_24px_60px_-22px_rgba(58, 109, 240,0.65)] sm:p-8">
+                  <article className="ims-flip-card group relative h-full overflow-hidden rounded-[14px] border border-mauve-500/15 bg-paper-soft/80 p-7 transition-all duration-500 hover:border-accent-500/0 hover:bg-accent-500 sm:p-8">
                     <span
                       aria-hidden="true"
                       className="ims-flip-sweep pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"

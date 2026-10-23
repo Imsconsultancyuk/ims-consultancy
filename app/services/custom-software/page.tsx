@@ -102,20 +102,11 @@ export default function CustomSoftwarePage() {
       <JsonLd data={[orgJsonLd, websiteJsonLd, page, service]} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col">
+      <main id="main" className="flex flex-1 flex-col">
         <header
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="cs-heading"
         >
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -top-24 -right-24 h-[420px] w-[420px] rounded-full"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(58, 109, 240,0.28), rgba(58, 109, 240,0.08) 40%, transparent 70%)",
-              filter: "blur(30px)",
-            }}
-          />
           <div className="relative mx-auto w-full max-w-4xl">
             <Reveal>
               <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
@@ -161,7 +152,7 @@ export default function CustomSoftwarePage() {
             <ol className="mt-12 grid gap-6 sm:grid-cols-2" role="list">
               {CAPABILITIES.map((c, i) => (
                 <Reveal key={c.n} delay={80 + i * 70}>
-                  <article className="ims-flip-card group relative h-full overflow-hidden rounded-2xl border border-mauve-500/15 bg-paper-soft/80 p-7 backdrop-blur transition-all duration-500 hover:border-accent-500/0 hover:bg-accent-500 hover:shadow-[0_24px_60px_-22px_rgba(58, 109, 240,0.65)] sm:p-8">
+                  <article className="ims-flip-card group relative h-full overflow-hidden rounded-[14px] border border-mauve-500/15 bg-paper-soft/80 p-7 transition-all duration-500 hover:border-accent-500/0 hover:bg-accent-500 sm:p-8">
                     <span
                       aria-hidden="true"
                       className="ims-flip-sweep pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -237,7 +228,7 @@ export default function CustomSoftwarePage() {
                   <a
                     href="/contact"
                     data-cursor="cta"
-                    className="inline-flex h-12 items-center justify-center rounded-md bg-accent-500 px-7 text-sm font-medium tracking-[0.02em] text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_8px_32px_-8px_rgba(126, 160, 255,0.55)]"
+                    className="inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-7 text-sm font-medium tracking-[0.02em] text-on-amber transition-all duration-300 hover:bg-accent-600"
                   >
                     Start the conversation
                   </a>
@@ -245,7 +236,7 @@ export default function CustomSoftwarePage() {
                 <Link
                   href="/case-studies"
                   data-cursor="link"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-md border border-mauve-300/40 bg-deep/40 px-7 text-sm font-medium tracking-[0.02em] text-paper-ink backdrop-blur transition-all duration-300 hover:border-mauve-200 hover:bg-deep/70"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-mauve-300/40 bg-deep/40 px-7 text-sm font-medium tracking-[0.02em] text-paper-ink transition-all duration-300 hover:border-mauve-200 hover:bg-deep/70"
                 >
                   See real engagements
                 </Link>

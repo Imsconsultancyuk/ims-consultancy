@@ -60,7 +60,7 @@ export function ResultsPanel({ tools, industry }: ResultsPanelProps) {
   const { result } = tool.demo;
 
   return (
-    <div className="ims-results-panel relative flex flex-col gap-6 rounded-lg bg-ink p-6 text-paper-ink md:p-8">
+    <div className="ims-results-panel relative flex flex-col gap-6 rounded-[14px] bg-ink p-6 text-paper-ink md:p-8">
       <span className="absolute right-4 top-4 whitespace-nowrap rounded-full border border-paper-ink-soft px-2 py-0.5 text-[11px] uppercase tracking-wide text-paper-ink-soft">
         Synthetic demonstration data
       </span>

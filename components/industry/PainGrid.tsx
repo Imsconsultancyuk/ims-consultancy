@@ -7,7 +7,7 @@ interface PainGridProps {
 
 export function PainGrid({ pains, accent }: PainGridProps) {
   return (
-    <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-3">
+    <div className="grid grid-cols-1 gap-px overflow-hidden rounded-[14px] border border-line bg-line sm:grid-cols-3">
       {pains.map((pain) => (
         <div key={pain.title} className="flex flex-col gap-3 bg-paper p-6">
           <h3 className="font-industry-display text-lg font-medium text-ink">

@@ -34,7 +34,7 @@ function SectionSkeleton({ className }: { className: string }) {
   return (
     <div
       aria-hidden="true"
-      className={`animate-pulse rounded-lg border border-line bg-paper-soft ${className}`}
+      className={`animate-pulse rounded-[14px] border border-line bg-paper-soft ${className}`}
     />
   );
 }
@@ -104,7 +104,7 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
       <IndustryJsonLd industry={industry} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col" style={pageStyle}>
+      <main id="main" className="flex flex-1 flex-col" style={pageStyle}>
         <IndustryHero
           industry={industry.slug}
           name={industry.name}

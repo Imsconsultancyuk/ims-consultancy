@@ -26,7 +26,7 @@ export function ToolQuickSelect({ industry, tools, accent }: ToolQuickSelectProp
       <p className="text-sm font-medium uppercase tracking-wide text-ink-soft">
         Three tools on this page
       </p>
-      <ul className="mt-4 grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-3">
+      <ul className="mt-4 grid gap-px overflow-hidden rounded-[14px] border border-line bg-line sm:grid-cols-3">
         {tools.map((tool, index) => (
           <li key={tool.id}>
             <a

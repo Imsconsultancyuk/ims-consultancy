@@ -41,7 +41,7 @@ export function PipelineRail({ tools }: PipelineRailProps) {
   const recordCount = Math.round(target * Math.min(1, overallProgress));
 
   return (
-    <div className="flex flex-col gap-5 rounded-lg bg-ink p-6 text-paper-ink md:p-8">
+    <div className="flex flex-col gap-5 rounded-[14px] bg-ink p-6 text-paper-ink md:p-8">
       <div className="flex items-center gap-2">
         {stages.map((stage, index) => {
           const fillScale =

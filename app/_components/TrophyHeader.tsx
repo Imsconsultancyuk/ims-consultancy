@@ -1,183 +1,164 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const NAV_ITEMS = [
+import { industries } from "@/lib/industries";
+
+// "/", "/tools", "/faq" and "/contact" are static flagship pages that Netlify
+// serves through redirects, so they use plain anchors. Everything else is Next.
+const COMPANY_LINKS = [
   { href: "/services", label: "Services" },
   { href: "/industries", label: "Industries" },
-  { href: "/case-studies", label: "Work" },
-  { href: "/pricing", label: "Pricing" },
+  { href: "/case-studies", label: "Case studies" },
+  { href: "/process", label: "Process" },
   { href: "/about", label: "About" },
+  { href: "/insights", label: "Insights" },
+  { href: "/reviews", label: "Reviews" },
 ];
 
-/**
- * Floating glass pill navigation that sits over the hero. Hairline mauve
- * scroll-progress bar runs across the very top of the page. Hover
- * underlines slide in from the left on each nav link. Pattern inspired by
- * Terminal Industries and the Drift and Forge motion primitives.
- */
 export function TrophyHeader() {
-  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-  const progressRef = useRef<HTMLDivElement>(null);
+  const [openMenu, setOpenMenu] = useState<"sectors" | "company" | null>(null);
+  const [dark, setDark] = useState<boolean | null>(null);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 32);
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = max > 0 ? Math.min(100, (y / max) * 100) : 0;
-      if (progressRef.current) {
-        progressRef.current.style.transform = `scaleX(${pct / 100})`;
-      }
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const root = document.documentElement;
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const read = () => setDark(root.dataset.theme ? root.dataset.theme === "dark" : mq.matches);
+    read();
+    mq.addEventListener("change", read);
+    return () => mq.removeEventListener("change", read);
   }, []);
+
+  useEffect(() => {
+    const close = () => {
+      setMenuOpen(false);
+      setOpenMenu(null);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+    };
+    const onClick = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) close();
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("click", onClick);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("click", onClick);
+    };
+  }, []);
+
+  useEffect(() => {
+    setMenuOpen(false);
+    setOpenMenu(null);
+  }, [pathname]);
+
+  function toggleTheme() {
+    const next = dark ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    try {
+      localStorage.setItem("ims-theme", next);
+    } catch {
+      // Storage blocked: the theme still applies for this view.
+    }
+    setDark(!dark);
+  }
+
+  const current = (href: string) =>
+    pathname === href || pathname.startsWith(`${href}/`) ? "page" : undefined;
 
   return (
     <>
-      {/* Hairline scroll-progress bar across the very top */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none fixed top-0 left-0 right-0 z-[60] h-[2px] origin-left"
-        style={{
-          background:
-            "linear-gradient(to right, rgba(58,109,240,0.0), rgba(58,109,240,0.95), rgba(58,109,240,0.0))",
-          transform: "scaleX(0)",
-          transformOrigin: "left center",
-        }}
-        ref={progressRef}
-      />
-
-      {/* Floating glass pill */}
-      <header
-        className={`fixed left-1/2 z-50 -translate-x-1/2 transition-all duration-500 ${
-          scrolled ? "top-3 sm:top-4" : "top-4 sm:top-6"
-        }`}
-        style={{ width: "min(960px, calc(100vw - 24px))" }}
-      >
-        <nav
-          className={`flex h-14 w-full items-center justify-between rounded-full border px-3 sm:px-4 transition-all duration-500 ${
-            scrolled
-              ? "border-ink/10 bg-paper/80 backdrop-blur-2xl shadow-[0_8px_40px_-12px_rgba(10,12,18,0.6)]"
-              : "border-ink/8 bg-paper/40 backdrop-blur-xl shadow-[0_4px_24px_-12px_rgba(10,12,18,0.45)]"
-          }`}
-        >
-          <Link
-            href="/"
-            aria-label="IMS Consultancy home"
-            className="group flex items-center pl-2 pr-3"
-          >
-            <Image
-              src="/logos/ims-mark.png"
-              alt="IMS · Intelligence Made Simple"
-              width={1400}
-              height={424}
-              priority
-              sizes="150px"
-              style={{ height: "auto" }}
-              className="w-[96px] transition-transform duration-500 group-hover:scale-[1.04] sm:w-[112px]"
-            />
-          </Link>
-
-          <ul className="hidden items-center gap-1 md:flex">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.href} className="relative">
-                <Link
-                  href={item.href}
-                  className="group relative inline-flex h-9 items-center rounded-full px-4 text-[11px] font-medium uppercase tracking-[0.18em] text-ink/75 transition-colors hover:text-ink"
-                >
-                  <span className="relative z-10">{item.label}</span>
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-x-3 bottom-1.5 h-px origin-left scale-x-0 bg-accent-400 transition-transform duration-400 ease-out group-hover:scale-x-100"
-                    style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}
-                  />
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <div className="flex items-center gap-1.5">
-            <Link
-              href="/contact"
-              className="group hidden h-9 items-center gap-2 rounded-full bg-accent-500 px-4 text-[11px] font-medium uppercase tracking-[0.16em] text-paper-pure transition-all duration-400 hover:bg-accent-400 hover:shadow-[0_6px_24px_-6px_rgba(58,109,240,0.55)] md:inline-flex"
-              data-cursor="cta"
-            >
-              <span>Book a call</span>
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                aria-hidden="true"
-                className="transition-transform duration-400 group-hover:translate-x-0.5"
+      <a className="fx-skip" href="#main">
+        Skip to content
+      </a>
+      <header className="fx-nav" ref={navRef}>
+        <div className="fx-nav-in">
+          <a className="fx-logo" href="/" aria-label="IntelMadeSimple, home">
+            <svg className="fx-mark" viewBox="0 0 28 28" aria-hidden="true" focusable="false">
+              <circle cx="14" cy="14" r="14" />
+              <path d="M14 14c2.4-3.5 7.2-3.7 7.2 0s-4.8 3.5-7.2 0c-2.4-3.5-7.2-3.7-7.2 0s4.8 3.5 7.2 0z" />
+            </svg>
+            <span>IntelMadeSimple</span>
+          </a>
+          <nav className={`fx-main${menuOpen ? " fx-open" : ""}`} id="nav-main" aria-label="Main">
+            <a href="/#leaks">Where firms leak</a>
+            <div className="fx-sectors">
+              <button
+                className="fx-sectors-btn"
+                type="button"
+                aria-expanded={openMenu === "sectors"}
+                aria-controls="sectors-panel"
+                onClick={() => setOpenMenu((v) => (v === "sectors" ? null : "sectors"))}
               >
-                <path
-                  d="M2 6h8M7 3l3 3-3 3"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Link>
-
-            {/* Mobile menu toggle */}
-            <button
-              type="button"
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={menuOpen}
-              onClick={() => setMenuOpen((v) => !v)}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full text-ink transition-colors hover:bg-ink/10 md:hidden"
-            >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                {menuOpen ? (
-                  <path d="M4 4l10 10M14 4L4 14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-                ) : (
-                  <path d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-                )}
-              </svg>
+                Sectors
+              </button>
+              <div className="fx-panel" id="sectors-panel">
+                <p className="fx-lead">Ten sectors, each with its own toolkit</p>
+                <ul>
+                  {industries.map((i) => (
+                    <li key={i.slug}>
+                      <a href={`/tools#${i.slug}`}>{i.name}</a>
+                    </li>
+                  ))}
+                </ul>
+                <a className="fx-all" href="/tools">
+                  See every tool
+                </a>
+              </div>
+            </div>
+            <a href="/tools">Tools</a>
+            <a href="/#calc">Calculator</a>
+            <a href="/#how">How it works</a>
+            <a href="/#pricing">Pricing</a>
+            <a href="/faq">FAQ</a>
+            <div className="fx-sectors">
+              <button
+                className="fx-sectors-btn"
+                type="button"
+                aria-expanded={openMenu === "company"}
+                aria-controls="company-panel"
+                data-active={COMPANY_LINKS.some((l) => current(l.href)) || undefined}
+                onClick={() => setOpenMenu((v) => (v === "company" ? null : "company"))}
+              >
+                Company
+              </button>
+              <div className="fx-panel fx-panel-sm" id="company-panel">
+                <ul>
+                  {COMPANY_LINKS.map((l) => (
+                    <li key={l.href}>
+                      <Link href={l.href} aria-current={current(l.href)}>
+                        {l.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <button className="fx-theme" type="button" aria-label="Switch colour theme" onClick={toggleTheme}>
+              {dark === null ? "Theme" : dark ? "Light" : "Dark"}
             </button>
-          </div>
-        </nav>
-
-        {/* Mobile menu panel */}
-        <div
-          className={`mt-2 overflow-hidden rounded-3xl border border-ink/10 bg-paper/95 backdrop-blur-2xl transition-all duration-400 md:hidden ${
-            menuOpen ? "max-h-[520px] opacity-100" : "pointer-events-none max-h-0 opacity-0"
-          }`}
-        >
-          <ul className="flex flex-col gap-1 p-3">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="block rounded-2xl px-4 py-3 text-[13px] font-medium uppercase tracking-[0.16em] text-ink/75 transition-colors hover:bg-ink/8 hover:text-ink"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-            <li className="mt-1 px-1">
-              <Link
-                href="/contact"
-                onClick={() => setMenuOpen(false)}
-                className="flex h-11 items-center justify-center gap-2 rounded-2xl bg-accent-500 text-[12px] font-medium uppercase tracking-[0.16em] text-paper-pure transition-colors hover:bg-accent-400"
-                data-cursor="cta"
-              >
-                <span>Book a call</span>
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                  <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </Link>
-            </li>
-          </ul>
+          </nav>
+          <a className="fx-btn fx-cta" href="/contact">
+            <span className="fx-long">Book a free Leak Scan</span>
+            <span className="fx-short">Book a scan</span>
+          </a>
+          <button
+            className="fx-menu"
+            type="button"
+            aria-expanded={menuOpen}
+            aria-controls="nav-main"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            onClick={() => setMenuOpen((v) => !v)}
+          >
+            <i />
+            <i />
+          </button>
         </div>
       </header>
     </>

@@ -22,7 +22,7 @@ export function IndustryJsonLd({ industry }: IndustryJsonLdProps) {
     "@type": "Service",
     name: `AI Revenue Recovery for ${industry.name}`,
     description: industry.meta.description,
-    provider: { "@id": `${SITE_URL}#organization` },
+    provider: { "@id": `${SITE_URL}/#organization` },
     areaServed: "GB",
     url: pageUrl,
   };
