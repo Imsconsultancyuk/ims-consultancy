@@ -10,7 +10,7 @@ export const privateHealthcareGroups: Industry = {
   accent: "fuchsia",
   leakLine: "£96k of quoted treatment still open",
   meta: {
-    title: "AI Revenue Recovery for Private Healthcare | IntelMadeSimple",
+    title: "AI Revenue Recovery for Private Healthcare",
     description:
       "Treatment-plan recovery, capacity-fill radar and review-to-revenue content. AI tools that convert quoted care and fill empty diary time. GDPR-safe, CQC-aware.",
   },

@@ -10,7 +10,7 @@ export const lawFirms: Industry = {
   accent: "indigo",
   leakLine: "121 enquiries never followed up in six months",
   meta: {
-    title: "AI Revenue Recovery for Law Firms | IntelMadeSimple",
+    title: "AI Revenue Recovery for Law Firms",
     description:
       "Enquiry recovery, WIP leak detection and cross-practice radar. AI tools that capture the instructions and time your firm already earned. GDPR-safe, SRA-aware.",
   },

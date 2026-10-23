@@ -32,7 +32,7 @@ export const NAV_SECTIONS = [
 // /industries hub intro block — Doc 2 §IND-011, verbatim (hard rule 4).
 export const HUB_COPY = {
   meta: {
-    title: "AI Revenue Recovery Tools by Industry | IntelMadeSimple",
+    title: "AI Revenue Recovery Tools by Industry",
     description:
       "Revenue intelligence for professional firms: mortgage, wealth, legal, recruitment, insurance, M&A, property, accountancy, SaaS and private healthcare.",
   },

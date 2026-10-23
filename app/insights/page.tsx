@@ -5,6 +5,7 @@ import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
 import { MagneticButton } from "../_components/MagneticButton";
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
       "Field notes from inside IMS engagements.",
     url: `${SITE}/insights`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 
@@ -86,7 +88,7 @@ export default function InsightsPage() {
     name: "IMS Consultancy Insights",
     description:
       "Field notes from inside IMS engagements covering strategy, technology, and AI workflows.",
-    publisher: { "@id": `${SITE}#organization` },
+    publisher: { "@id": `${SITE}/#organization` },
     inLanguage: "en-GB",
   };
 

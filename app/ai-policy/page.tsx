@@ -4,6 +4,8 @@ import { TrophyHeader } from "../_components/TrophyHeader";
 import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
+
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -17,7 +19,7 @@ const EFFECTIVE_DATE = "28 May 2026";
 export const metadata: Metadata = {
   title: "AI Policy",
   description:
-    "How IMS Consultancy uses and governs AI inside its own consultancy and inside the systems it ships. Aligned with ISO/IEC 42001, NIST AI RMF, the EU AI Act, the UK AI Safety Institute, and OWASP LLM Top 10.",
+    "How IMS uses and governs AI in its own work and in the systems it ships. Aligned with ISO/IEC 42001, NIST AI RMF, the EU AI Act and OWASP LLM Top 10.",
   alternates: { canonical: `${SITE}/ai-policy` },
   openGraph: {
     title: "AI Policy · IMS Consultancy",
@@ -25,6 +27,7 @@ export const metadata: Metadata = {
       "Our governance for AI used inside the consultancy and shipped to clients.",
     url: `${SITE}/ai-policy`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

@@ -10,7 +10,7 @@ export const ifasWealthManagers: Industry = {
   accent: "emerald",
   leakLine: "£38k of recurring fees at risk in one register",
   meta: {
-    title: "IFA & Wealth Manager Revenue Recovery | IntelMadeSimple",
+    title: "IFA & Wealth Manager Revenue Recovery",
     description:
       "Dormant book mining, advice gap scanning and next-gen retention. AI tools that protect recurring fees and surface advice opportunities. GDPR-safe, FCA-aware.",
   },

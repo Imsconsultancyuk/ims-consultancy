@@ -5,6 +5,7 @@ import { TrophyFooter } from "../../_components/TrophyFooter";
 import { Reveal } from "../../_components/Reveal";
 import { CharSplit } from "../../_components/CharSplit";
 import { MagneticButton } from "../../_components/MagneticButton";
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
       "Considered AI workflows your team can own. Advise, build, hand over.",
     url: `${SITE}/services/ai-automation`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 
@@ -90,7 +92,7 @@ export default function AiAutomationPage() {
     description:
       "Considered AI workflows that remove repetitive operational work. Advisory plus build plus hand-over.",
     serviceType: "AI workflow integration",
-    provider: { "@id": `${SITE}#organization` },
+    provider: { "@id": `${SITE}/#organization` },
     areaServed: "Worldwide",
     audience: { "@type": "Audience", audienceType: "Small and mid-sized businesses" },
   };

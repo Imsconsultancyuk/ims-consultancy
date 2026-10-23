@@ -5,6 +5,7 @@ import { TrophyFooter } from "../../_components/TrophyFooter";
 import { Reveal } from "../../_components/Reveal";
 import { CharSplit } from "../../_components/CharSplit";
 import { MagneticButton } from "../../_components/MagneticButton";
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -17,7 +18,7 @@ const SITE = "https://intelmadesimple.com";
 export const metadata: Metadata = {
   title: "Strategic Advisory",
   description:
-    "Independent counsel for founders and senior operators. The right call, said plainly. Strategy, positioning, technology and AI direction, on a retainer that gives you a senior thinking partner.",
+    "Independent counsel for founders and senior operators. Strategy, positioning, technology and AI direction on a retainer, with the right call said plainly.",
   alternates: { canonical: `${SITE}/services/strategic-advisory` },
   openGraph: {
     title: "Strategic Advisory · IMS Consultancy",
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
       "Independent counsel for founders. Strategy, positioning, tech and AI direction.",
     url: `${SITE}/services/strategic-advisory`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 
@@ -89,7 +91,7 @@ export default function StrategicAdvisoryPage() {
     description:
       "Strategy, positioning, technology and AI direction for founders and senior operators.",
     serviceType: "Business strategy consulting",
-    provider: { "@id": `${SITE}#organization` },
+    provider: { "@id": `${SITE}/#organization` },
     areaServed: "Worldwide",
   };
 

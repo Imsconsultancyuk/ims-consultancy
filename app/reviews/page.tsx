@@ -6,6 +6,8 @@ import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
 import { MagneticButton } from "../_components/MagneticButton";
 import { PointerTilt } from "../_components/PointerTilt";
+
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -25,6 +27,7 @@ export const metadata: Metadata = {
     description: "How clients describe the work, in their own words.",
     url: `${SITE}/reviews`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

@@ -11,6 +11,8 @@ import { industries } from "@/lib/industries";
 import type { Industry } from "@/lib/industries/types";
 import { BOOK_CALL_URL, HUB_COPY, SITE_URL } from "@/lib/industries/config";
 
+import { OG_IMAGES } from "@/lib/og";
+
 export const metadata: Metadata = {
   title: HUB_COPY.meta.title,
   description: HUB_COPY.meta.description,
@@ -20,6 +22,7 @@ export const metadata: Metadata = {
     description: HUB_COPY.meta.description,
     url: `${SITE_URL}/industries`,
     type: "website",
+    images: OG_IMAGES,
   },
   twitter: {
     card: "summary_large_image",

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import {
   Geist,
   IBM_Plex_Sans,
@@ -7,6 +7,7 @@ import {
 import { SmoothScroll } from "./_components/SmoothScroll";
 import { SiteCursor } from "./_components/SiteCursor";
 import { NoiseField } from "./_components/NoiseField";
+import { OG_IMAGES } from "@/lib/og";
 import "./globals.css";
 
 // Type system v4 (2026-08-02) — letterforms only. Sizes, weights, tracking and
@@ -42,7 +43,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.intelmadesimple.com"),
+  metadataBase: new URL("https://intelmadesimple.com"),
   title: {
     default: "IMS Consultancy · Intelligence Made Simple",
     template: "%s · IMS Consultancy",
@@ -61,7 +62,8 @@ export const metadata: Metadata = {
     title: "IMS Consultancy · Intelligence Made Simple",
     description:
       "Strategic consultancy for business decisions, development, and AI workflows.",
-    url: "https://www.intelmadesimple.com",
+    url: "https://intelmadesimple.com",
+    images: OG_IMAGES,
     siteName: "IMS Consultancy",
     locale: "en_GB",
     type: "website",
@@ -71,11 +73,19 @@ export const metadata: Metadata = {
     title: "IMS Consultancy · Intelligence Made Simple",
     description:
       "Strategic consultancy for business decisions, development, and AI workflows.",
+    images: OG_IMAGES.map((i) => i.url),
   },
   robots: {
     index: true,
     follow: true,
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f7f2f5" },
+    { media: "(prefers-color-scheme: dark)", color: "#19141a" },
+  ],
 };
 
 export default function RootLayout({
@@ -85,7 +95,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en-GB"
       className={`${geist.variable} ${plexSans.variable} ${plexMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >

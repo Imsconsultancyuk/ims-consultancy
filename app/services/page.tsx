@@ -5,6 +5,7 @@ import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
 import { MagneticButton } from "../_components/MagneticButton";
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
       "Three services, one engagement. Decide, build, compound.",
     url: `${SITE}/services`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 
@@ -87,7 +89,7 @@ export default function ServicesPage() {
     "@type": "OfferCatalog",
     "@id": `${SITE}/services#catalog`,
     name: "IMS Consultancy services",
-    provider: { "@id": `${SITE}#organization` },
+    provider: { "@id": `${SITE}/#organization` },
     itemListElement: SERVICES.map((s) => ({
       "@type": "Offer",
       itemOffered: {
@@ -95,7 +97,7 @@ export default function ServicesPage() {
         name: s.name,
         description: s.summary,
         serviceType: s.name,
-        provider: { "@id": `${SITE}#organization` },
+        provider: { "@id": `${SITE}/#organization` },
       },
     })),
   };

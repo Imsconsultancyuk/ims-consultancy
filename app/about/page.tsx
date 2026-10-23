@@ -3,6 +3,7 @@ import { TrophyHeader } from "../_components/TrophyHeader";
 import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
       "Who IMS is, how we work, and why we keep the engagement list small.",
     url: `${SITE}/about`,
     type: "profile",
+    images: OG_IMAGES,
   },
 };
 
@@ -42,8 +44,8 @@ export default function AboutPage() {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     "@id": `${SITE}/about#aboutpage`,
-    mainEntity: { "@id": `${SITE}#organization` },
-    isPartOf: { "@id": `${SITE}#website` },
+    mainEntity: { "@id": `${SITE}/#organization` },
+    isPartOf: { "@id": `${SITE}/#website` },
     url: `${SITE}/about`,
   };
 

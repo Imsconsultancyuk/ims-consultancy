@@ -5,6 +5,7 @@ import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
 import { ContactForm } from "../_components/ContactForm";
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
       "Start a conversation with IMS Consultancy.",
     url: `${SITE}/contact`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 
@@ -46,7 +48,7 @@ export default function ContactPage() {
     "@id": `${SITE}/contact#contactpage`,
     mainEntity: {
       "@type": "Organization",
-      "@id": `${SITE}#organization`,
+      "@id": `${SITE}/#organization`,
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "Customer service",

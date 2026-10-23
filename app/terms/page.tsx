@@ -3,6 +3,8 @@ import { TrophyHeader } from "../_components/TrophyHeader";
 import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
+
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -24,6 +26,7 @@ export const metadata: Metadata = {
       "Terms of use for the IMS Consultancy site and standard engagement terms.",
     url: `${SITE}/terms`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

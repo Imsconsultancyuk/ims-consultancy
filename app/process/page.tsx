@@ -5,6 +5,8 @@ import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
 import { MagneticButton } from "../_components/MagneticButton";
+
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -24,6 +26,7 @@ export const metadata: Metadata = {
     description: "Seven steps. One engagement. Open by design.",
     url: `${SITE}/process`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

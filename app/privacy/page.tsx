@@ -4,6 +4,8 @@ import { TrophyHeader } from "../_components/TrophyHeader";
 import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
+
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -25,6 +27,7 @@ export const metadata: Metadata = {
       "How IMS Consultancy handles personal data, in plain English.",
     url: `${SITE}/privacy`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

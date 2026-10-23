@@ -10,7 +10,7 @@ export const commercialProperty: Industry = {
   accent: "teal",
   leakLine: "44 lease events in one portfolio",
   meta: {
-    title: "AI Revenue Tools for Commercial Property | IntelMadeSimple",
+    title: "AI Revenue Tools for Commercial Property",
     description:
       "Lease-event radar, off-market spotting and instant vendor reports. AI tools that surface instructions before competitors know they exist. GDPR-safe.",
   },

@@ -5,6 +5,7 @@ import { TrophyFooter } from "../../_components/TrophyFooter";
 import { Reveal } from "../../_components/Reveal";
 import { CharSplit } from "../../_components/CharSplit";
 import { MagneticButton } from "../../_components/MagneticButton";
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -17,7 +18,7 @@ const SITE = "https://intelmadesimple.com";
 export const metadata: Metadata = {
   title: "Custom Software",
   description:
-    "Software built on real architecture, with tests, observability, and an honest hand-over. Web apps, dashboards, internal tools, integrations, and the systems that run your operations.",
+    "Software built on real architecture, with tests, observability and an honest hand-over. Web apps, dashboards, internal tools and integrations.",
   alternates: { canonical: `${SITE}/services/custom-software` },
   openGraph: {
     title: "Custom Software · IMS Consultancy",
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
       "Software that ships and stays shipped. Considered architecture, real tests, clean hand-over.",
     url: `${SITE}/services/custom-software`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 
@@ -91,7 +93,7 @@ export default function CustomSoftwarePage() {
     description:
       "Web platforms, internal tools, integrations, APIs, data layers, and rescue engagements.",
     serviceType: "Software development",
-    provider: { "@id": `${SITE}#organization` },
+    provider: { "@id": `${SITE}/#organization` },
     areaServed: "Worldwide",
   };
 

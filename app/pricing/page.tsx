@@ -5,6 +5,7 @@ import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
 import { MagneticButton } from "../_components/MagneticButton";
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
     description: "Fixed scope, fixed price, no surprise hours.",
     url: `${SITE}/pricing`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 
@@ -114,14 +116,14 @@ export default function PricingPage() {
     "@type": "OfferCatalog",
     "@id": `${SITE}/pricing#catalog`,
     name: "IMS Consultancy pricing tiers",
-    provider: { "@id": `${SITE}#organization` },
+    provider: { "@id": `${SITE}/#organization` },
     itemListElement: TIERS.map((t) => ({
       "@type": "Offer",
       itemOffered: {
         "@type": "Service",
         name: t.name,
         description: t.positioning,
-        provider: { "@id": `${SITE}#organization` },
+        provider: { "@id": `${SITE}/#organization` },
       },
       priceSpecification: {
         "@type": "PriceSpecification",

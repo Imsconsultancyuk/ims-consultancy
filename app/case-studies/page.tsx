@@ -5,6 +5,8 @@ import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
 import { MagneticButton } from "../_components/MagneticButton";
+
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -17,7 +19,7 @@ const SITE = "https://intelmadesimple.com";
 export const metadata: Metadata = {
   title: "Case Studies",
   description:
-    "Five real IMS engagements, no names attached. Two quiet workflows that returned a team's afternoon, two professional revamps that changed how a department runs, one embedded partnership that rewired a whole business.",
+    "Five real IMS engagements, no names attached: two workflow automations, two departmental revamps and one embedded partnership.",
   alternates: { canonical: `${SITE}/case-studies` },
   openGraph: {
     title: "Case Studies · IMS Consultancy",
@@ -25,6 +27,7 @@ export const metadata: Metadata = {
       "Anonymised case studies of real IMS engagements.",
     url: `${SITE}/case-studies`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

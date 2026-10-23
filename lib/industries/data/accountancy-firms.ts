@@ -10,7 +10,7 @@ export const accountancyFirms: Industry = {
   accent: "orange",
   leakLine: "78 advisory opportunities in one client base",
   meta: {
-    title: "AI Advisory Tools for Accountancy Firms | IntelMadeSimple",
+    title: "AI Advisory Tools for Accountancy Firms",
     description:
       "Advisory opportunity scanning, fee-leak detection and onboarding automation. AI tools that turn a compliance client base into an advisory pipeline. GDPR-safe.",
   },

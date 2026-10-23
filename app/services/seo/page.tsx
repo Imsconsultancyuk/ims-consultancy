@@ -5,6 +5,7 @@ import { TrophyFooter } from "../../_components/TrophyFooter";
 import { Reveal } from "../../_components/Reveal";
 import { CharSplit } from "../../_components/CharSplit";
 import { MagneticButton } from "../../_components/MagneticButton";
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -17,7 +18,7 @@ const SITE = "https://intelmadesimple.com";
 export const metadata: Metadata = {
   title: "SEO and Organic Growth",
   description:
-    "Search visibility that compounds, including AI search. Technical audit, content strategy, on-page work, link earning, and the structured data that makes you legible to LLMs.",
+    "Search visibility that compounds, including AI search. Technical audit, content strategy, on-page work, link earning and structured data for LLMs.",
   alternates: { canonical: `${SITE}/services/seo` },
   openGraph: {
     title: "SEO and Organic Growth · IMS Consultancy",
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
       "Search visibility that compounds. Technical, on-page, content, and AI-search ready.",
     url: `${SITE}/services/seo`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 
@@ -90,7 +92,7 @@ export default function SeoPage() {
     description:
       "Technical SEO, content strategy, AI search readiness, authority building, and measurement.",
     serviceType: "Search engine optimisation",
-    provider: { "@id": `${SITE}#organization` },
+    provider: { "@id": `${SITE}/#organization` },
     areaServed: "Worldwide",
   };
 

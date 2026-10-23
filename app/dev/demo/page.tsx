@@ -1,3 +1,4 @@
+import { devOnly } from "@/lib/dev-only";
 import type { Metadata } from "next";
 
 import { DevDemoHarness } from "./DevDemoHarness";
@@ -14,5 +15,6 @@ export const metadata: Metadata = {
 };
 
 export default function DevDemoPage() {
+  devOnly();
   return <DevDemoHarness />;
 }

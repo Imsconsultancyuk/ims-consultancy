@@ -10,7 +10,7 @@ export const maAdvisoryBusinessBrokers: Industry = {
   accent: "rose",
   leakLine: "67 succession-risk owners in one region",
   meta: {
-    title: "AI Deal Origination for M&A Advisers | IntelMadeSimple",
+    title: "AI Deal Origination for M&A Advisers",
     description:
       "Succession scanning, target sourcing and buyer-mandate matching. AI tools that originate sell-side mandates before the market sees them. GDPR-safe.",
   },
