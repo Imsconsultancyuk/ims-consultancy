@@ -90,7 +90,7 @@ export function ResultsPanel({ tools, industry }: ResultsPanelProps) {
         <a
           href={BOOK_CALL_URL}
           onClick={() => track("book_call_clicked", { industry, tool: tool.id })}
-          className="inline-flex items-center justify-center rounded-md bg-paper px-6 py-3 text-sm font-medium text-ink transition-opacity hover:opacity-90"
+          className="inline-flex items-center justify-center rounded-full bg-paper px-6 py-3 text-sm font-medium text-ink transition-opacity hover:opacity-90"
         >
           Book 20 minutes, run it on your book
         </a>

@@ -73,5 +73,14 @@ export function IndustriesHubJsonLd({ industries }: IndustriesHubJsonLdProps) {
     },
   };
 
-  return <JsonLd data={[orgJsonLd, websiteJsonLd, collectionPage]} />;
+  const breadcrumbList: WithContext<BreadcrumbList> = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Industries", item: pageUrl },
+    ],
+  };
+
+  return <JsonLd data={[orgJsonLd, websiteJsonLd, collectionPage, breadcrumbList]} />;
 }

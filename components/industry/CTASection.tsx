@@ -26,7 +26,7 @@ export function CTASection({ industry, related }: CTASectionProps) {
       <a
         href={BOOK_CALL_URL}
         onClick={() => track("book_call_clicked", { industry })}
-        className="inline-flex items-center justify-center rounded-md bg-accent-500 px-6 py-3 text-sm font-medium text-on-amber transition-all duration-300 hover:bg-accent-600"
+        className="inline-flex items-center justify-center rounded-full bg-accent-500 px-6 py-3 text-sm font-medium text-on-amber transition-all duration-300 hover:bg-accent-600"
       >
         Book a call
       </a>

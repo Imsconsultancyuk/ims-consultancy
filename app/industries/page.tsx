@@ -156,14 +156,14 @@ export default function IndustriesHubPage() {
                 <Link
                   href={BOOK_CALL_URL}
                   data-cursor="link"
-                  className="rounded-md bg-accent-500 px-6 py-3 text-sm font-medium text-on-amber transition-all duration-300 hover:bg-accent-600"
+                  className="rounded-full bg-accent-500 px-6 py-3 text-sm font-medium text-on-amber transition-all duration-300 hover:bg-accent-600"
                 >
                   Book 20 minutes
                 </Link>
                 <a
                   href="#practices"
                   data-cursor="link"
-                  className="rounded-md border border-mauve-300/25 px-6 py-3 text-sm font-medium text-paper-ink transition-colors hover:border-mauve-300/50 hover:bg-deep-soft/70"
+                  className="rounded-full border border-mauve-300/25 px-6 py-3 text-sm font-medium text-paper-ink transition-colors hover:border-mauve-300/50 hover:bg-deep-soft/70"
                 >
                   Find your practice
                 </a>
@@ -236,7 +236,7 @@ export default function IndustriesHubPage() {
               <Link
                 href={BOOK_CALL_URL}
                 data-cursor="link"
-                className="mt-9 inline-flex items-center justify-center rounded-md bg-accent-500 px-6 py-3 text-sm font-medium text-on-amber transition-all duration-300 hover:bg-accent-600"
+                className="mt-9 inline-flex items-center justify-center rounded-full bg-accent-500 px-6 py-3 text-sm font-medium text-on-amber transition-all duration-300 hover:bg-accent-600"
               >
                 Book a call
               </Link>

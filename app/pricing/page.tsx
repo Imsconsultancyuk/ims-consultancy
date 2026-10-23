@@ -198,7 +198,10 @@ export default function PricingPage() {
                       {t.positioning}
                     </h3>
                     <p className="mt-5 font-display text-[2.5rem] font-bold leading-none tracking-[-0.02em] text-ink transition-colors duration-500 group-hover:text-paper-ink">
-                      {t.price}
+                      {t.price.replace(" per month", "")}
+                      {t.price.endsWith(" per month") && (
+                        <span className="ml-1.5 text-base font-medium tracking-normal">per month</span>
+                      )}
                     </p>
                     <p className="mt-2 font-sans text-[12px] uppercase tracking-[0.18em] text-ink-soft transition-colors duration-500 group-hover:text-paper-ink/85">
                       {t.cadence}
