@@ -1,0 +1,1 @@
+const r="/__forms.html";async function a(t,e){const o=new URLSearchParams({"form-name":t,"bot-field":"",...e});try{return(await fetch(r,{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:o.toString()})).ok}catch{return!1}}export{a as s};

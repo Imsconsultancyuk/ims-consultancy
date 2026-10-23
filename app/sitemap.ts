@@ -23,6 +23,7 @@ const ENTRIES: Entry[] = [
   { path: "/reviews", priority: 0.7, changeFrequency: "monthly" },
   { path: "/pricing", priority: 0.85, changeFrequency: "monthly" },
   { path: "/insights", priority: 0.6, changeFrequency: "weekly" },
+  { path: "/tools", priority: 0.9, changeFrequency: "monthly" },
   { path: "/faq", priority: 0.7, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.9, changeFrequency: "monthly" },
   { path: "/privacy", priority: 0.4, changeFrequency: "yearly" },
