@@ -12,6 +12,8 @@ interface CharSplitProps {
   delay?: number;
   /** Initial Y offset in em. */
   y?: number;
+  /** Element to render. Page hero headlines pass "h1". */
+  as?: "div" | "h1" | "h2";
 }
 
 /**
@@ -26,7 +28,10 @@ export function CharSplit({
   stagger = 0.022,
   delay = 0,
   y = 0.6,
+  as = "div",
 }: CharSplitProps) {
+  // The union of heading tags and div cannot type a shared ref; only the node is used.
+  const Tag = as as "div";
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -84,7 +89,11 @@ export function CharSplit({
   const lines = text.split("\n");
 
   return (
-    <div ref={ref} className={className} style={{ overflow: "hidden" }}>
+    <Tag
+      ref={ref}
+      className={className}
+      style={{ overflow: "hidden" }}
+    >
       {lines.map((line, li) => (
         <span key={`l-${li}`} className="block">
           {/* Every char is its own inline-block so it can be transformed, and a
@@ -111,6 +120,6 @@ export function CharSplit({
           ))}
         </span>
       ))}
-    </div>
+    </Tag>
   );
 }

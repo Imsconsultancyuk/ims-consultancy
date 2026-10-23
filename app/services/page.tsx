@@ -116,6 +116,7 @@ export default function ServicesPage() {
                 Services · Three layered
               </p>
               <CharSplit
+                as="h1"
                 text={"Three services,\none engagement."}
                 className="mt-5 font-serif text-[clamp(2.25rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.018em]"
                 stagger={0.018}

@@ -72,6 +72,7 @@ export default function AboutPage() {
                 About IMS
               </p>
               <CharSplit
+                as="h1"
                 text={"Small firm,\nhigh judgement,\nquiet wins."}
                 className="mt-5 font-serif text-[clamp(2.5rem,5vw,4rem)] font-medium leading-[1.05] tracking-[-0.018em]"
                 stagger={0.018}

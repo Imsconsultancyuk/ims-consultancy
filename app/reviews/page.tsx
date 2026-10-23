@@ -108,6 +108,7 @@ export default function ReviewsPage() {
                 Reviews · In their words
               </p>
               <CharSplit
+                as="h1"
                 text={"What the work\nfelt like."}
                 className="mt-5 font-serif text-[clamp(2.25rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.018em]"
                 stagger={0.018}
