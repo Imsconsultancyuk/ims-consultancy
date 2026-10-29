@@ -18,9 +18,9 @@ export const lawFirms: Industry = {
     h1: "Your firm loses more to slow follow-up than to any competitor",
     sub: "Three tools that read your enquiry log, time ledger and matter history, then hand your fee earners the instructions they were about to lose.",
     stats: [
-      { value: "42%", label: "of law-firm enquiries never receive a follow-up" },
-      { value: "£1,540", label: "average instruction value lost per unanswered enquiry" },
-      { value: "90 days", label: "after which unbilled WIP rarely gets billed" },
+      { value: "121", label: "enquiries never followed up" },
+      { value: "£47,200", label: "unbilled beyond 90 days" },
+      { value: "208", label: "clients with an obvious next matter" },
     ],
   },
   pains: [
@@ -149,7 +149,7 @@ export const lawFirms: Industry = {
       "UK-based support, DPA included",
     ],
     timeline: "Live within 14 days of data access",
-    anchor: "Build from £6,500 · from £3,000/month · one recovered instruction covers a quarter",
+    anchor: "Start with a free Leak Scan. Projects from £6,000, fixed price.",
   },
   faqs: [
     {
@@ -170,7 +170,7 @@ export const lawFirms: Industry = {
     },
     {
       q: "What does it cost?",
-      a: "A one-off build fee then a monthly retainer, anchored so a single recovered instruction covers months of fees. Exact pricing on the call, based on book size.",
+      a: "Start with a free Leak Scan, then a fixed-price project from £6,000 once the numbers justify it. The exact price is quoted in writing after the scan, based on book size.",
     },
   ],
   related: ["accountancy-firms", "ma-advisory-business-brokers"],

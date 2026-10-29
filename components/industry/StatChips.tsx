@@ -6,20 +6,27 @@ interface StatChipsProps {
 
 export function StatChips({ stats }: StatChipsProps) {
   return (
-    <dl className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
-      {stats.map((stat, index) => (
-        <div
-          key={stat.label}
-          data-stat-chip
-          className="border-t border-line pt-3"
-          style={{ animationDelay: `${index * 90}ms` }}
-        >
-          <dd className="num text-3xl font-semibold text-ink md:text-4xl">
-            {stat.value}
-          </dd>
-          <dt className="mt-1 text-sm text-ink-soft">{stat.label}</dt>
-        </div>
-      ))}
-    </dl>
+    <>
+      <dl className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
+        {stats.map((stat, index) => (
+          <div
+            key={stat.label}
+            data-stat-chip
+            className="border-t border-line pt-3"
+            style={{ animationDelay: `${index * 90}ms` }}
+          >
+            <dd className="num text-3xl font-semibold text-ink md:text-4xl">
+              {stat.value}
+            </dd>
+            <dt className="mt-1 text-sm text-ink-soft">{stat.label}</dt>
+          </div>
+        ))}
+      </dl>
+      <p className="mt-4 text-xs">
+        <span className="ims-info-chip">
+          Illustrations from synthetic sample data. Not results from a client.
+        </span>
+      </p>
+    </>
   );
 }

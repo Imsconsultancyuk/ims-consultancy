@@ -36,6 +36,26 @@
   --color-accent-700: oklch(0.5 0.11 75);
   --color-on-amber:   oklch(0.24 0.03 70);
 
+  /* Cobalt: the supporting accent (restored from the 2026-07 "Cobalt & Cream"
+     system, 2026-10-27). Informational only: inline links, secondary outline
+     buttons, keyboard focus, the active-nav underline, one chart series and
+     the "sample data" chips. Amber stays the only call-to-action colour, and
+     blue never fills a background, heading, eyebrow or card border. */
+  --color-cobalt-50:  #eef3ff;
+  --color-cobalt-100: #dbe6ff;
+  --color-cobalt-200: #b3c9ff;
+  --color-cobalt-300: #8aa9ff;
+  --color-cobalt-400: #5f86f7;
+  --color-cobalt-500: #3a6df0;
+  --color-cobalt-600: #2a54d4;
+  --color-cobalt-700: #1e3ea6;
+
+  /* Semantic cobalt. Surface tokens: they flip in the dark blocks below. */
+  --color-link:       var(--color-cobalt-700);
+  --color-link-hover: var(--color-cobalt-600);
+  --color-info:       var(--color-cobalt-600);
+  --color-info-wash:  var(--color-cobalt-50);
+
   --color-ink:       oklch(0.255 0.014 320);
   --color-ink-soft:  oklch(0.44 0.022 320);
   --color-paper-ink: oklch(0.965 0.008 330);
@@ -103,6 +123,10 @@
   --color-ink:       oklch(0.95 0.008 330);
   --color-ink-soft:  oklch(0.79 0.018 325);
   --color-line: oklch(0.37 0.03 322);
+  --color-link:       #8aa9ff;
+  --color-link-hover: #b3c9ff;
+  --color-info:       #5f86f7;
+  --color-info-wash:  rgba(95, 134, 247, 0.14);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -119,6 +143,10 @@
     --color-ink:       oklch(0.95 0.008 330);
     --color-ink-soft:  oklch(0.79 0.018 325);
     --color-line: oklch(0.37 0.03 322);
+    --color-link:       #8aa9ff;
+    --color-link-hover: #b3c9ff;
+    --color-info:       #5f86f7;
+    --color-info-wash:  rgba(95, 134, 247, 0.14);
   }
 }
 
@@ -275,6 +303,111 @@ body {
 .ims-band-light { background: var(--color-paper); }
 .ims-band-light-soft { background: var(--color-paper-soft); }
 .ims-band-dark { background: var(--color-deep); color: var(--color-paper-ink); }
+
+/* Explicit focus ring on every link and button, so keyboard focus never falls
+   back to the browser default (which read as grey on plum bands). Cobalt on
+   paper (5.7:1 light, 5.4:1 dark), amber on the fixed plum bands. */
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--color-info);
+  outline-offset: 3px;
+}
+.ims-band-dark a:focus-visible, .ims-band-dark button:focus-visible, .ims-band-dark summary:focus-visible,
+.bg-deep a:focus-visible, .bg-deep button:focus-visible, .bg-deep summary:focus-visible {
+  outline-color: var(--color-accent-500);
+}
+
+/* Inline text links in body prose. Opt-in class, so nav, buttons and whole-card
+   links never turn blue. Plum bands are dark in both themes: lighter cobalt. */
+.ims-link {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 160ms ease;
+}
+.ims-link:hover { color: var(--color-link-hover); }
+.ims-band-dark .ims-link, .bg-deep .ims-link { color: var(--color-cobalt-300); }
+.ims-band-dark .ims-link:hover, .bg-deep .ims-link:hover { color: var(--color-cobalt-200); }
+
+/* Info chip: "sample data" / "illustrative" captions. Wash behind cobalt text. */
+.ims-info-chip {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--color-info-wash);
+  color: var(--color-link);
+}
+
+/* Leak line: the home hero's rail, carried onto inner pages. A hairline hangs
+   from the top of the page (it passes behind the fixed header, so it starts at
+   the header edge) and ends in the amber coin above the eyebrow. The hero clips
+   the overshoot. Decorative only. */
+.ims-leak {
+  position: absolute;
+  left: 0;
+  top: -260px;
+  width: 1px;
+  height: 246px;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklch, var(--color-accent-500) 28%, transparent),
+    color-mix(in oklch, var(--color-accent-500) 80%, transparent)
+  );
+  pointer-events: none;
+}
+.ims-leak-coin {
+  position: absolute;
+  left: -4px;
+  bottom: -4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--color-accent-500);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-accent-500) 22%, transparent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ims-leak-coin { animation: ims-leak-drop 900ms cubic-bezier(0.23, 1, 0.32, 1) 350ms both; }
+}
+@keyframes ims-leak-drop {
+  from { transform: translateY(-48px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+@media (max-width: 640px) {
+  .ims-leak { top: -240px; height: 226px; }
+}
+
+/* Hero ledger: ruled sheet on the right of the inner heroes, so a left-aligned
+   hero does not leave the right half bare. Rules fade out toward the copy; one
+   amber tick marks the leak. Desktop only, decorative only. */
+.ims-ledger {
+  display: none;
+  position: absolute;
+  top: -8px;
+  right: 0;
+  bottom: 0;
+  width: min(30%, 340px);
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    color-mix(in oklch, currentColor 12%, transparent) 0 1px,
+    transparent 1px 44px
+  );
+  border-right: 1px solid color-mix(in oklch, currentColor 16%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 60%);
+  mask-image: linear-gradient(to right, transparent, #000 60%);
+}
+.ims-ledger::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  bottom: 44px;
+  width: 3px;
+  height: 44px;
+  background: var(--color-accent-500);
+}
+@media (min-width: 1024px) {
+  .ims-ledger { display: block; }
+}
 
 ::selection {
   background: var(--color-accent-500);
@@ -867,3 +1000,21 @@ html.js .ims-cinema-section:not(.ims-cinema-in) .ims-cinema-caption {
   .ims-rail-shimmer { animation: none !important; }
   .ims-results-panel { animation: none !important; }
 }
+
+/* Industry department rail: the coloured line draws left to right once on load.
+   Final state is the default, so it is visible with animation off. */
+.dept-rail-fill { animation: dept-rail-draw 900ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+@keyframes dept-rail-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .dept-rail-fill { animation: none; } }
+
+/* Amber CTA and cobalt outline buttons: the Tailwind utility says transition-all duration-300.
+   Narrow it to the properties that change, shorten it, and give the press a physical answer. */
+a.bg-accent-500, button.bg-accent-500, a.border-cobalt-200, a.border-info {
+  transition-property: background-color, border-color, color, transform;
+  transition-duration: 180ms;
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  a.bg-accent-500:hover, button.bg-accent-500:hover, a.border-cobalt-200:hover, a.border-info:hover { transform: translateY(-1.5px); }
+}
+a.bg-accent-500:active, button.bg-accent-500:active, a.border-cobalt-200:active, a.border-info:active { transform: scale(0.97); }

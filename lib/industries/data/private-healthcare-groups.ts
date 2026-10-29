@@ -10,7 +10,7 @@ export const privateHealthcareGroups: Industry = {
   accent: "fuchsia",
   leakLine: "£96k of quoted treatment still open",
   meta: {
-    title: "AI Revenue Recovery for Private Healthcare",
+    title: "Revenue Recovery for Private Healthcare",
     description:
       "Treatment-plan recovery, capacity-fill radar and review-to-revenue content. AI tools that convert quoted care and fill empty diary time. GDPR-safe, CQC-aware.",
   },
@@ -18,9 +18,9 @@ export const privateHealthcareGroups: Industry = {
     h1: "The revenue you quoted last quarter is still sitting in your diary system",
     sub: "Three tools that follow up every unconverted treatment plan, fill tomorrow's empty chair time, and turn patient questions into booked consultations.",
     stats: [
-      { value: "38%", label: "of quoted private treatment plans never book" },
-      { value: "£3,400", label: "average value of an unconverted plan" },
-      { value: "19", label: "empty diary slots found in one week's export" },
+      { value: "£96,000", label: "of quoted treatment still open" },
+      { value: "19", label: "fillable slots in the next 7 days" },
+      { value: "14", label: "patient questions you don't answer publicly" },
     ],
   },
   pains: [
@@ -149,7 +149,7 @@ export const privateHealthcareGroups: Industry = {
       "UK-based support, DPA included",
     ],
     timeline: "Live within 14 days of data access",
-    anchor: "Build from £6,000 · from £2,750/month · three recovered plans cover the retainer",
+    anchor: "Start with a free Leak Scan. Projects from £6,000, fixed price.",
   },
   faqs: [
     {
@@ -170,7 +170,7 @@ export const privateHealthcareGroups: Industry = {
     },
     {
       q: "What does it cost?",
-      a: "A one-off build fee then a monthly retainer, anchored so a single recovered plan covers months of fees. Exact pricing on the call, based on book size.",
+      a: "Start with a free Leak Scan, then a fixed-price project from £6,000 once the numbers justify it. The exact price is quoted in writing after the scan, based on book size.",
     },
   ],
   related: ["ifas-wealth-managers", "b2b-saas"],

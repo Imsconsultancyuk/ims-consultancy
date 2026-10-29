@@ -5,6 +5,7 @@
 
 .fx-skip { position: absolute; left: 16px; top: -48px; z-index: 100; background: var(--color-ink); color: var(--color-paper); padding: 8px 12px; border-radius: 14px; }
 .fx-skip:focus { top: 8px; }
+.fx-skip:focus-visible { outline: 2px solid var(--color-accent-500); outline-offset: 3px; }
 
 .fx-btn {
   display: inline-flex; align-items: center; justify-content: center; white-space: nowrap;
@@ -19,13 +20,16 @@
   .fx-main > a:hover, .fx-sectors-btn:hover, .fx-theme:hover { color: var(--color-ink); }
   .fx-panel li a:hover, .fx-foot-col a:hover, .fx-foot-top:hover, .fx-all:hover { color: var(--color-accent-700); }
 }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .fx-btn:not(:active):hover { transform: translateY(-1.5px); }
+}
 .fx-nav a:focus-visible, .fx-nav button:focus-visible, .fx-foot a:focus-visible {
-  outline: 2px solid var(--color-accent-700); outline-offset: 3px; border-radius: 4px;
+  outline: 2px solid var(--color-info); outline-offset: 3px; border-radius: 4px;
 }
 
 .fx-nav { position: fixed; inset: 0 0 auto; height: var(--fx-nav); z-index: 50; background: var(--color-paper); border-bottom: 1px solid var(--color-mauve-100); }
 .fx-nav-in { max-width: 1240px; margin: 0 auto; padding: 0 40px; height: 100%; display: flex; align-items: center; gap: 22px; }
-.fx-logo { display: inline-flex; align-items: center; gap: 10px; font: 800 18px var(--font-sans); color: var(--color-ink); text-decoration: none; letter-spacing: -0.035em; }
+.fx-logo { flex: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 10px; font: 800 18px var(--font-sans); color: var(--color-ink); text-decoration: none; letter-spacing: -0.035em; }
 .fx-nav .fx-logo { margin-right: auto; }
 .fx-mark { width: 28px; height: 28px; flex: none; }
 .fx-mark circle { fill: var(--color-deep); }
@@ -34,7 +38,7 @@
 .fx-main { display: flex; align-items: center; gap: 22px; }
 .fx-main > a, .fx-sectors-btn { white-space: nowrap; color: var(--color-ink-soft); text-decoration: none; font: 500 15px/1 var(--font-sans); transition: color 200ms ease; position: relative; padding: 6px 0; background: none; border: 0; cursor: pointer; }
 .fx-main > a[aria-current=page] { color: var(--color-ink); }
-.fx-main > a[aria-current=page]::after { content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; border-radius: 2px; background: var(--color-accent-500); }
+.fx-main > a[aria-current=page]::after { content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; border-radius: 2px; background: var(--color-info); }
 
 .fx-sectors { position: relative; }
 .fx-sectors-btn::after { content: ''; display: inline-block; width: 6px; height: 6px; margin: 0 0 3px 8px; border: solid currentColor; border-width: 0 1.5px 1.5px 0; transform: rotate(45deg); transition: transform 200ms var(--fx-ease); }
@@ -47,16 +51,18 @@
 .fx-panel li a { display: block; padding: 8px 0; color: var(--color-ink); text-decoration: none; font-size: 14px; line-height: 1.25; transition: color 160ms ease; }
 .fx-panel-sm { width: 220px; }
 .fx-panel-sm ul { grid-template-columns: 1fr; }
-.fx-panel li a[aria-current=page], .fx-sectors-btn[data-active] { color: var(--color-accent-700); }
+.fx-panel li a[aria-current=page] { color: var(--color-accent-700); }
+/* Active section under the Company menu: same ink and cobalt underline as an active top-level link. */
+.fx-sectors-btn[data-active] { color: var(--color-ink); text-decoration: underline; text-decoration-color: var(--color-info); text-decoration-thickness: 2px; text-underline-offset: 8px; }
 .fx-all { display: block; margin-top: 8px; padding-top: 12px; border-top: 1px solid var(--color-mauve-100); color: var(--color-accent-700); font: 600 14px var(--font-sans); text-decoration: none; }
 
 .fx-cta .fx-short { display: none; }
-.fx-menu { display: none; width: 40px; height: 40px; border-radius: 999px; border: 1px solid var(--color-mauve-100); background: none; cursor: pointer; position: relative; flex: none; }
+.fx-menu { display: none; width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--color-mauve-100); background: none; cursor: pointer; position: relative; flex: none; }
 .fx-menu i { position: absolute; left: 12px; right: 12px; height: 1.5px; background: var(--color-ink); border-radius: 2px; transition: transform 240ms var(--fx-ease), top 240ms var(--fx-ease); }
-.fx-menu i:nth-child(1) { top: 16px; }
-.fx-menu i:nth-child(2) { top: 23px; }
-.fx-menu[aria-expanded=true] i:nth-child(1) { top: 19.5px; transform: rotate(45deg); }
-.fx-menu[aria-expanded=true] i:nth-child(2) { top: 19.5px; transform: rotate(-45deg); }
+.fx-menu i:nth-child(1) { top: 18px; }
+.fx-menu i:nth-child(2) { top: 25px; }
+.fx-menu[aria-expanded=true] i:nth-child(1) { top: 21.5px; transform: rotate(45deg); }
+.fx-menu[aria-expanded=true] i:nth-child(2) { top: 21.5px; transform: rotate(-45deg); }
 .fx-theme { font: 500 13px/1 var(--font-sans); color: var(--color-ink-soft); background: none; border: 1px solid var(--color-mauve-100); border-radius: 999px; height: 32px; padding: 0 12px; cursor: pointer; transition: transform 160ms var(--fx-ease), color 200ms ease; }
 
 .fx-foot { position: relative; border-top: 1px solid var(--color-mauve-100); background: var(--color-paper); color: var(--color-ink-soft); }
@@ -91,6 +97,12 @@
   .fx-foot-in { grid-template-columns: 1fr 1fr; gap: 36px 24px; padding: 48px 16px 28px; }
   .fx-foot-brand { grid-column: 1 / -1; }
   .fx-foot-bar { flex-direction: column; padding: 18px 16px 40px; }
+  /* Touch targets: every control reaches 44px on phones. */
+  .fx-skip { display: inline-flex; align-items: center; min-height: 44px; }
+  .fx-logo, .fx-btn { min-height: 44px; }
+  .fx-main .fx-theme { min-height: 44px; }
+  .fx-foot-col a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; padding: 0; }
+  .fx-foot-top { display: inline-flex; align-items: center; min-height: 44px; }
 }
 @media (max-width: 400px) { .fx-cta { padding: 0 14px; font-size: 13px; } }
 @media (prefers-reduced-motion: reduce) { .fx-btn, .fx-theme, .fx-menu i, .fx-panel, .fx-sectors-btn::after { transition: none; } }

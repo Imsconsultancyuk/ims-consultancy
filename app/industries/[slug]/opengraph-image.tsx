@@ -8,7 +8,7 @@ import type { Accent } from "@/lib/industries/types";
 
 // Config exports per the opengraph-image file convention — Next.js
 // auto-injects the og:image / twitter:image meta tags from these.
-export const alt = "IMS Consultancy: AI Revenue Recovery";
+export const alt = "Intel Made Simple: AI Revenue Recovery";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -81,7 +81,7 @@ export default async function Image({ params }: OgImageProps) {
     join(process.cwd(), "assets/fonts/SpaceGrotesk-SemiBold.woff"),
   );
 
-  const name = industry?.name ?? "IMS Consultancy";
+  const name = industry?.name ?? "Intel Made Simple";
   const headline = industry?.tools[0]?.demo.result.headline ?? "AI revenue recovery";
   const accentHex = readableOnInk(industry ? ACCENT_HEX[industry.accent] : ACCENT_HEX.indigo);
 
@@ -124,7 +124,7 @@ export default async function Image({ params }: OgImageProps) {
         </div>
 
         <div style={{ display: "flex", color: PAPER, fontSize: 28, opacity: 0.72 }}>
-          IMS Consultancy
+          Intel Made Simple
         </div>
       </div>
     ),

@@ -1,6 +1,6 @@
 import type { BreadcrumbList, CollectionPage, FAQPage, Service, WithContext } from "schema-dts";
 
-import { JsonLd, orgJsonLd, websiteJsonLd } from "@/app/_components/JsonLd";
+import { JsonLd, orgJsonLd, websiteJsonLd, webPageJsonLd } from "@/app/_components/JsonLd";
 import { SITE_URL } from "@/lib/industries/config";
 import type { Industry } from "@/lib/industries/types";
 
@@ -20,16 +20,19 @@ export function IndustryJsonLd({ industry }: IndustryJsonLdProps) {
   const service: WithContext<Service> = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${pageUrl}#service`,
     name: `AI Revenue Recovery for ${industry.name}`,
     description: industry.meta.description,
     provider: { "@id": `${SITE_URL}/#organization` },
-    areaServed: "GB",
+    areaServed: { "@type": "Country", name: "United Kingdom" },
     url: pageUrl,
   };
 
   const faqPage: WithContext<FAQPage> = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "@id": `${pageUrl}#faq`,
+    isPartOf: { "@id": `${pageUrl}#webpage` },
     mainEntity: industry.faqs.map((faq) => ({
       "@type": "Question",
       name: faq.q,
@@ -37,17 +40,21 @@ export function IndustryJsonLd({ industry }: IndustryJsonLdProps) {
     })),
   };
 
-  const breadcrumbList: WithContext<BreadcrumbList> = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Industries", item: `${SITE_URL}/industries` },
-      { "@type": "ListItem", position: 3, name: industry.name, item: pageUrl },
-    ],
+  const webPage = {
+    ...webPageJsonLd({
+      path: `/industries/${industry.slug}`,
+      name: industry.meta.title,
+      description: industry.meta.description,
+      breadcrumbs: [
+        { name: "Home", path: "/" },
+        { name: "Industries", path: "/industries" },
+        { name: industry.name, path: `/industries/${industry.slug}` },
+      ],
+    }),
+    mainEntity: { "@id": `${pageUrl}#service` },
   };
 
-  return <JsonLd data={[orgJsonLd, websiteJsonLd, service, faqPage, breadcrumbList]} />;
+  return <JsonLd data={[orgJsonLd, websiteJsonLd, webPage, service, faqPage]} />;
 }
 
 interface IndustriesHubJsonLdProps {
@@ -61,7 +68,13 @@ export function IndustriesHubJsonLd({ industries }: IndustriesHubJsonLdProps) {
   const collectionPage: WithContext<CollectionPage> = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
+    "@id": `${pageUrl}#webpage`,
     url: pageUrl,
+    breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+    name: "AI revenue recovery by industry",
+    inLanguage: "en-GB",
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    about: { "@id": `${SITE_URL}/#organization` },
     mainEntity: {
       "@type": "ItemList",
       itemListElement: industries.map((industry, index) => ({
@@ -76,6 +89,7 @@ export function IndustriesHubJsonLd({ industries }: IndustriesHubJsonLdProps) {
   const breadcrumbList: WithContext<BreadcrumbList> = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${pageUrl}#breadcrumb`,
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
       { "@type": "ListItem", position: 2, name: "Industries", item: pageUrl },

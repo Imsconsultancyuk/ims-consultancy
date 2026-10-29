@@ -60,9 +60,10 @@ export function PackageBlock({ industry, package: pkg }: PackageBlockProps) {
             key={item}
             className="flex items-start gap-2 text-sm text-ink-soft"
           >
-            <span aria-hidden="true" className="mt-1 text-ink-soft">
-              ·
-            </span>
+            <span
+              aria-hidden="true"
+              className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent-500"
+            />
             <span>{item}</span>
           </li>
         ))}
@@ -81,7 +82,7 @@ export function PackageBlock({ industry, package: pkg }: PackageBlockProps) {
           <button
             type="button"
             onClick={() => setShowEmailField(true)}
-            className="text-sm font-medium text-ink underline decoration-line underline-offset-4 transition-colors hover:text-ink-soft"
+            className="inline-flex min-h-[44px] items-center self-start text-sm font-medium text-ink underline decoration-line underline-offset-4 transition-colors hover:text-ink-soft"
           >
             Email me the sample report
           </button>

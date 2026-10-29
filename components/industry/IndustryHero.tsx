@@ -2,6 +2,7 @@
 
 import type { MouseEvent } from "react";
 
+import { HeroLedger, LeakLine } from "@/app/_components/LeakLine";
 import { track } from "@/lib/analytics";
 import { BOOK_CALL_URL, DEMO_SECTION_ID } from "@/lib/industries/config";
 import { scrollToSection } from "@/lib/industries/scroll";
@@ -39,8 +40,10 @@ export function IndustryHero({
   }
 
   return (
-    <section className="ims-band-light pb-16 pt-32 text-ink md:pb-24 md:pt-40">
-      <div className="mx-auto max-w-6xl px-6">
+    <section className="relative isolate overflow-hidden ims-band-light pb-16 pt-32 text-ink md:pb-24 md:pt-40">
+      <div className="relative mx-auto max-w-6xl px-6">
+        <LeakLine inset={24} />
+        <HeroLedger inset={24} height={440} />
         <p
           className="text-sm font-medium uppercase tracking-wide"
           style={{ color: `var(--color-signal-${accent})` }}
@@ -48,7 +51,7 @@ export function IndustryHero({
           {name}
         </p>
 
-        <h1 className="font-industry-display mt-4 max-w-3xl text-4xl font-semibold leading-[1.1] md:text-6xl">
+        <h1 className="font-industry-display mt-4 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
           {h1}
         </h1>
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">{sub}</p>
@@ -64,7 +67,7 @@ export function IndustryHero({
           <a
             href={BOOK_CALL_URL}
             onClick={handleBookClick}
-            className="rounded-full border border-line px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-paper-soft"
+            className="rounded-full border border-info px-6 py-3 text-sm font-medium text-info transition-colors hover:bg-info-wash"
           >
             Book 20 minutes
           </a>

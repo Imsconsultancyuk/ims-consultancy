@@ -58,7 +58,7 @@ export function ToolCard({ industry, tool }: ToolCardProps) {
       <button
         type="button"
         onClick={handleSeeItRun}
-        className="mt-2 self-start text-sm font-medium text-ink underline decoration-line underline-offset-4 transition-colors hover:text-ink-soft"
+        className="mt-2 inline-flex min-h-[44px] items-center self-start text-sm font-medium text-ink underline decoration-line underline-offset-4 transition-colors hover:text-ink-soft"
       >
         See it run →
       </button>

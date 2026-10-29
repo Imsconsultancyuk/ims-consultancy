@@ -21,12 +21,12 @@ export function TrophyFooter() {
     <footer className="fx-foot" aria-labelledby="foot-title">
       <div className="fx-foot-in">
         <div className="fx-foot-brand">
-          <a className="fx-logo" href="/" aria-label="IntelMadeSimple, home">
+          <a className="fx-logo" href="/" aria-label="Intel Made Simple, home">
             <svg className="fx-mark" viewBox="0 0 28 28" aria-hidden="true" focusable="false">
               <circle cx="14" cy="14" r="14" />
               <path d={LOGO_PATH} />
             </svg>
-            <span id="foot-title">IntelMadeSimple</span>
+            <span id="foot-title">Intel Made Simple</span>
           </a>
           <p>
             Revenue recovery for UK professional firms. We find the fees and renewals a firm already earned, recover
@@ -84,7 +84,7 @@ export function TrophyFooter() {
         </nav>
       </div>
       <div className="fx-foot-bar">
-        <span>&copy; {new Date().getFullYear()} IntelMadeSimple. Figures marked Example are illustrations, not client results.</span>
+        <span>&copy; {new Date().getFullYear()} Intel Made Simple. Figures marked Example are illustrations, not client results.</span>
         <a href="#top" className="fx-foot-top">
           Back to top
         </a>

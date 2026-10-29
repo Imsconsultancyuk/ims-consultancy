@@ -6,6 +6,8 @@ import { Reveal } from "../../_components/Reveal";
 import { CharSplit } from "../../_components/CharSplit";
 import { MagneticButton } from "../../_components/MagneticButton";
 import { OG_IMAGES } from "@/lib/og";
+import { RelatedReading } from "../../_components/RelatedReading";
+import { relatedForService } from "@/lib/seo/links";
 import {
   JsonLd,
   orgJsonLd,
@@ -16,12 +18,12 @@ import {
 const SITE = "https://intelmadesimple.com";
 
 export const metadata: Metadata = {
-  title: "Strategic Advisory",
+  title: "Strategic Advisory for UK Founders",
   description:
     "Independent counsel for founders and senior operators. Strategy, positioning, technology and AI direction on a retainer, with the right call said plainly.",
-  alternates: { canonical: `${SITE}/services/strategic-advisory` },
+  alternates: { canonical: `${SITE}/services/strategic-advisory`, languages: { "en-GB": `${SITE}/services/strategic-advisory` } },
   openGraph: {
-    title: "Strategic Advisory · IMS Consultancy",
+    title: "Strategic Advisory for UK Founders | Intel Made Simple",
     description:
       "Independent counsel for founders. Strategy, positioning, tech and AI direction.",
     url: `${SITE}/services/strategic-advisory`,
@@ -73,7 +75,7 @@ const SUITED = [
 export default function StrategicAdvisoryPage() {
   const page = webPageJsonLd({
     path: "/services/strategic-advisory",
-    name: "Strategic Advisory · IMS Consultancy",
+    name: "Strategic Advisory | Intel Made Simple",
     description:
       "Independent counsel for founders and senior operators on strategy, positioning, technology, and AI direction.",
     breadcrumbs: [
@@ -92,7 +94,7 @@ export default function StrategicAdvisoryPage() {
       "Strategy, positioning, technology and AI direction for founders and senior operators.",
     serviceType: "Business strategy consulting",
     provider: { "@id": `${SITE}/#organization` },
-    areaServed: "Worldwide",
+    areaServed: { "@type": "Country", name: "United Kingdom" },
   };
 
   return (
@@ -204,6 +206,20 @@ export default function StrategicAdvisoryPage() {
         </section>
 
         <section
+          aria-labelledby="related-reading-heading"
+          className="relative ims-band-light px-6 py-16 text-ink sm:py-20"
+        >
+          <div className="mx-auto w-full max-w-5xl">
+            <h2 id="related-reading-heading" className="font-display text-[1.5rem] font-semibold">
+              Read and run next
+            </h2>
+            <div className="mt-6">
+              <RelatedReading items={relatedForService("strategic-advisory")} />
+            </div>
+          </div>
+        </section>
+
+        <section
           aria-labelledby="sa-cta-heading"
           className="relative ims-band-dark px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
         >
@@ -235,7 +251,7 @@ export default function StrategicAdvisoryPage() {
                 <Link
                   href="/pricing"
                   data-cursor="link"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-mauve-300/40 bg-deep/40 px-7 text-sm font-medium tracking-[0.02em] text-paper-ink transition-all duration-300 hover:border-mauve-200 hover:bg-deep/70"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-cobalt-200 bg-deep/40 px-7 text-sm font-medium tracking-[0.02em] text-cobalt-200 transition-all duration-300 hover:border-cobalt-100 hover:text-cobalt-100 hover:bg-cobalt-200/15"
                 >
                   See pricing
                 </Link>

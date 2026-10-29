@@ -18,9 +18,9 @@ export const maAdvisoryBusinessBrokers: Industry = {
     h1: "The best mandates are signed before anyone knows they're for sale",
     sub: "Three tools that read public filings and your own mandate book to surface succession-risk owners, matched targets and live buyer fits.",
     stats: [
-      { value: "£75k+", label: "typical fee on a lower-mid-market mandate" },
-      { value: "60%", label: "of UK owner-managers past 55 have no succession plan" },
-      { value: "2,400", label: "companies scanned per region per run" },
+      { value: "67", label: "succession-risk targets identified" },
+      { value: "38", label: "matched targets for one mandate" },
+      { value: "12", label: "live buyer-seller matches in your own book" },
     ],
   },
   pains: [
@@ -149,7 +149,7 @@ export const maAdvisoryBusinessBrokers: Industry = {
       "UK-based support, DPA included",
     ],
     timeline: "Live within 14 days of data access",
-    anchor: "Build from £7,500 · from £3,500/month · a fraction of one mandate fee",
+    anchor: "Start with a free Leak Scan. Projects from £6,000, fixed price.",
   },
   faqs: [
     {
@@ -170,7 +170,7 @@ export const maAdvisoryBusinessBrokers: Industry = {
     },
     {
       q: "What does it cost?",
-      a: "A one-off build fee then a monthly retainer, anchored so a single recovered mandate covers months of fees. Exact pricing on the call, based on book size.",
+      a: "Start with a free Leak Scan, then a fixed-price project from £6,000 once the numbers justify it. The exact price is quoted in writing after the scan, based on book size.",
     },
   ],
   related: ["law-firms", "accountancy-firms"],

@@ -79,12 +79,12 @@ export function TrophyHeader() {
       </a>
       <header className="fx-nav" ref={navRef}>
         <div className="fx-nav-in">
-          <a className="fx-logo" href="/" aria-label="IntelMadeSimple, home">
+          <a className="fx-logo" href="/" aria-label="Intel Made Simple, home">
             <svg className="fx-mark" viewBox="0 0 28 28" aria-hidden="true" focusable="false">
               <circle cx="14" cy="14" r="14" />
               <path d="M14 14c2.4-3.5 7.2-3.7 7.2 0s-4.8 3.5-7.2 0c-2.4-3.5-7.2-3.7-7.2 0s4.8 3.5 7.2 0z" />
             </svg>
-            <span>IntelMadeSimple</span>
+            <span>Intel Made Simple</span>
           </a>
           <nav className={`fx-main${menuOpen ? " fx-open" : ""}`} id="nav-main" aria-label="Main">
             <a href="/#leaks">Where firms leak</a>

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { TrophyHeader } from "../_components/TrophyHeader";
 import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
@@ -17,12 +16,12 @@ const SITE = "https://intelmadesimple.com";
 const EFFECTIVE_DATE = "28 May 2026";
 
 export const metadata: Metadata = {
-  title: "AI Policy",
+  title: "How We Govern AI: Our AI Policy",
   description:
-    "How IMS uses and governs AI in its own work and in the systems it ships. Aligned with ISO/IEC 42001, NIST AI RMF, the EU AI Act and OWASP LLM Top 10.",
-  alternates: { canonical: `${SITE}/ai-policy` },
+    "How Intel Made Simple uses and governs AI in its own work and in shipped systems. Aligned with ISO/IEC 42001, NIST AI RMF, the EU AI Act and OWASP LLM Top 10.",
+  alternates: { canonical: `${SITE}/ai-policy`, languages: { "en-GB": `${SITE}/ai-policy` } },
   openGraph: {
-    title: "AI Policy · IMS Consultancy",
+    title: "How We Govern AI: Our AI Policy | Intel Made Simple",
     description:
       "Our governance for AI used inside the consultancy and shipped to clients.",
     url: `${SITE}/ai-policy`,
@@ -98,7 +97,7 @@ const PRINCIPLES = [
 ];
 
 const INSIDE_THE_CONSULTANCY = [
-  "We use AI assistants in our own work. Any output that leaves IMS is reviewed by a human.",
+  "We use AI assistants in our own work. Any output that leaves Intel Made Simple is reviewed by a human.",
   "We do not paste client confidential data into consumer-grade AI tools.",
   "We use enterprise or self-hosted endpoints for any work involving client data.",
   "We document, on request, which AI tools we used in producing a deliverable.",
@@ -114,9 +113,9 @@ const CLIENT_RIGHTS = [
 export default function AiPolicyPage() {
   const page = webPageJsonLd({
     path: "/ai-policy",
-    name: "AI Policy · IMS Consultancy",
+    name: "AI Policy | Intel Made Simple",
     description:
-      "How IMS Consultancy governs AI used inside the consultancy and inside the systems it ships.",
+      "How Intel Made Simple governs AI used inside the consultancy and inside the systems it ships.",
     breadcrumbs: [
       { name: "Home", path: "/" },
       { name: "AI Policy", path: "/ai-policy" },
@@ -308,13 +307,13 @@ export default function AiPolicyPage() {
             </Reveal>
             <Reveal delay={120}>
               <div className="mt-10 inline-block">
-                <Link
+                <a
                   href="/contact"
                   data-cursor="cta"
                   className="inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-on-amber transition-all duration-300 hover:bg-accent-600"
                 >
                   Ask the question
-                </Link>
+                </a>
               </div>
             </Reveal>
           </div>

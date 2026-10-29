@@ -4,6 +4,6 @@ export const OG_IMAGES = [
     url: "/img/og-1200.jpg",
     width: 1200,
     height: 630,
-    alt: "IntelMadeSimple. Earned, but never collected. Revenue recovery for UK professional firms.",
+    alt: "Intel Made Simple. Earned, but never collected. Revenue recovery for UK professional firms.",
   },
 ];

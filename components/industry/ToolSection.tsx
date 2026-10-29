@@ -60,8 +60,8 @@ export function ToolSection({ industry, tool, index, accent, tone }: ToolSection
     ? "border-paper-ink/15 bg-paper-ink/[0.05]"
     : "border-line bg-paper";
   const ghostCta = isDark
-    ? "border-paper-ink/25 text-paper-ink hover:bg-paper-ink/10"
-    : "border-line text-ink hover:bg-paper-soft";
+    ? "border-cobalt-200 text-cobalt-200 hover:border-cobalt-100 hover:text-cobalt-100 hover:bg-cobalt-200/15"
+    : "border-info text-info hover:bg-info-wash";
 
   return (
     <section

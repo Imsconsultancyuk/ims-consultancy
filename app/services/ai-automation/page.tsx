@@ -6,6 +6,8 @@ import { Reveal } from "../../_components/Reveal";
 import { CharSplit } from "../../_components/CharSplit";
 import { MagneticButton } from "../../_components/MagneticButton";
 import { OG_IMAGES } from "@/lib/og";
+import { RelatedReading } from "../../_components/RelatedReading";
+import { relatedForService } from "@/lib/seo/links";
 import {
   JsonLd,
   orgJsonLd,
@@ -16,12 +18,12 @@ import {
 const SITE = "https://intelmadesimple.com";
 
 export const metadata: Metadata = {
-  title: "AI Automation",
+  title: "AI Workflow Automation for UK Firms",
   description:
     "Quiet AI workflows that take dull, repetitive work off your team. We advise on what to automate, then build and hand over the systems that earn their keep.",
-  alternates: { canonical: `${SITE}/services/ai-automation` },
+  alternates: { canonical: `${SITE}/services/ai-automation`, languages: { "en-GB": `${SITE}/services/ai-automation` } },
   openGraph: {
-    title: "AI Automation · IMS Consultancy",
+    title: "AI Workflow Automation for UK Firms | Intel Made Simple",
     description:
       "Considered AI workflows your team can own. Advise, build, hand over.",
     url: `${SITE}/services/ai-automation`,
@@ -74,7 +76,7 @@ const PRINCIPLES = [
 export default function AiAutomationPage() {
   const page = webPageJsonLd({
     path: "/services/ai-automation",
-    name: "AI Automation · IMS Consultancy",
+    name: "AI Automation | Intel Made Simple",
     description:
       "Considered AI workflows that remove repetitive work from your team. Advise on what to automate, build the systems, hand them over.",
     breadcrumbs: [
@@ -93,7 +95,7 @@ export default function AiAutomationPage() {
       "Considered AI workflows that remove repetitive operational work. Advisory plus build plus hand-over.",
     serviceType: "AI workflow integration",
     provider: { "@id": `${SITE}/#organization` },
-    areaServed: "Worldwide",
+    areaServed: { "@type": "Country", name: "United Kingdom" },
     audience: { "@type": "Audience", audienceType: "Small and mid-sized businesses" },
   };
 
@@ -205,6 +207,20 @@ export default function AiAutomationPage() {
         </section>
 
         <section
+          aria-labelledby="related-reading-heading"
+          className="relative ims-band-light px-6 py-16 text-ink sm:py-20"
+        >
+          <div className="mx-auto w-full max-w-5xl">
+            <h2 id="related-reading-heading" className="font-display text-[1.5rem] font-semibold">
+              Read and run next
+            </h2>
+            <div className="mt-6">
+              <RelatedReading items={relatedForService("ai-automation")} />
+            </div>
+          </div>
+        </section>
+
+        <section
           aria-labelledby="ai-cta-heading"
           className="relative ims-band-dark px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
         >
@@ -236,7 +252,7 @@ export default function AiAutomationPage() {
                 <Link
                   href="/services"
                   data-cursor="link"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-mauve-300/40 bg-deep/40 px-7 text-sm font-medium tracking-[0.02em] text-paper-ink transition-all duration-300 hover:border-mauve-200 hover:bg-deep/70"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-cobalt-200 bg-deep/40 px-7 text-sm font-medium tracking-[0.02em] text-cobalt-200 transition-all duration-300 hover:border-cobalt-100 hover:text-cobalt-100 hover:bg-cobalt-200/15"
                 >
                   See all services
                 </Link>

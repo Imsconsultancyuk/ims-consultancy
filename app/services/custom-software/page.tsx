@@ -6,6 +6,8 @@ import { Reveal } from "../../_components/Reveal";
 import { CharSplit } from "../../_components/CharSplit";
 import { MagneticButton } from "../../_components/MagneticButton";
 import { OG_IMAGES } from "@/lib/og";
+import { RelatedReading } from "../../_components/RelatedReading";
+import { relatedForService } from "@/lib/seo/links";
 import {
   JsonLd,
   orgJsonLd,
@@ -16,12 +18,12 @@ import {
 const SITE = "https://intelmadesimple.com";
 
 export const metadata: Metadata = {
-  title: "Custom Software",
+  title: "Custom Software for UK Small Businesses",
   description:
     "Software built on real architecture, with tests, observability and an honest hand-over. Web apps, dashboards, internal tools and integrations.",
-  alternates: { canonical: `${SITE}/services/custom-software` },
+  alternates: { canonical: `${SITE}/services/custom-software`, languages: { "en-GB": `${SITE}/services/custom-software` } },
   openGraph: {
-    title: "Custom Software · IMS Consultancy",
+    title: "Custom Software for UK Small Businesses | Intel Made Simple",
     description:
       "Software that ships and stays shipped. Considered architecture, real tests, clean hand-over.",
     url: `${SITE}/services/custom-software`,
@@ -75,7 +77,7 @@ const STANDARDS = [
 export default function CustomSoftwarePage() {
   const page = webPageJsonLd({
     path: "/services/custom-software",
-    name: "Custom Software · IMS Consultancy",
+    name: "Custom Software | Intel Made Simple",
     description:
       "Software built on real architecture with tests, observability, and clean hand-over. Web platforms, internal tools, integrations, APIs, data, and rescue work.",
     breadcrumbs: [
@@ -94,7 +96,7 @@ export default function CustomSoftwarePage() {
       "Web platforms, internal tools, integrations, APIs, data layers, and rescue engagements.",
     serviceType: "Software development",
     provider: { "@id": `${SITE}/#organization` },
-    areaServed: "Worldwide",
+    areaServed: { "@type": "Country", name: "United Kingdom" },
   };
 
   return (
@@ -206,6 +208,20 @@ export default function CustomSoftwarePage() {
         </section>
 
         <section
+          aria-labelledby="related-reading-heading"
+          className="relative ims-band-light px-6 py-16 text-ink sm:py-20"
+        >
+          <div className="mx-auto w-full max-w-5xl">
+            <h2 id="related-reading-heading" className="font-display text-[1.5rem] font-semibold">
+              Read and run next
+            </h2>
+            <div className="mt-6">
+              <RelatedReading items={relatedForService("custom-software")} />
+            </div>
+          </div>
+        </section>
+
+        <section
           aria-labelledby="cs-cta-heading"
           className="relative ims-band-dark px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
         >
@@ -236,9 +252,9 @@ export default function CustomSoftwarePage() {
                 <Link
                   href="/case-studies"
                   data-cursor="link"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-mauve-300/40 bg-deep/40 px-7 text-sm font-medium tracking-[0.02em] text-paper-ink transition-all duration-300 hover:border-mauve-200 hover:bg-deep/70"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-cobalt-200 bg-deep/40 px-7 text-sm font-medium tracking-[0.02em] text-cobalt-200 transition-all duration-300 hover:border-cobalt-100 hover:text-cobalt-100 hover:bg-cobalt-200/15"
                 >
-                  See real engagements
+                  See the leak case studies
                 </Link>
               </div>
             </Reveal>

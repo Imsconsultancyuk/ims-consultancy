@@ -113,10 +113,12 @@ export function LiveDemoPlayer({ tools }: LiveDemoPlayerProps) {
     const { result } = activeTool.demo;
     return (
       <div className="relative flex flex-col gap-5 rounded-[14px] bg-deep p-6 text-paper-ink md:p-8">
-        <span className="absolute right-4 top-4 whitespace-nowrap rounded-full border border-paper-ink-soft px-2 py-0.5 text-[11px] uppercase tracking-wide text-paper-ink-soft">
-          Synthetic demonstration data
-        </span>
-        <p className="max-w-md text-xs text-paper-ink-soft">{CAPTION}</p>
+        <div className="flex flex-col-reverse items-start gap-3 sm:flex-row sm:justify-between">
+          <p className="max-w-md text-xs text-paper-ink-soft">{CAPTION}</p>
+          <span className="whitespace-nowrap rounded-full border border-cobalt-300/40 bg-cobalt-300/10 px-2 py-0.5 text-[11px] uppercase tracking-wide text-cobalt-300">
+            Synthetic demonstration data
+          </span>
+        </div>
         <div className="flex flex-wrap gap-2" role="tablist" aria-label="Tool results">
           {tools.map((toolOption, index) => (
             <button
@@ -163,13 +165,16 @@ export function LiveDemoPlayer({ tools }: LiveDemoPlayerProps) {
       onBlur={() => setIsPausedByInteraction(false)}
       className="relative flex min-h-[220px] flex-col gap-5 rounded-[14px] bg-deep p-6 text-paper-ink md:p-8"
     >
-      <span className="absolute right-4 top-4 whitespace-nowrap rounded-full border border-paper-ink-soft px-2 py-0.5 text-[11px] uppercase tracking-wide text-paper-ink-soft">
-        Synthetic demonstration data
-      </span>
-      <p className="max-w-md text-xs text-paper-ink-soft">{CAPTION}</p>
+      <div className="flex flex-col-reverse items-start gap-3 sm:flex-row sm:justify-between">
+        <p className="max-w-md text-xs text-paper-ink-soft">{CAPTION}</p>
+        <span className="whitespace-nowrap rounded-full border border-cobalt-300/40 bg-cobalt-300/10 px-2 py-0.5 text-[11px] uppercase tracking-wide text-cobalt-300">
+          Synthetic demonstration data
+        </span>
+      </div>
 
       {step.phase === "glide" ? (
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col gap-4">
+          <div className="flex items-center gap-3 rounded-[14px] border border-dashed border-paper-ink-soft/50 px-4 py-4">
           <svg
             viewBox="0 0 24 24"
             className="h-6 w-6 shrink-0 text-paper-ink-soft"
@@ -192,6 +197,12 @@ export function LiveDemoPlayer({ tools }: LiveDemoPlayerProps) {
             />
           </svg>
           <span className="text-sm text-paper-ink-soft">{tool.demo.sampleFile.label}</span>
+          </div>
+          <div className="flex items-center gap-2" aria-hidden="true">
+            {tool.demo.stages.map((stage) => (
+              <div key={stage.key} className="h-1.5 flex-1 rounded-full bg-deep-veil" />
+            ))}
+          </div>
         </div>
       ) : null}
 

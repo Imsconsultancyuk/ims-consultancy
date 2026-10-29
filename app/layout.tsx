@@ -21,34 +21,34 @@ const THEME_INIT = 'try{var t=localStorage.getItem("ims-theme");if(t==="light"||
 export const metadata: Metadata = {
   metadataBase: new URL("https://intelmadesimple.com"),
   title: {
-    default: "IMS Consultancy · Intelligence Made Simple",
-    template: "%s · IMS Consultancy",
+    default: "UK Professional Firm Revenue Recovery | Intel Made Simple",
+    template: "%s | Intel Made Simple",
   },
   description:
-    "Strategic consultancy for business decisions, development, and AI workflows. Considered work for ambitious operators.",
+    "We work with UK professional firms to find unbilled and unchased revenue, at a fixed price after a free Leak Scan.",
   keywords: [
-    "strategy consultancy",
-    "AI workflows",
-    "business decisions",
-    "development consulting",
-    "IMS",
+    "revenue leakage",
+    "lock-up days",
+    "WIP recovery",
+    "professional firms UK",
+    "AI readiness audit",
   ],
-  authors: [{ name: "IMS Consultancy" }],
+  authors: [{ name: "Intel Made Simple" }],
   openGraph: {
-    title: "IMS Consultancy · Intelligence Made Simple",
+    title: "UK Professional Firm Revenue Recovery | Intel Made Simple",
     description:
-      "Strategic consultancy for business decisions, development, and AI workflows.",
+      "We find unbilled and unchased revenue in UK professional firms, at a fixed price after a free Leak Scan.",
     url: "https://intelmadesimple.com",
     images: OG_IMAGES,
-    siteName: "IMS Consultancy",
+    siteName: "Intel Made Simple",
     locale: "en_GB",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "IMS Consultancy · Intelligence Made Simple",
+    title: "UK Professional Firm Revenue Recovery | Intel Made Simple",
     description:
-      "Strategic consultancy for business decisions, development, and AI workflows.",
+      "We find unbilled and unchased revenue in UK professional firms, at a fixed price after a free Leak Scan.",
     images: OG_IMAGES.map((i) => i.url),
   },
   robots: {

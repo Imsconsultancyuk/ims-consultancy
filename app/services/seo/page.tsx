@@ -6,6 +6,8 @@ import { Reveal } from "../../_components/Reveal";
 import { CharSplit } from "../../_components/CharSplit";
 import { MagneticButton } from "../../_components/MagneticButton";
 import { OG_IMAGES } from "@/lib/og";
+import { RelatedReading } from "../../_components/RelatedReading";
+import { relatedForService } from "@/lib/seo/links";
 import {
   JsonLd,
   orgJsonLd,
@@ -16,12 +18,12 @@ import {
 const SITE = "https://intelmadesimple.com";
 
 export const metadata: Metadata = {
-  title: "SEO and Organic Growth",
+  title: "SEO and AI Search Visibility for UK SMEs",
   description:
     "Search visibility that compounds, including AI search. Technical audit, content strategy, on-page work, link earning and structured data for LLMs.",
-  alternates: { canonical: `${SITE}/services/seo` },
+  alternates: { canonical: `${SITE}/services/seo`, languages: { "en-GB": `${SITE}/services/seo` } },
   openGraph: {
-    title: "SEO and Organic Growth · IMS Consultancy",
+    title: "SEO and AI Search Visibility for UK SMEs | Intel Made Simple",
     description:
       "Search visibility that compounds. Technical, on-page, content, and AI-search ready.",
     url: `${SITE}/services/seo`,
@@ -74,7 +76,7 @@ const STANDARDS = [
 export default function SeoPage() {
   const page = webPageJsonLd({
     path: "/services/seo",
-    name: "SEO and Organic Growth · IMS Consultancy",
+    name: "SEO and Organic Growth | Intel Made Simple",
     description:
       "Search visibility that compounds across Google and AI answer engines. Technical, on-page, content, and authority work in one engagement.",
     breadcrumbs: [
@@ -93,7 +95,7 @@ export default function SeoPage() {
       "Technical SEO, content strategy, AI search readiness, authority building, and measurement.",
     serviceType: "Search engine optimisation",
     provider: { "@id": `${SITE}/#organization` },
-    areaServed: "Worldwide",
+    areaServed: { "@type": "Country", name: "United Kingdom" },
   };
 
   return (
@@ -205,6 +207,20 @@ export default function SeoPage() {
         </section>
 
         <section
+          aria-labelledby="related-reading-heading"
+          className="relative ims-band-light px-6 py-16 text-ink sm:py-20"
+        >
+          <div className="mx-auto w-full max-w-5xl">
+            <h2 id="related-reading-heading" className="font-display text-[1.5rem] font-semibold">
+              Read and run next
+            </h2>
+            <div className="mt-6">
+              <RelatedReading items={relatedForService("seo")} />
+            </div>
+          </div>
+        </section>
+
+        <section
           aria-labelledby="seo-cta-heading"
           className="relative ims-band-dark px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
         >
@@ -236,7 +252,7 @@ export default function SeoPage() {
                 <Link
                   href="/services"
                   data-cursor="link"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-mauve-300/40 bg-deep/40 px-7 text-sm font-medium tracking-[0.02em] text-paper-ink transition-all duration-300 hover:border-mauve-200 hover:bg-deep/70"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-cobalt-200 bg-deep/40 px-7 text-sm font-medium tracking-[0.02em] text-cobalt-200 transition-all duration-300 hover:border-cobalt-100 hover:text-cobalt-100 hover:bg-cobalt-200/15"
                 >
                   See all services
                 </Link>

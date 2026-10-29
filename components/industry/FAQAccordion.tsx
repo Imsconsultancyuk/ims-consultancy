@@ -14,7 +14,7 @@ export function FAQAccordion({ faqs }: FAQAccordionProps) {
     <div className="flex flex-col divide-y divide-line border-y border-line">
       {faqs.map((faq, index) => (
         <details key={faq.q} open={index === 0} className="group py-5">
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-industry-display text-base font-medium text-ink [&::-webkit-details-marker]:hidden">
+          <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-4 font-industry-display text-base font-medium text-ink [&::-webkit-details-marker]:hidden">
             {faq.q}
             <span
               aria-hidden="true"

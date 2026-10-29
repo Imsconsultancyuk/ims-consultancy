@@ -4,6 +4,7 @@ import { TrophyHeader } from "../_components/TrophyHeader";
 import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
+import { HeroLedger, LeakLine } from "../_components/LeakLine";
 import { MagneticButton } from "../_components/MagneticButton";
 import { PointerTilt } from "../_components/PointerTilt";
 
@@ -18,12 +19,12 @@ import {
 const SITE = "https://intelmadesimple.com";
 
 export const metadata: Metadata = {
-  title: "Reviews",
+  title: "Client Reviews and Testimonials",
   description:
-    "What founders and senior operators say about working with IMS Consultancy. Anonymised, verifiable on request, and selected to show how the work actually felt.",
-  alternates: { canonical: `${SITE}/reviews` },
+    "What founders and senior operators say about working with Intel Made Simple. Anonymised, verifiable on request, and selected to show how the work actually felt.",
+  alternates: { canonical: `${SITE}/reviews`, languages: { "en-GB": `${SITE}/reviews` } },
   openGraph: {
-    title: "Reviews · IMS Consultancy",
+    title: "Client Reviews and Testimonials | Intel Made Simple",
     description: "How clients describe the work, in their own words.",
     url: `${SITE}/reviews`,
     type: "website",
@@ -50,7 +51,7 @@ const REVIEWS: ReviewItem[] = [
     attribution: "Founder",
     role: "B2B SaaS",
     body:
-      "Most engineering vendors hand you a finished thing and walk away. IMS handed us a finished thing, then a runbook, then trained two of our engineers to extend it.",
+      "Most engineering vendors hand you a finished thing and walk away. Intel Made Simple handed us a finished thing, then a runbook, then trained two of our engineers to extend it.",
     highlight: "Trained our team to own everything.",
   },
   {
@@ -64,7 +65,7 @@ const REVIEWS: ReviewItem[] = [
     attribution: "CFO",
     role: "Regional property firm",
     body:
-      "The bookkeeping team trusted the system on day one because IMS built the human review step in from the start. No theatrical AI dashboard. Just an honest spreadsheet that arrived on time.",
+      "The bookkeeping team trusted the system on day one because Intel Made Simple built the human review step in from the start. No theatrical AI dashboard. Just an honest spreadsheet that arrived on time.",
     highlight: "Trusted the system on day one.",
   },
   {
@@ -86,9 +87,9 @@ const REVIEWS: ReviewItem[] = [
 export default function ReviewsPage() {
   const page = webPageJsonLd({
     path: "/reviews",
-    name: "Reviews · IMS Consultancy",
+    name: "Reviews | Intel Made Simple",
     description:
-      "Anonymised reviews from founders and operators who have worked with IMS Consultancy.",
+      "Anonymised reviews from founders and operators who have worked with Intel Made Simple.",
     breadcrumbs: [
       { name: "Home", path: "/" },
       { name: "Reviews", path: "/reviews" },
@@ -105,8 +106,10 @@ export default function ReviewsPage() {
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="reviews-heading"
         >
-          <div className="relative mx-auto w-full max-w-4xl">
-            <Reveal>
+          <div className="relative mx-auto w-full max-w-6xl">
+            <LeakLine />
+            <HeroLedger />
+            <Reveal className="max-w-4xl">
               <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
                 Reviews · In their words
               </p>
@@ -169,7 +172,7 @@ export default function ReviewsPage() {
                 id="reviews-cta-heading"
                 className="font-display text-[clamp(1.875rem,3.6vw,2.75rem)] font-semibold leading-[1.1] tracking-[-0.012em]"
               >
-                Read the engagements behind the reviews.
+                See where the money leaks, in five documented cases.
               </h2>
             </Reveal>
             <Reveal delay={120}>
@@ -183,13 +186,13 @@ export default function ReviewsPage() {
                     See case studies
                   </Link>
                 </MagneticButton>
-                <Link
+                <a
                   href="/contact"
                   data-cursor="link"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-mauve-300/40 bg-deep/40 px-7 text-sm font-medium tracking-[0.02em] text-paper-ink transition-all duration-300 hover:border-mauve-200 hover:bg-deep/70"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-cobalt-200 bg-deep/40 px-7 text-sm font-medium tracking-[0.02em] text-cobalt-200 transition-all duration-300 hover:border-cobalt-100 hover:text-cobalt-100 hover:bg-cobalt-200/15"
                 >
-                  Start a conversation
-                </Link>
+                  Book a free Leak Scan
+                </a>
               </div>
             </Reveal>
           </div>

@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "IntelMadeSimple",
-    short_name: "IMS",
+    name: "Intel Made Simple",
+    short_name: "Intel Made Simple",
     description:
-      "IMS Consultancy, a UK strategic consultancy for business decisions, development and AI workflows.",
+      "Revenue recovery for UK professional firms. A free Leak Scan finds unbilled and unchased money; fixed-price work recovers it.",
     start_url: "/",
     display: "browser",
     background_color: "#19141a",

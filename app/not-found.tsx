@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import type { ComponentProps } from "react";
 import { TrophyHeader } from "./_components/TrophyHeader";
 import { TrophyFooter } from "./_components/TrophyFooter";
 
@@ -16,6 +17,13 @@ const WAYPOINTS = [
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
+
+// Static flagship pages (/, /tools, /faq, /contact) are not Next routes, so a plain anchor avoids a failing RSC prefetch.
+const STATIC_PATHS = new Set(["/", "/tools", "/faq", "/contact"]);
+
+function WaypointLink({ href, ...rest }: ComponentProps<"a"> & { href: string }) {
+  return STATIC_PATHS.has(href) ? <a href={href} {...rest} /> : <Link href={href} {...rest} />;
+}
 
 export default function NotFound() {
   return (
@@ -40,7 +48,7 @@ export default function NotFound() {
               The address may have changed or never existed. These pages are
               all live, or email{" "}
               <a
-                className="underline underline-offset-4"
+                className="ims-link"
                 href="mailto:info@intelmadesimple.com"
               >
                 info@intelmadesimple.com
@@ -50,12 +58,12 @@ export default function NotFound() {
             <ul className="mt-10 grid gap-3 sm:grid-cols-2">
               {WAYPOINTS.map((w) => (
                 <li key={w.href}>
-                  <Link
+                  <WaypointLink
                     href={w.href}
                     className="block rounded-[14px] border border-paper-ink/20 px-5 py-4 text-[1rem] transition-colors duration-200 hover:border-paper-ink/60"
                   >
                     {w.label}
-                  </Link>
+                  </WaypointLink>
                 </li>
               ))}
             </ul>

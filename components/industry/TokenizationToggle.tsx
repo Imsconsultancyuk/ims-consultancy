@@ -21,7 +21,7 @@ export function TokenizationToggle({ value, onChange }: TokenizationToggleProps)
       role="switch"
       aria-checked={isTokenised}
       onClick={() => onChange(isTokenised ? "raw" : "tokenised")}
-      className="inline-flex w-fit items-center gap-3 rounded-full border border-line bg-paper px-3 py-2 text-sm font-medium"
+      className="inline-flex min-h-[44px] w-fit items-center gap-3 rounded-full border border-line bg-paper px-3 py-2 text-sm font-medium"
     >
       <span className={isTokenised ? "text-ink-soft" : "text-ink"}>
         {GDPR_COPY.toggleLabels.raw}

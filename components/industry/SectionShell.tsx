@@ -41,7 +41,7 @@ export function SectionShell({
             {eyebrow}
           </p>
         ) : null}
-        <h2 className="font-industry-display text-3xl font-semibold md:text-4xl">
+        <h2 className="font-industry-display text-3xl font-bold tracking-tight md:text-4xl">
           {heading}
         </h2>
         <div className="mt-8">{children}</div>

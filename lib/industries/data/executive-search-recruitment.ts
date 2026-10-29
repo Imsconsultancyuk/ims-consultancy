@@ -18,9 +18,9 @@ export const executiveSearchRecruitment: Industry = {
     h1: "Your next placement is already in your database",
     sub: "Three tools that re-read your candidate pool against live mandates, watch target accounts for hiring signals, and cut shortlist time to minutes.",
     stats: [
-      { value: "£18k", label: "average fee per specialist placement" },
-      { value: "8%", label: "of a typical candidate database is active-searchable at any time" },
-      { value: "4 min", label: "from job spec to ranked shortlist" },
+      { value: "84", label: "strong matches for live mandates" },
+      { value: "27", label: "accounts showing live hiring signals" },
+      { value: "4 min", label: "to a ranked shortlist of 12" },
     ],
   },
   pains: [
@@ -149,7 +149,7 @@ export const executiveSearchRecruitment: Industry = {
       "UK-based support, DPA included",
     ],
     timeline: "Live within 14 days of data access",
-    anchor: "Build from £5,500 · from £2,500/month · one placement covers the year",
+    anchor: "Start with a free Leak Scan. Projects from £6,000, fixed price.",
   },
   faqs: [
     {
@@ -170,7 +170,7 @@ export const executiveSearchRecruitment: Industry = {
     },
     {
       q: "What does it cost?",
-      a: "A one-off build fee then a monthly retainer, anchored so a single recovered placement covers months of fees. Exact pricing on the call, based on book size.",
+      a: "Start with a free Leak Scan, then a fixed-price project from £6,000 once the numbers justify it. The exact price is quoted in writing after the scan, based on book size.",
     },
   ],
   related: ["b2b-saas", "ma-advisory-business-brokers"],

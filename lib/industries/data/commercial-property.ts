@@ -18,9 +18,9 @@ export const commercialProperty: Industry = {
     h1: "Every lease event is an instruction, if you see it first",
     sub: "Three tools that read portfolios and public signals to surface rent reviews, breaks, off-market opportunities and pitch-winning reports.",
     stats: [
-      { value: "44", label: "fee events found in one 150-lease portfolio" },
-      { value: "12 mo", label: "notice a lease gives you before every review or break" },
-      { value: "90 sec", label: "to a full vendor report" },
+      { value: "44", label: "lease events in the next 12 months" },
+      { value: "23", label: "pre-market opportunities in 3 postcodes" },
+      { value: "90 sec", label: "to a pitch-ready vendor report" },
     ],
   },
   pains: [
@@ -149,7 +149,7 @@ export const commercialProperty: Industry = {
       "UK-based support, DPA included",
     ],
     timeline: "Live within 14 days of data access",
-    anchor: "Build from £6,500 · from £3,000/month · one instruction covers a quarter",
+    anchor: "Start with a free Leak Scan. Projects from £6,000, fixed price.",
   },
   faqs: [
     {
@@ -170,7 +170,7 @@ export const commercialProperty: Industry = {
     },
     {
       q: "What does it cost?",
-      a: "A one-off build fee then a monthly retainer, anchored so a single recovered instruction covers months of fees. Exact pricing on the call, based on book size.",
+      a: "Start with a free Leak Scan, then a fixed-price project from £6,000 once the numbers justify it. The exact price is quoted in writing after the scan, based on book size.",
     },
   ],
   related: ["commercial-insurance-brokers", "ma-advisory-business-brokers"],

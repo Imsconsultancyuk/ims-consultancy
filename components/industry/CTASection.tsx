@@ -39,7 +39,7 @@ export function CTASection({ industry, related }: CTASectionProps) {
               {index > 0 ? ", " : ""}
               <Link
                 href={`/industries/${related.slug}`}
-                className="underline decoration-paper-ink-soft underline-offset-4 transition-colors hover:text-paper-ink"
+                className="ims-link"
               >
                 {related.name}
               </Link>

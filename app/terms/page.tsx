@@ -16,14 +16,14 @@ const SITE = "https://intelmadesimple.com";
 const EFFECTIVE_DATE = "28 May 2026";
 
 export const metadata: Metadata = {
-  title: "Terms",
+  title: "Terms of Use and Engagement Terms",
   description:
-    "Terms of use for the IMS Consultancy site and the standard terms applied to engagements. Plain English, no boilerplate hiding the important bits.",
-  alternates: { canonical: `${SITE}/terms` },
+    "Terms of use for the Intel Made Simple site and the standard terms applied to engagements. Plain English, no boilerplate hiding the important bits.",
+  alternates: { canonical: `${SITE}/terms`, languages: { "en-GB": `${SITE}/terms` } },
   openGraph: {
-    title: "Terms · IMS Consultancy",
+    title: "Terms of Use and Engagement Terms | Intel Made Simple",
     description:
-      "Terms of use for the IMS Consultancy site and standard engagement terms.",
+      "Terms of use for the Intel Made Simple site and standard engagement terms.",
     url: `${SITE}/terms`,
     type: "website",
     images: OG_IMAGES,
@@ -33,9 +33,9 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   const page = webPageJsonLd({
     path: "/terms",
-    name: "Terms · IMS Consultancy",
+    name: "Terms | Intel Made Simple",
     description:
-      "Terms of use for the IMS Consultancy site and standard engagement terms.",
+      "Terms of use for the Intel Made Simple site and standard engagement terms.",
     breadcrumbs: [
       { name: "Home", path: "/" },
       { name: "Terms", path: "/terms" },
@@ -65,7 +65,7 @@ export default function TermsPage() {
               />
               <p className="mt-7 text-[1.0625rem] leading-[1.7] text-mauve-300">
                 These cover the site you are reading and the standard terms
-                that sit alongside every IMS engagement letter. Effective{" "}
+                that sit alongside every Intel Made Simple engagement letter. Effective{" "}
                 {EFFECTIVE_DATE}.
               </p>
             </Reveal>
@@ -80,9 +80,9 @@ export default function TermsPage() {
             Terms detail
           </h2>
           <article className="mx-auto w-full max-w-3xl space-y-12 text-[1.0625rem] leading-[1.75] text-paper-ink/95">
-            <Section title="1. About IMS Consultancy">
+            <Section title="1. About Intel Made Simple">
               <p>
-                IMS Consultancy is a UK-based strategic consultancy. This
+                Intel Made Simple is a UK-based revenue recovery consultancy. This
                 page covers (a) terms of use for visitors to the site at
                 intelmadesimple.com and (b) the standard terms that apply
                 alongside every engagement letter we sign with a client.
@@ -109,7 +109,7 @@ export default function TermsPage() {
             <Section title="3. Intellectual property">
               <p>
                 The brand, the writing, the design, and the code that runs
-                this site are owned by IMS Consultancy. You may quote short
+                this site are owned by Intel Made Simple. You may quote short
                 passages with attribution. Reproduction at scale, including
                 training of third-party models on this content without
                 separate permission, is not permitted.
@@ -117,7 +117,7 @@ export default function TermsPage() {
               <p>
                 Standard AI bot crawl permissions are documented in the
                 robots policy. We allow standard discovery so that AI search
-                surfaces can answer questions about IMS. We do not consent
+                surfaces can answer questions about Intel Made Simple. We do not consent
                 to bulk training use.
               </p>
             </Section>
@@ -130,9 +130,7 @@ export default function TermsPage() {
                   half on hand-over.
                 </Bullet>
                 <Bullet>
-                  The first two weeks of any engagement are funded by IMS.
-                  You decide whether to continue with everything you need to
-                  decide cleanly. No penalty if you walk away.
+                  The Leak Scan is free. You are under no obligation to continue after any step.
                 </Bullet>
                 <Bullet>
                   Confidentiality is mutual and indefinite. Anything we
@@ -178,7 +176,7 @@ export default function TermsPage() {
 
             <Section title="7. Governing law">
               <p>
-                These terms and any engagement letter signed with IMS are
+                These terms and any engagement letter signed with Intel Made Simple are
                 governed by the laws of England and Wales. The courts of
                 England and Wales have exclusive jurisdiction.
               </p>
@@ -189,7 +187,7 @@ export default function TermsPage() {
                 For any question about these terms email{" "}
                 <a
                   href="mailto:info@intelmadesimple.com"
-                  className="text-mauve-200 underline-offset-4 hover:underline"
+                  className="ims-link"
                 >
                   info@intelmadesimple.com
                 </a>

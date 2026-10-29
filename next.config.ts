@@ -21,6 +21,18 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/:path*", headers: SECURITY_HEADERS }];
   },
+  // Off Netlify, the four flagship URLs would fall through to the old Next pages. beforeFiles runs ahead of app routes so the static flagship files win. On Netlify the forced redirects in netlify.toml do this, and Next rewrites to public files 404 there.
+  async rewrites() {
+    if (process.env.NETLIFY === "true") return { beforeFiles: [] };
+    return {
+      beforeFiles: [
+        { source: "/", destination: "/flagship/index.html" },
+        { source: "/tools", destination: "/flagship/tools.html" },
+        { source: "/faq", destination: "/flagship/faq.html" },
+        { source: "/contact", destination: "/flagship/contact.html" },
+      ],
+    };
+  },
   async redirects() {
     return [
       { source: "/tools.html", destination: "/tools", permanent: true },

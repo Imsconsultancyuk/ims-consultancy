@@ -1,289 +1,310 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { TrophyHeader } from "../_components/TrophyHeader";
-import { TrophyFooter } from "../_components/TrophyFooter";
-import { Reveal } from "../_components/Reveal";
-import { CharSplit } from "../_components/CharSplit";
-import { MagneticButton } from "../_components/MagneticButton";
 
-import { OG_IMAGES } from "@/lib/og";
+import { CharSplit } from "../_components/CharSplit";
+import { HeroLedger, LeakLine } from "../_components/LeakLine";
 import {
   JsonLd,
   orgJsonLd,
   websiteJsonLd,
   webPageJsonLd,
 } from "../_components/JsonLd";
+import { Reveal } from "../_components/Reveal";
+import { TrophyFooter } from "../_components/TrophyFooter";
+import { TrophyHeader } from "../_components/TrophyHeader";
+import { cases, LEAK_TYPES } from "@/lib/case-studies/cases";
+import { OG_IMAGES } from "@/lib/og";
 
 const SITE = "https://intelmadesimple.com";
+const DESCRIPTION =
+  "Five documented revenue leaks, from the NHS to an energy supplier, each from a public source with figures linked, and the control that would have caught it.";
 
 export const metadata: Metadata = {
-  title: "Case Studies",
-  description:
-    "Five real IMS engagements, no names attached: two workflow automations, two departmental revamps and one embedded partnership.",
-  alternates: { canonical: `${SITE}/case-studies` },
+  title: "Five Revenue Leak Case Studies, Sourced",
+  description: DESCRIPTION,
+  alternates: { canonical: `${SITE}/case-studies`, languages: { "en-GB": `${SITE}/case-studies` } },
   openGraph: {
-    title: "Case Studies · IMS Consultancy",
-    description:
-      "Anonymised case studies of real IMS engagements.",
+    title: "Five Revenue Leak Case Studies, Sourced | Intel Made Simple",
+    description: DESCRIPTION,
     url: `${SITE}/case-studies`,
     type: "website",
     images: OG_IMAGES,
   },
 };
 
-interface CaseStudy {
-  id: string;
-  tier: "Quiet workflow" | "Professional revamp" | "Embedded partnership";
-  subject: string;
-  brief: string;
-  situation: string;
-  decision: string;
-  build: string;
-  outcome: string;
-  metric: string;
-}
-
-const CASES: CaseStudy[] = [
-  {
-    id: "uk-strategy-consultancy-inbox",
-    tier: "Quiet workflow",
-    subject: "A UK strategy consultancy",
-    brief: "Email triage and reply drafting for a senior consulting team.",
-    situation:
-      "Senior consultants were each spending around ninety minutes a day reading and routing client email. The team had grown faster than its systems and the triage rota was eating partner time.",
-    decision:
-      "We chose to keep the existing inbox and layer a quiet auto-sort and draft-reply system on top. No new app for the team to learn. No platform migration. Reversible inside an hour.",
-    build:
-      "A grounded retrieval system over the firm's tone and prior replies, with intent detection wired to inbox labels. Draft replies prepared and waiting in the queue for approval and send.",
-    outcome:
-      "Triage time fell from ninety minutes to eight. The drafts are accepted more than seventy percent of the time. Partner time returned to the work that actually pays.",
-    metric: "Eighty-two minutes per person per day, returned.",
-  },
-  {
-    id: "regional-property-firm-invoices",
-    tier: "Quiet workflow",
-    subject: "A regional property firm",
-    brief: "PDF invoice extraction and anomaly flagging.",
-    situation:
-      "The bookkeeping team was reading two hundred supplier invoices a month line by line. Errors slipped through. The accounts team was unhappy. The supplier reconciliation was always two weeks behind.",
-    decision:
-      "We chose extraction over OCR-and-template. The supplier list was long enough that templating would have collapsed, and short enough that a small grounded model could carry the work.",
-    build:
-      "A PDF intake pipeline reading invoices into a clean spreadsheet schema, flagging any row outside expected range for human review, and posting the clean rows directly into the accounting system.",
-    outcome:
-      "Reading time dropped from twenty hours a week to ninety minutes of review. Reconciliation moved from two weeks behind to current. The bookkeepers got their evenings back.",
-    metric: "From twenty hours a week to ninety minutes.",
-  },
-  {
-    id: "uk-freight-forwarder-ops",
-    tier: "Professional revamp",
-    subject: "A UK freight forwarder",
-    brief: "Operations system replacing six spreadsheets and three inboxes.",
-    situation:
-      "Every shipment moved through six spreadsheets and three shared inboxes. People were the integration layer. The team carried the system in their head and never quite went off-rota.",
-    decision:
-      "We chose an event-driven dashboard built on the data already in the spreadsheets. Migration in stages. No big-bang cut-over. Every stage proven before the next began.",
-    build:
-      "A single operations dashboard with event-driven updates, integrated with the carrier APIs and the firm's accounting system. Notifications only when human attention was actually needed.",
-    outcome:
-      "Shipment-touching time fell by sixty percent. The operations team got their evenings back. The shipments still moved.",
-    metric: "Operations time reduced by sixty percent.",
-  },
-  {
-    id: "b2b-saas-deploy-chain",
-    tier: "Professional revamp",
-    subject: "A B2B SaaS team",
-    brief: "Continuous integration and on-call rebuild for a brittle deploy chain.",
-    situation:
-      "The team was shipping twice a week through a deploy chain that broke on roughly one in three releases. The on-call phone rang almost every weekend. Engineering morale was poor.",
-    decision:
-      "Rebuild the deploy chain in stages while continuing to ship. Add observability before changing behaviour. Decommission the brittle pieces last, after the new path was carrying real traffic.",
-    build:
-      "Continuous integration on every pull request, atomic deployments with automatic rollback, observability across the request path, and a structured on-call rota with runbooks.",
-    outcome:
-      "Deploy frequency moved from two a week to fourteen. The on-call phone went quiet. Engineering retention improved over the next two quarters.",
-    metric: "From two deploys a week to fourteen.",
-  },
-  {
-    id: "uk-property-consultancy-embedded",
-    tier: "Embedded partnership",
-    subject: "A UK property consultancy",
-    brief: "Long-running advisory and engineering partnership across the business.",
-    situation:
-      "Brought us in for a single strategy engagement. The leadership team valued the way we worked and asked us to stay alongside them as the business grew.",
-    decision:
-      "Move from project-by-project to a small embedded retainer. One advisory thread, one engineering thread, one AI thread. Three integrated functions running on one shared rhythm.",
-    build:
-      "Eighteen months of embedded partnership covering strategy, the technology stack the firm relies on, and AI integration across acquisitions, lettings, and back-office. Monthly cadence with leadership.",
-    outcome:
-      "We now sit alongside leadership for every major decision. The firm has shipped systems that survived two reorganisations and three new hires. The relationship is the proof.",
-    metric: "Three integrated functions running on one shared rhythm.",
-  },
-];
-
 export default function CaseStudiesPage() {
   const page = webPageJsonLd({
     path: "/case-studies",
-    name: "Case Studies · IMS Consultancy",
-    description:
-      "Five anonymised IMS engagements told as situation, decision, build, and outcome.",
+    name: "Revenue leak case studies | Intel Made Simple",
+    description: DESCRIPTION,
     breadcrumbs: [
       { name: "Home", path: "/" },
-      { name: "Case Studies", path: "/case-studies" },
+      { name: "Case studies", path: "/case-studies" },
     ],
   });
 
-  const itemList = {
+  const list = {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    "@id": `${SITE}/case-studies#list`,
-    itemListElement: CASES.map((c, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: c.brief,
-      url: `${SITE}/case-studies#${c.id}`,
-    })),
+    "@type": "CollectionPage",
+    "@id": `${SITE}/case-studies#collection`,
+    url: `${SITE}/case-studies`,
+    name: "Revenue leak case studies",
+    description: DESCRIPTION,
+    inLanguage: "en-GB",
+    publisher: { "@id": `${SITE}/#organization` },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: cases.length,
+      itemListElement: cases.map((c, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `${SITE}/case-studies#${c.slug}`,
+        name: c.title,
+      })),
+    },
   };
 
   return (
     <>
-      <JsonLd data={[orgJsonLd, websiteJsonLd, page, itemList]} />
+      <JsonLd data={[orgJsonLd, websiteJsonLd, page, list]} />
       <TrophyHeader />
 
       <main id="main" className="flex flex-1 flex-col">
         <header
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
-          aria-labelledby="cs-heading"
+          aria-labelledby="cases-heading"
         >
-          <div className="relative mx-auto w-full max-w-4xl">
-            <Reveal>
-              <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
-                Case studies · Five engagements
+          <div className="relative mx-auto w-full max-w-[1160px]">
+            <LeakLine />
+            <HeroLedger />
+            <Reveal className="max-w-3xl">
+              <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-accent-200">
+                Case studies · {cases.length} documented leaks
               </p>
               <CharSplit
                 as="h1"
-                text={"Five real engagements,\nno names attached."}
-                className="mt-5 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.018em]"
-                stagger={0.018}
+                text={"Where the money leaks,\nin cases you can check."}
+                className="mt-5 font-display text-[clamp(2.25rem,4.8vw,3.75rem)] font-semibold leading-[1.05] tracking-[-0.018em]"
+                stagger={0.016}
               />
               <p className="mt-7 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-300">
-                Two quiet workflows that returned a team's afternoon. Two
-                professional revamps that changed how a department runs. One
-                embedded partnership that quietly rewired a whole business.
+                Large organisations publish what they lose, because auditors and
+                regulators make them. We read those reports to learn the shapes
+                a leak takes, then look for the same shapes in firms of ten.
+                Each case below is public, credited and linked. None of them is
+                an Intel Made Simple client.
               </p>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <ul className="mt-12 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-[14px] border border-mauve-300/20 bg-mauve-300/20 sm:grid-cols-5">
+                {LEAK_TYPES.map((l, i) => (
+                  <li key={l.type} className="bg-deep">
+                    <a
+                      href={`#${cases[i].slug}`}
+                      data-cursor="link"
+                      className="block h-full p-4 transition-colors duration-200 hover:bg-mauve-300/10"
+                    >
+                      <span className="text-[11px] tabular-nums text-mauve-300">0{i + 1}</span>
+                      <span className="mt-1 block font-display text-[1rem] font-semibold">{l.type}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </Reveal>
           </div>
         </header>
 
         <section
-          aria-labelledby="cs-list-heading"
-          className="relative ims-band-dark px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
+          aria-labelledby="pattern-heading"
+          className="relative ims-band-light px-6 py-20 text-ink sm:py-24"
         >
-          <h2 id="cs-list-heading" className="sr-only">
-            Engagements
-          </h2>
-          <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 sm:gap-16">
-            {CASES.map((c, i) => {
-              const cells = [
-                { label: "Situation", body: c.situation },
-                { label: "Decision", body: c.decision },
-                { label: "Build", body: c.build },
-                { label: "Outcome", body: c.outcome },
-              ];
-              return (
-                <Reveal key={c.id} delay={i * 80}>
-                  <article
-                    id={c.id}
-                    className="group relative overflow-hidden rounded-[14px] border border-mauve-300/12 bg-deep-soft/55 p-8 transition-all duration-500 hover:border-mauve-300/35 hover:bg-deep-soft/75 sm:p-10 lg:p-12"
-                  >
-
-                    <header className="relative border-b border-mauve-300/10 pb-6">
-                      <div className="flex items-center gap-3">
-                        <span
-                          aria-hidden
-                          className="ims-divider-anim h-px w-10 transition-all duration-500 group-hover:w-20"
-                        />
-                        <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
-                          {c.tier}
-                        </p>
-                      </div>
-                      <h3 className="mt-4 font-display text-[clamp(1.5rem,2.6vw,2rem)] font-semibold leading-[1.15] tracking-[-0.012em]">
-                        {c.subject}
-                      </h3>
-                      <p className="mt-3 text-[0.9375rem] uppercase tracking-[0.16em] text-mauve-300">
-                        {c.brief}
-                      </p>
-                    </header>
-
-                    <div className="relative mt-8 grid gap-8 lg:grid-cols-2 lg:gap-12">
-                      {cells.map((cell) => (
-                        <div key={cell.label} className="group/cell relative">
-                          <div className="flex items-center gap-2">
-                            <span
-                              aria-hidden
-                              className="inline-block h-1.5 w-1.5 rounded-full bg-mauve-200 transition-all duration-500 group-hover/cell:scale-[1.6] group-hover/cell:bg-accent-400"
-                            />
-                            <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-200">
-                              {cell.label}
-                            </p>
-                          </div>
-                          <p className="mt-3 text-[0.9375rem] leading-[1.7] text-paper-ink/95">
-                            {cell.body}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-
-                    <footer className="relative mt-8 border-t border-mauve-300/10 pt-6">
-                      <div className="flex items-center gap-3">
-                        <span
-                          aria-hidden
-                          className="ims-divider-anim h-px w-10 transition-all duration-500 group-hover:w-24"
-                        />
-                        <p className="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-mauve-200">
-                          Headline number
-                        </p>
-                      </div>
-                      <p className="mt-3 font-display text-[1.75rem] font-bold leading-[1.25] tracking-[-0.015em] text-accent-400">
-                        {c.metric}
-                      </p>
-                    </footer>
-                  </article>
-                </Reveal>
-              );
-            })}
+          <div className="mx-auto grid w-full max-w-[1160px] gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+            <Reveal>
+              <h2
+                id="pattern-heading"
+                className="font-display text-[clamp(1.75rem,3.2vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.015em]"
+              >
+                Five questions that find most leaks.
+              </h2>
+              <p className="mt-6 text-[1.0625rem] leading-[1.7] text-ink/70">
+                Every case below fails one of them. A firm that can answer all
+                five, with a number, has few leaks left to find.
+              </p>
+            </Reveal>
+            <Reveal delay={100}>
+              <ol className="divide-y divide-ink/12 border-y border-ink/12">
+                {LEAK_TYPES.map((l, i) => (
+                  <li key={l.type} className="flex items-baseline gap-5 py-4">
+                    <span className="w-6 shrink-0 text-[0.8125rem] tabular-nums text-ink/80">0{i + 1}</span>
+                    <span className="w-28 shrink-0 font-display font-semibold">{l.type}</span>
+                    <span className="text-[0.95rem] text-ink/75">{l.question}</span>
+                  </li>
+                ))}
+              </ol>
+            </Reveal>
           </div>
         </section>
 
+        {cases.map((c, i) => {
+          const dark = i % 2 === 1;
+          return (
+            <section
+              key={c.slug}
+              id={c.slug}
+              aria-labelledby={`${c.slug}-heading`}
+              className={`relative scroll-mt-24 px-6 py-20 sm:py-24 ${
+                dark ? "ims-band-dark text-paper-ink" : "ims-band-light text-ink"
+              }`}
+            >
+              <div className="mx-auto w-full max-w-[1160px]">
+                <Reveal>
+                  <p
+                    className={`text-[0.875rem] font-semibold ${
+                      dark ? "text-accent-200" : "text-accent-700"
+                    }`}
+                  >
+                    Case 0{i + 1} · {c.leak} · {c.sector}
+                  </p>
+                  <h2
+                    id={`${c.slug}-heading`}
+                    className="mt-5 max-w-3xl font-display text-[clamp(1.75rem,3.4vw,2.625rem)] font-semibold leading-[1.1] tracking-[-0.015em]"
+                  >
+                    {c.title}
+                  </h2>
+                  <p className={`mt-4 text-[1.0625rem] ${dark ? "text-mauve-300" : "text-ink/70"}`}>
+                    {c.leakLine}
+                  </p>
+                </Reveal>
+
+                <Reveal delay={80}>
+                  <dl
+                    className={`mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-[14px] border sm:grid-cols-3 ${
+                      dark ? "border-mauve-300/20 bg-mauve-300/20" : "border-ink/12 bg-ink/12"
+                    }`}
+                  >
+                    {c.points.map((pt) => (
+                      <div key={pt.value + pt.label} className={`p-6 ${dark ? "bg-deep" : "bg-paper-soft"}`}>
+                        <dt className="font-display text-[1.875rem] font-semibold leading-tight tabular-nums">
+                          {pt.value}
+                        </dt>
+                        <dd className={`mt-2 text-[0.875rem] leading-snug ${dark ? "text-mauve-300" : "text-ink/75"}`}>
+                          {pt.label}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                </Reveal>
+
+                <div className="mt-12 grid gap-10 lg:grid-cols-2">
+                  <Reveal delay={100}>
+                    <h3 className="text-[0.875rem] font-semibold opacity-80">
+                      What happened
+                    </h3>
+                    <p className="mt-3 text-[1rem] leading-[1.75] opacity-90">{c.whatHappened}</p>
+                    <h3 className="mt-8 text-[0.875rem] font-semibold opacity-80">
+                      Where it leaked
+                    </h3>
+                    <p className="mt-3 text-[1rem] leading-[1.75] opacity-90">{c.whereItLeaked}</p>
+                  </Reveal>
+
+                  <Reveal delay={140}>
+                    <div
+                      className={`rounded-[14px] p-6 ${
+                        dark ? "bg-paper-soft text-ink" : "bg-deep text-paper-ink"
+                      }`}
+                    >
+                      <h3
+                        className={`text-[0.875rem] font-semibold ${
+                          dark ? "text-accent-700" : "text-accent-200"
+                        }`}
+                      >
+                        The control we would put in
+                      </h3>
+                      <p className="mt-3 text-[1rem] leading-[1.7]">{c.control}</p>
+                      <h3
+                        className={`mt-6 text-[0.875rem] font-semibold ${
+                          dark ? "text-accent-700" : "text-accent-200"
+                        }`}
+                      >
+                        In a firm of ten
+                      </h3>
+                      <p className="mt-3 text-[1rem] leading-[1.7]">{c.atTenPeople}</p>
+                    </div>
+                  </Reveal>
+                </div>
+
+                <Reveal delay={160}>
+                  <div
+                    className={`mt-10 rounded-[14px] border p-5 ${
+                      dark ? "border-mauve-300/25" : "border-ink/12"
+                    }`}
+                  >
+                    <h3 className="text-[0.875rem] font-semibold opacity-80">
+                      Read this with care
+                    </h3>
+                    <p className="mt-2 text-[0.9375rem] leading-[1.65] opacity-85">{c.caveat}</p>
+                  </div>
+
+                  <p className={`mt-6 text-[0.875rem] ${dark ? "text-mauve-300" : "text-ink/70"}`}>
+                    Source: {c.publisher}, {c.published}.{" "}
+                    {c.access === "read" ? "Source read." : "Via report."}
+                  </p>
+                  <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
+                    <a
+                      href={c.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-cursor="cta"
+                      className="inline-flex h-11 items-center justify-center rounded-full bg-accent-500 px-6 text-sm font-medium text-on-amber transition-colors duration-300 hover:bg-accent-600"
+                    >
+                      Read the original
+                      <span className="sr-only"> at {c.publisher} (opens in a new tab)</span>
+                      <span aria-hidden>&nbsp;↗</span>
+                    </a>
+                    {c.more?.map((m) => (
+                      <a
+                        key={m.url}
+                        href={m.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="ims-link text-[0.875rem]"
+                      >
+                        {m.label}
+                        <span className="sr-only"> (opens in a new tab)</span>
+                      </a>
+                    ))}
+                  </div>
+                </Reveal>
+              </div>
+            </section>
+          );
+        })}
+
         <section
-          aria-labelledby="cs-cta-heading"
-          className="relative ims-band-dark px-6 py-20 text-paper-ink sm:py-24 lg:py-28"
+          aria-labelledby="cases-cta-heading"
+          className={`relative px-6 py-20 sm:py-24 ${cases.length % 2 === 1 ? "ims-band-dark text-paper-ink" : "ims-band-light text-ink"}`}
         >
           <div className="mx-auto w-full max-w-3xl text-center">
             <Reveal>
               <h2
-                id="cs-cta-heading"
-                className="font-display text-[clamp(1.875rem,3.6vw,2.75rem)] font-semibold leading-[1.1] tracking-[-0.012em]"
+                id="cases-cta-heading"
+                className="font-display text-[clamp(1.75rem,3.4vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.012em]"
               >
-                Your engagement could read like one of these.
+                Run the five questions on your own firm.
               </h2>
-              <p className="mx-auto mt-6 max-w-xl text-[1.0625rem] leading-[1.7] text-mauve-300">
-                Tell us what is slow, brittle, or expensive in your week. We
-                will tell you honestly whether we are the right partner.
+              <p className="mx-auto mt-6 max-w-xl text-[1.0625rem] leading-[1.7] opacity-80">
+                The free Leak Scan asks them against your invoices, contracts
+                and time records, and returns a ranked list with a figure on
+                each line. We have not yet run it on a published list of client
+                results, and we will not invent one.
               </p>
-            </Reveal>
-            <Reveal delay={120}>
-              <div className="mt-10 inline-block">
-                <MagneticButton strength={0.45} radius={120}>
-                  <Link
-                    href="/contact"
-                    data-cursor="cta"
-                    className="inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-on-amber transition-all duration-300 hover:bg-accent-600"
-                  >
-                    Start a conversation
-                  </Link>
-                </MagneticButton>
-              </div>
+              <a
+                href="/contact"
+                data-cursor="cta"
+                className="mt-9 inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-8 text-sm font-medium text-on-amber transition-colors duration-300 hover:bg-accent-600"
+              >
+                Book a free Leak Scan
+              </a>
             </Reveal>
           </div>
         </section>
