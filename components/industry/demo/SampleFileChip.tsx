@@ -40,7 +40,7 @@ export function SampleFileChip({ tool, accent }: SampleFileChipProps) {
       onDragStart={handleDragStart}
       onClick={handleActivate}
       aria-pressed={isArmed}
-      className="flex max-w-full flex-wrap items-center gap-3 border border-line bg-paper px-4 py-3 text-left transition-shadow"
+      className="flex min-h-[44px] w-full max-w-full flex-wrap items-center gap-3 rounded-[14px] border border-line bg-paper px-4 py-3 text-left transition-[box-shadow,border-color] hover:border-ink-soft focus-visible:border-ink-soft"
       style={isArmed ? { boxShadow: `0 0 0 2px var(--color-signal-${accent})` } : undefined}
     >
       <svg viewBox="0 0 24 24" className="h-6 w-6 shrink-0 text-ink-soft" fill="none" aria-hidden="true">
@@ -51,7 +51,7 @@ export function SampleFileChip({ tool, accent }: SampleFileChipProps) {
         <span className="truncate text-sm font-medium text-ink">{sampleFile.label}</span>
         <span className="text-xs text-ink-soft">{sampleFile.meta}</span>
       </span>
-      <span className="whitespace-nowrap rounded-full border border-line px-2 py-0.5 text-[11px] uppercase tracking-wide text-ink-soft">
+      <span className="whitespace-nowrap rounded-full bg-info-wash px-2 py-0.5 text-[11px] uppercase tracking-wide text-link">
         Synthetic sample
       </span>
     </button>

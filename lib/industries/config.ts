@@ -21,8 +21,10 @@ export const DEMO_SECTION_ID = "live-demo";
 // exactly. Also the single source IMS-050's page template must use for each
 // SectionShell's `id` prop, so the nav's anchors always resolve.
 export const NAV_SECTIONS = [
+  { id: "departments", label: "Departments" },
   { id: "tools", label: "Tools" },
   { id: DEMO_SECTION_ID, label: "Live demo" },
+  { id: "how-we-work", label: "How we work" },
   { id: "data-protection", label: "Data protection" },
   { id: "results", label: "Results" },
   { id: "package", label: "Package" },
@@ -32,7 +34,7 @@ export const NAV_SECTIONS = [
 // /industries hub intro block — Doc 2 §IND-011, verbatim (hard rule 4).
 export const HUB_COPY = {
   meta: {
-    title: "AI Revenue Recovery Tools by Industry | IntelMadeSimple",
+    title: "AI Revenue Recovery Tools by Industry",
     description:
       "Revenue intelligence for professional firms: mortgage, wealth, legal, recruitment, insurance, M&A, property, accountancy, SaaS and private healthcare.",
   },

@@ -4,6 +4,8 @@ import { TrophyHeader } from "../_components/TrophyHeader";
 import { TrophyFooter } from "../_components/TrophyFooter";
 import { Reveal } from "../_components/Reveal";
 import { CharSplit } from "../_components/CharSplit";
+
+import { OG_IMAGES } from "@/lib/og";
 import {
   JsonLd,
   orgJsonLd,
@@ -15,25 +17,26 @@ const SITE = "https://intelmadesimple.com";
 const EFFECTIVE_DATE = "28 May 2026";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
+  title: "Privacy Policy and UK GDPR Notice",
   description:
-    "How IMS Consultancy collects, uses, and protects personal data. UK GDPR and Data Protection Act 2018 compliant. Plain English, no surprises.",
-  alternates: { canonical: `${SITE}/privacy` },
+    "How Intel Made Simple collects, uses, and protects personal data. UK GDPR and Data Protection Act 2018 compliant. Plain English, no surprises.",
+  alternates: { canonical: `${SITE}/privacy`, languages: { "en-GB": `${SITE}/privacy` } },
   openGraph: {
-    title: "Privacy Policy · IMS Consultancy",
+    title: "Privacy Policy and UK GDPR Notice | Intel Made Simple",
     description:
-      "How IMS Consultancy handles personal data, in plain English.",
+      "How Intel Made Simple handles personal data, in plain English.",
     url: `${SITE}/privacy`,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 
 export default function PrivacyPage() {
   const page = webPageJsonLd({
     path: "/privacy",
-    name: "Privacy Policy · IMS Consultancy",
+    name: "Privacy Policy | Intel Made Simple",
     description:
-      "How IMS Consultancy collects, uses, and protects personal data under UK GDPR and the Data Protection Act 2018.",
+      "How Intel Made Simple collects, uses, and protects personal data under UK GDPR and the Data Protection Act 2018.",
     breadcrumbs: [
       { name: "Home", path: "/" },
       { name: "Privacy", path: "/privacy" },
@@ -45,7 +48,7 @@ export default function PrivacyPage() {
       <JsonLd data={[orgJsonLd, websiteJsonLd, page]} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col">
+      <main id="main" className="flex flex-1 flex-col">
         <header
           className="relative isolate overflow-hidden ims-band-dark px-6 pt-36 pb-16 text-paper-ink sm:pt-44 sm:pb-20 lg:pt-48 lg:pb-24"
           aria-labelledby="privacy-heading"
@@ -56,8 +59,9 @@ export default function PrivacyPage() {
                 Privacy policy · UK GDPR
               </p>
               <CharSplit
+                as="h1"
                 text={"How we handle\nyour information."}
-                className="mt-5 font-serif text-[clamp(2.25rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.018em]"
+                className="mt-5 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.018em]"
                 stagger={0.018}
               />
               <p className="mt-7 text-[1.0625rem] leading-[1.7] text-mauve-300">
@@ -77,8 +81,8 @@ export default function PrivacyPage() {
           <article className="prose-ims mx-auto w-full max-w-3xl space-y-12 text-[1.0625rem] leading-[1.75] text-paper-ink/95">
             <Section title="1. Who we are">
               <p>
-                IMS Consultancy (&ldquo;IMS&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) is a UK-based
-                strategic consultancy. This policy explains how we collect,
+                Intel Made Simple (&ldquo;we&rdquo;, &ldquo;us&rdquo;) is a UK-based
+                revenue recovery consultancy. This policy explains how we collect,
                 use, and protect personal data in the course of running the
                 business and delivering client engagements.
               </p>
@@ -86,7 +90,7 @@ export default function PrivacyPage() {
                 For any privacy question, contact{" "}
                 <a
                   href="mailto:info@intelmadesimple.com"
-                  className="text-mauve-200 underline-offset-4 hover:underline"
+                  className="ims-link"
                 >
                   info@intelmadesimple.com
                 </a>
@@ -108,7 +112,7 @@ export default function PrivacyPage() {
                 </Bullet>
                 <Bullet>
                   <strong>Newsletter data</strong> if you subscribe to the
-                  IMS letter. Only your email address.
+                  Intel Made Simple letter. Only your email address.
                 </Bullet>
                 <Bullet>
                   <strong>Site analytics</strong>. Privacy-respecting,
@@ -232,7 +236,7 @@ export default function PrivacyPage() {
                 Email{" "}
                 <a
                   href="mailto:info@intelmadesimple.com"
-                  className="text-mauve-200 underline-offset-4 hover:underline"
+                  className="ims-link"
                 >
                   info@intelmadesimple.com
                 </a>{" "}
@@ -257,7 +261,7 @@ export default function PrivacyPage() {
                 at{" "}
                 <Link
                   href="/ai-policy"
-                  className="text-mauve-200 underline-offset-4 hover:underline"
+                  className="ims-link"
                 >
                   /ai-policy
                 </Link>
@@ -289,7 +293,7 @@ export default function PrivacyPage() {
               <p>
                 We may update this policy as the business or the law
                 changes. Material changes will be flagged on the homepage
-                and on the IMS letter for at least thirty days before they
+                and on the Intel Made Simple letter for at least thirty days before they
                 take effect.
               </p>
             </Section>
@@ -312,7 +316,7 @@ function Section({
   return (
     <Reveal>
       <section>
-        <h3 className="font-serif text-[clamp(1.375rem,2.4vw,1.75rem)] font-medium leading-[1.2] tracking-[-0.01em] text-paper-ink">
+        <h3 className="font-display text-[clamp(1.375rem,2.4vw,1.75rem)] font-semibold leading-[1.2] tracking-[-0.01em] text-paper-ink">
           {title}
         </h3>
         <div className="mt-5 space-y-4 text-mauve-300">{children}</div>

@@ -10,7 +10,7 @@ export const mortgageBrokers: Industry = {
   accent: "amber",
   leakLine: "62 maturities were waiting in one sample book",
   meta: {
-    title: "AI Revenue Recovery for Mortgage Brokers | IntelMadeSimple",
+    title: "AI Revenue Recovery for Mortgage Brokers",
     description:
       "Maturity tracking, orphan client revival and protection cross-sell. AI tools that find the fees already sitting in your client book. GDPR-safe, FCA-aware.",
   },
@@ -18,9 +18,9 @@ export const mortgageBrokers: Industry = {
     h1: "Your client book already knows your next six months of fees",
     sub: "Three tools that read your book, find every maturing deal and dormant client, and draft the outreach before the high-street lender gets there.",
     stats: [
-      { value: "£1,244", label: "avg proc fee left unclaimed per lapsed client" },
-      { value: "6 mo", label: "warning your book gives you before every maturity" },
-      { value: "73%", label: "of clients who remortgage stay with whoever contacts them first" },
+      { value: "62", label: "clients maturing within 6 months" },
+      { value: "118", label: "revivable clients found" },
+      { value: "71", label: "completions with no protection recorded" },
     ],
   },
   pains: [
@@ -149,7 +149,7 @@ export const mortgageBrokers: Industry = {
       "UK-based support, DPA included",
     ],
     timeline: "Live within 14 days of data access",
-    anchor: "Build from £5,500 · from £2,500/month · one recovered maturity month covers the retainer",
+    anchor: "Start with a free Leak Scan. Projects from £6,000, fixed price.",
   },
   faqs: [
     {
@@ -170,7 +170,7 @@ export const mortgageBrokers: Industry = {
     },
     {
       q: "What does it cost?",
-      a: "A one-off build fee then a monthly retainer, anchored so a single recovered maturity covers months of fees. Exact pricing on the call, based on book size.",
+      a: "Start with a free Leak Scan, then a fixed-price project from £6,000 once the numbers justify it. The exact price is quoted in writing after the scan, based on book size.",
     },
   ],
   related: ["ifas-wealth-managers", "commercial-insurance-brokers"],

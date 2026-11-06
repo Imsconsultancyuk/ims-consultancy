@@ -10,7 +10,7 @@ export const commercialInsuranceBrokers: Industry = {
   accent: "sky",
   leakLine: "41 renewals wobbling in the next 90 days",
   meta: {
-    title: "AI Revenue Recovery for Insurance Brokers | IntelMadeSimple",
+    title: "Revenue Recovery for Insurance Brokers",
     description:
       "Renewal defence, cover-gap scanning and quote turnaround. AI tools that protect your book and win the ones you quote. GDPR-safe, FCA-aware.",
   },
@@ -18,9 +18,9 @@ export const commercialInsuranceBrokers: Industry = {
     h1: "Your renewal book is your business. Defend it like one",
     sub: "Three tools that spot at-risk renewals 90 days out, find uncovered risks across your book, and get your submissions to underwriters first.",
     stats: [
-      { value: "90 days", label: "before renewal, when retention is won or lost" },
-      { value: "£1,800", label: "average commission on a lost commercial renewal" },
-      { value: "1st", label: "broker back to the client wins the placement" },
+      { value: "41", label: "renewals at risk in the next 90 days" },
+      { value: "133", label: "uncovered risks across 97 clients" },
+      { value: "6 min", label: "to an underwriter-ready pack" },
     ],
   },
   pains: [
@@ -149,7 +149,7 @@ export const commercialInsuranceBrokers: Industry = {
       "UK-based support, DPA included",
     ],
     timeline: "Live within 14 days of data access",
-    anchor: "Build from £6,000 · from £2,750/month · two defended renewals cover the retainer",
+    anchor: "Start with a free Leak Scan. Projects from £6,000, fixed price.",
   },
   faqs: [
     {
@@ -170,7 +170,7 @@ export const commercialInsuranceBrokers: Industry = {
     },
     {
       q: "What does it cost?",
-      a: "A one-off build fee then a monthly retainer, anchored so a single defended renewal covers months of fees. Exact pricing on the call, based on book size.",
+      a: "Start with a free Leak Scan, then a fixed-price project from £6,000 once the numbers justify it. The exact price is quoted in writing after the scan, based on book size.",
     },
   ],
   related: ["mortgage-brokers", "commercial-property"],

@@ -26,7 +26,7 @@ export function CTASection({ industry, related }: CTASectionProps) {
       <a
         href={BOOK_CALL_URL}
         onClick={() => track("book_call_clicked", { industry })}
-        className="inline-flex items-center justify-center rounded-md bg-accent-500 px-6 py-3 text-sm font-medium text-paper-pure transition-all duration-300 hover:bg-accent-400 hover:shadow-[0_6px_24px_-6px_rgba(58,109,240,0.55)]"
+        className="inline-flex items-center justify-center rounded-full bg-accent-500 px-6 py-3 text-sm font-medium text-on-amber transition-all duration-300 hover:bg-accent-600"
       >
         Book a call
       </a>
@@ -39,7 +39,7 @@ export function CTASection({ industry, related }: CTASectionProps) {
               {index > 0 ? ", " : ""}
               <Link
                 href={`/industries/${related.slug}`}
-                className="underline decoration-paper-ink-soft underline-offset-4 transition-colors hover:text-paper-ink"
+                className="ims-link"
               >
                 {related.name}
               </Link>

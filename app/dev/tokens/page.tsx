@@ -1,3 +1,4 @@
+import { devOnly } from "@/lib/dev-only";
 import type { Metadata } from "next";
 
 // Scratch page for IMS-002 visual verification only. Delete before launch
@@ -21,6 +22,7 @@ const SIGNALS = [
 ] as const;
 
 export default function DevTokensPage() {
+  devOnly();
   return (
     <main className="min-h-screen bg-paper p-12 text-ink">
       <h1 className="font-industry-display text-4xl font-semibold">

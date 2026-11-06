@@ -50,7 +50,7 @@ export function PackageBlock({ industry, package: pkg }: PackageBlockProps) {
   }
 
   return (
-    <div className="flex flex-col gap-6 rounded-lg border border-line bg-paper p-8">
+    <div className="flex flex-col gap-6 rounded-[14px] border border-line bg-paper p-8">
       <h3 className="font-industry-display text-lg font-medium text-ink">
         {pkg.heading}
       </h3>
@@ -60,9 +60,10 @@ export function PackageBlock({ industry, package: pkg }: PackageBlockProps) {
             key={item}
             className="flex items-start gap-2 text-sm text-ink-soft"
           >
-            <span aria-hidden="true" className="mt-1 text-ink-soft">
-              ·
-            </span>
+            <span
+              aria-hidden="true"
+              className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent-500"
+            />
             <span>{item}</span>
           </li>
         ))}
@@ -73,7 +74,7 @@ export function PackageBlock({ industry, package: pkg }: PackageBlockProps) {
         <a
           href={BOOK_CALL_URL}
           onClick={handlePrimaryCta}
-          className="inline-flex items-center justify-center rounded-md bg-ink px-5 py-3 text-sm font-medium text-paper-ink transition-opacity hover:opacity-90"
+          className="inline-flex items-center justify-center rounded-full bg-accent-500 px-5 py-3 text-sm font-medium text-on-amber transition-colors hover:bg-accent-600"
         >
           Book a call
         </a>
@@ -81,7 +82,7 @@ export function PackageBlock({ industry, package: pkg }: PackageBlockProps) {
           <button
             type="button"
             onClick={() => setShowEmailField(true)}
-            className="text-sm font-medium text-ink underline decoration-line underline-offset-4 transition-colors hover:text-ink-soft"
+            className="inline-flex min-h-[44px] items-center self-start text-sm font-medium text-ink underline decoration-line underline-offset-4 transition-colors hover:text-ink-soft"
           >
             Email me the sample report
           </button>
@@ -103,7 +104,7 @@ export function PackageBlock({ industry, package: pkg }: PackageBlockProps) {
               required
               placeholder="you@company.com"
               disabled={state === "sending" || state === "sent"}
-              className="w-full rounded-md border border-line bg-paper px-4 py-3 text-sm text-ink disabled:opacity-60"
+              className="w-full rounded-[14px] border border-line bg-paper px-4 py-3 text-sm text-ink disabled:opacity-60"
             />
           </div>
           {/* Honeypot: visually collapsed to 0x0 and pulled out of tab order.
@@ -124,7 +125,7 @@ export function PackageBlock({ industry, package: pkg }: PackageBlockProps) {
           <button
             type="submit"
             disabled={state === "sending" || state === "sent"}
-            className="rounded-md border border-line px-5 py-3 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper-ink disabled:opacity-60"
+            className="rounded-full border border-line px-5 py-3 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper-ink disabled:opacity-60"
           >
             {state === "sent" ? "Sent" : state === "sending" ? "Sending…" : "Send"}
           </button>

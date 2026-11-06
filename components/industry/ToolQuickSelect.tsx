@@ -26,7 +26,7 @@ export function ToolQuickSelect({ industry, tools, accent }: ToolQuickSelectProp
       <p className="text-sm font-medium uppercase tracking-wide text-ink-soft">
         Three tools on this page
       </p>
-      <ul className="mt-4 grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-3">
+      <ul className="mt-4 grid gap-px overflow-hidden rounded-[14px] border border-line bg-line sm:grid-cols-3">
         {tools.map((tool, index) => (
           <li key={tool.id}>
             <a
@@ -48,7 +48,7 @@ export function ToolQuickSelect({ industry, tools, accent }: ToolQuickSelectProp
                 {tool.name}
               </span>
               <span className="text-sm leading-relaxed text-ink-soft">{tool.outcome}</span>
-              <span className="mt-auto pt-2 text-sm font-medium text-accent-500">
+              <span className="mt-auto pt-2 text-sm font-medium text-accent-700">
                 Jump to it
                 <span aria-hidden className="ml-1 inline-block transition-transform duration-300 group-hover:translate-y-0.5">
                   ↓

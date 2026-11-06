@@ -10,7 +10,7 @@ export const b2bSaas: Industry = {
   accent: "cyan",
   leakLine: "£186k ARR at risk in one export",
   meta: {
-    title: "AI Revenue Recovery for B2B SaaS | IntelMadeSimple",
+    title: "AI Revenue Recovery for B2B SaaS",
     description:
       "Churn-signal detection, failed-payment recovery and expansion mining. AI tools that defend and grow ARR from data you already have. GDPR-safe.",
   },
@@ -18,9 +18,9 @@ export const b2bSaas: Industry = {
     h1: "Your ARR leaks are in the data you already collect",
     sub: "Three tools that read usage and billing exports, flag the accounts about to churn, recover failed payments, and surface expansion-ready customers.",
     stats: [
-      { value: "£186k", label: "ARR flagged at risk in one 480-account export" },
-      { value: "9%", label: "of failed payments never retried effectively" },
-      { value: "41", label: "expansion-ready accounts found in the same file" },
+      { value: "32", label: "accounts showing churn signals" },
+      { value: "£23,400", label: "in recoverable failed payments" },
+      { value: "41", label: "expansion-ready accounts" },
     ],
   },
   pains: [
@@ -149,7 +149,7 @@ export const b2bSaas: Industry = {
       "UK-based support, DPA included",
     ],
     timeline: "Live within 14 days of data access",
-    anchor: "Build from £6,500 · from £3,000/month · one saved enterprise account covers the year",
+    anchor: "Start with a free Leak Scan. Projects from £6,000, fixed price.",
   },
   faqs: [
     {
@@ -170,7 +170,7 @@ export const b2bSaas: Industry = {
     },
     {
       q: "What does it cost?",
-      a: "A one-off build fee then a monthly retainer, anchored so a single saved account covers months of fees. Exact pricing on the call, based on book size.",
+      a: "Start with a free Leak Scan, then a fixed-price project from £6,000 once the numbers justify it. The exact price is quoted in writing after the scan, based on book size.",
     },
   ],
   related: ["executive-search-recruitment", "ma-advisory-business-brokers"],

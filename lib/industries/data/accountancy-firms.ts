@@ -10,7 +10,7 @@ export const accountancyFirms: Industry = {
   accent: "orange",
   leakLine: "78 advisory opportunities in one client base",
   meta: {
-    title: "AI Advisory Tools for Accountancy Firms | IntelMadeSimple",
+    title: "AI Advisory Tools for Accountancy Firms",
     description:
       "Advisory opportunity scanning, fee-leak detection and onboarding automation. AI tools that turn a compliance client base into an advisory pipeline. GDPR-safe.",
   },
@@ -18,9 +18,9 @@ export const accountancyFirms: Industry = {
     h1: "Your compliance base is an advisory goldmine nobody's mining",
     sub: "Three tools that read your client list, spot every R&D, allowance and planning opportunity, and stop fees leaking through scope creep.",
     stats: [
-      { value: "78", label: "advisory flags found in one 350-client base" },
-      { value: "£1,820", label: "average advisory engagement per flag" },
-      { value: "11 → 3 days", label: "onboarding time with automated chasing" },
+      { value: "78", label: "advisory opportunities in a 350-client base" },
+      { value: "£38,200", label: "of out-of-scope work unbilled" },
+      { value: "23", label: "stalled onboardings unblocked" },
     ],
   },
   pains: [
@@ -149,7 +149,7 @@ export const accountancyFirms: Industry = {
       "UK-based support, DPA included",
     ],
     timeline: "Live within 14 days of data access",
-    anchor: "Build from £6,000 · from £2,750/month · two advisory engagements cover the year",
+    anchor: "Start with a free Leak Scan. Projects from £6,000, fixed price.",
   },
   faqs: [
     {
@@ -170,7 +170,7 @@ export const accountancyFirms: Industry = {
     },
     {
       q: "What does it cost?",
-      a: "A one-off build fee then a monthly retainer, anchored so a single recovered advisory engagement covers months of fees. Exact pricing on the call, based on book size.",
+      a: "Start with a free Leak Scan, then a fixed-price project from £6,000 once the numbers justify it. The exact price is quoted in writing after the scan, based on book size.",
     },
   ],
   related: ["law-firms", "ifas-wealth-managers"],

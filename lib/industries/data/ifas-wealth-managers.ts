@@ -10,7 +10,7 @@ export const ifasWealthManagers: Industry = {
   accent: "emerald",
   leakLine: "£38k of recurring fees at risk in one register",
   meta: {
-    title: "IFA & Wealth Manager Revenue Recovery | IntelMadeSimple",
+    title: "IFA & Wealth Manager Revenue Recovery",
     description:
       "Dormant book mining, advice gap scanning and next-gen retention. AI tools that protect recurring fees and surface advice opportunities. GDPR-safe, FCA-aware.",
   },
@@ -18,9 +18,9 @@ export const ifasWealthManagers: Industry = {
     h1: "Your recurring fees are only as safe as your least-contacted client",
     sub: "Three tools that read your client register, find the drifting relationships and uncovered advice gaps, and draft the review invitations.",
     stats: [
-      { value: "18 mo", label: "without review before a client starts listening to other advisers" },
-      { value: "£2,400", label: "average recurring fee at risk per drifting client" },
-      { value: "70%", label: "of inherited wealth leaves the original adviser" },
+      { value: "96", label: "clients past review with fees at risk" },
+      { value: "143", label: "advice gaps across 88 clients" },
+      { value: "64", label: "households facing wealth transfer" },
     ],
   },
   pains: [
@@ -149,7 +149,7 @@ export const ifasWealthManagers: Industry = {
       "UK-based support, DPA included",
     ],
     timeline: "Live within 14 days of data access",
-    anchor: "Build from £6,000 · from £2,750/month · one retained client typically covers the year",
+    anchor: "Start with a free Leak Scan. Projects from £6,000, fixed price.",
   },
   faqs: [
     {
@@ -170,7 +170,7 @@ export const ifasWealthManagers: Industry = {
     },
     {
       q: "What does it cost?",
-      a: "A one-off build fee then a monthly retainer, anchored so one retained client typically covers the year. Exact pricing on the call, based on book size.",
+      a: "Start with a free Leak Scan, then a fixed-price project from £6,000 once the numbers justify it. The exact price is quoted in writing after the scan, based on book size.",
     },
   ],
   related: ["mortgage-brokers", "accountancy-firms"],

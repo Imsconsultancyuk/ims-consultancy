@@ -6,6 +6,8 @@ import { notFound } from "next/navigation";
 import { TrophyFooter } from "@/app/_components/TrophyFooter";
 import { TrophyHeader } from "@/app/_components/TrophyHeader";
 import { CTASection } from "@/components/industry/CTASection";
+import { DepartmentMap } from "@/components/industry/DepartmentMap";
+import { ImsMoves } from "@/components/industry/ImsMoves";
 import { DemoArmProvider } from "@/components/industry/demo/DemoContext";
 import { PipelineRail } from "@/components/industry/demo/PipelineRail";
 import { ResultsPanel } from "@/components/industry/demo/ResultsPanel";
@@ -21,7 +23,10 @@ import { ResultsBlock } from "@/components/industry/ResultsBlock";
 import { SectionShell } from "@/components/industry/SectionShell";
 import { ToolSection } from "@/components/industry/ToolSection";
 import { DEMO_SECTION_ID, GDPR_COPY, SITE_URL } from "@/lib/industries/config";
+import { DEPARTMENTS } from "@/lib/industries/departments";
 import { getIndustry, industrySlugs } from "@/lib/industries";
+import { RelatedReading } from "@/app/_components/RelatedReading";
+import { relatedForIndustry } from "@/lib/seo/links";
 
 interface IndustryPageProps {
   params: Promise<{ slug: string }>;
@@ -34,7 +39,7 @@ function SectionSkeleton({ className }: { className: string }) {
   return (
     <div
       aria-hidden="true"
-      className={`animate-pulse rounded-lg border border-line bg-paper-soft ${className}`}
+      className={`animate-pulse rounded-[14px] border border-line bg-paper-soft ${className}`}
     />
   );
 }
@@ -75,7 +80,7 @@ export async function generateMetadata({
   return {
     title: industry.meta.title,
     description: industry.meta.description,
-    alternates: { canonical: url },
+    alternates: { canonical: url, languages: { "en-GB": url } },
     openGraph: {
       title: industry.meta.title,
       description: industry.meta.description,
@@ -97,6 +102,7 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
 
   // Clears the fixed header pill (~76px) plus the sticky industry nav (64px)
   // so every anchor jump on this page lands below both, not underneath them.
+  const departments = DEPARTMENTS[industry.slug];
   const pageStyle = { "--industry-nav-offset": "9rem" } as CSSProperties;
 
   return (
@@ -104,7 +110,7 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
       <IndustryJsonLd industry={industry} />
       <TrophyHeader />
 
-      <main className="flex flex-1 flex-col" style={pageStyle}>
+      <main id="main" className="flex flex-1 flex-col" style={pageStyle}>
         <IndustryHero
           industry={industry.slug}
           name={industry.name}
@@ -125,6 +131,21 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
           >
             <PainGrid pains={industry.pains} accent={industry.accent} />
           </SectionShell>
+
+          {departments ? (
+            <SectionShell
+              id="departments"
+              eyebrow="Department by department"
+              heading="Where each team loses revenue"
+            >
+              <DepartmentMap
+                departments={departments}
+                pains={industry.pains}
+                tools={industry.tools}
+                accent={industry.accent}
+              />
+            </SectionShell>
+          ) : null}
 
           {/* One full band per tool. `id="tools"` stays on the wrapper so the
               sticky nav's scroll-spy still resolves a single "Tools" target. */}
@@ -157,7 +178,7 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
               heading="Try it on sample data"
             >
               <div className="flex flex-col gap-6">
-                <div className="flex flex-wrap gap-3">
+                <div className="grid gap-3 md:grid-cols-3">
                   {industry.tools.map((tool) => (
                     <SampleFileChip key={tool.id} tool={tool} accent={industry.accent} />
                   ))}
@@ -169,6 +190,17 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
             </SectionShell>
           </DemoMachineProvider>
         </DemoArmProvider>
+
+        {departments ? (
+          <SectionShell
+            id="how-we-work"
+            tone="ink"
+            eyebrow="What we do"
+            heading="Audit, plan, produce, engage, deploy"
+          >
+            <ImsMoves industry={industry} departments={departments} accent={industry.accent} />
+          </SectionShell>
+        ) : null}
 
         <SectionShell
           id="data-protection"
@@ -197,6 +229,14 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
 
         <SectionShell id="faq" tone="paper-soft" eyebrow="Questions" heading="Frequently asked">
           <FAQAccordion faqs={industry.faqs} />
+        </SectionShell>
+
+        <SectionShell
+          id="related-reading"
+          eyebrow="Keep reading"
+          heading={`Research, guides and prices: ${industry.name}`}
+        >
+          <RelatedReading items={relatedForIndustry(industry.slug)} />
         </SectionShell>
 
         <SectionShell

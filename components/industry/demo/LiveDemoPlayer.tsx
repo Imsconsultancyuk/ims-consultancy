@@ -112,11 +112,13 @@ export function LiveDemoPlayer({ tools }: LiveDemoPlayerProps) {
     const activeTool = tools[reducedMotionTabIndex];
     const { result } = activeTool.demo;
     return (
-      <div className="relative flex flex-col gap-5 rounded-lg bg-ink p-6 text-paper-ink md:p-8">
-        <span className="absolute right-4 top-4 whitespace-nowrap rounded-full border border-paper-ink-soft px-2 py-0.5 text-[11px] uppercase tracking-wide text-paper-ink-soft">
-          Synthetic demonstration data
-        </span>
-        <p className="max-w-md text-xs text-paper-ink-soft">{CAPTION}</p>
+      <div className="relative flex flex-col gap-5 rounded-[14px] bg-deep p-6 text-paper-ink md:p-8">
+        <div className="flex flex-col-reverse items-start gap-3 sm:flex-row sm:justify-between">
+          <p className="max-w-md text-xs text-paper-ink-soft">{CAPTION}</p>
+          <span className="whitespace-nowrap rounded-full border border-cobalt-300/40 bg-cobalt-300/10 px-2 py-0.5 text-[11px] uppercase tracking-wide text-cobalt-300">
+            Synthetic demonstration data
+          </span>
+        </div>
         <div className="flex flex-wrap gap-2" role="tablist" aria-label="Tool results">
           {tools.map((toolOption, index) => (
             <button
@@ -125,7 +127,7 @@ export function LiveDemoPlayer({ tools }: LiveDemoPlayerProps) {
               role="tab"
               aria-selected={index === reducedMotionTabIndex}
               onClick={() => setReducedMotionTabIndex(index)}
-              className={`min-h-[44px] rounded-md border px-3 py-2 text-sm font-medium transition-colors ${
+              className={`min-h-[44px] rounded-full border px-3 py-2 text-sm font-medium transition-colors ${
                 index === reducedMotionTabIndex
                   ? "border-paper-ink bg-paper text-ink"
                   : "border-paper-ink-soft text-paper-ink-soft"
@@ -138,7 +140,7 @@ export function LiveDemoPlayer({ tools }: LiveDemoPlayerProps) {
         <p className="font-industry-display text-xl font-medium md:text-2xl">{result.headline}</p>
         <dl className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           {result.metrics.map((metric) => (
-            <div key={metric.label} className="border-l-2 border-paper-ink-soft pl-4">
+            <div key={metric.label} className="border-t border-paper-ink-soft pt-3">
               <dd
                 className={`num text-2xl font-semibold ${
                   metric.emphasis ? "text-positive" : "text-paper-ink"
@@ -161,15 +163,18 @@ export function LiveDemoPlayer({ tools }: LiveDemoPlayerProps) {
       onMouseLeave={() => setIsPausedByInteraction(false)}
       onFocus={() => setIsPausedByInteraction(true)}
       onBlur={() => setIsPausedByInteraction(false)}
-      className="relative flex min-h-[220px] flex-col gap-5 rounded-lg bg-ink p-6 text-paper-ink md:p-8"
+      className="relative flex min-h-[220px] flex-col gap-5 rounded-[14px] bg-deep p-6 text-paper-ink md:p-8"
     >
-      <span className="absolute right-4 top-4 whitespace-nowrap rounded-full border border-paper-ink-soft px-2 py-0.5 text-[11px] uppercase tracking-wide text-paper-ink-soft">
-        Synthetic demonstration data
-      </span>
-      <p className="max-w-md text-xs text-paper-ink-soft">{CAPTION}</p>
+      <div className="flex flex-col-reverse items-start gap-3 sm:flex-row sm:justify-between">
+        <p className="max-w-md text-xs text-paper-ink-soft">{CAPTION}</p>
+        <span className="whitespace-nowrap rounded-full border border-cobalt-300/40 bg-cobalt-300/10 px-2 py-0.5 text-[11px] uppercase tracking-wide text-cobalt-300">
+          Synthetic demonstration data
+        </span>
+      </div>
 
       {step.phase === "glide" ? (
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col gap-4">
+          <div className="flex items-center gap-3 rounded-[14px] border border-dashed border-paper-ink-soft/50 px-4 py-4">
           <svg
             viewBox="0 0 24 24"
             className="h-6 w-6 shrink-0 text-paper-ink-soft"
@@ -192,6 +197,12 @@ export function LiveDemoPlayer({ tools }: LiveDemoPlayerProps) {
             />
           </svg>
           <span className="text-sm text-paper-ink-soft">{tool.demo.sampleFile.label}</span>
+          </div>
+          <div className="flex items-center gap-2" aria-hidden="true">
+            {tool.demo.stages.map((stage) => (
+              <div key={stage.key} className="h-1.5 flex-1 rounded-full bg-deep-veil" />
+            ))}
+          </div>
         </div>
       ) : null}
 
