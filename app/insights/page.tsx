@@ -191,7 +191,7 @@ export default function InsightsPage() {
                 numbers stand.
               </p>
               <a
-                href="/contact"
+                href="/contact?intent=leak-scan&from=insights"
                 data-cursor="cta"
                 className="mt-9 inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-8 text-sm font-medium text-on-amber transition-colors duration-300 hover:bg-accent-600"
               >

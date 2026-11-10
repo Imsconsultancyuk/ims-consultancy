@@ -116,6 +116,7 @@ export function TrophyHeader() {
             <a href="/#calc">Calculator</a>
             <a href="/#how">How it works</a>
             <a href="/#pricing">Pricing</a>
+            <a href="/pricing#recovery">Price it</a>
             <a href="/faq">FAQ</a>
             <div className="fx-sectors">
               <button
@@ -144,7 +145,7 @@ export function TrophyHeader() {
               {dark === null ? "Theme" : dark ? "Light" : "Dark"}
             </button>
           </nav>
-          <a className="fx-btn fx-cta" href="/contact">
+          <a className="fx-btn fx-cta" href="/contact?intent=leak-scan&from=nav">
             <span className="fx-long">Book a free Leak Scan</span>
             <span className="fx-short">Book a scan</span>
           </a>

@@ -57,7 +57,7 @@ export const SERVICE_PAGES: ServiceContent[] = [
     name: "AI Readiness Audit",
     metaTitle: "AI Readiness Audit for Small UK Firms",
     metaDescription:
-      "A fixed-fee AI readiness audit for small UK firms, from £1,500. We read twelve months of records and return a ranked, costed list of where AI pays.",
+      "A fixed-fee AI readiness audit for small UK firms at £1,500. We read twelve months of records and return a ranked, costed list of where AI pays.",
     kicker: "Service · Start here",
     headline: "Know where AI pays in your firm, before you buy anything.",
     lead:
@@ -110,7 +110,7 @@ export const SERVICE_PAGES: ServiceContent[] = [
     faqs: [
       {
         q: "How much does an AI readiness audit cost?",
-        a: "From £1,500, confirmed as a fixed price once we have scoped your firm. Published UK price guides put small-firm audits at roughly £1,500 to £6,000 and large-consultancy audits at £50,000 and above. We price at the small-firm end because the work is done by the people you meet.",
+        a: "£1,500, the same price as every other unit of work we sell, confirmed in writing once we have scoped your firm. Published UK price guides put small-firm audits at roughly £1,500 to £6,000 and large-consultancy audits at £50,000 and above. We price at the small-firm end because the work is done by the people you meet.",
       },
       {
         q: "How long does it take?",
@@ -130,21 +130,6 @@ export const SERVICE_PAGES: ServiceContent[] = [
       { href: "/services/team-enablement", label: "Team Enablement and AI Use Policy" },
       { href: "/case-studies", label: "Five documented revenue-leak cases" },
     ],
-    secondary: {
-      id: "second-opinion",
-      kicker: "Smaller door in",
-      title: "AI Second Opinion",
-      price: "From £400",
-      body:
-        "You hold a quote, a proposal or a tool someone wants you to buy. We read it, check it against how your firm actually works, and tell you what we would do.",
-      points: [
-        "Written within five working days",
-        "Three questions to put to the seller, in writing",
-        "A plain verdict: buy, change it, or walk away, and why",
-        "We build nothing at this rung, so no reason to talk you into more",
-      ],
-      cta: "Ask for a second opinion",
-    },
   },
   {
     slug: "enquiry-desk",
@@ -207,7 +192,7 @@ export const SERVICE_PAGES: ServiceContent[] = [
     faqs: [
       {
         q: "How much does it cost?",
-        a: "From £1,200 to set up, then from £300 a month, confirmed in writing for your firm before you pay. Telephony and message costs from the provider are passed through at cost and shown on each statement.",
+        a: "£1,500 to build, then 15 to 25% of what it recovers above your Leak Scan baseline for 12 months. If nothing comes back, no success fee is due. Telephony and message costs from the provider are passed through at cost and shown on each statement.",
       },
       {
         q: "Does it sound like a robot?",
@@ -275,7 +260,7 @@ export const SERVICE_PAGES: ServiceContent[] = [
     ],
     deliverables: [
       "A half-day for up to 12 people, built on your real tasks",
-      "An AI use policy in plain English (pack from £600)",
+      "An AI use policy in plain English (pack included)",
       "A one-page card for each role",
       "A short list of tools worth trying and tools to avoid for your data",
     ],
@@ -287,7 +272,7 @@ export const SERVICE_PAGES: ServiceContent[] = [
     faqs: [
       {
         q: "How much does it cost?",
-        a: "From £950 for a half-day for up to 12 people, and from £600 for the policy pack. From £1,550 together.",
+        a: "£1,500 for a half-day for up to 12 people, policy pack included.",
       },
       {
         q: "Is the policy legal advice?",

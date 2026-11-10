@@ -187,7 +187,7 @@ export default function ReviewsPage() {
                   </Link>
                 </MagneticButton>
                 <a
-                  href="/contact"
+                  href="/contact?intent=leak-scan&from=reviews"
                   data-cursor="link"
                   className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-cobalt-200 bg-deep/40 px-7 text-sm font-medium tracking-[0.02em] text-cobalt-200 transition-all duration-300 hover:border-cobalt-100 hover:text-cobalt-100 hover:bg-cobalt-200/15"
                 >

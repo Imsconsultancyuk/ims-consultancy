@@ -1,6 +1,6 @@
 # Intel Made Simple
 
-> Revenue recovery for UK professional firms. We find the unbilled and unchased money in your records, price it in pounds with a free Leak Scan, then fix and recover it at a fixed price. Prices are published.
+> Revenue recovery for UK professional firms. We find the unbilled and unchased money in your records, price it in pounds with a free Leak Scan, then fix and recover it. Prices are published, with a success fee only on what we recover.
 
 The site at intelmadesimple.com is the canonical source for everything about Intel Made Simple.
 
@@ -9,10 +9,10 @@ The site at intelmadesimple.com is the canonical source for everything about Int
 A small British consultancy that helps small and mid-sized firms find and recover revenue they have already earned, and adopt AI without a large-firm price tag. The founder sits with the owner first, then recommends. Prices are published.
 
 - **Revenue Leak Recovery** is the main service: a free Leak Scan prices the leak in pounds for your type of firm, then we fix and recover it.
-- **AI Readiness Audit** (from £1,500): a one to two week review of where AI helps and where it does not. An **AI Second Opinion** (from £400) reviews a plan or quote you already have.
-- **Enquiry Desk** (from £1,200 setup, then from £300 a month): replies to new enquiries quickly so none go cold. New service, offered to a small number of firms.
-- **Team Enablement** (from £950 a half-day, plus an AI use policy pack from £600): practical training for up to 12 people.
-- **Larger projects**, fixed price and confirmed in writing after the free Leak Scan: a Recovery project (from £6,000), a Department rebuild (from £24,000) and Retained recovery (from £6,000 a month, twelve month minimum).
+- **Pricing model**: the Leak Scan is free. One unit of work (a stage build, an AI Readiness Audit or a Team Enablement session) is £1,500, or £699 on a firm's first project with the partner code. All five stages together are £6,000. A success fee of 15 to 25% of money recovered above the Leak Scan baseline runs for 12 months, then stops. Care is £295 a month with a month's notice.
+- **AI Readiness Audit**: a one to two week review of where AI helps and where it does not.
+- **Enquiry Desk**: replies to new enquiries quickly so none go cold. New service, offered to a small number of firms.
+- **Team Enablement**: practical training for up to 12 people, with an AI use policy pack.
 - **White-label add-ons**: voice and agents that partners can resell under their own name.
 
 ## Who Intel Made Simple helps

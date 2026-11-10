@@ -241,7 +241,7 @@ export default function StrategicAdvisoryPage() {
               <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <MagneticButton strength={0.4} radius={110}>
                   <a
-                    href="/contact"
+                    href="/contact?intent=leak-scan&from=services-strategic-advisory"
                     data-cursor="cta"
                     className="inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-7 text-sm font-medium tracking-[0.02em] text-on-amber transition-all duration-300 hover:bg-accent-600"
                   >

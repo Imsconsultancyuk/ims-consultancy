@@ -146,7 +146,7 @@ const pillar: Guide = {
       "For recurring fees, match the fee ledger to the delivery log for one quarter.",
     ),
     p(
-      "Our free [Leak Scan](/tools) walks through where cash drops out of that chain and costs nothing. If you want an independent view of the numbers, the [pricing page](/pricing) lists the fixed fees: an AI Second Opinion from £400, an AI Readiness Audit from £1,500, and fix-and-recover set-up from £1,200 then from £300 a month. Our guide on [choosing between an audit, a collection route and a process fix](/guides/revenue-recovery-professional-firms-options) helps you pick.",
+      "Our free [Leak Scan](/tools) walks through where cash drops out of that chain and costs nothing. If you want an independent view of the numbers, the [pricing page](/pricing) lists the prices: £1,500 for a stage build, an AI Readiness Audit or a team session, £6,000 for all five stages, and a success fee of 15 to 25% of what is recovered. Our guide on [choosing between an audit, a collection route and a process fix](/guides/revenue-recovery-professional-firms-options) helps you pick.",
     ),
     faq(
       qa(
@@ -534,7 +534,7 @@ const options: Guide = {
     ),
     h("What does our route cost?"),
     p(
-      "We publish fixed prices on the [pricing page](/pricing). The first step is a free [Leak Scan](/tools) that shows where cash leaves the chain. An AI Second Opinion on a specific tool or plan is from £400, and an [AI Readiness Audit](/services/ai-readiness-audit) is from £1,500. Fix-and-recover set-up starts from £1,200, then from £300 a month. Projects start from £6,000 and are fixed price once the Leak Scan has been done. We do not take a percentage of recovered cash and we do not chase your clients on your behalf. Our [pillar guide on revenue leakage](/guides/revenue-leakage-professional-firms) shows how the five leak points connect.",
+      "We publish prices on the [pricing page](/pricing). The first step is a free [Leak Scan](/tools) that shows where cash leaves the chain. After it, a stage build or an [AI Readiness Audit](/services/ai-readiness-audit) is £1,500 and all five stages are £6,000. We add a success fee of 15 to 25% of the money recovered above your baseline, for 12 months, and we do not chase your clients on your behalf. Our [pillar guide on revenue leakage](/guides/revenue-leakage-professional-firms) shows how the five leak points connect.",
     ),
     faq(
       qa(

@@ -243,7 +243,7 @@ export default async function GuidePage({
                 >
                   <span className="text-[0.75rem] text-mauve-300">Pricing</span>
                   <span className="mt-2 font-display text-[1.0625rem] font-medium leading-snug">
-                    Fixed prices, from £400
+                    Free Leak Scan, then £1,500 a stage
                   </span>
                 </Link>
               </li>
@@ -295,7 +295,7 @@ export default async function GuidePage({
               Want this applied to your own figures?
             </h2>
             <a
-              href="/contact"
+              href="/contact?intent=leak-scan&from=guide"
               data-cursor="cta"
               className="mt-8 inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-8 text-sm font-medium text-on-amber transition-colors duration-300 hover:bg-accent-600"
             >

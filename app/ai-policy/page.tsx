@@ -308,7 +308,7 @@ export default function AiPolicyPage() {
             <Reveal delay={120}>
               <div className="mt-10 inline-block">
                 <a
-                  href="/contact"
+                  href="/contact?intent=leak-scan&from=ai-policy"
                   data-cursor="cta"
                   className="inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-on-amber transition-all duration-300 hover:bg-accent-600"
                 >

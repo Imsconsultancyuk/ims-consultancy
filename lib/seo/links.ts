@@ -24,7 +24,7 @@ const guideItem = (slug: string): RelatedItem => {
 };
 
 const common = (): RelatedItem[] => [
-  { kind: "Prices", href: "/pricing", label: "Fixed prices, from £400, with a free Leak Scan" },
+  { kind: "Prices", href: "/pricing", label: "Free Leak Scan, then £1,500 a stage" },
   { kind: "Guides", href: "/guides", label: "All nine UK guides on revenue leakage, WIP, lock-up and late payment" },
 ];
 

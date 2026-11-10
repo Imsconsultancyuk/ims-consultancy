@@ -19,7 +19,7 @@ import {
 const SITE = "https://intelmadesimple.com";
 
 const DESCRIPTION =
-  "Intel Made Simple is a small UK consultancy. We start with the owner, publish every fixed price and say no when a job is not worth doing.";
+  "Intel Made Simple is a small UK consultancy. We start with the owner, publish every price and say no when a job is not worth doing.";
 
 export const metadata: Metadata = {
   title: "About a UK Revenue Recovery Consultancy",
@@ -50,7 +50,7 @@ const COMMITMENTS = [
   {
     n: "03",
     title: "Prices in the open.",
-    body: "Fixed scope, fixed fee, published on the pricing page. A first step costs hundreds or low thousands of pounds, not tens of thousands.",
+    body: "Fixed scope, fixed fee, published on the pricing page. A first step is £1,500, and the free Leak Scan comes before it.",
   },
   {
     n: "04",
@@ -60,10 +60,10 @@ const COMMITMENTS = [
 ];
 
 const REFUSALS = [
-  "We will not sell you a build when a second opinion from £400 answers your question.",
+  "We will not sell you a build when the free Leak Scan shows the money is not there.",
   "We will not promise a result we have not measured, or quote a figure without showing the working.",
   "We will not put AI into a job where a person does it better, and we will say which jobs those are.",
-  "We will not invent client logos, reviews or case studies. The five cases on our site are public, documented incidents, labelled as such, and none is a claim about an Intel Made Simple client.",
+  "We will not hand you a chatbot and call it a solution. Every build starts from a named leak in your own numbers, and if a simple rule in the software you already use fixes it, that is what you get.",
 ];
 
 // Published UK price guides put small-firm AI audits at roughly £1,500 to £6,000
@@ -71,7 +71,7 @@ const REFUSALS = [
 // an official survey, so the chart is context rather than a market study.
 const SCALE_MAX = 60000;
 const PRICE_ROWS = [
-  { label: "Intel Made Simple AI Readiness Audit", from: 1500, to: 1500, text: "From £1,500", ours: true },
+  { label: "Intel Made Simple AI Readiness Audit", from: 1500, to: 1500, text: "£1,500", ours: true },
   { label: "Typical small-firm audit", from: 1500, to: 6000, text: "£1,500 to £6,000", ours: false },
   { label: "Large-consultancy audit", from: 50000, to: 60000, text: "£50,000 and above", ours: false },
 ];
@@ -327,7 +327,7 @@ export default function AboutPage(): React.JSX.Element {
               <div className="mt-10 inline-block">
                 <MagneticButton strength={0.45} radius={120}>
                   <a
-                    href="/contact"
+                    href="/contact?intent=leak-scan&from=about"
                     data-cursor="cta"
                     className="inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-on-amber transition-all duration-300 hover:bg-accent-600"
                   >

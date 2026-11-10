@@ -26,9 +26,12 @@ export function track(event: AnalyticsEvent, props: AnalyticsProps): void {
 
   if (typeof window === "undefined") return;
 
-  const gtag = (window as typeof window & { gtag?: (...args: unknown[]) => void })
-    .gtag;
-  if (typeof gtag === "function") {
-    gtag("event", event, props);
+  const plausible = (
+    window as typeof window & {
+      plausible?: (name: string, options?: { props: AnalyticsProps }) => void;
+    }
+  ).plausible;
+  if (typeof plausible === "function") {
+    plausible(event, { props });
   }
 }
