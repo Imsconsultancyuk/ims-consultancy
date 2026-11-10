@@ -139,12 +139,12 @@ export default function GuidesPage() {
             <p className="mx-auto mt-5 max-w-xl text-[1.0625rem] leading-[1.7] text-mauve-300">
               The free Leak Scan checks where cash drops out between work and payment.{" "}
               <Link href="/pricing" className="underline decoration-accent-500 decoration-2 underline-offset-4">
-                Fixed prices start at £400
+                Free Leak Scan, then £1,500 a stage
               </Link>{" "}
               once you want a person to fix what it finds.
             </p>
             <a
-              href="/contact"
+              href="/contact?intent=leak-scan&from=guides"
               data-cursor="cta"
               className="mt-8 inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-8 text-sm font-medium text-on-amber transition-colors duration-300 hover:bg-accent-600"
             >

@@ -8,7 +8,9 @@ import { CharSplit } from "../_components/CharSplit";
 import { HeroLedger, LeakLine } from "../_components/LeakLine";
 import { MagneticButton } from "../_components/MagneticButton";
 import { OG_IMAGES } from "@/lib/og";
-import { ADDONS, LADDER, PRICING_PRINCIPLES, TIERS } from "@/lib/pricing/offers";
+import { ADDONS, LADDER, PRICING_PRINCIPLES, PRICING_TERMS, TIERS } from "@/lib/pricing/offers";
+import { PARTNER_CODE, PARTNER_PRICE, gbp } from "@/lib/pricing/recovery";
+import { RecoveryCalculator } from "../_components/recovery/RecoveryCalculator";
 import {
   JsonLd,
   orgJsonLd,
@@ -19,13 +21,13 @@ import {
 const SITE = "https://intelmadesimple.com";
 
 export const metadata: Metadata = {
-  title: "Fixed Prices from £400, Free Leak Scan",
+  title: "No Recovery, No Fee. Builds from £699",
   description:
-    "Start free with a Leak Scan, then small fixed-fee steps from £400. Larger projects from £6,000. Fixed scope, fixed price, no surprise hours.",
+    "A free Leak Scan, then £1,500 a stage or £6,000 for all five, and a 15 to 25% share of money recovered for 12 months. Nothing recovered, no fee.",
   alternates: { canonical: `${SITE}/pricing`, languages: { "en-GB": `${SITE}/pricing` } },
   openGraph: {
-    title: "Fixed Prices from £400, Free Leak Scan | Intel Made Simple",
-    description: "A free Leak Scan, fixed-fee first steps from £400, and larger projects from £6,000.",
+    title: "No Recovery, No Fee | Intel Made Simple",
+    description: "Work out what you keep and what we earn on your own numbers. Builds from £699 with NEWPARTNER26.",
     url: `${SITE}/pricing`,
     type: "website",
     images: OG_IMAGES,
@@ -34,15 +36,9 @@ export const metadata: Metadata = {
 
 const [FIRST_RUNG, ...PAID_RUNGS] = LADDER;
 
-const SCALE_MAX = Math.max(...TIERS.map((t) => t.firstPayment));
-const SCALE_ROWS = [
-  ...LADDER.map((r) => ({ slug: r.slug, name: r.name, label: r.price, value: r.firstPayment, ladder: true })),
-  ...TIERS.map((t) => ({ slug: t.slug, name: t.name, label: t.price, value: t.firstPayment, ladder: false })),
-];
-
 // /contact is a static flagship page, not a Next route: a plain anchor avoids a failing RSC prefetch.
 function RungLink({ href, ...rest }: ComponentProps<"a"> & { href: string }) {
-  return href === "/contact" ? <a href={href} {...rest} /> : <Link href={href} {...rest} />;
+  return href.startsWith("/contact") ? <a href={href} {...rest} /> : <Link href={href} {...rest} />;
 }
 
 export default function PricingPage() {
@@ -50,7 +46,7 @@ export default function PricingPage() {
     path: "/pricing",
     name: "Pricing | Intel Made Simple",
     description:
-      "A free Leak Scan, fixed-fee first steps and larger project tiers, with the pricing principles Intel Made Simple holds to.",
+      "No recovery, no fee: a free Leak Scan, one build price per stage and a success fee on money recovered, with a calculator for your own numbers.",
     breadcrumbs: [
       { name: "Home", path: "/" },
       { name: "Pricing", path: "/pricing" },
@@ -111,69 +107,58 @@ export default function PricingPage() {
             <HeroLedger />
             <Reveal className="max-w-4xl">
               <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
-                Pricing · Start small
+                Pricing · How we get paid
               </p>
               <CharSplit
                 as="h1"
-                text={"Start free.\nStep up only when it pays."}
-                className="mt-5 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.018em]"
-                stagger={0.018}
+                text="No recovery, no fee."
+                className="mt-5 font-display text-[clamp(2.75rem,7vw,5.25rem)] font-bold leading-[1.02] tracking-[-0.022em]"
+                stagger={0.022}
               />
+              <p className="mt-6 inline-flex flex-wrap items-baseline gap-x-3 gap-y-1 border-l-[3px] border-accent-400 pl-4 font-sans text-[1rem] text-mauve-200 sm:text-[1.125rem]">
+                <span>
+                  System build from <strong className="font-semibold text-accent-300">{gbp(PARTNER_PRICE)}*</strong>
+                </span>
+                <span>
+                  with code{" "}
+                  <span className="rounded-[6px] border border-dashed border-accent-400/70 px-2 py-0.5 font-mono text-[0.875em] tracking-[0.06em] text-paper-ink">
+                    {PARTNER_CODE}
+                  </span>
+                </span>
+              </p>
               <p className="mt-7 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-300">
-                We are a small British consultancy, not a big firm with a big
-                firm&rsquo;s invoice. Every route in begins with a free Leak
-                Scan, then fixed-fee first steps from £400. Larger projects
-                come later, and only if the first steps show they are worth it.
-                Fixed scope, fixed price, no surprise hours.
+                We charge one build price, then take a share of the money we
+                recover for you, for twelve months. If nothing comes back, the
+                share is nothing. Move the sliders below and see what you keep
+                and what we earn, on your own numbers.
               </p>
             </Reveal>
           </div>
         </header>
 
         <section
-          aria-labelledby="scale-heading"
-          className="relative ims-band-dark px-6 pb-20 text-paper-ink sm:pb-24"
+          id="recovery"
+          aria-labelledby="recovery-heading"
+          className="relative ims-band-dark px-6 pb-20 text-paper-ink sm:pb-24 lg:pb-28"
         >
-          <div className="mx-auto w-full max-w-4xl">
+          <div className="mx-auto w-full max-w-6xl border-t border-mauve-300/15 pt-14 sm:pt-16">
             <Reveal>
               <h2
-                id="scale-heading"
-                className="font-display text-[clamp(1.5rem,2.8vw,2rem)] font-semibold leading-[1.15] tracking-[-0.012em]"
+                id="recovery-heading"
+                className="max-w-3xl font-display text-[clamp(1.75rem,3.4vw,2.5rem)] font-semibold leading-[1.12] tracking-[-0.012em]"
               >
-                The first payment on every route, to scale.
+                We don&rsquo;t get paid until we recover money for you.
               </h2>
+              <p className="mt-5 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-300">
+                Money leaks at five stages: the enquiry nobody answers, the
+                quote nobody chases, work that never reaches an invoice, the
+                invoice nobody collects and the client who quietly does not
+                come back. Pick yours.
+              </p>
             </Reveal>
-            <ul className="mt-8 space-y-3" role="list">
-              {SCALE_ROWS.map((r) => {
-                const pct = r.value === 0 ? 0 : Math.max(2, (r.value / SCALE_MAX) * 100);
-                return (
-                  <li
-                    key={r.slug}
-                    className="grid grid-cols-[8.5rem_1fr] items-center gap-x-4 gap-y-1 sm:grid-cols-[12rem_1fr_9rem]"
-                  >
-                    <a
-                      href={`#${r.slug}`}
-                      className="inline-flex min-h-[44px] items-center text-[0.875rem] font-medium text-paper-ink underline-offset-4 hover:underline"
-                    >
-                      {r.name}
-                    </a>
-                    <span aria-hidden className="relative block h-2.5 rounded-full bg-mauve-300/15">
-                      <span
-                        className={`absolute inset-y-0 left-0 rounded-full ${r.ladder ? "bg-accent-400" : "bg-mauve-200"}`}
-                        style={{ width: `${pct}%`, minWidth: r.value === 0 ? 6 : undefined }}
-                      />
-                    </span>
-                    <span className="col-start-2 whitespace-nowrap text-[0.8125rem] text-mauve-300 [font-variant-numeric:proportional-nums] sm:col-start-3 sm:text-right">
-                      {r.label}
-                    </span>
-                  </li>
-                );
-              })}
-            </ul>
-            <p className="mt-6 max-w-2xl text-[0.8125rem] leading-[1.6] text-mauve-300">
-              Bars show the first payment due, not the lifetime cost. Amber is a first step, mauve is a project.
-              Recurring charges are listed under each offer.
-            </p>
+            <div className="mt-12">
+              <RecoveryCalculator />
+            </div>
           </div>
         </section>
 
@@ -191,7 +176,7 @@ export default function PricingPage() {
                 id="ladder-heading"
                 className="max-w-2xl font-display text-[clamp(1.75rem,3.4vw,2.5rem)] font-semibold leading-[1.12] tracking-[-0.012em] text-ink"
               >
-                Five ways in, from free to a half-day with your team.
+                Four ways in. Free, then one price.
               </h2>
             </Reveal>
 
@@ -293,16 +278,16 @@ export default function PricingPage() {
           <div className="relative mx-auto w-full max-w-6xl">
             <Reveal>
               <p className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-mauve-200">
-                Projects · When the first steps say yes
+                Builds · When the Leak Scan says yes
               </p>
               <h2
                 id="tiers-heading"
                 className="mt-4 max-w-2xl font-display text-[clamp(1.75rem,3.4vw,2.5rem)] font-semibold leading-[1.12] tracking-[-0.012em]"
               >
-                Three project shapes for the fixes worth building.
+                One stage, all five, then optional care.
               </h2>
               <p className="mt-5 max-w-2xl text-[1.0625rem] leading-[1.7] text-mauve-300">
-                These start where the Leak Scan and audit end. Its ranked list of fixes is the brief. Each is a fixed price, confirmed in writing after the free Leak Scan.
+                The Leak Scan names the stage that leaks most and sets the baseline. The build price is fixed and confirmed in writing before work starts. The success fee is the only part that moves, and only with money recovered.
               </p>
             </Reveal>
 
@@ -366,7 +351,7 @@ export default function PricingPage() {
 
                     <footer className="mt-auto pt-8">
                       <a
-                        href="/contact"
+                        href={t.href}
                         data-cursor="cta"
                         className="inline-flex h-11 w-full items-center justify-center rounded-full bg-accent-500 px-6 text-[14px] font-semibold text-on-amber transition-colors duration-300 hover:bg-accent-600"
                       >
@@ -407,7 +392,7 @@ export default function PricingPage() {
             </ul>
             <p className="mt-6 text-[0.875rem] text-ink-soft">
               Quoted per build, so there is no list price.{" "}
-              <a href="/contact" className="ims-link">
+              <a href="/contact?intent=white-label&from=pricing-addons" className="ims-link">
                 Ask about white-label
               </a>
               .
@@ -464,7 +449,7 @@ export default function PricingPage() {
               <div className="mt-10 inline-block">
                 <MagneticButton strength={0.45} radius={120}>
                   <a
-                    href="/contact"
+                    href="/contact?intent=leak-scan&from=pricing-footer-cta"
                     data-cursor="cta"
                     className="inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-on-amber transition-all duration-300 hover:bg-accent-600"
                   >
@@ -473,6 +458,22 @@ export default function PricingPage() {
                 </MagneticButton>
               </div>
             </Reveal>
+          </div>
+        </section>
+        <section
+          id="terms"
+          aria-labelledby="pricing-terms-heading"
+          className="relative ims-band-light px-6 py-14 text-ink sm:py-16"
+        >
+          <div className="mx-auto w-full max-w-3xl">
+            <h2 id="pricing-terms-heading" className="text-[0.8125rem] font-semibold text-ink">
+              * The small print
+            </h2>
+            <ol className="mt-4 list-decimal space-y-2 pl-5 text-[0.8125rem] leading-[1.65] text-ink-soft">
+              {PRICING_TERMS.map((t) => (
+                <li key={t}>{t}</li>
+              ))}
+            </ol>
           </div>
         </section>
       </main>

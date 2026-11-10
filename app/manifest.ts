@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Intel Made Simple",
     short_name: "Intel Made Simple",
     description:
-      "Revenue recovery for UK professional firms. A free Leak Scan finds unbilled and unchased money; fixed-price work recovers it.",
+      "Revenue recovery for UK professional firms. A free Leak Scan finds unbilled and unchased money; a published-price build recovers it, with a success fee only on what comes back.",
     start_url: "/",
     display: "browser",
     background_color: "#19141a",

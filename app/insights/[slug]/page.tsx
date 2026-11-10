@@ -209,7 +209,7 @@ export default async function InsightPage({
                   { kind: "Service", ...spokes.service },
                   { kind: "Industry", ...spokes.industry },
                   { kind: "Guide", ...spokes.guide },
-                  { kind: "Pricing", href: "/pricing", label: "Fixed prices, from £400" },
+                  { kind: "Pricing", href: "/pricing", label: "Free Leak Scan, then £1,500 a stage" },
                 ].map((s) => (
                   <li key={s.href}>
                     <Link
@@ -264,7 +264,7 @@ export default async function InsightPage({
               Want this read against your own numbers?
             </h2>
             <a
-              href="/contact"
+              href="/contact?intent=leak-scan&from=insight"
               data-cursor="cta"
               className="mt-8 inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-8 text-sm font-medium text-on-amber transition-colors duration-300 hover:bg-accent-600"
             >

@@ -40,7 +40,9 @@
   <link rel="modulepreload" crossorigin href="/assets/submit-form-CeqOIJ4H.js">
   <link rel="stylesheet" crossorigin href="/assets/chrome-fs-0ZXQs.css">
   <link rel="stylesheet" href="/flagship/cobalt.css">
-</head>
+  <script src="/flagship/aligned-bar.js" defer></script>
+  <script src="/flagship/contact-context.js" defer></script>
+<script defer data-domain="intelmadesimple.com" src="https://plausible.io/js/script.tagged-events.outbound-links.js"></script><script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)}</script></head>
 <body class="contact-page">
 <a class="skip" href="#main">Skip to content</a>
 
@@ -64,6 +66,7 @@
       <a href="/#calc">Calculator</a>
       <a href="/#how">How it works</a>
       <a href="/#pricing">Pricing</a>
+      <a href="/pricing#recovery">Price it</a>
       <a href="/faq">FAQ</a>
       <button class="theme" type="button" id="theme-toggle" aria-label="Switch colour theme">Dark</button>
     </nav>
@@ -79,9 +82,28 @@
     <div class="c-copy">
       <p class="kicker">Contact</p>
       <h1>Tell us about <em>your firm.</em></h1>
-      <p class="lead">Four short answers. We will come back with the one place we would look first.</p>
+      <p class="lead">A few short answers. Adam reads every enquiry and replies personally, with the one place he would look first.</p>
+
+      <aside class="c-ctx" id="c-ctx" aria-labelledby="c-ctx-title" hidden>
+        <p class="c-ctx-k" id="c-ctx-title">You came from</p>
+        <p class="c-ctx-from" id="c-ctx-from"></p>
+        <dl class="c-ctx-nums" id="c-ctx-nums"></dl>
+        <p class="c-ctx-note">We send these with your message, so you do not have to type them again.</p>
+      </aside>
 
       <form class="c-form" id="contact-form" name="contact" novalidate>
+        <input type="hidden" name="plan">
+        <input type="hidden" name="code">
+        <input type="hidden" name="stages">
+        <input type="hidden" name="sector">
+        <input type="hidden" name="process">
+        <input type="hidden" name="job">
+        <input type="hidden" name="leak">
+        <input type="hidden" name="recovered">
+        <input type="hidden" name="fee">
+        <input type="hidden" name="build">
+        <input type="hidden" name="from">
+        <input type="hidden" name="booking_link" value="https://cal.com/ims-consultancy/leak-scan">
         <div class="c-field">
           <label for="c-name">Your name</label>
           <input id="c-name" name="name" type="text" autocomplete="name" required aria-describedby="c-name-err">
@@ -110,6 +132,21 @@
           </select>
           <p class="c-err" id="c-firm-err"></p>
         </div>
+        <div class="c-field c-wide" id="c-firm-other" hidden>
+          <label for="c-firm-name">What kind of firm? <span>So we use the right benchmarks</span></label>
+          <input id="c-firm-name" name="firm_name" type="text" maxlength="120" placeholder="For example, a dental practice group">
+        </div>
+        <div class="c-field c-wide">
+          <label for="c-intent">What would you like? <span>Optional</span></label>
+          <select id="c-intent" name="intent">
+            <option value="leak-scan">A free Leak Scan</option>
+            <option value="stage-build">One stage built, from £1,500</option>
+            <option value="full-system">The full system, £6,000</option>
+            <option value="care">Care after year one, £295 a month</option>
+            <option value="white-label">White-label for my clients</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
         <div class="c-field c-wide">
           <label for="c-msg-in">Where do you think money slips away? <span>Optional</span></label>
           <textarea id="c-msg-in" name="message" rows="4"></textarea>
@@ -120,6 +157,21 @@
         </div>
       </form>
       <p class="fine">We use these details only to reply to you. <a href="/privacy">Privacy notice</a>.</p>
+
+      <section class="c-next" aria-labelledby="c-next-title">
+        <h2 id="c-next-title">What happens next</h2>
+        <ol>
+          <li><strong>Adam replies personally.</strong> Not a sequence, not a bot. He reads what you sent and answers it.</li>
+          <li><strong>A 20-minute Leak Scan call.</strong> How enquiries, quotes, invoices and renewals move through your firm. Nothing to prepare.</li>
+          <li><strong>A written number.</strong> The money leaking, priced in pounds, with the working shown and a baseline agreed in writing.</li>
+        </ol>
+        <p class="c-book">Rather pick a time now? <a href="https://cal.com/ims-consultancy/leak-scan" rel="noopener">Book the Leak Scan directly</a>.</p>
+      </section>
+
+      <section class="c-cost" aria-labelledby="c-cost-title">
+        <h2 id="c-cost-title">What it costs</h2>
+        <p>The Leak Scan is free. If it finds something worth fixing, a build is £1,500 a stage, or £6,000 for all five. Your first stage is £699 with code <span class="c-chip">NEWPARTNER26</span>, first project only. After that we take 15 to 25% of the money we recover above your baseline, for 12 months, then it stops. <strong>No recovery, no fee.</strong> <a href="/pricing#terms">The small print</a>.</p>
+      </section>
     </div>
 
     <div class="c-side">
@@ -138,6 +190,25 @@
 </main>
 
 <footer class="foot" aria-labelledby="foot-title">
+  <div class="aw" data-aw>
+    <div class="aw-in">
+      <p class="aw-k" id="aw-k">Aligned with</p>
+      <div class="aw-vp">
+        <ul class="aw-list" aria-labelledby="aw-k">
+          <li><a class="aw-st" href="https://www.iso.org/standard/27001" target="_blank" rel="noopener noreferrer"><b>ISO/IEC 27001</b><span>Information security</span><span class="aw-vh">, opens in a new tab</span></a></li>
+          <li><a class="aw-st" href="https://www.iso.org/standard/42001" target="_blank" rel="noopener noreferrer"><b>ISO/IEC 42001</b><span>AI management</span><span class="aw-vh">, opens in a new tab</span></a></li>
+          <li><a class="aw-st" href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener noreferrer"><b>NIST AI RMF</b><span>AI risk</span><span class="aw-vh">, opens in a new tab</span></a></li>
+          <li><a class="aw-st" href="https://www.ncsc.gov.uk/cyberessentials/overview" target="_blank" rel="noopener noreferrer"><b>Cyber Essentials</b><span>NCSC scheme</span><span class="aw-vh">, opens in a new tab</span></a></li>
+          <li><a class="aw-st" href="https://www.legislation.gov.uk/eur/2016/679/contents" target="_blank" rel="noopener noreferrer"><b>UK GDPR</b><span>Data protection</span><span class="aw-vh">, opens in a new tab</span></a></li>
+          <li><a class="aw-st" href="https://www.legislation.gov.uk/ukpga/2018/12/contents" target="_blank" rel="noopener noreferrer"><b>DPA 2018</b><span>Data Protection Act</span><span class="aw-vh">, opens in a new tab</span></a></li>
+          <li><a class="aw-st" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" target="_blank" rel="noopener noreferrer"><b>EU AI Act</b><span>Regulation 2024/1689</span><span class="aw-vh">, opens in a new tab</span></a></li>
+          <li><a class="aw-st" href="https://genai.owasp.org/llm-top-10/" target="_blank" rel="noopener noreferrer"><b>OWASP LLM Top 10</b><span>AI app security</span><span class="aw-vh">, opens in a new tab</span></a></li>
+        </ul>
+      </div>
+      <button class="aw-pause" type="button" aria-pressed="false" hidden>Pause</button>
+      <a class="aw-note" href="/ai-policy">Alignment, not certification</a>
+    </div>
+  </div>
   <div class="foot-in">
     <div class="foot-brand">
       <a class="logo" href="/" aria-label="Intel Made Simple, home">

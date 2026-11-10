@@ -134,3 +134,126 @@ main p a:not([class]):hover, .faq-src a:hover, .terms td a:hover, .fine a:hover,
 }
 
 .skip:focus-visible { outline: 2px solid var(--amber, #e8a33d); outline-offset: 3px; }
+
+/* 8. Contact page: the context a CTA carried in, what happens next, what it costs. */
+.c-ctx { margin: 36px 0 0; padding: 20px 22px; border: 1px solid var(--rule); border-left: 3px solid var(--amber); border-radius: var(--r); background: var(--tint); }
+.c-ctx-k { margin: 0; font: 600 12px/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.c-ctx-from { margin: 8px 0 0; font: 600 17px/1.35 var(--sans); color: var(--fg); }
+.c-ctx-nums { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px 20px; margin: 16px 0 0; }
+.c-ctx-nums div { min-width: 0; }
+.c-ctx-nums dt { font-size: 13px; color: var(--fg-2); }
+.c-ctx-nums dd { margin: 2px 0 0; font: 700 20px/1.2 var(--sans); letter-spacing: -.01em; color: var(--fg); overflow-wrap: break-word; }
+.c-ctx-nums dd.is-text { font: 600 16px/1.4 var(--sans); letter-spacing: 0; }
+.c-ctx-nums dd small { display: block; margin-top: 2px; font: 500 12px/1.3 var(--sans); letter-spacing: .02em; color: var(--fg-2); }
+.c-ctx-note { margin: 14px 0 0; font-size: 13px; color: var(--fg-2); }
+.c-ctx.is-in { animation: c-ctx-in .5s var(--ease-out) both; }
+@keyframes c-ctx-in { from { transform: translateY(10px); } to { transform: none; } }
+.c-next, .c-cost { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--rule); }
+.c-next h2, .c-cost h2 { margin: 0; font: 700 22px/1.2 var(--sans); letter-spacing: -.015em; color: var(--fg); }
+.c-next ol { margin: 18px 0 0; padding: 0; list-style: none; counter-reset: c-next; display: grid; gap: 14px; }
+.c-next li { position: relative; padding-left: 44px; font-size: 16px; line-height: 1.55; color: var(--fg-2); counter-increment: c-next; }
+.c-next li::before { content: counter(c-next, decimal-leading-zero); position: absolute; left: 0; top: 1px; font: 700 13px/1.6 var(--sans); letter-spacing: .04em; color: var(--amber-ink); }
+.c-next li strong, .c-cost strong { color: var(--fg); }
+.c-book, .c-cost p { margin: 18px 0 0; font-size: 16px; line-height: 1.6; color: var(--fg-2); }
+.c-book a, .c-cost a { color: var(--cb-link); text-underline-offset: 3px; }
+.c-book a:hover, .c-cost a:hover { color: var(--cb-link-h); }
+.c-chip { padding: 1px 7px; border: 1px dashed var(--amber-ink); border-radius: 6px; font: 600 .9em/1.4 ui-monospace, "Cascadia Mono", Consolas, monospace; letter-spacing: .04em; color: var(--fg); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { .c-ctx.is-in { animation: none; } }
+
+/* 9. Home hero: "No recovery, no fee." stamp and the copy entrance.
+   The copy is in place for every reader without JS or with reduced motion.
+   With JS, the start state holds only until home-extras.js takes over (hx-run)
+   or the 1200ms safety animation ends it, whichever comes first. */
+.nrnf { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin: 26px 0 0; }
+.nrnf-stamp {
+  --nrnf-rule: 1;
+  position: relative; display: inline-block; padding: 9px 16px 10px;
+  font: 800 clamp(19px, 2vw, 24px)/1 var(--sans); letter-spacing: -.02em; text-transform: uppercase;
+  color: var(--on-amber); background: var(--amber); border-radius: 6px;
+  transform: rotate(-2deg); transform-origin: 30% 60%;
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--amber);
+}
+.nrnf-stamp::after {
+  content: ""; position: absolute; left: 16px; right: 16px; bottom: 5px; height: 2px;
+  background: currentColor; opacity: .55; transform: scaleX(var(--nrnf-rule)); transform-origin: left center;
+}
+.nrnf-build { font: 500 14px/1.4 var(--sans); color: var(--fg-2); max-width: 30ch; }
+.nrnf-code { font: 600 13px/1 var(--mono); letter-spacing: .04em; padding: 3px 6px; border: 1px dashed var(--muted); border-radius: 4px; white-space: nowrap; }
+#hero h1 .hw { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 .08em .12em; margin: 0 -.08em -.12em; }
+#hero h1 .hw > span { display: inline-block; }
+
+@keyframes hx-safe { to { transform: none; opacity: 1; visibility: visible; } }
+@media (prefers-reduced-motion: no-preference) {
+  .js:not(.hx-run):not(.hx-done) #hero h1 .hw > span { transform: translateY(112%); animation: hx-safe 0s 1.2s forwards; }
+  .js:not(.hx-run):not(.hx-done) #hero :is(.kicker, .nrnf-stamp, .nrnf-build, .lead, .actions) { opacity: 0; animation: hx-safe 0s 1.2s forwards; }
+}
+
+/* 10. Home picker: "Something else" tile and its panel. It cannot carry the
+   compiled .tile class, which would hand it to the bundle's sector lookup. */
+.tile-other {
+  grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 12px; text-align: left;
+  font: 500 15px/1.3 var(--sans); color: var(--fg); padding: 17px 16px;
+  border: 1px dashed var(--muted); border-radius: var(--r); background: transparent; cursor: pointer;
+  transition: transform .16s var(--ease-out), border-color .2s ease, background-color .2s ease, color .2s ease;
+}
+.tile-other span { font-size: 13px; color: var(--muted); }
+.tile-other:hover { border-style: solid; }
+.tile-other:active { transform: scale(.98); }
+.tile-other[aria-pressed=true] { border: 1px solid var(--ink); background: var(--ink); color: var(--paper); font-weight: 600; }
+.tile-other[aria-pressed=true] span { color: inherit; opacity: .75; }
+.ind-other { margin: 14px 0 0; padding: 20px; border: 1px solid var(--rule); border-left: 3px solid var(--amber); border-radius: var(--r); background: var(--card); }
+.ind-other-k { display: block; margin: 0 0 8px; padding: 0; font: 600 12px/1.2 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.ind-other-in { width: 100%; min-height: 48px; padding: 0 14px; font: 500 16px/1 var(--sans); color: var(--fg); background: var(--field); border: 1px solid var(--control); border-radius: 10px; }
+.ind-other-stages { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; padding: 0; border: 0; min-width: 0; }
+.ind-other-stages legend { float: left; width: 100%; }
+.ind-other-stages label { position: relative; cursor: pointer; }
+.ind-other-stages input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.ind-other-stages span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; font: 500 14px/1 var(--sans); border: 1px solid var(--rule); border-radius: 999px; transition: background-color .2s ease, border-color .2s ease, color .2s ease; }
+.ind-other-stages input:checked + span { background: var(--amber); border-color: var(--amber); color: var(--on-amber); font-weight: 600; }
+.ind-other-stages input:focus-visible + span { outline: 2px solid var(--cb-focus, var(--amber)); outline-offset: 2px; }
+.ind-other-note { margin: 16px 0 0; font-size: 14px; line-height: 1.45; color: var(--fg-2); }
+#ind-other-cta { margin-top: 16px; height: auto; min-height: 44px; padding: 12px 20px; white-space: normal; text-align: left; line-height: 1.25; }
+
+/* 11. "Aligned with" strip at the top of every flagship footer (aligned-bar.js).
+   No JS or reduced motion: a wrapped row of links. With GSAP: a belt. */
+.aw { border-bottom: 1px solid var(--mauve-soft); background: var(--paper-2, var(--paper)); }
+.aw-in { max-width: 1240px; margin: 0 auto; padding: 10px 40px; display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: center; gap: 8px 20px; }
+.aw-k { --aw-rule: 1; position: relative; justify-self: start; margin: 0; padding-bottom: 5px; font: 600 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.aw-k::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px; background: var(--amber); transform: scaleX(var(--aw-rule)); transform-origin: left; }
+.aw-vp { min-width: 0; }
+.aw-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.aw-st { display: inline-flex; align-items: baseline; gap: 7px; padding: 7px 12px; border: 1px solid var(--mauve-soft); border-radius: 999px; background: var(--card, var(--paper)); color: var(--ink); text-decoration: none; white-space: nowrap; transition: border-color .2s ease; }
+.aw-st::before { content: ""; align-self: center; width: 6px; height: 6px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 3px color-mix(in srgb, var(--amber) 22%, transparent); }
+.aw-st b { font: 600 12.5px/1 var(--mono); letter-spacing: .02em; }
+.aw-st span { font-size: 12.5px; line-height: 1; color: var(--muted); }
+.aw-st:hover { border-color: var(--amber); }
+.aw-st:focus-visible, .aw-pause:focus-visible, .aw-note:focus-visible { outline: 2px solid var(--cb-focus); outline-offset: 2px; }
+.aw-vh { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.aw-pause { font: 500 12px/1 var(--sans); color: var(--ink-2); background: none; border: 1px solid var(--mauve-soft); border-radius: 999px; height: 30px; padding: 0 12px; cursor: pointer; }
+.aw-pause:hover { border-color: var(--ink-2); }
+.aw-note { font-size: 12px; color: var(--muted); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; white-space: nowrap; }
+.aw-note:hover { color: var(--ink); }
+.aw-on .aw-vp { overflow: hidden; padding: 4px 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 40px, #000 calc(100% - 40px), transparent); mask-image: linear-gradient(90deg, transparent, #000 40px, #000 calc(100% - 40px), transparent); }
+.aw-on .aw-belt { display: flex; width: max-content; will-change: transform; }
+.aw-on .aw-list { flex-wrap: nowrap; padding-right: 8px; }
+@media (max-width: 820px) {
+  .aw-in { grid-template-columns: 1fr auto; padding: 12px 16px; }
+  .aw-vp { grid-column: 1 / -1; grid-row: 2; }
+  /* The footer Trust column already says "Alignment, not certification" on phones. */
+  .aw-note { display: none; }
+  .aw-pause { height: 44px; min-width: 64px; }
+  .aw-st { padding: 13px 14px; }
+}
+
+/* 12. Home #privacy: how tokenisation works, and what it is aligned with. */
+.tok { list-style: none; counter-reset: tok; margin: 28px 0 0; padding: 0; display: grid; gap: 14px; }
+.tok li { counter-increment: tok; position: relative; padding: 0 0 0 44px; }
+.tok li::before { content: counter(tok, decimal-leading-zero); position: absolute; left: 0; top: 0; width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid var(--amber-ink); border-radius: 50%; font: 700 12px/1 var(--mono); color: var(--amber-ink); }
+.tok b { display: block; font-size: 16px; line-height: 1.3; color: var(--ink); }
+.tok span { display: block; margin-top: 3px; font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+.tok-fine { margin: 16px 0 0; font-size: 13px; line-height: 1.5; color: var(--muted); }
+.tok-aligned { margin: 22px 0 0; padding: 16px 0 0; border-top: 1px solid var(--rule); }
+.tok-aligned .aw-k { display: inline-block; margin-bottom: 12px; }
+.tok-aligned ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.tok-aligned li:nth-child(odd) .aw-st { transform: rotate(-1deg); }
+@media (max-width: 820px) { .tok-aligned .aw-st { padding: 12px 14px; } }

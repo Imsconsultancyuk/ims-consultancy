@@ -2,6 +2,8 @@ import Link from "next/link";
 
 import { industries } from "@/lib/industries";
 
+import { AlignedStrip } from "./AlignedStrip";
+
 // Flagship routes ("/", "/tools", "/faq", "/contact") are served by Netlify
 // redirects, so those links are plain anchors. Next pages use Link.
 const COMPANY = [
@@ -19,6 +21,7 @@ const LOGO_PATH = "M14 14c2.4-3.5 7.2-3.7 7.2 0s-4.8 3.5-7.2 0c-2.4-3.5-7.2-3.7-
 export function TrophyFooter() {
   return (
     <footer className="fx-foot" aria-labelledby="foot-title">
+      <AlignedStrip />
       <div className="fx-foot-in">
         <div className="fx-foot-brand">
           <a className="fx-logo" href="/" aria-label="Intel Made Simple, home">
@@ -33,7 +36,7 @@ export function TrophyFooter() {
             them, and hand over the tools that stop the leak coming back.
           </p>
           <p className="fx-place">Based in London. Working with firms across the United Kingdom.</p>
-          <a className="fx-btn" href="/contact">
+          <a className="fx-btn" href="/contact?intent=leak-scan&from=footer">
             Book a free Leak Scan
           </a>
         </div>

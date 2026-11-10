@@ -6,7 +6,7 @@ export const maAdvisoryBusinessBrokers: Industry = {
   shortName: "Advisory Firm",
   regulator: "ICO",
   regulatorLine:
-    "Registered with the ICO and built to UK GDPR. Your data is processed under a DPA, tokenised, and never used for model training.",
+    "Built to UK GDPR. Your data is processed under a DPA, tokenised, and never used for model training.",
   accent: "rose",
   leakLine: "67 succession-risk owners in one region",
   meta: {
@@ -149,7 +149,7 @@ export const maAdvisoryBusinessBrokers: Industry = {
       "UK-based support, DPA included",
     ],
     timeline: "Live within 14 days of data access",
-    anchor: "Start with a free Leak Scan. Projects from £6,000, fixed price.",
+    anchor: "Start with a free Leak Scan. Then £1,500 a stage or £6,000 for the full system, with a success fee of 15 to 25% of what it recovers.",
   },
   faqs: [
     {
@@ -170,7 +170,7 @@ export const maAdvisoryBusinessBrokers: Industry = {
     },
     {
       q: "What does it cost?",
-      a: "Start with a free Leak Scan, then a fixed-price project from £6,000 once the numbers justify it. The exact price is quoted in writing after the scan, based on book size.",
+      a: "Start with a free Leak Scan, then a stage build at £1,500 or the full system at £6,000 once the numbers justify it. We add a success fee of 15 to 25% of the money recovered above your baseline, for 12 months. Everything is confirmed in writing after the scan.",
     },
   ],
   related: ["law-firms", "accountancy-firms"],

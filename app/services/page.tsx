@@ -29,7 +29,7 @@ const TOOL_EXAMPLES = [
 ] as const;
 
 const DESCRIPTION =
-  "Revenue Leak Recovery plus three fixed-fee first steps for UK firms: AI Readiness Audit from £1,500, Enquiry Desk and Team Enablement. Prices published.";
+  "Revenue Leak Recovery plus three first steps for UK firms: AI Readiness Audit, Enquiry Desk and Team Enablement, each £1,500. Prices published.";
 
 export const metadata: Metadata = {
   title: "Revenue Recovery and AI Services, Priced",
@@ -157,7 +157,7 @@ export default function ServicesPage(): React.JSX.Element {
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
-                  href="/contact"
+                  href="/contact?intent=leak-scan&from=services"
                   data-cursor="cta"
                   className="inline-flex h-11 items-center justify-center rounded-full bg-accent-500 px-6 text-[14px] font-semibold text-on-amber transition-colors duration-300 hover:bg-accent-600"
                 >
@@ -270,14 +270,7 @@ export default function ServicesPage(): React.JSX.Element {
             </ul>
             <Reveal delay={200}>
               <p className="mt-8 max-w-2xl text-[0.9375rem] leading-[1.7] text-mauve-300">
-                Holding a quote you are unsure about? The{" "}
-                <Link
-                  href="/services/ai-readiness-audit#second-opinion"
-                  className="ims-link"
-                >
-                  AI Second Opinion
-                </Link>{" "}
-                starts from £400 and is the smallest door in.{" "}
+                Not sure where to start? The free Leak Scan puts a pound figure on your leak first.{" "}
                 <Link href="/pricing" className="ims-link">
                   See the full price ladder
                 </Link>
@@ -362,7 +355,7 @@ export default function ServicesPage(): React.JSX.Element {
               >
                 Once the first steps say yes.
               </h2>
-              <p className="mt-4 max-w-2xl text-[0.9375rem] leading-[1.7] text-ink-soft">Each is a fixed price, confirmed in writing after the free Leak Scan.</p>
+              <p className="mt-4 max-w-2xl text-[0.9375rem] leading-[1.7] text-ink-soft">Every price is confirmed in writing after the free Leak Scan.</p>
             </Reveal>
             <ul className="mt-10 grid gap-5 md:grid-cols-3" role="list">
               {TIERS.map((t, i) => (
@@ -451,7 +444,7 @@ export default function ServicesPage(): React.JSX.Element {
               <div className="mt-10 inline-block">
                 <MagneticButton strength={0.45} radius={120}>
                   <a
-                    href="/contact"
+                    href="/contact?intent=leak-scan&from=services"
                     data-cursor="cta"
                     className="inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-on-amber transition-all duration-300 hover:bg-accent-600"
                   >

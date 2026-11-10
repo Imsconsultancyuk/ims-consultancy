@@ -100,7 +100,7 @@ export function ServiceDetail({ service }: { service: ServiceContent }): React.J
                   {rung.timing}
                 </p>
                 <a
-                  href="/contact"
+                  href={`/contact?intent=leak-scan&from=service-${service.slug}`}
                   data-cursor="cta"
                   className="mt-6 inline-flex h-11 w-full items-center justify-center rounded-full bg-accent-500 px-6 text-[14px] font-semibold text-on-amber transition-colors duration-300 hover:bg-accent-600"
                 >
@@ -215,7 +215,7 @@ export function ServiceDetail({ service }: { service: ServiceContent }): React.J
                   {service.secondary.body}
                 </p>
                 <a
-                  href="/contact"
+                  href={`/contact?intent=leak-scan&from=service-${service.slug}`}
                   data-cursor="cta"
                   className="mt-7 inline-flex h-11 items-center justify-center rounded-full bg-accent-500 px-6 text-[14px] font-semibold text-on-amber transition-colors duration-300 hover:bg-accent-600"
                 >
@@ -343,7 +343,7 @@ export function ServiceDetail({ service }: { service: ServiceContent }): React.J
               <div className="mt-10 inline-block">
                 <MagneticButton strength={0.45} radius={120}>
                   <a
-                    href="/contact"
+                    href={`/contact?intent=leak-scan&from=service-${service.slug}`}
                     data-cursor="cta"
                     className="inline-flex h-12 items-center justify-center rounded-full bg-accent-500 px-8 text-sm font-medium tracking-[0.02em] text-on-amber transition-all duration-300 hover:bg-accent-600"
                   >

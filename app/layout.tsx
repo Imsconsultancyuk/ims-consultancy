@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Intel Made Simple",
   },
   description:
-    "We work with UK professional firms to find unbilled and unchased revenue, at a fixed price after a free Leak Scan.",
+    "We work with UK professional firms to find unbilled and unchased revenue, Free Leak Scan first, then a published price and a fee only on what we recover.",
   keywords: [
     "revenue leakage",
     "lock-up days",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "UK Professional Firm Revenue Recovery | Intel Made Simple",
     description:
-      "We find unbilled and unchased revenue in UK professional firms, at a fixed price after a free Leak Scan.",
+      "We find unbilled and unchased revenue in UK professional firms, Free Leak Scan first, then a published price and a fee only on what we recover.",
     url: "https://intelmadesimple.com",
     images: OG_IMAGES,
     siteName: "Intel Made Simple",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "UK Professional Firm Revenue Recovery | Intel Made Simple",
     description:
-      "We find unbilled and unchased revenue in UK professional firms, at a fixed price after a free Leak Scan.",
+      "We find unbilled and unchased revenue in UK professional firms, Free Leak Scan first, then a published price and a fee only on what we recover.",
     images: OG_IMAGES.map((i) => i.url),
   },
   robots: {
@@ -77,6 +77,17 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
+        <script
+          defer
+          data-domain="intelmadesimple.com"
+          src="https://plausible.io/js/script.tagged-events.outbound-links.js"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)}",
+          }}
+        />
       </head>
       <body
         className="min-h-full flex flex-col bg-paper text-ink font-sans"

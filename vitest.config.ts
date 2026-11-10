@@ -1,6 +1,6 @@
 import path from "node:path";
 
-import { defineConfig } from "vitest/config";
+import { configDefaults, defineConfig } from "vitest/config";
 
 // Minimal config for IMS-040's reducer/timer unit tests — plain Node
 // environment, no jsdom/React Testing Library needed since useDemoMachine's
@@ -16,5 +16,7 @@ export default defineConfig({
   },
   test: {
     environment: "node",
+    // tests/e2e and tests/qa are Playwright specs, run by `npm run test:e2e`.
+    exclude: [...configDefaults.exclude, "tests/e2e/**", "tests/qa/**"],
   },
 });

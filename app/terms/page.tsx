@@ -126,8 +126,8 @@ export default function TermsPage() {
               <p>The following apply to every engagement we accept:</p>
               <ul className="space-y-3">
                 <Bullet>
-                  Fixed scope, fixed price. Quoted in GBP. Half on start,
-                  half on hand-over.
+                  Fixed scope. Build fee quoted in GBP, half on start and half on
+                  hand-over. Any success fee is set out in your written quote.
                 </Bullet>
                 <Bullet>
                   The Leak Scan is free. You are under no obligation to continue after any step.
