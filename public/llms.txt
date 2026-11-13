@@ -47,7 +47,7 @@ A small British consultancy that helps small and mid-sized firms find and recove
 - [Services](https://intelmadesimple.com/services): Revenue Leak Recovery, three entry services, larger projects, white-label add-ons
 - [Pricing](https://intelmadesimple.com/pricing): the full ladder, one source of truth
 - [Industries](https://intelmadesimple.com/industries): ten sectors, department by department, with three tools each
-- [Tools](https://intelmadesimple.com/tools): every tool, runnable on sample data
+- [Business solutions](https://intelmadesimple.com/solutions): eleven industries including sole traders, three tools each, a live example of every tool, white label available, PII tokenised
 - [Process](https://intelmadesimple.com/process): the seven steps
 - [Sitemap](https://intelmadesimple.com/sitemap.xml): full URL list
 

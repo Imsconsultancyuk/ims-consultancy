@@ -41,7 +41,9 @@
   <link rel="stylesheet" crossorigin href="/assets/chrome-fs-0ZXQs.css">
   <link rel="stylesheet" href="/flagship/cobalt.css">
   <script src="/flagship/aligned-bar.js" defer></script>
-  <script src="/flagship/contact-context.js" defer></script>
+  <script src="/flagship/footer-fx.js" defer data-auto></script>
+  <link rel="stylesheet" href="/flagship/funnel.css">
+  <script type="module" src="/flagship/contact-funnel.js"></script>
 <script defer data-domain="intelmadesimple.com" src="https://plausible.io/js/script.tagged-events.outbound-links.js"></script><script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)}</script></head>
 <body class="contact-page">
 <a class="skip" href="#main">Skip to content</a>
@@ -54,21 +56,17 @@
     </a>
     <nav class="nav-main" id="nav-main" aria-label="Main">
       <a href="/#leaks">Where firms leak</a>
-      <div class="sectors">
-        <button class="sectors-btn" type="button" aria-expanded="false" aria-controls="sectors-panel">Sectors</button>
-        <div class="sectors-panel" id="sectors-panel">
-          <p class="sectors-lead">Ten sectors, each with its own toolkit</p>
-          <ul><li><a href="/tools#law-firms">Law Firms</a></li><li><a href="/tools#accountancy-firms">Accountancy Firms</a></li><li><a href="/tools#ifas-wealth-managers">Wealth Management & IFAs</a></li><li><a href="/tools#mortgage-brokers">Mortgage & Finance Brokers</a></li><li><a href="/tools#commercial-insurance-brokers">Commercial Insurance Brokers</a></li><li><a href="/tools#commercial-property">Commercial Property</a></li><li><a href="/tools#executive-search-recruitment">Executive Search & Recruitment</a></li><li><a href="/tools#ma-advisory-business-brokers">M&A Advisory & Business Brokers</a></li><li><a href="/tools#private-healthcare-groups">Private Healthcare Groups</a></li><li><a href="/tools#b2b-saas">B2B SaaS</a></li></ul>
-          <a class="sectors-all" href="/tools">See every tool</a>
-        </div>
-      </div>
-      <a href="/tools">Tools</a>
-      <a href="/#calc">Calculator</a>
+      <a href="/solutions">Business solutions</a>
       <a href="/#how">How it works</a>
       <a href="/#pricing">Pricing</a>
-      <a href="/pricing#recovery">Price it</a>
       <a href="/faq">FAQ</a>
-      <button class="theme" type="button" id="theme-toggle" aria-label="Switch colour theme">Dark</button>
+      <div class="sectors">
+        <button class="sectors-btn" type="button" aria-expanded="false" aria-controls="company-panel">More</button>
+        <div class="sectors-panel sectors-panel-sm" id="company-panel">
+          <ul><li><a href="/#calc">Recovery calculator</a></li><li><a href="/services">Services</a></li><li><a href="/case-studies">Case studies</a></li><li><a href="/process">Process</a></li><li><a href="/about">About</a></li><li><a href="/insights">Insights</a></li><li><a href="/reviews">Reviews</a></li><li class="theme-li"><button class="theme" type="button" id="theme-toggle" aria-label="Switch colour theme">Dark</button></li></ul>
+        </div>
+      </div>
+      <a class="nav-price" href="/pricing#recovery">Price it</a>
     </nav>
     <a class="btn btn-p btn-sm nav-cta" href="/contact" aria-current="page"><span class="long">Book a free Leak Scan</span><span class="short">Book a scan</span></a>
     <button class="menu" type="button" id="menu-btn" aria-expanded="false" aria-controls="nav-main" aria-label="Open menu"><i></i><i></i></button>
@@ -77,87 +75,220 @@
 
 
 <main id="main">
-<section class="sec c-sec">
-  <div class="c-grid">
-    <div class="c-copy">
+<section class="sec c-sec fn-sec">
+  <div class="fn-wrap">
+    <header class="fn-head">
       <p class="kicker">Contact</p>
       <h1>Tell us about <em>your firm.</em></h1>
-      <p class="lead">A few short answers. Adam reads every enquiry and replies personally, with the one place he would look first.</p>
+      <p class="lead">Six short steps, about two minutes. Adam reads every answer and replies personally.</p>
+      <p class="fn-from" id="fn-from" hidden><span class="fn-from-k">You came from</span><b id="fn-from-v"></b></p>
+    </header>
 
-      <aside class="c-ctx" id="c-ctx" aria-labelledby="c-ctx-title" hidden>
-        <p class="c-ctx-k" id="c-ctx-title">You came from</p>
-        <p class="c-ctx-from" id="c-ctx-from"></p>
-        <dl class="c-ctx-nums" id="c-ctx-nums"></dl>
-        <p class="c-ctx-note">We send these with your message, so you do not have to type them again.</p>
-      </aside>
+    <div class="fn" id="funnel" data-state="ask">
+      <div class="fn-panel">
+        <div class="fn-progress">
+          <p class="fn-count" id="fn-count" aria-live="polite">Step 1 of 6<span> · About you</span></p>
+          <div class="fn-bar" id="fn-bar" role="progressbar" aria-label="Enquiry progress" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-valuetext="Step 1 of 6, About you">
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+        </div>
 
-      <form class="c-form" id="contact-form" name="contact" novalidate>
-        <input type="hidden" name="plan">
-        <input type="hidden" name="code">
-        <input type="hidden" name="stages">
-        <input type="hidden" name="sector">
-        <input type="hidden" name="process">
-        <input type="hidden" name="job">
-        <input type="hidden" name="leak">
-        <input type="hidden" name="recovered">
-        <input type="hidden" name="fee">
-        <input type="hidden" name="build">
-        <input type="hidden" name="from">
-        <input type="hidden" name="booking_link" value="https://cal.com/ims-consultancy/leak-scan">
-        <div class="c-field">
-          <label for="c-name">Your name</label>
-          <input id="c-name" name="name" type="text" autocomplete="name" required aria-describedby="c-name-err">
-          <p class="c-err" id="c-name-err"></p>
-        </div>
-        <div class="c-field">
-          <label for="c-email">Work email</label>
-          <input id="c-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@yourfirm.co.uk" required aria-describedby="c-email-err">
-          <p class="c-err" id="c-email-err"></p>
-        </div>
-        <div class="c-field">
-          <label for="c-firm">Kind of firm</label>
-          <select id="c-firm" name="firm" required aria-describedby="c-firm-err">
-            <option value="">Choose one</option>
-            <option>Law firm</option>
-            <option>Accountancy firm</option>
-            <option>Wealth manager or IFA</option>
-            <option>Mortgage or finance broker</option>
-            <option>Commercial insurance broker</option>
-            <option>Commercial property firm</option>
-            <option>Executive search or recruitment firm</option>
-            <option>M&amp;A advisory or business broker</option>
-            <option>Private healthcare group</option>
-            <option>B2B SaaS company</option>
-            <option>Something else</option>
-          </select>
-          <p class="c-err" id="c-firm-err"></p>
-        </div>
-        <div class="c-field c-wide" id="c-firm-other" hidden>
-          <label for="c-firm-name">What kind of firm? <span>So we use the right benchmarks</span></label>
-          <input id="c-firm-name" name="firm_name" type="text" maxlength="120" placeholder="For example, a dental practice group">
-        </div>
-        <div class="c-field c-wide">
-          <label for="c-intent">What would you like? <span>Optional</span></label>
-          <select id="c-intent" name="intent">
-            <option value="leak-scan">A free Leak Scan</option>
-            <option value="stage-build">One stage built, from £1,500</option>
-            <option value="full-system">The full system, £6,000</option>
-            <option value="care">Care after year one, £295 a month</option>
-            <option value="white-label">White-label for my clients</option>
-            <option value="other">Something else</option>
-          </select>
-        </div>
-        <div class="c-field c-wide">
-          <label for="c-msg-in">Where do you think money slips away? <span>Optional</span></label>
-          <textarea id="c-msg-in" name="message" rows="4"></textarea>
-        </div>
-        <div class="c-send">
-          <button class="btn btn-p" type="submit">Send message</button>
+        <form class="fn-form" id="funnel-form" name="contact" novalidate>
+          <input type="hidden" name="plan">
+          <input type="hidden" name="code">
+          <input type="hidden" name="stages">
+          <input type="hidden" name="sector">
+          <input type="hidden" name="process">
+          <input type="hidden" name="job">
+          <input type="hidden" name="leak">
+          <input type="hidden" name="recovered">
+          <input type="hidden" name="fee">
+          <input type="hidden" name="build">
+          <input type="hidden" name="from">
+          <input type="hidden" name="ref">
+          <input type="hidden" name="booking_link" value="https://cal.com/ims-consultancy/leak-scan">
+          <div class="fn-hp" aria-hidden="true"><label>Leave this empty<input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></div>
+
+          <fieldset class="fn-step" data-step="1" data-title="About you">
+            <legend tabindex="-1">Who are we speaking to?</legend>
+            <div class="c-field">
+              <label for="c-name">Your name</label>
+              <input id="c-name" name="name" type="text" autocomplete="name" required aria-describedby="c-name-err">
+              <p class="c-err" id="c-name-err"></p>
+            </div>
+            <div class="c-field">
+              <label for="c-phone">Phone number</label>
+              <input id="c-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="07… or +44…" required aria-describedby="c-phone-err">
+              <p class="c-err" id="c-phone-err"></p>
+            </div>
+            <div class="c-field">
+              <label for="c-email">Work email</label>
+              <input id="c-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@yourfirm.co.uk" required aria-describedby="c-email-err">
+              <p class="c-err" id="c-email-err"></p>
+            </div>
+          </fieldset>
+
+          <fieldset class="fn-step" data-step="2" data-title="Your firm" hidden>
+            <legend tabindex="-1">Tell us about the firm.</legend>
+            <div class="c-field">
+              <label for="c-firm">Kind of firm</label>
+              <select id="c-firm" name="firm" required aria-describedby="c-firm-err">
+                <option value="">Choose one</option>
+                <option>Law firm</option>
+                <option>Accountancy firm</option>
+                <option>Wealth manager or IFA</option>
+                <option>Mortgage or finance broker</option>
+                <option>Commercial insurance broker</option>
+                <option>Commercial property firm</option>
+                <option>Executive search or recruitment firm</option>
+                <option>M&amp;A advisory or business broker</option>
+                <option>Private healthcare group</option>
+                <option>B2B SaaS company</option>
+                <option>Sole trader or small business</option>
+                <option>Something else</option>
+              </select>
+              <p class="c-err" id="c-firm-err"></p>
+            </div>
+            <div class="c-field" id="c-firm-other" hidden>
+              <label for="c-firm-name">What kind of firm? <span>So we use the right benchmarks</span></label>
+              <input id="c-firm-name" name="firm_name" type="text" maxlength="120" placeholder="For example, a dental practice group">
+            </div>
+            <div class="fn-group" role="radiogroup" aria-labelledby="c-size-l" aria-describedby="c-size-err">
+              <p class="fn-gl" id="c-size-l">How many people work there?</p>
+              <label class="fn-opt"><input type="radio" name="company_size" value="Just me"><span class="fn-opt-t">Just me</span></label>
+              <label class="fn-opt"><input type="radio" name="company_size" value="2 to 10"><span class="fn-opt-t">2 to 10</span></label>
+              <label class="fn-opt"><input type="radio" name="company_size" value="11 to 50"><span class="fn-opt-t">11 to 50</span></label>
+              <label class="fn-opt"><input type="radio" name="company_size" value="51 to 250"><span class="fn-opt-t">51 to 250</span></label>
+              <label class="fn-opt"><input type="radio" name="company_size" value="Over 250"><span class="fn-opt-t">Over 250</span></label>
+            </div>
+            <p class="c-err" id="c-size-err"></p>
+          </fieldset>
+
+          <fieldset class="fn-step" data-step="3" data-title="What you need" hidden>
+            <legend tabindex="-1">What would you like from us?</legend>
+            <div class="fn-group fn-group-wide" role="radiogroup" aria-labelledby="c-intent-l" aria-describedby="c-intent-err">
+              <p class="fn-gl fn-vh" id="c-intent-l">Service</p>
+              <label class="fn-opt"><input type="radio" name="intent" value="leak-scan"><span class="fn-opt-t">A free Leak Scan</span><span class="fn-opt-s">20 minutes, then a written number</span></label>
+              <label class="fn-opt"><input type="radio" name="intent" value="stage-build"><span class="fn-opt-t">One stage built</span><span class="fn-opt-s">From £1,500</span></label>
+              <label class="fn-opt"><input type="radio" name="intent" value="full-system"><span class="fn-opt-t">The full system</span><span class="fn-opt-s">£6,000, all five stages</span></label>
+              <label class="fn-opt"><input type="radio" name="intent" value="care"><span class="fn-opt-t">Care</span><span class="fn-opt-s">£295 a month, after year one</span></label>
+              <label class="fn-opt"><input type="radio" name="intent" value="white-label"><span class="fn-opt-t">White-label for my clients</span><span class="fn-opt-s">Tools you resell under your name</span></label>
+              <label class="fn-opt"><input type="radio" name="intent" value="other"><span class="fn-opt-t">Something else</span><span class="fn-opt-s">Tell us on the next step</span></label>
+            </div>
+            <p class="c-err" id="c-intent-err"></p>
+          </fieldset>
+
+          <fieldset class="fn-step" data-step="4" data-title="Your website" hidden>
+            <legend tabindex="-1">Where can we find you online?</legend>
+            <div class="c-field">
+              <label for="c-site">Website <span>Optional</span></label>
+              <input id="c-site" name="website" type="text" inputmode="url" autocomplete="url" maxlength="200" placeholder="yourfirm.co.uk" aria-describedby="c-site-err">
+              <p class="c-err" id="c-site-err"></p>
+            </div>
+            <label class="fn-check"><input type="checkbox" id="c-nosite"><span>We do not have a website yet</span></label>
+            <div class="c-field">
+              <label for="c-msg-in">Where do you think money slips away? <span>Optional</span></label>
+              <textarea id="c-msg-in" name="message" rows="4" maxlength="1500"></textarea>
+            </div>
+          </fieldset>
+
+          <fieldset class="fn-step" data-step="5" data-title="Budget and timing" hidden>
+            <legend tabindex="-1">Budget and timing.</legend>
+            <div class="fn-group" role="radiogroup" aria-labelledby="c-budget-l" aria-describedby="c-budget-err">
+              <p class="fn-gl" id="c-budget-l">Roughly what are you thinking of spending?</p>
+              <label class="fn-opt"><input type="radio" name="budget" value="Under £1,500"><span class="fn-opt-t">Under £1,500</span></label>
+              <label class="fn-opt"><input type="radio" name="budget" value="£1,500 to £6,000"><span class="fn-opt-t">£1,500 to £6,000</span></label>
+              <label class="fn-opt"><input type="radio" name="budget" value="£6,000 to £15,000"><span class="fn-opt-t">£6,000 to £15,000</span></label>
+              <label class="fn-opt"><input type="radio" name="budget" value="Over £15,000"><span class="fn-opt-t">Over £15,000</span></label>
+              <label class="fn-opt"><input type="radio" name="budget" value="Not sure yet"><span class="fn-opt-t">Not sure yet</span></label>
+            </div>
+            <p class="c-err" id="c-budget-err"></p>
+            <div class="fn-group" role="radiogroup" aria-labelledby="c-urgency-l" aria-describedby="c-urgency-err">
+              <p class="fn-gl" id="c-urgency-l">How soon do you want this started?</p>
+              <label class="fn-opt"><input type="radio" name="urgency" value="This week"><span class="fn-opt-t">This week</span></label>
+              <label class="fn-opt"><input type="radio" name="urgency" value="This month"><span class="fn-opt-t">This month</span></label>
+              <label class="fn-opt"><input type="radio" name="urgency" value="Within 3 months"><span class="fn-opt-t">Within 3 months</span></label>
+              <label class="fn-opt"><input type="radio" name="urgency" value="Just looking"><span class="fn-opt-t">Just looking</span></label>
+            </div>
+            <p class="c-err" id="c-urgency-err"></p>
+          </fieldset>
+
+          <fieldset class="fn-step" data-step="6" data-title="Your call" hidden>
+            <legend tabindex="-1">When should Adam call you?</legend>
+            <label class="fn-check fn-asap"><input type="checkbox" id="c-asap" name="call_asap" value="yes"><span>As soon as possible</span></label>
+            <div class="fn-when" id="fn-when">
+              <div class="fn-group" role="radiogroup" aria-labelledby="c-day-l" aria-describedby="c-call-err">
+                <p class="fn-gl" id="c-day-l">Day</p>
+                <div class="fn-days" id="fn-days"></div>
+              </div>
+              <div class="fn-group" role="radiogroup" aria-labelledby="c-time-l" aria-describedby="c-call-err">
+                <p class="fn-gl" id="c-time-l">Time <span>UK time</span></p>
+                <div class="fn-times" id="fn-times"></div>
+              </div>
+            </div>
+            <p class="c-err" id="c-call-err"></p>
+            <p class="fn-note">This is a request, not a booking. Adam confirms by email or text before the call.</p>
+          </fieldset>
+
+          <div class="fn-nav">
+            <button class="fn-back btn btn-sm" type="button" id="fn-back" hidden>Back</button>
+            <button class="fn-next btn btn-p" type="submit" id="fn-next">Continue</button>
+          </div>
           <p class="c-msg" id="c-msg" role="status"></p>
-        </div>
-      </form>
-      <p class="fine">We use these details only to reply to you. <a href="/privacy">Privacy notice</a>.</p>
+        </form>
 
+        <div class="fn-done" id="fn-done" hidden>
+          <h2 class="fn-done-h" tabindex="-1" id="fn-done-h">Sent.</h2>
+          <p class="fn-done-p" id="fn-done-p"></p>
+          <dl class="fn-recap" id="fn-recap" aria-label="What you sent">
+            <div><dt>Name</dt><dd id="fn-r-name"></dd></div>
+            <div><dt>Phone</dt><dd id="fn-r-phone"></dd></div>
+            <div><dt id="fn-r-when-k">Call</dt><dd id="fn-r-when"></dd></div>
+          </dl>
+          <p class="fn-done-cta"><a class="btn btn-p" id="fn-cal" href="https://cal.com/ims-consultancy/leak-scan" target="_blank" rel="noopener">Lock a time on Adam's calendar</a></p>
+          <div class="fn-chat" id="fn-chat" hidden>
+            <p class="fn-chat-k">Or message Adam directly</p>
+            <p class="fn-chat-row" id="fn-chat-row"></p>
+            <p class="fine">Each link opens a chat with your name and reference already typed in. Chats that arrive without it are ignored.</p>
+          </div>
+          <p class="fine">Prefer to wait for Adam's reply? You do not need to do anything else.</p>
+          <ol class="fn-done-steps" aria-label="What happens next">
+            <li><span class="n">01</span><span><strong>Adam replies himself.</strong> He reads what you sent and answers it.</span></li>
+            <li><span class="n">02</span><span><strong>A 20-minute Leak Scan call.</strong> Nothing to prepare.</span></li>
+            <li><span class="n">03</span><span><strong>A written number.</strong> The money leaking, priced in pounds.</span></li>
+          </ol>
+        </div>
+        <noscript><p class="fn-ns">This form needs JavaScript. Email <a href="mailto:info@intelmadesimple.com">info@intelmadesimple.com</a> or <a href="https://cal.com/ims-consultancy/leak-scan" rel="noopener">book the Leak Scan directly</a>.</p></noscript>
+        <p class="fine fn-fine">We use these details only to reply to you. <a href="/privacy">Privacy notice</a>.</p>
+      </div>
+
+      <div class="fn-scene" id="fn-scene">
+        <div class="fn-sky" aria-hidden="true"></div>
+        <div class="fn-stars" aria-hidden="true"></div>
+        <div class="fn-sun" id="fn-sun" aria-hidden="true"></div>
+        <svg class="fn-hills" viewBox="0 0 600 120" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 120V74C60 52 110 46 168 62C226 78 262 40 330 34C402 28 440 58 500 64C540 68 572 56 600 48V120Z"/></svg>
+        <p class="cg-bubble fn-bubble" id="fn-bubble" aria-hidden="true"></p>
+        <div class="fn-ground" aria-hidden="true">
+          <i class="road"></i>
+          <div class="a-car" id="fn-car"></div>
+          <span class="a-man" id="fn-man"></span>
+        </div>
+        <div class="fn-thanks" id="fn-thanks" role="status" aria-live="polite" hidden>
+          <p class="fn-ty" id="fn-ty"></p>
+          <p class="fn-tw" id="fn-tw"></p>
+          <p class="fn-tc" id="fn-tc"></p>
+        </div>
+      </div>
+    </div>
+
+    <aside class="c-ctx" id="c-ctx" aria-labelledby="c-ctx-title" hidden>
+      <p class="c-ctx-k" id="c-ctx-title">You came from</p>
+      <p class="c-ctx-from" id="c-ctx-from"></p>
+      <dl class="c-ctx-nums" id="c-ctx-nums"></dl>
+      <p class="c-ctx-note">We send these with your message, so you do not have to type them again.</p>
+    </aside>
+
+    <div class="fn-info">
       <section class="c-next" aria-labelledby="c-next-title">
         <h2 id="c-next-title">What happens next</h2>
         <ol>
@@ -172,18 +303,6 @@
         <h2 id="c-cost-title">What it costs</h2>
         <p>The Leak Scan is free. If it finds something worth fixing, a build is £1,500 a stage, or £6,000 for all five. Your first stage is £699 with code <span class="c-chip">NEWPARTNER26</span>, first project only. After that we take 15 to 25% of the money we recover above your baseline, for 12 months, then it stops. <strong>No recovery, no fee.</strong> <a href="/pricing#terms">The small print</a>.</p>
       </section>
-    </div>
-
-    <div class="c-side">
-      <figure class="c-phone">
-        <img src="/img/contact-phone-1400.webp" width="1400" height="1094" alt="A 1930s plum bakelite telephone with brass trim, its handset resting and lamp lit" decoding="async" fetchpriority="high">
-      </figure>
-      <div class="arrival" id="arrival" aria-hidden="true">
-        <p class="cg-bubble"></p>
-        <div class="a-car"></div>
-        <span class="a-man"></span>
-        <i class="road"></i>
-      </div>
     </div>
   </div>
 </section>
@@ -221,12 +340,12 @@
     </div>
     <nav class="foot-col" aria-label="Sectors">
       <h2>Sectors</h2>
-      <ul><li><a href="/tools#law-firms">Law Firms</a></li><li><a href="/tools#accountancy-firms">Accountancy Firms</a></li><li><a href="/tools#ifas-wealth-managers">Wealth Management & IFAs</a></li><li><a href="/tools#mortgage-brokers">Mortgage & Finance Brokers</a></li><li><a href="/tools#commercial-insurance-brokers">Commercial Insurance Brokers</a></li><li><a href="/tools#commercial-property">Commercial Property</a></li><li><a href="/tools#executive-search-recruitment">Executive Search & Recruitment</a></li><li><a href="/tools#ma-advisory-business-brokers">M&A Advisory & Business Brokers</a></li><li><a href="/tools#private-healthcare-groups">Private Healthcare Groups</a></li><li><a href="/tools#b2b-saas">B2B SaaS</a></li></ul>
+      <ul><li><a href="/solutions#law-firms">Law Firms</a></li><li><a href="/solutions#accountancy-firms">Accountancy Firms</a></li><li><a href="/solutions#ifas-wealth-managers">Wealth Management & IFAs</a></li><li><a href="/solutions#mortgage-brokers">Mortgage & Finance Brokers</a></li><li><a href="/solutions#commercial-insurance-brokers">Commercial Insurance Brokers</a></li><li><a href="/solutions#commercial-property">Commercial Property</a></li><li><a href="/solutions#executive-search-recruitment">Executive Search & Recruitment</a></li><li><a href="/solutions#ma-advisory-business-brokers">M&A Advisory & Business Brokers</a></li><li><a href="/solutions#private-healthcare-groups">Private Healthcare Groups</a></li><li><a href="/solutions#b2b-saas">B2B SaaS</a></li></ul>
     </nav>
     <nav class="foot-col" aria-label="Explore">
       <h2>Explore</h2>
       <ul>
-        <li><a href="/tools">Recovery tools</a></li>
+        <li><a href="/solutions">Business solutions</a></li>
         <li><a href="/#leaks">Where firms leak</a></li>
         <li><a href="/#calc">Leak calculator</a></li>
         <li><a href="/#how">How it works</a></li>

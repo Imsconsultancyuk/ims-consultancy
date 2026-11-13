@@ -8,6 +8,8 @@ export type AnalyticsEvent =
   | "demo_completed"
   | "tool_card_view"
   | "tool_quick_select"
+  | "solutions_industry_selected"
+  | "solutions_stage_opened"
   | "privacy_toggle_used"
   | "package_cta_clicked"
   | "book_call_clicked"

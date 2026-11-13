@@ -129,3 +129,68 @@
 }
 @media (max-width: 400px) { .fx-cta { padding: 0 14px; font-size: 13px; } }
 @media (prefers-reduced-motion: reduce) { .fx-btn, .fx-theme, .fx-menu i, .fx-panel, .fx-sectors-btn::after { transition: none; } }
+
+/* Header: same link list and spacing as the flagship pages, never wrapping. */
+.fx-nav-in, .fx-main { gap: 20px; }
+.fx-main > a, .fx-sectors-btn, .fx-theme, .fx-cta { white-space: nowrap; flex: none; }
+@media (min-width: 821px) and (max-width: 1120px) {
+  .fx-nav-in { padding: 0 16px; gap: 12px; }
+  .fx-cta .fx-long { display: none; }
+  .fx-cta .fx-short { display: inline; }
+  .fx-menu { display: block; }
+  .fx-main { position: fixed; top: var(--fx-nav); left: 0; right: 0; max-height: calc(100dvh - var(--fx-nav)); overflow-y: auto; flex-direction: column; align-items: stretch; gap: 0; padding: 8px 16px 20px; background: var(--color-paper); border-bottom: 1px solid var(--color-mauve-100); display: none; }
+  .fx-main.fx-open { display: flex; }
+  .fx-main > a, .fx-sectors-btn { padding: 15px 0; font-size: 17px; text-align: left; border-bottom: 1px solid var(--color-mauve-100); }
+  .fx-main > a[aria-current=page]::after { display: none; }
+  .fx-sectors { border-bottom: 1px solid var(--color-mauve-100); }
+  .fx-sectors-btn { width: 100%; border-bottom: 0; }
+  .fx-panel { position: static; width: auto; padding: 0 0 12px; border: 0; box-shadow: none; background: none; opacity: 1; visibility: visible; transform: none; display: none; transition: none; }
+  .fx-sectors:hover .fx-panel, .fx-sectors-btn[aria-expanded=true] + .fx-panel { transform: none; }
+  .fx-sectors-btn[aria-expanded=true] + .fx-panel { display: block; }
+  .fx-panel::before { display: none; }
+  .fx-panel ul { grid-template-columns: 1fr; }
+  .fx-main .fx-theme { display: inline-flex; align-self: flex-start; margin-top: 16px; align-items: center; }
+}
+
+@media (min-width: 1121px) { .fx-sectors-btn { width: 52px; text-align: left; } }
+
+/* Header: "Price it" takes the slot the theme pill held; the theme toggle sits last in the More panel. */
+.fx-main > a.fx-price { display: inline-flex; align-items: center; height: 32px; padding: 0 14px; border-radius: 999px; background: var(--color-mauve-500); border: 1px solid var(--color-mauve-500); color: var(--color-paper); font: 600 13px/1 var(--font-sans); transition: transform 160ms var(--fx-ease), background-color 200ms ease, border-color 200ms ease; }
+.fx-main > a.fx-price:active { transform: scale(0.97); }
+@media (hover: hover) { .fx-main > a.fx-price:hover { background: var(--color-mauve-700); border-color: var(--color-mauve-700); color: var(--color-paper); } }
+.fx-main > a.fx-price[aria-current=page]::after { display: none; }
+.fx-panel .fx-theme-li { margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--color-mauve-100); }
+.fx-panel .fx-theme-li .fx-theme { display: block; width: 100%; height: auto; min-height: 0; margin: 0; padding: 8px 0; border: 0; border-radius: 0; background: none; text-align: left; font: 400 14px/1.25 var(--font-sans); color: var(--color-ink); }
+.fx-panel .fx-theme-li .fx-theme:active { transform: none; }
+@media (hover: hover) { .fx-panel .fx-theme-li .fx-theme:hover { color: var(--color-accent-700); } }
+@media (max-width: 1120px) {
+  .fx-main > a.fx-price { align-self: flex-start; margin-top: 16px; min-height: 44px; padding: 0 18px; font-size: 15px; border-bottom: 1px solid var(--color-mauve-500); }
+  .fx-panel .fx-theme-li .fx-theme { min-height: 44px; display: flex; align-items: center; font-size: 15px; }
+}
+
+/* Small phones: the same tighter header the flagship pages use, so the menu button stays inside the viewport. */
+@media (max-width: 400px) {
+  .fx-nav-in { padding: 0 14px; }
+  .fx-logo { font-size: 16px; gap: 8px; }
+  .fx-mark { width: 26px; height: 26px; }
+}
+@media (max-width: 340px) { .fx-logo span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; } }
+
+/* Glass header, same recipe as the flagship pages (public/flagship/cobalt.css). */
+.fx-nav { --glass-hi: rgb(255 255 255 / .55); --glass-tint: 74%; }
+:root[data-theme=dark] .fx-nav { --glass-hi: rgb(255 255 255 / .1); --glass-tint: 64%; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme=light]) .fx-nav { --glass-hi: rgb(255 255 255 / .1); --glass-tint: 64%; } }
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .fx-nav {
+    background: linear-gradient(180deg, color-mix(in oklab, var(--color-paper) var(--glass-tint), transparent), color-mix(in oklab, var(--color-paper) calc(var(--glass-tint) - 16%), transparent));
+    -webkit-backdrop-filter: blur(22px) saturate(1.7);
+    backdrop-filter: blur(22px) saturate(1.7);
+    border-bottom: 1px solid color-mix(in oklab, var(--color-mauve-500) 18%, transparent);
+    box-shadow: inset 0 1px 0 var(--glass-hi), 0 12px 32px -22px color-mix(in oklab, var(--color-ink) 45%, transparent);
+  }
+  .fx-panel { background: color-mix(in oklab, var(--color-paper-pure) 84%, transparent); -webkit-backdrop-filter: blur(22px) saturate(1.7); backdrop-filter: blur(22px) saturate(1.7); box-shadow: inset 0 1px 0 var(--glass-hi), 0 18px 40px -22px rgba(25,20,26,0.45); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .fx-nav { background: var(--color-paper); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .fx-panel { background: var(--color-paper-pure); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}

@@ -4,11 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { industries } from "@/lib/industries";
-
-// "/", "/tools", "/faq" and "/contact" are static flagship pages that Netlify
+// "/", "/faq" and "/contact" are static flagship pages that Netlify
 // serves through redirects, so they use plain anchors. Everything else is Next.
 const COMPANY_LINKS = [
+  { href: "/#calc", label: "Recovery calculator" },
   { href: "/services", label: "Services" },
   { href: "/industries", label: "Industries" },
   { href: "/case-studies", label: "Case studies" },
@@ -21,7 +20,7 @@ const COMPANY_LINKS = [
 export function TrophyHeader() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [openMenu, setOpenMenu] = useState<"sectors" | "company" | null>(null);
+  const [openMenu, setOpenMenu] = useState<"company" | null>(null);
   const [dark, setDark] = useState<boolean | null>(null);
   const navRef = useRef<HTMLElement>(null);
 
@@ -88,35 +87,9 @@ export function TrophyHeader() {
           </a>
           <nav className={`fx-main${menuOpen ? " fx-open" : ""}`} id="nav-main" aria-label="Main">
             <a href="/#leaks">Where firms leak</a>
-            <div className="fx-sectors">
-              <button
-                className="fx-sectors-btn"
-                type="button"
-                aria-expanded={openMenu === "sectors"}
-                aria-controls="sectors-panel"
-                onClick={() => setOpenMenu((v) => (v === "sectors" ? null : "sectors"))}
-              >
-                Sectors
-              </button>
-              <div className="fx-panel" id="sectors-panel">
-                <p className="fx-lead">Ten sectors, each with its own toolkit</p>
-                <ul>
-                  {industries.map((i) => (
-                    <li key={i.slug}>
-                      <a href={`/tools#${i.slug}`}>{i.name}</a>
-                    </li>
-                  ))}
-                </ul>
-                <a className="fx-all" href="/tools">
-                  See every tool
-                </a>
-              </div>
-            </div>
-            <a href="/tools">Tools</a>
-            <a href="/#calc">Calculator</a>
+            <a href="/solutions">Business solutions</a>
             <a href="/#how">How it works</a>
             <a href="/#pricing">Pricing</a>
-            <a href="/pricing#recovery">Price it</a>
             <a href="/faq">FAQ</a>
             <div className="fx-sectors">
               <button
@@ -127,7 +100,7 @@ export function TrophyHeader() {
                 data-active={COMPANY_LINKS.some((l) => current(l.href)) || undefined}
                 onClick={() => setOpenMenu((v) => (v === "company" ? null : "company"))}
               >
-                Company
+                More
               </button>
               <div className="fx-panel fx-panel-sm" id="company-panel">
                 <ul>
@@ -138,12 +111,17 @@ export function TrophyHeader() {
                       </Link>
                     </li>
                   ))}
+                  <li className="fx-theme-li">
+                    <button className="fx-theme" type="button" aria-label="Switch colour theme" onClick={toggleTheme}>
+                      {dark === null ? "Theme" : dark ? "Light" : "Dark"}
+                    </button>
+                  </li>
                 </ul>
               </div>
             </div>
-            <button className="fx-theme" type="button" aria-label="Switch colour theme" onClick={toggleTheme}>
-              {dark === null ? "Theme" : dark ? "Light" : "Dark"}
-            </button>
+            <a className="fx-price" href="/pricing#recovery">
+              Price it
+            </a>
           </nav>
           <a className="fx-btn fx-cta" href="/contact?intent=leak-scan&from=nav">
             <span className="fx-long">Book a free Leak Scan</span>

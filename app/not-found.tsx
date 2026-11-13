@@ -11,15 +11,15 @@ export const metadata: Metadata = {
 
 const WAYPOINTS = [
   { href: "/", label: "Home" },
-  { href: "/tools", label: "Leak calculators by sector" },
+  { href: "/solutions", label: "Business solutions by industry" },
   { href: "/services", label: "Services" },
   { href: "/pricing", label: "Pricing" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
 
-// Static flagship pages (/, /tools, /faq, /contact) are not Next routes, so a plain anchor avoids a failing RSC prefetch.
-const STATIC_PATHS = new Set(["/", "/tools", "/faq", "/contact"]);
+// Static flagship pages (/, /faq, /contact) are not Next routes, so a plain anchor avoids a failing RSC prefetch.
+const STATIC_PATHS = new Set(["/", "/faq", "/contact"]);
 
 function WaypointLink({ href, ...rest }: ComponentProps<"a"> & { href: string }) {
   return STATIC_PATHS.has(href) ? <a href={href} {...rest} /> : <Link href={href} {...rest} />;

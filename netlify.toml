@@ -49,8 +49,14 @@
 
 [[redirects]]
   from = "/tools"
-  to = "/flagship/tools.html"
-  status = 200
+  to = "/solutions"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tools.html"
+  to = "/solutions"
+  status = 301
   force = true
 
 [[redirects]]

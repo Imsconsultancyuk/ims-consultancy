@@ -225,7 +225,7 @@ export default async function GuidePage({
               </li>
               <li>
                 <Link
-                  href="/tools"
+                  href="/solutions"
                   data-cursor="link"
                   className="flex h-full flex-col rounded-[14px] border border-mauve-300/20 p-6 transition-colors hover:border-mauve-300/50"
                 >

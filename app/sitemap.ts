@@ -55,7 +55,7 @@ const ENTRIES: Entry[] = [
   { path: "/pricing", priority: 0.85, changeFrequency: "monthly", lastModified: mod("/pricing") },
   { path: "/guides", priority: 0.8, changeFrequency: "monthly", lastModified: GUIDES_UPDATED },
   { path: "/insights", priority: 0.6, changeFrequency: "weekly", lastModified: mod("/insights") },
-  { path: "/tools", priority: 0.9, changeFrequency: "monthly", lastModified: mod("/tools") },
+  { path: "/solutions", priority: 0.9, changeFrequency: "monthly", lastModified: mod("/solutions") },
   { path: "/faq", priority: 0.7, changeFrequency: "monthly", lastModified: mod("/faq") },
   { path: "/contact", priority: 0.9, changeFrequency: "monthly", lastModified: mod("/contact") },
   { path: "/privacy", priority: 0.4, changeFrequency: "yearly", lastModified: mod("/privacy") },
