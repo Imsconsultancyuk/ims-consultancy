@@ -146,7 +146,7 @@ const pillar: Guide = {
       "For recurring fees, match the fee ledger to the delivery log for one quarter.",
     ),
     p(
-      "Our free [Leak Scan](/tools) walks through where cash drops out of that chain and costs nothing. If you want an independent view of the numbers, the [pricing page](/pricing) lists the prices: £1,500 for a stage build, an AI Readiness Audit or a team session, £6,000 for all five stages, and a success fee of 15 to 25% of what is recovered. Our guide on [choosing between an audit, a collection route and a process fix](/guides/revenue-recovery-professional-firms-options) helps you pick.",
+      "Our free [Leak Scan](/solutions) walks through where cash drops out of that chain and costs nothing. If you want an independent view of the numbers, the [pricing page](/pricing) lists the prices: £1,500 for a stage build, an AI Readiness Audit or a team session, £6,000 for all five stages, and a success fee of 15 to 25% of what is recovered. Our guide on [choosing between an audit, a collection route and a process fix](/guides/revenue-recovery-professional-firms-options) helps you pick.",
     ),
     faq(
       qa(
@@ -284,7 +284,7 @@ const accountancy: Guide = {
       "Jobs where extra work was done outside the quoted fee, and whether the extra was billed.",
     ),
     p(
-      "If the pack takes more than an hour to produce each month, the data is in too many places. Our [AI workflow automation](/services/ai-automation) service builds the export and the aged lists, and the page for [accountancy firms](/industries/accountancy-firms) shows how we apply the method to the sector. The free [Leak Scan](/tools) is the cheapest first look, and our [pricing page](/pricing) lists the fixed fees.",
+      "If the pack takes more than an hour to produce each month, the data is in too many places. Our [AI workflow automation](/services/ai-automation) service builds the export and the aged lists, and the page for [accountancy firms](/industries/accountancy-firms) shows how we apply the method to the sector. The free [Leak Scan](/solutions) is the cheapest first look, and our [pricing page](/pricing) lists the fixed fees.",
     ),
     faq(
       qa(
@@ -406,7 +406,7 @@ const renewal: Guide = {
     ),
     h("Where do AI tools fit, and what do they need?"),
     p(
-      "A renewal calendar and a fee-to-delivery reconciliation are both well suited to automation, because they are list-matching tasks on structured data. They also use client data, which brings in the UK GDPR. Read our guide to [UK GDPR and AI client data](/guides/uk-gdpr-ai-client-data) before client records go into any new tool. Our [AI workflow automation](/services/ai-automation) service builds the export, the calendar and the reconciliation, and the pages for [commercial insurance brokers](/industries/commercial-insurance-brokers) and [IFAs and wealth managers](/industries/ifas-wealth-managers) show the sector detail. The free [Leak Scan](/tools) is the cheapest first look, and the [pricing page](/pricing) lists fixed fees.",
+      "A renewal calendar and a fee-to-delivery reconciliation are both well suited to automation, because they are list-matching tasks on structured data. They also use client data, which brings in the UK GDPR. Read our guide to [UK GDPR and AI client data](/guides/uk-gdpr-ai-client-data) before client records go into any new tool. Our [AI workflow automation](/services/ai-automation) service builds the export, the calendar and the reconciliation, and the pages for [commercial insurance brokers](/industries/commercial-insurance-brokers) and [IFAs and wealth managers](/industries/ifas-wealth-managers) show the sector detail. The free [Leak Scan](/solutions) is the cheapest first look, and the [pricing page](/pricing) lists fixed fees.",
     ),
     faq(
       qa(
@@ -534,7 +534,7 @@ const options: Guide = {
     ),
     h("What does our route cost?"),
     p(
-      "We publish prices on the [pricing page](/pricing). The first step is a free [Leak Scan](/tools) that shows where cash leaves the chain. After it, a stage build or an [AI Readiness Audit](/services/ai-readiness-audit) is £1,500 and all five stages are £6,000. We add a success fee of 15 to 25% of the money recovered above your baseline, for 12 months, and we do not chase your clients on your behalf. Our [pillar guide on revenue leakage](/guides/revenue-leakage-professional-firms) shows how the five leak points connect.",
+      "We publish prices on the [pricing page](/pricing). The first step is a free [Leak Scan](/solutions) that shows where cash leaves the chain. After it, a stage build or an [AI Readiness Audit](/services/ai-readiness-audit) is £1,500 and all five stages are £6,000. We add a success fee of 15 to 25% of the money recovered above your baseline, for 12 months, and we do not chase your clients on your behalf. Our [pillar guide on revenue leakage](/guides/revenue-leakage-professional-firms) shows how the five leak points connect.",
     ),
     faq(
       qa(

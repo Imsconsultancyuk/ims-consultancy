@@ -171,7 +171,7 @@ export default function ServicesPage(): React.JSX.Element {
                   Five documented cases
                 </Link>
                 <a
-                  href="/tools"
+                  href="/solutions"
                   data-cursor="link"
                   className="inline-flex h-11 items-center justify-center rounded-full border border-info px-6 text-[14px] font-medium text-info transition-colors duration-300 hover:bg-info-wash"
                 >
@@ -335,7 +335,7 @@ export default function ServicesPage(): React.JSX.Element {
             </ul>
             <p className="mt-8 text-[0.9375rem] text-ink-soft">
               Ten sectors, three tools each.{" "}
-              <a href="/tools" className="ims-link">
+              <a href="/solutions" className="ims-link">
                 See all the tools
               </a>
               .

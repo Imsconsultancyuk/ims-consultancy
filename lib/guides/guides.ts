@@ -130,7 +130,7 @@ const baseGuides: Guide[] = [
       ),
       h("Where to start"),
       p(
-        "Run the afternoon review once on your own data before you buy anything. If the result is a list of matters with owners and dates, you have a plan. If it shows that time is not being recorded at all, the fix sits earlier in the chain and our [Leak Scan](/tools) is built to find it: it is free, and it flags where cash leaves the process between the work and the bank. For firms that want the work done for them, the [AI Readiness Audit](/services/ai-readiness-audit) starts at £1,500, and all our prices are on the [pricing page](/pricing). The page for [UK law firms](/industries/law-firms) shows how we apply this to the sector.",
+        "Run the afternoon review once on your own data before you buy anything. If the result is a list of matters with owners and dates, you have a plan. If it shows that time is not being recorded at all, the fix sits earlier in the chain and our [Leak Scan](/solutions) is built to find it: it is free, and it flags where cash leaves the process between the work and the bank. For firms that want the work done for them, the [AI Readiness Audit](/services/ai-readiness-audit) starts at £1,500, and all our prices are on the [pricing page](/pricing). The page for [UK law firms](/industries/law-firms) shows how we apply this to the sector.",
       ),
     ],
     sources: [SRC.ilfm, SRC.solAct69, SRC.limAct5, SRC.sraAcc],
@@ -224,7 +224,7 @@ const baseGuides: Guide[] = [
       ),
       h("What to do next"),
       p(
-        "Calculate the two halves for the last twelve months, month by month, on one basis. That takes a spreadsheet and the two balances from your ledger. If the result points to a leak you cannot explain, our free [Leak Scan](/tools) checks where cash drops out between work and payment. For a worked review of an accountancy practice, see how we approach [accountancy firms](/industries/accountancy-firms), and for the fixed-price options see the [pricing page](/pricing). If you want a second pair of eyes on the numbers before you change anything, the [AI Readiness Audit](/services/ai-readiness-audit) starts at £1,500.",
+        "Calculate the two halves for the last twelve months, month by month, on one basis. That takes a spreadsheet and the two balances from your ledger. If the result points to a leak you cannot explain, our free [Leak Scan](/solutions) checks where cash drops out between work and payment. For a worked review of an accountancy practice, see how we approach [accountancy firms](/industries/accountancy-firms), and for the fixed-price options see the [pricing page](/pricing). If you want a second pair of eyes on the numbers before you change anything, the [AI Readiness Audit](/services/ai-readiness-audit) starts at £1,500.",
       ),
     ],
     sources: [SRC.ilfm, SRC.govLate, SRC.govInterest],
@@ -314,7 +314,7 @@ const baseGuides: Guide[] = [
       ),
       h("Making it routine"),
       p(
-        "The ladder only works if every step happens on its date. That is a job for a diary or a workflow, not for memory. Our [AI workflow automation](/services/ai-automation) service sets up reminders and a call list from the ledger, and the [commercial property](/industries/commercial-property) page shows how we apply the same debtor routine where rent and service charge arrears build up. Our free [Leak Scan](/tools) can show how much of your ledger is already past the dates above, and our [pricing page](/pricing) lists the fixed options.",
+        "The ladder only works if every step happens on its date. That is a job for a diary or a workflow, not for memory. Our [AI workflow automation](/services/ai-automation) service sets up reminders and a call list from the ledger, and the [commercial property](/industries/commercial-property) page shows how we apply the same debtor routine where rent and service charge arrears build up. Our free [Leak Scan](/solutions) can show how much of your ledger is already past the dates above, and our [pricing page](/pricing) lists the fixed options.",
       ),
     ],
     sources: [
@@ -409,7 +409,7 @@ const baseGuides: Guide[] = [
       ),
       h("Cost and next steps"),
       p(
-        "The SRA observes that there are many sophisticated and expensive AI products aimed at large corporate businesses, and that small firms increasingly use off-the-shelf tools. For billing review, an off-the-shelf tool plus a clear protocol is often enough to test the idea. If you want help designing the test, our [AI workflow automation](/services/ai-automation) service builds the export, the flags and the review log, and the [AI Readiness Audit](/services/ai-readiness-audit), from £1,500, tells you which tasks in your firm are worth automating at all. Start with the free [Leak Scan](/tools) if you want to see where the money is leaking first. Our page for [UK law firms](/industries/law-firms) shows the sector detail, and our [insight summary of the SRA report](/insights/sra-ai-risk-accountability) and of the [Harvard and BCG study](/insights/jagged-frontier-hbs-bcg) give the short versions.",
+        "The SRA observes that there are many sophisticated and expensive AI products aimed at large corporate businesses, and that small firms increasingly use off-the-shelf tools. For billing review, an off-the-shelf tool plus a clear protocol is often enough to test the idea. If you want help designing the test, our [AI workflow automation](/services/ai-automation) service builds the export, the flags and the review log, and the [AI Readiness Audit](/services/ai-readiness-audit), from £1,500, tells you which tasks in your firm are worth automating at all. Start with the free [Leak Scan](/solutions) if you want to see where the money is leaking first. Our page for [UK law firms](/industries/law-firms) shows the sector detail, and our [insight summary of the SRA report](/insights/sra-ai-risk-accountability) and of the [Harvard and BCG study](/insights/jagged-frontier-hbs-bcg) give the short versions.",
       ),
     ],
     sources: [SRC.nber, SRC.hbs, SRC.sraAi, SRC.legalFutures],
@@ -496,7 +496,7 @@ const baseGuides: Guide[] = [
       ),
       h("Where to get help"),
       p(
-        "The ICO runs an [advice hub for small and medium organisations](https://ico.org.uk/for-organisations/advice-for-small-organisations/) with tools such as a check on whether data protection applies to your business and a privacy notice generator. For a staff policy and training session built around the questions above, see our [AI training and use policy](/services/team-enablement) service, and read our own [AI policy](/ai-policy) as an example of the level of detail we think is useful. Our page for [IFAs and wealth managers](/industries/ifas-wealth-managers) covers a sector where client financial data makes the DPIA question live. The [pricing page](/pricing) lists the fixed fees, and the free [Leak Scan](/tools) sits outside client data entirely, so it is a safe place to start.",
+        "The ICO runs an [advice hub for small and medium organisations](https://ico.org.uk/for-organisations/advice-for-small-organisations/) with tools such as a check on whether data protection applies to your business and a privacy notice generator. For a staff policy and training session built around the questions above, see our [AI training and use policy](/services/team-enablement) service, and read our own [AI policy](/ai-policy) as an example of the level of detail we think is useful. Our page for [IFAs and wealth managers](/industries/ifas-wealth-managers) covers a sector where client financial data makes the DPIA question live. The [pricing page](/pricing) lists the fixed fees, and the free [Leak Scan](/solutions) sits outside client data entirely, so it is a safe place to start.",
       ),
     ],
     sources: [

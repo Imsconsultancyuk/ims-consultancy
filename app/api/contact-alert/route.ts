@@ -12,6 +12,12 @@ const AlertSchema = z.object({
   name: z.string().trim().min(2).max(120),
   email: z.string().trim().email().max(200),
   firm: z.string().trim().min(1).max(120),
+  phone: z.string().trim().max(30).optional().default(""),
+  company_size: short,
+  website: z.string().trim().max(200).optional().default(""),
+  budget: short,
+  urgency: short,
+  call_when: short,
   message: z.string().trim().max(4000).optional().default(""),
   intent: short,
   plan: short,
@@ -21,6 +27,7 @@ const AlertSchema = z.object({
   firm_name: short,
   process: short,
   from: short,
+  ref: short,
   job: amount,
   leak: amount,
   recovered: amount,
@@ -69,8 +76,14 @@ function alertText(a: Alert): string {
   const rows: [string, string][] = [
     ["Name", a.name],
     ["Email", a.email],
+    ["Phone", a.phone],
+    ["Call", a.call_when],
     ["Kind of firm", a.firm_name ? `${a.firm} (${a.firm_name})` : a.firm],
+    ["Company size", a.company_size],
+    ["Website", a.website],
     ["Wants", INTENT_LABELS[a.intent] ?? a.intent],
+    ["Budget", a.budget],
+    ["Urgency", a.urgency],
     ["Plan", a.plan],
     ["Code", a.code],
     ["Sector page", a.sector],
@@ -82,6 +95,7 @@ function alertText(a: Alert): string {
     ["Our fee a month", pounds(a.fee)],
     ["Build", pounds(a.build)],
     ["Came from", a.from],
+    ["Chat ref", a.ref],
   ];
   const lines = rows.filter(([, v]) => v !== "").map(([k, v]) => `${k}: ${v}`);
   return [

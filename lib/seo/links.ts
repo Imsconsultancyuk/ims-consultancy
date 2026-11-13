@@ -65,7 +65,7 @@ export function relatedForIndustry(slug: string): RelatedItem[] {
   const m = INDUSTRY[slug];
   if (!m) return [];
   return [
-    { kind: "Tool", href: `/tools#${slug}`, label: "Run this sector's tools on sample data" },
+    { kind: "Tool", href: `/solutions#${slug}`, label: "Run this sector's tools on sample data" },
     ...m.insights.map(insightItem),
     guideItem(m.guide),
     ...common(),
@@ -76,7 +76,7 @@ export function relatedForService(slug: string): RelatedItem[] {
   const m = SERVICE[slug];
   if (!m) return [];
   return [
-    { kind: "Tool", href: "/tools", label: "Try the sector tools on sample data" },
+    { kind: "Tool", href: "/solutions", label: "Try the sector tools on sample data" },
     ...m.insights.map(insightItem),
     ...(m.guide ? [guideItem(m.guide)] : []),
     ...common(),

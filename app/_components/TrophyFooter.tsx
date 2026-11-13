@@ -3,8 +3,9 @@ import Link from "next/link";
 import { industries } from "@/lib/industries";
 
 import { AlignedStrip } from "./AlignedStrip";
+import { FooterFx } from "./FooterFx";
 
-// Flagship routes ("/", "/tools", "/faq", "/contact") are served by Netlify
+// Flagship routes ("/", "/faq", "/contact") are served by Netlify
 // redirects, so those links are plain anchors. Next pages use Link.
 const COMPANY = [
   { label: "Services", href: "/services" },
@@ -21,6 +22,7 @@ const LOGO_PATH = "M14 14c2.4-3.5 7.2-3.7 7.2 0s-4.8 3.5-7.2 0c-2.4-3.5-7.2-3.7-
 export function TrophyFooter() {
   return (
     <footer className="fx-foot" aria-labelledby="foot-title">
+      <FooterFx />
       <AlignedStrip />
       <div className="fx-foot-in">
         <div className="fx-foot-brand">
@@ -45,7 +47,7 @@ export function TrophyFooter() {
           <ul>
             {industries.map((i) => (
               <li key={i.slug}>
-                <a href={`/tools#${i.slug}`}>{i.name}</a>
+                <a href={`/solutions#${i.slug}`}>{i.name}</a>
               </li>
             ))}
           </ul>
@@ -53,7 +55,7 @@ export function TrophyFooter() {
         <nav className="fx-foot-col" aria-label="Explore">
           <h2>Explore</h2>
           <ul>
-            <li><a href="/tools">Recovery tools</a></li>
+            <li><a href="/solutions">Business solutions</a></li>
             <li><a href="/#leaks">Where firms leak</a></li>
             <li><a href="/#calc">Leak calculator</a></li>
             <li><a href="/#how">How it works</a></li>
