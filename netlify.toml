@@ -40,6 +40,12 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Self-hosted flagship fonts
+[[headers]]
+  for = "/flagship/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
 # Flagship pages. Netlify-level rewrites run before the Next function; Next rewrites to public files 404 here.
 [[redirects]]
   from = "/"

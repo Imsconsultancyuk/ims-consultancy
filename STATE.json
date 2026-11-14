@@ -1,31 +1,51 @@
 {
-  "project": "IMS Consultancy — site redesign + content/SEO engine",
+  "project": "IMS Consultancy: flagship site, contact funnel, /solutions, content/SEO engine",
   "tier": "T1",
-  "tier_note": "Marketing + content site. One T2 touchpoint: existing contact form (name/email). No new personal-data model, no auth changes in this scope.",
-  "phase": "G0 (exiting to G1)",
-  "gates_passed": ["G0 brief filed (docs/gates/G0-report.md)"],
+  "tier_note": "Marketing + lead-capture site. T2 touchpoints: contact form (name, phone, email, firm) via Netlify Forms + /api/contact-alert (Resend). No auth, no payments, no new personal-data store beyond Netlify Forms.",
+  "phase": "Live on main; iterating (post-G9, no formal gate record since G0)",
+  "gates_passed": [
+    "G0 brief filed (docs/gates/G0-report.md)"
+  ],
+  "gates_note": "Later gates were run informally via BUILD_JOURNAL.md and independent design re-scores, not recorded here.",
+  "live": {
+    "url": "https://intelmadesimple.com",
+    "branch": "main",
+    "commit": "781d1ee",
+    "deployed": "2026-11-13",
+    "mechanism": "push main to GitHub (Imsconsultancyuk/ims-consultancy), Netlify publishes",
+    "rollback": "Netlify Publish deploy on the 952ad16 build, or git revert -m 1 781d1ee"
+  },
   "decisions": {
-    "direction": "Evolve but bolder — IMS's own mauve/paper + jewellery-box-dark, Cormorant + Inter, variance 7 / motion 8 / density 3",
-    "about_face": "Named founder + first-person bio, NO photo (Adam to supply name)",
-    "priority": "Cinematic scroll-world hero FIRST, content/SEO engine second"
+    "direction": "Cobalt and Cream sitewide palette, mauve accent, amber for CTA and leak only; Schibsted Grotesk weight hierarchy",
+    "about_face": "Founder is Adam Khalid. Photo question still open (earlier note said no photo).",
+    "contact": "/contact is a 6-step mascot funnel. Telegram (@intelmadesimple) and WhatsApp links appear only after a finished enquiry (honeypot clear, 10s+ on page), prefilled with a ref code. The number is never page text.",
+    "solutions": "/solutions replaces /tools (301). Gated: hero, industry tiles, then that industry's tools, then later stages opened one at a time.",
+    "header": "Glass header; mauve 'Price it' pill replaces the theme toggle (toggle moved into the More panel)",
+    "approved_prices": "Leak Scan free; stage 1,500 GBP (699 with NEWPARTNER26, first project only); full system 6,000; success fee 25% to 5k/mo, 20% 5k-20k, 15% above, 12 months; Care 295/mo"
   },
   "open_risks": [
-    "FAL_KEY not set locally — hero VIDEO pixels blocked until Adam runs setx FAL_KEY and restarts session. On the critical path now that hero is priority 1.",
-    "Bolder token evolution + 34-keyframe/51-rgba migration in globals.css must ship as one milestone — a half-migrated globals.css reads as a bug.",
-    "Design must clear the AH Architecture quality floor; final sign-off via emil-design-eng + impeccable + user, never self-graded (2026-07-23 incident)."
+    "Sky note, recap card and chat links on /contact have no independent design score; last independent score is 41.5/50 for /solutions, header and footer (gate 40, margin 1.5).",
+    "No real end-to-end lead has been sent on the live chat-link build: Netlify Forms entry, alert email with the Chat ref row and Plausible are unconfirmed. Live too-fast case not re-run (passed on localhost).",
+    "Plausible site intelmadesimple.com must exist or events go nowhere.",
+    "Resend and Supabase keys still to rotate (Adam: last).",
+    "V5 SEO independent pass not run on the new routes; fonts not self-hosted; axe fixes pending; Safari and Firefox untested."
   ],
   "escalations": [],
-  "last_verified_state": "HERO PREVIEW LIVE. 6 cinematic fal.ai stills generated (IMS account, nano-banana-pro, on-brand mauve) at public/videos/hero/scene-1..6.jpg. HeroScrollWorld.tsx built: pin + scene-scrub crossfade + 6 Decide/Build/Compound beats + bolder Cormorant display + DOM-text fallback + reduced-motion. Beat-overlap bug found via screenshot and fixed (mounted-gated opacity). Verified: tsc clean, prod build green, screenshot captured at /dev/hero-preview (localhost:3021). fal REST works via scripts/fal-hero-stills.mjs (reads FAL_KEY from .env.local). Founder = Adam Khalid. Billing confirmed IMS account.",
+  "last_verified_state": "2026-11-13: tsc 0, production build 0 before commit 6586508 (42 files) and merge 781d1ee. Live: /, /contact, /solutions, /faq, /pricing, sitemap 200; /tools and /tools.html 301 to /solutions; alert endpoint 403 without Origin; no t.me, wa.me or number in served /contact HTML. Playwright on live with network intercepted: chat links after 10s+, none for a filled honeypot or a too-fast submit, 0 console errors at 1440 and 390.",
   "next_actions": [
-    "G1: SITE_PLAN -> story/story-tree spec (hero beats already mapped in SITE_PLAN §3.1).",
-    "G2 (light T1): ADR-001 Remotion dependency; confirm no other new components beyond installed stack.",
-    "Build: evolved tokens in globals.css + HeroScrollWorld.tsx scrub skeleton (poster + DOM-text fallback, GSAP pin/scrub) = first visible milestone -> checkpoint.",
-    "Stage fal.ai calls (nano-banana-pro stills, seedance-1-0-pro legs) to fire once FAL_KEY is set.",
-    "Adam to supply: FAL_KEY (setx + restart) and the founder name for /about."
+    "Adam checks live /contact and /solutions, sends one real test enquiry, deletes the Forms entry, confirms the alert email shows the Chat ref row.",
+    "Independent re-score of /contact (sky note, recap, chat links) and glass header.",
+    "Self-host fonts, axe fixes, independent V5 SEO pass, Safari and Firefox checks, create the Plausible site.",
+    "Decide whether Price it also shows as a pill in the mobile bar."
   ],
   "awaiting_human_approval": [
-    "First visible milestone (tokens + hero skeleton) — review before downstream pages",
-    "FAL_KEY set locally (blocks hero video)",
-    "Founder name for /about"
+    "Any further deploy (explicit yes each time)",
+    "Founder bio and photo decision",
+    "Key rotation (Resend, Supabase), last",
+    "Lead-generation plan discussion (LEADGEN_AUTOPILOT_PLAN.md)"
+  ],
+  "do_not_stage": [
+    "PROJECT.md",
+    "public/videos/hero/flagship.mp4"
   ]
 }

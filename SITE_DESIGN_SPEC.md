@@ -2,6 +2,8 @@
 
 > **Status 2026-10-29: independently scored, 41.5/50, gate V4 cleared narrowly.** §0 rows 1 to 7, §1 to §4 and §6 (except the independent-score row) are written from the design pass of 2026-10-28. §5 is scored by a reviewer who did not produce the work (kernel C2): independent pass 3 on 2026-10-29 scored 41.5/50, after pass 1 at 36/50 and pass 2 at 37/50 (an older score of 34/50 predates both). Confidence 70%, plus or minus 2.5, so the lower bound sits just under the gate.
 
+> **Addendum 2026-11-13 (live at main 781d1ee).** Since the 41.5/50 pass the site gained a 6-step contact funnel, a gated /solutions page (replacing /tools), a glass header with a mauve "Price it" pill, a GSAP footer, and post-enquiry Telegram and WhatsApp links. See §4 (Contact, Solutions, Header and footer). An independent re-score of /solutions, header and footer returned 41.5/50 (gate 40). The /contact sky note, recap card and chat links have **not** been independently scored. Treat the 41.5 as covering everything except those.
+
 > **This is the mandatory design artifact for every IMS web build.** Same filename in every project: `SITE_DESIGN_SPEC.md`, at the project root beside `PROJECT.md`. Kernel §10 gate **V4** blocks "done" on any web build without it completed and independently scored.
 >
 > **Provenance.** Extracted from `Projects/ah-architects/SITE_PLAN_B_DESIGN.md`, the highest-quality design artifact IMS has produced. Before this template existed, four projects had a design document (1032 / 190 / 120 / 62 lines, three different filenames, three different structures) and four had none. Output quality tracked document depth almost linearly.
@@ -196,6 +198,7 @@ Registry sources: none of these were installed from shadcn, 21st or react-bits i
 | Amber CTA (`a/button.bg-accent-500`) | utility classes on each page; transition rule at end of app/globals.css | Amber fill, `--color-on-amber` text, round | Colour step (Tailwind `hover:` is inside the hover media query) | 2px cobalt outline, offset 3px, on plum 2px amber | `scale(0.97)`, 180ms (measured: matrix(0.97...)) | N/A, links not disabled | N/A, navigation only | N/A | N/A |
 | Cobalt outline button (`a.border-cobalt-300`) | same rule | Transparent, cobalt border and text | Colour and border change (state not re-inspected visually) | Same global ring | `scale(0.97)` | N/A | N/A | N/A | N/A |
 | Header (`TrophyHeader`, `.fx-*`) | app/_components/TrophyHeader.tsx, app/chrome.css | 64px fixed, paper, 1px bottom rule | Inside `@media (hover: hover) and (pointer: fine)` | 2px cobalt, 4px radius | `.fx-btn:active, .fx-theme:active` scale(0.97) | N/A | N/A | N/A | N/A. Active page: ink text plus 2px cobalt underline via `aria-current="page"`; Company button uses `data-active` (changed this pass). Menu button 44x44 below 820px |
+| Header, glass (`TrophyHeader`, flagship nav) | cobalt.css, app/chrome.css | Blurred translucent bar, 1px rule | Link colour; "Price it" pill lifts | Cobalt ring | Press scale | N/A | N/A | N/A | N/A. `prefers-reduced-transparency`: solid fill |
 | Skip link | `.fx-skip`, flagship `.skip` | Off-screen | N/A | Slides in with 2px amber / accent-500 outline (added this pass) | N/A | N/A | N/A | N/A | N/A |
 | Footer (`TrophyFooter`) | app/_components/TrophyFooter.tsx, chrome.css | Five-column grid | Link colour | Cobalt ring | N/A | N/A | N/A | N/A | N/A |
 | LeakLine | app/_components/LeakLine.tsx | Hairline plus 9px coin, `aria-hidden` | N/A (decorative) | N/A | N/A | N/A | Plays once, 900ms | N/A | N/A. Reduced motion: static line and dot |
@@ -261,6 +264,22 @@ Written from the after screenshots in scratchpad/design2/after/ (1360 and 390 wi
 - **Mobile:** chips wrap; no overflow measured.
 - **Hierarchy:** hero, demo, FAQ.
 - **The moment:** the demo running. Before it runs, 8 labelled nodes sit at 1.44 to 1.62:1 (see §2.1).
+
+### Contact (public/flagship/contact.html, contact-funnel.js, funnel.css)
+- **Job of this page:** turn a visit into a booked call, in six short steps, without a wall of fields.
+- **Desktop and mobile:** a mascot car scene above the form card; each step is one question group, a "You came from" pill sits under the H1 (CTA param, else referrer, else direct) and is also written to the hidden `from` field. On a finished enquiry the car drives off, the sun descends, and a sky note reads "Thanks, <first>. Got it. Adam will call you on <phone> ..." with phone and time in amber (`.fn-tk`), signed "Speak soon, Adam" with an amber rule and italic. The card keeps "Sent, <first>.", a recap (name, phone, call time) and the post-enquiry chat row. Mobile done-scene is 420px tall.
+- **Anti-spam, by design:** Telegram and WhatsApp links are not in the served HTML. A script builds them after a valid submit, only when the honeypot is empty and the visitor spent 10s or more on the page. Each link prefills the first name and a ref code (IMS-XXXXX, also in the hidden `ref` field and the lead email). The WhatsApp number is assembled from parts inside the post-submit href and is never page text.
+- **The moment:** the car leaving and the sun setting behind the thank-you note.
+- **Not yet scored independently:** sky note, recap card, chat row.
+
+### Solutions (app/solutions/page.tsx, components/solutions/*, lib/industries/solutions.ts)
+- **Job of this page:** let a practice owner pick their industry and see only the tools that apply, then open later stages one at a time.
+- **Flow:** short hero with an animated "Choose your industry" cue (MotionCue, HeroCue) and image tiles; a pick reveals that industry's three closed tool rows; "Next:" buttons open stage 2 (leak chart), 3 (white label), 4 (free scan). Nothing auto-expands. FAQ and all-industries are closed rows (SolutionsMore). /tools and /tools.html 301 here.
+- **Known gaps (2026-11-13):** the White label band is flat; about 150px of space above "All solutions at a glance"; cost block width on the desktop finale.
+
+### Header and footer (all pages)
+- **Header:** glass recipe (backdrop blur over the page, 1px rule, reduced-transparency fallback to a solid fill) in cobalt.css for flagship pages and chrome.css for Next pages. The mauve "Price it" pill replaces the theme toggle; the toggle lives in the More panel. This was Adam's explicit request. It sits beside the O3 ban on glassmorphism **cards**: the banned default is cards, and the one glass surface here is the fixed header, which has to read over changing content. Flagged for the next independent pass.
+- **Footer:** non-particle GSAP motion from public/flagship/footer-fx.js (ten drifting contour rows plus the brand figure-of-eight with two travelling runs). Decorative, aria-hidden, paused off screen, held still under reduced motion. On a phone the loop sits above the link lists.
 
 ---
 
