@@ -17,9 +17,9 @@ import { TrophyHeader } from "../_components/TrophyHeader";
 const SITE = "https://intelmadesimple.com";
 
 export const metadata: Metadata = {
-  title: "Business Solutions by Industry, With Live Examples",
+  title: "Business Solutions by Industry",
   description:
-    "Pick your industry and see the money that goes missing, the three AI tools that recover it, and a live run of each on sample data. White-label available. PII is tokenised.",
+    "Pick your industry to see the money that goes missing, the three AI tools that recover it, and a live run of each on sample data. White-label available.",
   alternates: { canonical: `${SITE}/solutions`, languages: { "en-GB": `${SITE}/solutions` } },
   openGraph: {
     title: "Business Solutions by Industry | Intel Made Simple",

@@ -12,6 +12,8 @@ const SECURITY_HEADERS = [
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
   { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" },
+  // Same baseline netlify.toml sets for static files. No script-src yet: Next and the flagship pages rely on inline scripts, so that needs nonces first.
+  { key: "Content-Security-Policy", value: "frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'" },
 ];
 
 // Dev leaves framing open so a 375px iframe harness can inspect pages; production stays DENY.

@@ -52,15 +52,34 @@ const INTENT_LABELS: Record<string, string> = {
 
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX = 5;
+// Cap across all callers: the Origin header is forgeable, so a spoofed or rotating IP must not be able to flood the inbox.
+const GLOBAL_LIMIT_MAX = 30;
+const MAX_TRACKED_KEYS = 500;
+const MAX_BODY_CHARS = 16_000;
+const RESEND_TIMEOUT_MS = 8_000;
 const requestLog = new Map<string, number[]>();
 
 function isRateLimited(key: string): boolean {
   const now = Date.now();
+  if (requestLog.size > MAX_TRACKED_KEYS) {
+    for (const [k, stamps] of requestLog) {
+      if (stamps.every((ts) => now - ts >= RATE_LIMIT_WINDOW_MS)) requestLog.delete(k);
+    }
+  }
   const recent = (requestLog.get(key) ?? []).filter((ts) => now - ts < RATE_LIMIT_WINDOW_MS);
-  const limited = recent.length >= RATE_LIMIT_MAX;
+  const limited = recent.length >= (key === "*" ? GLOBAL_LIMIT_MAX : RATE_LIMIT_MAX);
   if (!limited) recent.push(now);
   requestLog.set(key, recent);
   return limited;
+}
+
+// Netlify sets x-nf-client-connection-ip itself; x-forwarded-for's first hop is whatever the caller sent.
+function clientIp(request: Request): string {
+  return (
+    request.headers.get("x-nf-client-connection-ip")?.trim() ||
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    "unknown"
+  );
 }
 
 function pounds(raw: string): string {
@@ -123,14 +142,17 @@ export async function POST(request: Request): Promise<Response> {
   if (!isAllowedOrigin(request)) {
     return Response.json({ ok: false, error: "Forbidden" }, { status: 403 });
   }
-  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
-  if (isRateLimited(ip)) {
+  if (isRateLimited(clientIp(request)) || isRateLimited("*")) {
     return Response.json({ ok: false, error: "Too many requests" }, { status: 429 });
   }
 
   let body: unknown;
   try {
-    body = await request.json();
+    const raw = await request.text();
+    if (raw.length > MAX_BODY_CHARS) {
+      return Response.json({ ok: false, error: "Invalid request" }, { status: 413 });
+    }
+    body = JSON.parse(raw);
   } catch {
     return Response.json({ ok: false, error: "Invalid request" }, { status: 400 });
   }
@@ -152,17 +174,24 @@ export async function POST(request: Request): Promise<Response> {
   }
 
   const a = parsed.data;
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      from: "Intel Made Simple <alerts@intelmadesimple.com>",
-      to: [to],
-      reply_to: a.email,
-      subject: `New enquiry: ${a.name}, ${a.firm_name || a.firm}${a.intent ? ` (${INTENT_LABELS[a.intent] ?? a.intent})` : ""}`,
-      text: alertText(a),
-    }),
-  });
+  let res: Response;
+  try {
+    res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
+      signal: AbortSignal.timeout(RESEND_TIMEOUT_MS),
+      body: JSON.stringify({
+        from: "Intel Made Simple <alerts@intelmadesimple.com>",
+        to: [to],
+        reply_to: a.email,
+        subject: `New enquiry: ${a.name}, ${a.firm_name || a.firm}${a.intent ? ` (${INTENT_LABELS[a.intent] ?? a.intent})` : ""}`,
+        text: alertText(a),
+      }),
+    });
+  } catch {
+    console.error("[contact-alert] Resend did not answer in time");
+    return Response.json({ ok: false, error: "Alert failed" }, { status: 502 });
+  }
 
   if (!res.ok) {
     console.error("[contact-alert] Resend refused the alert", res.status);

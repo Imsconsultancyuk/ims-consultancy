@@ -17,7 +17,7 @@ import { OG_IMAGES } from "@/lib/og";
 
 const SITE = "https://intelmadesimple.com";
 const DESCRIPTION =
-  "Nine UK guides on revenue leakage, unbilled WIP, lock-up days, late payment law, renewals, AI billing review and UK GDPR. Every claim links to the statute, regulator or study behind it.";
+  "Nine UK guides on revenue leakage, unbilled WIP, lock-up days, late payment law, renewals and UK GDPR. Every claim links to its statute, regulator or study.";
 
 export const metadata: Metadata = {
   title: "UK Guides: WIP, Lock-Up and Late Payment",
