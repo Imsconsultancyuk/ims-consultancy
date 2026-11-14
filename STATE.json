@@ -10,10 +10,10 @@
   "live": {
     "url": "https://intelmadesimple.com",
     "branch": "main",
-    "commit": "781d1ee",
-    "deployed": "2026-11-13",
+    "commit": "b73507e",
+    "deployed": "2026-11-14",
     "mechanism": "push main to GitHub (Imsconsultancyuk/ims-consultancy), Netlify publishes",
-    "rollback": "Netlify Publish deploy on the 952ad16 build, or git revert -m 1 781d1ee"
+    "rollback": "Netlify Publish deploy on the 781d1ee build, or git revert -m 1 b73507e then git revert -m 1 9043cec"
   },
   "decisions": {
     "direction": "Cobalt and Cream sitewide palette, mauve accent, amber for CTA and leak only; Schibsted Grotesk weight hierarchy",
@@ -28,15 +28,19 @@
     "No real end-to-end lead has been sent on the live chat-link build: Netlify Forms entry, alert email with the Chat ref row and Plausible are unconfirmed. Live too-fast case not re-run (passed on localhost).",
     "Plausible site intelmadesimple.com must exist or events go nowhere.",
     "Resend and Supabase keys still to rotate (Adam: last).",
-    "V5 SEO independent pass not run on the new routes; fonts not self-hosted; axe fixes pending; Safari and Firefox untested."
+    "Resend, Supabase and SessionStart-hook-leaked Anthropic/DeepSeek keys still unrotated (Adam). Highest remaining risk.",
+    "/api/contact-alert has per-IP and global limits but no bot challenge (Cloudflare Turnstile needs Adam's account and keys).",
+    "CSP has no script-src: needs a nonce plan for the inline scripts. HSTS preload not set.",
+    "V5 SEO independent pass not run on new routes; Safari and Firefox untested; no uptime or error monitoring.",
+    "26 dev-only npm audit advisories remain (vitest, brace-expansion, browserslist); npm audit --omit=dev is 0."
   ],
   "escalations": [],
-  "last_verified_state": "2026-11-13: tsc 0, production build 0 before commit 6586508 (42 files) and merge 781d1ee. Live: /, /contact, /solutions, /faq, /pricing, sitemap 200; /tools and /tools.html 301 to /solutions; alert endpoint 403 without Origin; no t.me, wa.me or number in served /contact HTML. Playwright on live with network intercepted: chat links after 10s+, none for a filled honeypot or a too-fast submit, 0 console errors at 1440 and 390.",
+  "last_verified_state": "2026-11-14: security-hardening merged 9043cec and og-dynamicparams b73507e. Next 16.4.6, zod 4.6.6, npm audit --omit=dev 0. tsc 0 and build 0 before each commit. Live: /, /contact, /solutions, /faq, /pricing, /guides, /about, /insights, /industries/law-firms, sitemap 200; /tools 301 to /solutions; alert 403 without Origin, 413 oversize, 429 after 5 requests per IP (local); CSP on /solutions, /pricing, /api; fake industry OG slug 404; flagship fonts self-hosted, no Google requests; Playwright on live at 1440 light/dark and 390, 0 unexpected console errors, only Plausible external.",
   "next_actions": [
-    "Adam checks live /contact and /solutions, sends one real test enquiry, deletes the Forms entry, confirms the alert email shows the Chat ref row.",
-    "Independent re-score of /contact (sky note, recap, chat links) and glass header.",
-    "Self-host fonts, axe fixes, independent V5 SEO pass, Safari and Firefox checks, create the Plausible site.",
-    "Decide whether Price it also shows as a pill in the mobile bar."
+    "Adam rotates Resend, Supabase and the leaked Anthropic/DeepSeek keys, then removes the SessionStart hook leak.",
+    "Adam sends one real test enquiry and deletes the Forms entry; confirm the alert email shows the Chat ref row.",
+    "Add Turnstile to the contact forms (needs Cloudflare keys), then plan script-src nonces.",
+    "Independent V5 SEO and design re-score; Safari and Firefox checks; create the Plausible site; uptime monitor."
   ],
   "awaiting_human_approval": [
     "Any further deploy (explicit yes each time)",
