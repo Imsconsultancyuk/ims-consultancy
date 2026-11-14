@@ -16,6 +16,9 @@ export const contentType = "image/png";
 // sibling page.tsx — without this, the route renders dynamically at
 // request time instead of being prebuilt per slug (IMS-053 AC: renders
 // <1s at build).
+// Only the prebuilt slugs exist; an unknown slug is a 404, not a rendered card.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return industrySlugs.map((slug) => ({ slug }));
 }
