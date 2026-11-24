@@ -10,9 +10,8 @@ export interface InsightSpokes {
 
 const AUDIT = { href: "/services/ai-readiness-audit", label: "AI Readiness Audit" };
 const TRAINING = { href: "/services/team-enablement", label: "AI training and policy for teams" };
-const AUTOMATION = { href: "/services/ai-automation", label: "AI workflow automation" };
+const AUTOMATION = { href: "/pricing#quiet-workflow", label: "Stage build: one leak fixed and recovering" };
 const DESK = { href: "/services/enquiry-desk", label: "Enquiry Desk" };
-const ADVISORY = { href: "/services/strategic-advisory", label: "Strategic advisory" };
 
 const LAW = { href: "/industries/law-firms", label: "Revenue recovery for UK law firms" };
 const ACCOUNTANCY = { href: "/industries/accountancy-firms", label: "Revenue recovery for accountancy firms" };
@@ -42,7 +41,7 @@ export const INSIGHT_SPOKES: Record<string, InsightSpokes> = {
   "google-cloud-roi-of-ai-2025": { service: AUDIT, industry: SAAS, guide: G_AIBILL },
   "anthropic-economic-index-augmentation": { service: TRAINING, industry: ACCOUNTANCY, guide: G_AIBILL },
   "anthropic-economic-index-delegation": { service: AUTOMATION, industry: SAAS, guide: G_AIBILL },
-  "ai-opportunities-action-plan-2025": { service: ADVISORY, industry: PROPERTY, guide: G_AIBILL },
+  "ai-opportunities-action-plan-2025": { service: AUDIT, industry: PROPERTY, guide: G_AIBILL },
   "ico-ai-and-data-protection-guidance": { service: TRAINING, industry: IFA, guide: G_GDPR },
   "ico-automated-decision-making-consultation-2026": { service: TRAINING, industry: MORTGAGE, guide: G_GDPR },
   "sra-ai-risk-accountability": { service: TRAINING, industry: LAW, guide: G_GDPR },
@@ -50,6 +49,6 @@ export const INSIGHT_SPOKES: Record<string, InsightSpokes> = {
   "bank-of-england-fca-ai-survey-2024": { service: AUDIT, industry: IFA, guide: G_GDPR },
   "ibm-cost-of-a-data-breach-2026": { service: TRAINING, industry: IFA, guide: G_GDPR },
   "fsb-confidence-code-2026": { service: DESK, industry: ACCOUNTANCY, guide: G_LOCKUP },
-  "stanford-ai-index-2026-summary": { service: ADVISORY, industry: SAAS, guide: G_AIBILL },
+  "stanford-ai-index-2026-summary": { service: AUDIT, industry: SAAS, guide: G_AIBILL },
   "uk-cyber-breaches-survey-2026-small-firms": { service: TRAINING, industry: INSURANCE, guide: G_GDPR },
 };

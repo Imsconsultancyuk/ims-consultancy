@@ -46,14 +46,14 @@ const baseGuides: Guide[] = [
   {
     slug: "unbilled-wip-uk-law-firms",
     title: "Unbilled WIP in UK law firms: how to find it, value it and bill it",
-    metaTitle: "Unbilled WIP in UK Law Firms: Find It",
+    metaTitle: "Unbilled WIP in Law Firms: WIP Days and Recovery",
     metaDescription:
-      "Work in progress is cash a firm has earned and not invoiced. See how to measure WIP days, the Solicitors Act bill rules, and a one-afternoon review.",
+      "How UK law firms find and bill unbilled WIP: the WIP days formula, the Solicitors Act bill rules, a one-afternoon matter review and a free calculator.",
     summary:
       "Unbilled work in progress is the first half of lock-up. This guide shows how to measure it in days, what a published example says it is worth, which two statutes govern a solicitor's right to chase unpaid costs, and how to run a one-afternoon review of your own matter list.",
     topic: "Work in progress",
     published: PUBLISHED,
-    modified: PUBLISHED,
+    modified: "2026-11-24",
     checked: CHECKED,
     service: { href: "/services/ai-readiness-audit", label: "AI Readiness Audit" },
     industry: { href: "/industries/law-firms", label: "Revenue recovery for UK law firms" },
@@ -75,6 +75,9 @@ const baseGuides: Guide[] = [
       ),
       p(
         "Our arithmetic, for illustration only: a firm with fee income of £2,000,000 a year earns about £5,479 a day (£2,000,000 divided by 365). If its unbilled WIP is valued at £250,000, that is 45.6 days of WIP. Billing 15.6 days sooner, down to 30 days, would turn about £85,600 of earned work into invoices. Those figures are invented to show the method, not a benchmark for any firm.",
+      ),
+      p(
+        "To run the sum on your own figures, use our free [lock-up days calculator](/lock-up-days-calculator). It works out WIP days and debtor days from the same inputs, in your browser.",
       ),
       h("What a published example says it is worth"),
       p(
@@ -138,14 +141,14 @@ const baseGuides: Guide[] = [
   {
     slug: "lock-up-days-explained",
     title: "Lock-up days explained: the formula, a worked example and six fixes",
-    metaTitle: "Lock-Up Days: Formula, Example and Fixes",
+    metaTitle: "Lock-Up Days Calculation: Formula and Free Calculator",
     metaDescription:
-      "Lock-up days equal WIP days plus debtor days. See the formula, a worked £2m firm example with the cash released per day cut, and six fixes to try first.",
+      "How to calculate lock-up days: WIP days plus debtor days. Free calculator, a worked £2m firm example and six fixes, ordered by which half is bigger.",
     summary:
       "Lock-up days measure how long a firm funds its clients' work. This guide gives the two-part formula, a worked example with every figure shown, a published example from the ILFM, and six fixes ordered by which half of the number is larger.",
     topic: "Cash conversion",
     published: PUBLISHED,
-    modified: PUBLISHED,
+    modified: "2026-11-24",
     checked: CHECKED,
     service: { href: "/services/ai-readiness-audit", label: "AI Readiness Audit" },
     industry: { href: "/industries/accountancy-firms", label: "Revenue recovery for accountancy firms" },
@@ -181,6 +184,9 @@ const baseGuides: Guide[] = [
       ),
       p(
         "Our arithmetic, with invented figures to show the method: annual fee income £2,000,000, so daily fee income is £5,479 (rounded). Unbilled WIP is £250,000, which is 45.6 days. Unpaid billed fees are £330,000, which is 60.2 days. Lock-up is 105.9 days (45.6 plus 60.2, rounded). Every day removed from that number releases about £5,479 of cash. Cutting 15 days releases about £82,192.",
+      ),
+      p(
+        "Run your own figures through our free [lock-up days calculator](/lock-up-days-calculator). It uses this formula, shows both halves and the cash released per day cut, and runs in your browser, so nothing you type is sent to us.",
       ),
       p(
         "Use the same basis for both balances. If debtors include VAT and WIP does not, the debtor figure will look worse than it is. Pick net or gross, write it down, and keep it for every month you compare.",
@@ -241,7 +247,7 @@ const baseGuides: Guide[] = [
     published: PUBLISHED,
     modified: PUBLISHED,
     checked: CHECKED,
-    service: { href: "/services/ai-automation", label: "AI workflow automation" },
+    service: { href: "/pricing#quiet-workflow", label: "Stage build: one leak fixed and recovering" },
     industry: { href: "/industries/commercial-property", label: "Revenue recovery for commercial property" },
     insightSlugs: ["simply-business-sme-insights-2026", "ai-opportunities-action-plan-2025"],
     relatedGuides: ["lock-up-days-explained", "unbilled-wip-uk-law-firms"],
@@ -314,7 +320,7 @@ const baseGuides: Guide[] = [
       ),
       h("Making it routine"),
       p(
-        "The ladder only works if every step happens on its date. That is a job for a diary or a workflow, not for memory. Our [AI workflow automation](/services/ai-automation) service sets up reminders and a call list from the ledger, and the [commercial property](/industries/commercial-property) page shows how we apply the same debtor routine where rent and service charge arrears build up. Our free [Leak Scan](/solutions) can show how much of your ledger is already past the dates above, and our [pricing page](/pricing) lists the fixed options.",
+        "The ladder only works if every step happens on its date. That is a job for a diary or a workflow, not for memory. A [stage build](/pricing#quiet-workflow) sets up reminders and a call list from the ledger, and the [commercial property](/industries/commercial-property) page shows how we apply the same debtor routine where rent and service charge arrears build up. Our free [Leak Scan](/solutions) can show how much of your ledger is already past the dates above, and our [pricing page](/pricing) lists the fixed options.",
       ),
     ],
     sources: [
@@ -332,16 +338,16 @@ const baseGuides: Guide[] = [
   {
     slug: "ai-billing-review-professional-firms",
     title: "AI-assisted billing review for professional firms: what the evidence supports",
-    metaTitle: "AI Billing Review: What Evidence Says",
+    metaTitle: "AI Pre-Bill Review: What It Can and Can't Do",
     metaDescription:
-      "Two studies show AI lifting routine output 14% to 25% and cutting accuracy 19 points on harder tasks. See a sample-test protocol for billing review.",
+      "Can AI support pre-bill review in a professional firm? What the research shows, what the SRA expects, and a sample test to run before you trust a tool.",
     summary:
       "Research finds that AI speeds up routine work and degrades accuracy on harder judgement tasks, and the SRA says accountability cannot be delegated. This guide turns those findings into a sample-test protocol for using AI on WIP and debtor review.",
     topic: "AI in practice",
     published: PUBLISHED,
     modified: PUBLISHED,
     checked: CHECKED,
-    service: { href: "/services/ai-automation", label: "AI workflow automation" },
+    service: { href: "/pricing#quiet-workflow", label: "Stage build: one leak fixed and recovering" },
     industry: { href: "/industries/law-firms", label: "Revenue recovery for UK law firms" },
     insightSlugs: ["jagged-frontier-hbs-bcg", "sra-ai-risk-accountability"],
     relatedGuides: ["unbilled-wip-uk-law-firms", "uk-gdpr-ai-client-data"],
@@ -409,7 +415,7 @@ const baseGuides: Guide[] = [
       ),
       h("Cost and next steps"),
       p(
-        "The SRA observes that there are many sophisticated and expensive AI products aimed at large corporate businesses, and that small firms increasingly use off-the-shelf tools. For billing review, an off-the-shelf tool plus a clear protocol is often enough to test the idea. If you want help designing the test, our [AI workflow automation](/services/ai-automation) service builds the export, the flags and the review log, and the [AI Readiness Audit](/services/ai-readiness-audit), from £1,500, tells you which tasks in your firm are worth automating at all. Start with the free [Leak Scan](/solutions) if you want to see where the money is leaking first. Our page for [UK law firms](/industries/law-firms) shows the sector detail, and our [insight summary of the SRA report](/insights/sra-ai-risk-accountability) and of the [Harvard and BCG study](/insights/jagged-frontier-hbs-bcg) give the short versions.",
+        "The SRA observes that there are many sophisticated and expensive AI products aimed at large corporate businesses, and that small firms increasingly use off-the-shelf tools. For billing review, an off-the-shelf tool plus a clear protocol is often enough to test the idea. If you want help designing the test, a [stage build](/pricing#quiet-workflow) builds the export, the flags and the review log, and the [AI Readiness Audit](/services/ai-readiness-audit), from £1,500, tells you which tasks in your firm are worth automating at all. Start with the free [Leak Scan](/solutions) if you want to see where the money is leaking first. Our page for [UK law firms](/industries/law-firms) shows the sector detail, and our [insight summary of the SRA report](/insights/sra-ai-risk-accountability) and of the [Harvard and BCG study](/insights/jagged-frontier-hbs-bcg) give the short versions.",
       ),
     ],
     sources: [SRC.nber, SRC.hbs, SRC.sraAi, SRC.legalFutures],
@@ -417,9 +423,9 @@ const baseGuides: Guide[] = [
   {
     slug: "uk-gdpr-ai-client-data",
     title: "UK GDPR and AI tools: a client-data checklist for small firms",
-    metaTitle: "UK GDPR and AI: A Client Data Checklist",
+    metaTitle: "UK GDPR and AI Tools: 10 Checks Before Client Data Goes In",
     metaDescription:
-      "Before client data goes into an AI tool, check Articles 5, 28, 32 and 35 of the UK GDPR. Ten questions, the DPIA triggers and where ICO guidance is in review.",
+      "Putting client data into ChatGPT or any AI tool? Ten UK GDPR checks to run first, when you need a DPIA, and what Articles 5, 28, 32 and 35 require.",
     summary:
       "Client data entered into an AI tool is personal data processing under the UK GDPR. This guide walks through the four articles that matter, the ICO's view of when an impact assessment is needed, and ten questions to answer before a tool goes live.",
     topic: "Data protection",
@@ -540,7 +546,7 @@ function assemble(g: Guide): Guide {
   body.push(...ext.tail);
   return {
     ...g,
-    modified: EXTENDED,
+    modified: g.modified > EXTENDED ? g.modified : EXTENDED,
     checked: EXTENDED_CHECKED,
     body,
     sources: [...g.sources, ...ext.sources],

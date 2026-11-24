@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   title: "Strategic Advisory for UK Founders",
   description:
     "Independent counsel for founders and senior operators. Strategy, positioning, technology and AI direction on a retainer, with the right call said plainly.",
+  // Kept live for direct links, but out of search: the site is positioned on revenue
+  // recovery for UK professional firms, and general AI/build services dilute that signal.
+  robots: { index: false, follow: true },
   alternates: { canonical: `${SITE}/services/strategic-advisory`, languages: { "en-GB": `${SITE}/services/strategic-advisory` } },
   openGraph: {
     title: "Strategic Advisory for UK Founders | Intel Made Simple",

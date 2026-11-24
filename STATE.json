@@ -10,10 +10,10 @@
   "live": {
     "url": "https://intelmadesimple.com",
     "branch": "main",
-    "commit": "b73507e",
-    "deployed": "2026-11-14",
+    "commit": "merge of PR #3 (seo/refocus-revenue-recovery)",
+    "deployed": "2026-11-24",
     "mechanism": "push main to GitHub (Imsconsultancyuk/ims-consultancy), Netlify publishes",
-    "rollback": "Netlify Publish deploy on the 781d1ee build, or git revert -m 1 b73507e then git revert -m 1 9043cec"
+    "rollback": "Netlify Publish deploy on the last 2026-11-14 build, or git revert -m 1 <PR #3 merge commit>"
   },
   "decisions": {
     "direction": "Cobalt and Cream sitewide palette, mauve accent, amber for CTA and leak only; Schibsted Grotesk weight hierarchy",
@@ -35,8 +35,11 @@
     "26 dev-only npm audit advisories remain (vitest, brace-expansion, browserslist); npm audit --omit=dev is 0."
   ],
   "escalations": [],
-  "last_verified_state": "2026-11-14: security-hardening merged 9043cec and og-dynamicparams b73507e. Next 16.4.6, zod 4.6.6, npm audit --omit=dev 0. tsc 0 and build 0 before each commit. Live: /, /contact, /solutions, /faq, /pricing, /guides, /about, /insights, /industries/law-firms, sitemap 200; /tools 301 to /solutions; alert 403 without Origin, 413 oversize, 429 after 5 requests per IP (local); CSP on /solutions, /pricing, /api; fake industry OG slug 404; flagship fonts self-hosted, no Google requests; Playwright on live at 1440 light/dark and 390, 0 unexpected console errors, only Plausible external.",
+  "last_verified_state": "2026-11-24: PR #3 merged on Adam's explicit yes. General AI services (ai-automation, seo, custom-software, strategic-advisory) noindex,follow and out of the sitemap and services hub; new /lock-up-days-calculator (WebApplication + FAQPage schema, maths in lib/calculators/lockup.ts, vitest 24/24); five guide titles and descriptions rewritten; Guides and calculator linked from header More panel, footer and homepage; IndexNow key file in public/. tsc 0, next build 0, 39 sitemap pages 200, 85 internal links 0 broken, Netlify deploy preview 3 checked. Earlier state (2026-11-14 security hardening) unchanged.",
   "next_actions": [
+    "Design-skill chain and independent score on /lock-up-days-calculator (not run: skills not available in the cloud session).",
+    "Decide whether AI Readiness Audit and Team Enablement stay on /services and /pricing (general AI offers, same dilution question).",
+    "Earn 15-25 referring domains (Search Console shows 0 external links on 2026-11-23).",
     "Adam rotates Resend, Supabase and the leaked Anthropic/DeepSeek keys, then removes the SessionStart hook leak.",
     "Adam sends one real test enquiry and deletes the Forms entry; confirm the alert email shows the Chat ref row.",
     "Add Turnstile to the contact forms (needs Cloudflare keys), then plan script-src nonces.",

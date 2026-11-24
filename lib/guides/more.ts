@@ -108,11 +108,11 @@ const pillar: Guide = {
     ),
     h("What happens upstream: do enquiries ever become work?"),
     p(
-      "An enquiry that is not found or not answered never becomes work in progress, so it never appears on any leakage report. That is why we treat search visibility and enquiry handling as the upstream end of the same chain. Our [SEO and AI search visibility service](/services/seo) covers technical SEO, content, structured data and AI-search readiness for UK small and mid-sized firms, and our [enquiry desk](/services/enquiry-desk) covers what happens after the contact form is filled in. We do not claim a search ranking for any firm. We claim only that a page nobody can find cannot generate an instruction.",
+      "An enquiry that is not found or not answered never becomes work in progress, so it never appears on any leakage report. That is why we treat enquiry handling as the first stage of the same chain. Our [Enquiry Desk](/services/enquiry-desk) covers what happens after the contact form is filled in: every call, form and message answered the same day and logged with a follow-up date.",
     ),
     h("When does a spreadsheet stop being enough?"),
     p(
-      "Most firms start with an export and a spreadsheet, and that is the right first step. The spreadsheet stops being enough when three things are true: the monthly pack takes a day or more to assemble by hand, two people hold different versions of the same number, or the data lives in three systems that never talk to each other. Our [custom software service](/services/custom-software) builds internal tools and admin panels for that stage, such as a billing-review screen that reads the practice system and shows aged WIP with an owner and a date per row. Build it only after the manual review has told you what the screen needs to show.",
+      "Most firms start with an export and a spreadsheet, and that is the right first step. The spreadsheet stops being enough when three things are true: the monthly pack takes a day or more to assemble by hand, two people hold different versions of the same number, or the data lives in three systems that never talk to each other. A [stage build](/pricing#quiet-workflow) can include the internal screen for that stage, such as a billing-review screen that reads the practice system and shows aged WIP with an owner and a date per row. Build it only after the manual review has told you what the screen needs to show.",
     ),
     h("How do you size the leak in pounds?"),
     p(
@@ -185,16 +185,16 @@ const pillar: Guide = {
 const accountancy: Guide = {
   slug: "accountancy-debtor-days-and-wip",
   title: "Debtor days and WIP in an accountancy practice: measure, recover, collect",
-  metaTitle: "Accountancy Practice Debtor Days and WIP",
+  metaTitle: "WIP Days and Debtor Days for Accountants: Formulas",
   metaDescription:
-    "Measure WIP days, debtor days and recovery rate in an accountancy practice. Worked example, ICAEW's recovery-rate arithmetic and the collection steps.",
+    "How to calculate WIP days, debtor days and recovery rate in an accountancy practice, with a worked example, ICAEW's arithmetic and a free calculator.",
   summary:
     "An accountancy practice leaks cash in three places: work that is under-recovered, work that is billed late and bills that are paid late. This guide gives a formula for each, a worked example, ICAEW's published recovery-rate arithmetic, and the collection steps that apply to company and sole-trader clients.",
   topic: "Accountancy practices",
   published: PUBLISHED,
-  modified: PUBLISHED,
+  modified: "2026-11-24",
   checked: CHECKED,
-  service: { href: "/services/ai-automation", label: "AI workflow automation" },
+  service: { href: "/pricing#quiet-workflow", label: "Stage build: one leak fixed and recovering" },
   industry: { href: "/industries/accountancy-firms", label: "Revenue recovery for accountancy firms" },
   insightSlugs: ["uk-sme-ai-adoption-bcc-atos-2026", "ai-productivity-customer-support-nber"],
   relatedGuides: [
@@ -228,6 +228,9 @@ const accountancy: Guide = {
     h("How do you calculate them? A worked example"),
     p(
       "Our arithmetic, with invented figures. A practice raises £800,000 of fees a year, so daily fee income is £2,192 (£800,000 divided by 365, rounded). Unbilled WIP is £96,000, which is 43.8 days. Unpaid billed fees are £132,000, which is 60.2 days. Lock-up is 104.0 days. Cutting 10 days releases about £21,900 of cash. The debtor half is larger, so a chasing routine would release more than a faster billing run.",
+    ),
+    p(
+      "Our free [lock-up days calculator](/lock-up-days-calculator) runs the same three sums on your practice's figures, in your browser.",
     ),
     p(
       "Use the same basis for both balances. If debtors include VAT and WIP does not, the debtor figure will read worse than it is. Pick net or gross and keep it every month.",
@@ -284,7 +287,7 @@ const accountancy: Guide = {
       "Jobs where extra work was done outside the quoted fee, and whether the extra was billed.",
     ),
     p(
-      "If the pack takes more than an hour to produce each month, the data is in too many places. Our [AI workflow automation](/services/ai-automation) service builds the export and the aged lists, and the page for [accountancy firms](/industries/accountancy-firms) shows how we apply the method to the sector. The free [Leak Scan](/solutions) is the cheapest first look, and our [pricing page](/pricing) lists the fixed fees.",
+      "If the pack takes more than an hour to produce each month, the data is in too many places. A [stage build](/pricing#quiet-workflow) builds the export and the aged lists, and the page for [accountancy firms](/industries/accountancy-firms) shows how we apply the method to the sector. The free [Leak Scan](/solutions) is the cheapest first look, and our [pricing page](/pricing) lists the fixed fees.",
     ),
     faq(
       qa(
@@ -333,7 +336,7 @@ const renewal: Guide = {
   published: PUBLISHED,
   modified: PUBLISHED,
   checked: CHECKED,
-  service: { href: "/services/ai-automation", label: "AI workflow automation" },
+  service: { href: "/pricing#quiet-workflow", label: "Stage build: one leak fixed and recovering" },
   industry: {
     href: "/industries/commercial-insurance-brokers",
     label: "Revenue recovery for commercial insurance brokers",
@@ -406,7 +409,7 @@ const renewal: Guide = {
     ),
     h("Where do AI tools fit, and what do they need?"),
     p(
-      "A renewal calendar and a fee-to-delivery reconciliation are both well suited to automation, because they are list-matching tasks on structured data. They also use client data, which brings in the UK GDPR. Read our guide to [UK GDPR and AI client data](/guides/uk-gdpr-ai-client-data) before client records go into any new tool. Our [AI workflow automation](/services/ai-automation) service builds the export, the calendar and the reconciliation, and the pages for [commercial insurance brokers](/industries/commercial-insurance-brokers) and [IFAs and wealth managers](/industries/ifas-wealth-managers) show the sector detail. The free [Leak Scan](/solutions) is the cheapest first look, and the [pricing page](/pricing) lists fixed fees.",
+      "A renewal calendar and a fee-to-delivery reconciliation are both well suited to automation, because they are list-matching tasks on structured data. They also use client data, which brings in the UK GDPR. Read our guide to [UK GDPR and AI client data](/guides/uk-gdpr-ai-client-data) before client records go into any new tool. A [stage build](/pricing#quiet-workflow) builds the export, the calendar and the reconciliation, and the pages for [commercial insurance brokers](/industries/commercial-insurance-brokers) and [IFAs and wealth managers](/industries/ifas-wealth-managers) show the sector detail. The free [Leak Scan](/solutions) is the cheapest first look, and the [pricing page](/pricing) lists fixed fees.",
     ),
     faq(
       qa(
