@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   title: "SEO and AI Search Visibility for UK SMEs",
   description:
     "Search visibility that compounds, including AI search. Technical audit, content strategy, on-page work, link earning and structured data for LLMs.",
+  // Kept live for direct links, but out of search: the site is positioned on revenue
+  // recovery for UK professional firms, and general AI/build services dilute that signal.
+  robots: { index: false, follow: true },
   alternates: { canonical: `${SITE}/services/seo`, languages: { "en-GB": `${SITE}/services/seo` } },
   openGraph: {
     title: "SEO and AI Search Visibility for UK SMEs | Intel Made Simple",

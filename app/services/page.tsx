@@ -29,15 +29,15 @@ const TOOL_EXAMPLES = [
 ] as const;
 
 const DESCRIPTION =
-  "Revenue Leak Recovery plus three first steps for UK firms: AI Readiness Audit, Enquiry Desk and Team Enablement, each £1,500. Prices published.";
+  "Revenue recovery for UK professional firms: a free Leak Scan, then fixed-price stages that recover unbilled WIP, late invoices and lapsed renewals.";
 
 export const metadata: Metadata = {
-  title: "Revenue Recovery and AI Services, Priced",
+  title: "Revenue Recovery Services for UK Professional Firms",
   description: DESCRIPTION,
   alternates: { canonical: `${SITE}/services`, languages: { "en-GB": `${SITE}/services` } },
   openGraph: {
-    title: "Revenue Recovery and AI Services, Priced | Intel Made Simple",
-    description: "Revenue Leak Recovery, plus three fixed-fee first steps for small UK firms.",
+    title: "Revenue Recovery Services for UK Professional Firms | Intel Made Simple",
+    description: "Free Leak Scan, then fixed-price stages that recover what your firm has earned and not collected.",
     url: `${SITE}/services`,
     type: "website",
     images: OG_IMAGES,
@@ -50,13 +50,6 @@ const LEAK_STAGES = [
   { n: "01", name: "Scan", line: "A free Leak Scan puts a number on what is leaking." },
   { n: "02", name: "Fix", line: "We stop the leaks that pay for themselves first." },
   { n: "03", name: "Recover", line: "Quiet follow-ups chase what is owed. A person approves anything that matters." },
-];
-
-const LEGACY = [
-  { href: "/services/ai-automation", label: "AI Automation" },
-  { href: "/services/seo", label: "SEO and Organic Growth" },
-  { href: "/services/custom-software", label: "Custom Software" },
-  { href: "/services/strategic-advisory", label: "Strategic Advisory" },
 ];
 
 const HERO_FIGURES: HeroFigure[] = [
@@ -379,17 +372,6 @@ export default function ServicesPage(): React.JSX.Element {
                 </li>
               ))}
             </ul>
-            <p className="mt-8 text-[0.9375rem] text-ink-soft">
-              Also available:{" "}
-              {LEGACY.map((l, i) => (
-                <span key={l.href}>
-                  <Link href={l.href} className="ims-link">
-                    {l.label}
-                  </Link>
-                  {i < LEGACY.length - 1 ? ", " : "."}
-                </span>
-              ))}
-            </p>
           </div>
         </section>
 

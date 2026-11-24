@@ -13,6 +13,7 @@ const COMPANY = [
   { label: "Case studies", href: "/case-studies" },
   { label: "Process", href: "/process" },
   { label: "About", href: "/about" },
+  { label: "Guides", href: "/guides" },
   { label: "Insights", href: "/insights" },
   { label: "Reviews", href: "/reviews" },
 ];
@@ -58,6 +59,7 @@ export function TrophyFooter() {
             <li><a href="/solutions">Business solutions</a></li>
             <li><a href="/#leaks">Where firms leak</a></li>
             <li><a href="/#calc">Leak calculator</a></li>
+            <li><Link href="/lock-up-days-calculator">Lock-up calculator</Link></li>
             <li><a href="/#how">How it works</a></li>
             <li><a href="/#pricing">Pricing</a></li>
             <li><a href="/faq">FAQ</a></li>

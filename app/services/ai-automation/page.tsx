@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   title: "AI Workflow Automation for UK Firms",
   description:
     "Quiet AI workflows that take dull, repetitive work off your team. We advise on what to automate, then build and hand over the systems that earn their keep.",
+  // Kept live for direct links, but out of search: the site is positioned on revenue
+  // recovery for UK professional firms, and general AI/build services dilute that signal.
+  robots: { index: false, follow: true },
   alternates: { canonical: `${SITE}/services/ai-automation`, languages: { "en-GB": `${SITE}/services/ai-automation` } },
   openGraph: {
     title: "AI Workflow Automation for UK Firms | Intel Made Simple",

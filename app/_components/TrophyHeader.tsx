@@ -8,11 +8,13 @@ import { usePathname } from "next/navigation";
 // serves through redirects, so they use plain anchors. Everything else is Next.
 const COMPANY_LINKS = [
   { href: "/#calc", label: "Recovery calculator" },
+  { href: "/lock-up-days-calculator", label: "Lock-up calculator" },
   { href: "/services", label: "Services" },
   { href: "/industries", label: "Industries" },
   { href: "/case-studies", label: "Case studies" },
   { href: "/process", label: "Process" },
   { href: "/about", label: "About" },
+  { href: "/guides", label: "Guides" },
   { href: "/insights", label: "Insights" },
   { href: "/reviews", label: "Reviews" },
 ];

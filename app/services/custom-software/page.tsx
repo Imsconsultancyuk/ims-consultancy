@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   title: "Custom Software for UK Small Businesses",
   description:
     "Software built on real architecture, with tests, observability and an honest hand-over. Web apps, dashboards, internal tools and integrations.",
+  // Kept live for direct links, but out of search: the site is positioned on revenue
+  // recovery for UK professional firms, and general AI/build services dilute that signal.
+  robots: { index: false, follow: true },
   alternates: { canonical: `${SITE}/services/custom-software`, languages: { "en-GB": `${SITE}/services/custom-software` } },
   openGraph: {
     title: "Custom Software for UK Small Businesses | Intel Made Simple",
